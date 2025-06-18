@@ -1,18 +1,11 @@
 {
-  "functions": {
-    "api/invoices/index.js": {
-      "runtime": "@vercel/node@3.0.5"
-    },
-    "api/customers/index.js": {
-      "runtime": "@vercel/node@3.0.5"
-    },
-    "api/products/index.js": {
-      "runtime": "@vercel/node@3.0.5"
-    },
-    "api/payment-methods/index.js": {
-      "runtime": "@vercel/node@3.0.5"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
