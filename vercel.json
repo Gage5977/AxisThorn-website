@@ -1,27 +1,26 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "**/*.html",
-      "use": "@vercel/static"
+  "functions": {
+    "api/invoices/index.js": {
+      "runtime": "@vercel/node@3.0.5"
     },
-    {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
+    "api/customers/index.js": {
+      "runtime": "@vercel/node@3.0.5"
+    },
+    "api/products/index.js": {
+      "runtime": "@vercel/node@3.0.5"
+    },
+    "api/payment-methods/index.js": {
+      "runtime": "@vercel/node@3.0.5"
     }
-  ],
+  },
   "routes": [
-    {
-      "src": "/invoices.html",
-      "dest": "/invoices.html"
-    },
     {
       "src": "/api/(.*)",
       "dest": "/api/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "src": "/invoices",
+      "dest": "/invoices.html"
     }
   ]
 }
