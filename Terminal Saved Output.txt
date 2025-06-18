@@ -1,0 +1,975 @@
+Last login: Sat Jun 14 19:44:50 on ttys009
+axisthornllc@Axiss-Mac-Studio ~ % npm run build
+npm error code ENOENT
+npm error syscall open
+npm error path /Users/axisthornllc/package.json
+npm error errno -2
+npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/Users/axisthornllc/package.json'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: /Users/axisthornllc/.npm/_logs/2025-06-18T05_37_40_874Z-debug-0.log
+axisthornllc@Axiss-Mac-Studio ~ % cd ~/Documents/axis-thorn
+cd: no such file or directory: /Users/axisthornllc/Documents/axis-thorn
+axisthornllc@Axiss-Mac-Studio ~ % cd ~/Documents/Axis-Thorn-LLC-Website
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % cd ~/Documents/Axis-Thorn-LLC-Website
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % npm install -g vercel
+npm error code EACCES
+npm error syscall mkdir
+npm error path /usr/local/lib/node_modules/vercel
+npm error errno -13
+npm error Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/vercel'
+npm error     at async mkdir (node:internal/fs/promises:852:10)
+npm error     at async /usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:624:20
+npm error     at async Promise.allSettled (index 0)
+npm error     at async [reifyPackages] (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:325:11)
+npm error     at async Arborist.reify (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:142:5)
+npm error     at async Install.exec (/usr/local/lib/node_modules/npm/lib/commands/install.js:150:5)
+npm error     at async Npm.exec (/usr/local/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/local/lib/node_modules/npm/lib/cli/entry.js:74:5) {
+npm error   errno: -13,
+npm error   code: 'EACCES',
+npm error   syscall: 'mkdir',
+npm error   path: '/usr/local/lib/node_modules/vercel'
+npm error }
+npm error
+npm error The operation was rejected by your operating system.
+npm error It is likely you do not have the permissions to access this file as the current user
+npm error
+npm error If you believe this might be a permissions issue, please double-check the
+npm error permissions of the file and its containing directories, or try running
+npm error the command again as root/Administrator.
+npm error A complete log of this run can be found in: /Users/axisthornllc/.npm/_logs/2025-06-18T05_38_39_880Z-debug-0.log
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % vercel
+zsh: command not found: vercel
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % npm install -g vercel
+npm error code EACCES
+npm error syscall mkdir
+npm error path /usr/local/lib/node_modules/vercel
+npm error errno -13
+npm error Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/vercel'
+npm error     at async mkdir (node:internal/fs/promises:852:10)
+npm error     at async /usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:624:20
+npm error     at async Promise.allSettled (index 0)
+npm error     at async [reifyPackages] (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:325:11)
+npm error     at async Arborist.reify (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:142:5)
+npm error     at async Install.exec (/usr/local/lib/node_modules/npm/lib/commands/install.js:150:5)
+npm error     at async Npm.exec (/usr/local/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/local/lib/node_modules/npm/lib/cli/entry.js:74:5) {
+npm error   errno: -13,
+npm error   code: 'EACCES',
+npm error   syscall: 'mkdir',
+npm error   path: '/usr/local/lib/node_modules/vercel'
+npm error }
+npm error
+npm error The operation was rejected by your operating system.
+npm error It is likely you do not have the permissions to access this file as the current user
+npm error
+npm error If you believe this might be a permissions issue, please double-check the
+npm error permissions of the file and its containing directories, or try running
+npm error the command again as root/Administrator.
+npm error A complete log of this run can be found in: /Users/axisthornllc/.npm/_logs/2025-06-18T05_39_25_831Z-debug-0.log
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % sudo npm install -g vercel
+Password:
+npm warn deprecated path-match@1.2.4: This package is archived and no longer maintained. For support, visit https://github.com/expressjs/express/discussions
+
+added 235 packages in 3s
+
+26 packages are looking for funding
+  run `npm fund` for details
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % sudo npm install -g vercel
+npm warn deprecated path-match@1.2.4: This package is archived and no longer maintained. For support, visit https://github.com/expressjs/express/discussions
+
+changed 235 packages in 2s
+
+26 packages are looking for funding
+  run `npm fund` for details
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % vercel
+Vercel CLI 43.2.0
+> NOTE: The Vercel CLI now collects telemetry regarding usage of the CLI.
+> This information is used to shape the CLI roadmap and prioritize features.
+> You can learn more, including how to opt-out if you'd not like to participate in this program, by visiting the following URL:
+> https://vercel.com/docs/cli/about-telemetry
+> No existing credentials found. Please log in:
+? Log in to Vercel Continue with GitHub
+> Please visit the following URL in your web browser:
+Error: Account not found.
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % ^[[200~vercel^[[201~
+vercel
+Vercel CLI 43.2.0
+> No existing credentials found. Please log in:
+? Log in to Vercel Continue with GitHub
+> Please visit the following URL in your web browser:
+> Success! GitHub authentication complete for audit@sl-stays.com
+? Set up and deploy “~/Documents/Axis-Thorn-LLC-Website”? yes
+? Which scope should contain your project? Axis Thorn's projects
+? Link to existing project? yes
+? What’s the name of your existing project?
+Documents/Axis-Thorn-LLC-WebsiteDocuments/Axis-Thorn-LLC-Websiteax
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % cd ~/Documents/Axis-Thorn-LLC-Website
+vercel
+Vercel CLI 43.2.0
+? Set up and deploy “~/Documents/Axis-Thorn-LLC-Website”? yes
+? Which scope should contain your project? Axis Thorn's projects
+? Link to existing project? no
+? What’s your project’s name? axis-thorn-llc-website
+? In which directory is your code located?
+./https://github.com/Gage5977/AxisThorn-website
+Error: The provided path “~/Documents/Axis-Thorn-LLC-Website/https:/github.com/Gage5977/AxisThorn-website” does not exist. Please choose a different one.
+? In which directory is your code located?
+./https://github.com/Gage5977/AxisThorn-website.git
+Error: The provided path “~/Documents/Axis-Thorn-LLC-Website/https:/github.com/Gage5977/AxisThorn-website.git” does not exist. Please choose a different one.
+? In which directory is your code located? ./
+Local settings detected in vercel.json:
+No framework detected. Default Project Settings:
+- Build Command: `npm run vercel-build` or `npm run build`
+- Development Command: None
+- Install Command: `yarn install`, `pnpm install`, `npm install`, or `bun install`
+- Output Directory: `public` if it exists, or `.`
+? Want to modify these settings? no
+🔗  Linked to axis-thorns-projects/axis-thorn-llc-website (created .vercel and added it to .gitignore)
+🔍  Inspect: https://vercel.com/axis-thorns-projects/axis-thorn-llc-website/Gb1MAGmu5ZHsx779HnXFQnESmZCg [4s]
+✅  Production: https://axis-thorn-llc-website-olv1jdj3z-axis-thorns-projects.vercel.app [4s]
+📝  Deployed to production. Run `vercel --prod` to overwrite later (https://vercel.link/2F).
+💡  To change the domain or build command, go to https://vercel.com/axis-thorns-projects/axis-thorn-llc-website/settings
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % vercel.json
+zsh: command not found: vercel.json
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % cd 
+axisthornllc@Axiss-Mac-Studio ~ % cd /documents
+cd: no such file or directory: /documents
+axisthornllc@Axiss-Mac-Studio ~ % cd /Axiss-Mac-Studio/Documents/Axis-Thorn-LLC-Website/
+cd: no such file or directory: /Axiss-Mac-Studio/Documents/Axis-Thorn-LLC-Website/
+axisthornllc@Axiss-Mac-Studio ~ % vercel --prod
+Vercel CLI 43.2.0
+? You are deploying your home directory. Do you want to continue? yes
+? Set up and deploy “~”? }
+? Which scope should contain your project? Axis Thorn's projects
+? Link to existing project? no
+? What’s your project’s name? axisthornllc
+? In which directory is your code located? ./cd ~/Documents/Axis-Thorn-LLC-Website
+Error: The provided path “~/cd ~/Documents/Axis-Thorn-LLC-Website” does not exist. Please choose a different one.
+? In which directory is your code located? ./documents/axis-thorn-llc-webiste
+Error: The provided path “~/documents/axis-thorn-llc-webiste” does not exist. Please choose a different one.
+? In which directory is your code located? ./cd ~/Documents/Axis-Thorn-LLC-Website
+Error: The provided path “~/cd ~/Documents/Axis-Thorn-LLC-Website” does not exist. Please choose a different one.
+? In which directory is your code located? .//Axiss-Mac-Studio/Documents/Axis-Thorn-LLC-Website/
+Error: The provided path “~/Axiss-Mac-Studio/Documents/Axis-Thorn-LLC-Website” does not exist. Please choose a different one.
+? In which directory is your code located? ./https://github.com/Gage5977/AxisThorn-website.git
+Error: The provided path “~/https:/github.com/Gage5977/AxisThorn-website.git” does not exist. Please choose a different one.
+? In which directory is your code located? ./cd ~/Documents/Axis-Thorn-LLC-Website
+Error: The provided path “~/cd ~/Documents/Axis-Thorn-LLC-Website” does not exist. Please choose a different one.
+? In which directory is your code located? .//Documents/Axis-Thorn-LLC-Website
+Error: If defined, the Root Directory must be a relative path not starting with `./` and not including `../` or other special characters. (400)
+axisthornllc@Axiss-Mac-Studio ~ % cd ~/Documents
+ls
+Apptherium					axisthorn.com					Default.rdp					Finance						MRI_Trial_Balance_Import_System 4.06.04 PM
+Axis-Thorn-LLC-Website				Corporate					desktop.ini					Invoices					Working Zip (emailed from office)
+axisthornllc@Axiss-Mac-Studio Documents % touch vercel.json
+open -a TextEdit vercel.json
+axisthornllc@Axiss-Mac-Studio Documents % vercel --prod
+Vercel CLI 43.2.0
+? Set up and deploy “~/Documents”? yes
+? Which scope should contain your project? Axis Thorn's projects
+? Link to existing project? no
+? What’s your project’s name? documents
+? In which directory is your code located? ./
+Local settings detected in vercel.json:
+No framework detected. Default Project Settings:
+- Build Command: `npm run vercel-build` or `npm run build`
+- Development Command: None
+- Install Command: `yarn install`, `pnpm install`, `npm install`, or `bun install`
+- Output Directory: `public` if it exists, or `.`
+? Want to modify these settings? no
+🔗  Linked to axis-thorns-projects/documents (created .vercel and added it to .gitignore)
+🔍  Inspect: https://vercel.com/axis-thorns-projects/documents/6kCWurHnVLWafFKuM6SwVDPbz6o4 [5s]
+✅  Production: https://documents-h7yzq4u4e-axis-thorns-projects.vercel.app [5s]
+axisthornllc@Axiss-Mac-Studio Documents % vercel --prod --name axis-thorn-site
+Vercel CLI 43.2.0
+❗️  The "--name" option is deprecated (https://vercel.link/name-flag)
+🔍  Inspect: https://vercel.com/axis-thorns-projects/documents/DMScyoAG8XxnuoSTUKPFBzyVZLdo [620ms]
+✅  Production: https://documents-ioudxoufe-axis-thorns-projects.vercel.app [620ms]
+axisthornllc@Axiss-Mac-Studio Documents % dig axisthorn.com A +short
+dig www.axisthorn.com CNAME +short
+axisthornllc@Axiss-Mac-Studio Documents % dig axisthorn.com A +short
+dig www.axisthorn.com CNAME +short
+axisthornllc@Axiss-Mac-Studio Documents % dig axisthorn.com A +short
+dig www.axisthorn.com CNAME +short
+axisthornllc@Axiss-Mac-Studio Documents % dig axisthorn.com A +short
+dig www.axisthorn.com CNAME +short
+axisthornllc@Axiss-Mac-Studio Documents % dig axisthorn.com A +short
+dig www.axisthorn.com CNAME +short
+axisthornllc@Axiss-Mac-Studio Documents % cd ~/Documents/Axis-Thorn-LLC-Website
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % cd ~/Documents
+ls
+Apptherium					Corporate					Finance						vercel.json
+Axis-Thorn-LLC-Website				Default.rdp					Invoices					Working Zip (emailed from office)
+axisthorn.com					desktop.ini					MRI_Trial_Balance_Import_System 4.06.04 PM
+axisthornllc@Axiss-Mac-Studio Documents % cd "exact-folder-name-here"
+cd: no such file or directory: exact-folder-name-here
+axisthornllc@Axiss-Mac-Studio Documents % ls
+Apptherium					Corporate					Finance						vercel.json
+Axis-Thorn-LLC-Website				Default.rdp					Invoices					Working Zip (emailed from office)
+axisthorn.com					desktop.ini					MRI_Trial_Balance_Import_System 4.06.04 PM
+axisthornllc@Axiss-Mac-Studio Documents % cd /Axis-Thorn-LLC-Website
+cd: no such file or directory: /Axis-Thorn-LLC-Website
+axisthornllc@Axiss-Mac-Studio Documents % cd Axis-Thorn-LLC-Website
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % ls
+CONTRIBUTING.md		index.html		logo.svg		Pantone Color TCX.jpeg	README.md		script.js		styles.css		vercel.json
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % vercel --prod
+Vercel CLI 43.2.0
+❗️  The `name` property in vercel.json is deprecated (https://vercel.link/name-prop)
+Error: The `functions` property cannot be used in conjunction with the `builds` property. Please remove one of them.
+Learn More: https://vercel.link/functions-and-builds
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % open -a TextEdit vercel.json
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % vercel --prod
+Vercel CLI 43.2.0
+🔍  Inspect: https://vercel.com/axis-thorns-projects/axis-thorn-llc-website/7Vz35Qis9LPDqVS9iUpxfG16jEAe [843ms]
+✅  Production: https://axis-thorn-llc-website-o0tsc27qb-axis-thorns-projects.vercel.app [843ms]
+❗️  We are attempting to create SSL certificates for www.axisthorn.com and axisthorn.com asynchronously.
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % 
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % ns1.vercel-dns.com
+zsh: command not found: ns1.vercel-dns.com
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % vercel --prod     
+Vercel CLI 43.2.0
+🔍  Inspect: https://vercel.com/axis-thorns-projects/axis-thorn-llc-website/Hc9hS4vhESmULiQKSXczS7ixmPUg [532ms]
+✅  Production: https://axis-thorn-llc-website-1vwgau6cl-axis-thorns-projects.vercel.app [532ms]
+❗️  We are attempting to create SSL certificates for www.axisthorn.com and axisthorn.com asynchronously.
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X POST "https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/dns_records" \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type":"A",
+    "name":"@",
+    "content":"76.76.21.21",
+    "ttl":3600,
+    "proxied":false
+}'
+{"result":null,"success":false,"errors":[{"code":7003,"message":"Could not route to /client/v4/zones/YOUR_ZONE_ID/dns_records, perhaps your object identifier is invalid?"}],"messages":[]}%                                                                                  axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % #!/bin/bash
+
+ZONE_ID="your_zone_id"
+API_TOKEN="your_api_token"
+
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type":"A",
+    "name":"@",
+    "content":"76.76.21.21",
+    "ttl":3600,
+    "proxied":false
+}'
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+ZONE_ID="your_zone_id"
+API_TOKEN="your_api_token"
+
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type":"A",
+    "name":"@",
+    "content":"76.76.21.21",
+    "ttl":3600,
+    "proxied":false
+}'
+zsh: no such file or directory: #/bin/bash
+{"result":null,"success":false,"errors":[{"code":7003,"message":"Could not route to /client/v4/zones/your_zone_id/dns_records, perhaps your object identifier is invalid?"}],"messages":[]}%                                                                                  axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X POST "https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/dns_records" \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type":"CNAME",
+    "name":"www",
+    "content":"cname.vercel-dns.com",
+    "ttl":3600,
+    "proxied":false
+}'
+{"result":null,"success":false,"errors":[{"code":7003,"message":"Could not route to /client/v4/zones/YOUR_ZONE_ID/dns_records, perhaps your object identifier is invalid?"}],"messages":[]}%                                                                                  axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % #!/bin/bash
+
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="PASTE_YOUR_API_TOKEN_HERE"
+
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type":"CNAME",
+    "name":"www",
+    "content":"cname.vercel-dns.com",
+    "ttl":3600,
+    "proxied":false
+}'
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="PASTE_YOUR_API_TOKEN_HERE"
+
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type":"CNAME",
+    "name":"www",
+    "content":"cname.vercel-dns.com",
+    "ttl":3600,
+    "proxied":false
+}'
+zsh: no such file or directory: #/bin/bash
+{"success":false,"errors":[{"code":10001,"message":"Unable to authenticate request"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export ZONE_ID=95630f075913ce585a9271ef6146b2f6
+export API_TOKEN="paste_your_new_api_token_here"
+
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type":"CNAME",
+    "name":"www",
+    "content":"cname.vercel-dns.com",
+    "ttl":3600,
+    "proxied":false
+}'
+{"success":false,"errors":[{"code":10001,"message":"Unable to authenticate request"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl "https://api.cloudflare.com/client/v4/accounts/325dbccc9f0ee308a35c492f8c2b88bd/tokens/verify" \
+     -H "Authorization: Bearer uvhQUeOq4gPJvnq6ItFd24J4JxG6AzFdJgQTg8LF"
+{"result":{"id":"a8df793603071fa602c243e403d60011","status":"active","not_before":"2025-06-17T00:00:00Z","expires_on":"2025-12-31T23:59:59Z"},"success":true,"errors":[],"messages":[{"code":10000,"message":"This API Token is valid and active","type":null}]}%             axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export ZONE_ID=95630f075913ce585a9271ef6146b2f6
+export API_TOKEN="uvhQUeOq4gPJvnq6ItFd24J4JxG6AzFdJgQTg8LF"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type":"CNAME",
+    "name":"www",
+    "content":"cname.vercel-dns.com",
+    "ttl":3600,
+    "proxied":false
+}'
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl "https://api.cloudflare.com/client/v4/accounts/325dbccc9f0ee308a35c492f8c2b88bd/tokens/verify" \
+     -H "Authorization: Bearer wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+{"result":{"id":"1d1f9e59cd881fdc960251f588bf53c4","status":"active","not_before":"2025-06-17T00:00:00Z","expires_on":"2025-12-31T23:59:59Z"},"success":true,"errors":[],"messages":[{"code":10000,"message":"This API Token is valid and active","type":null}]}%             axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl "https://api.cloudflare.com/client/v4/accounts/325dbccc9f0ee308a35c492f8c2b88bd/tokens/verify" \
+     -H "Authorization: Bearer wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+{"result":{"id":"1d1f9e59cd881fdc960251f588bf53c4","status":"active","not_before":"2025-06-17T00:00:00Z","expires_on":"2025-12-31T23:59:59Z"},"success":true,"errors":[],"messages":[{"code":10000,"message":"This API Token is valid and active","type":null}]}%             axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export ZONE_ID=95630f075913ce585a9271ef6146b2f6
+export API_TOKEN=wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type":"CNAME",
+    "name":"www",
+    "content":"cname.vercel-dns.com",
+    "ttl":3600,
+    "proxied":false
+}'
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type":"CNAME",
+    "name":"www",
+    "content":"cname.vercel-dns.com",
+    "ttl":3600,
+    "proxied":false
+}'
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % echo $API_TOKEN
+wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export API_TOKEN="paste_the_full_token_here"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export API_TOKEN="paste_the_full_token_here"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -H "Authorization: Bearer $API_TOKEN" https://api.cloudflare.com/client/v4/user/tokens/verify
+{"success":false,"errors":[{"code":6003,"message":"Invalid request headers","error_chain":[{"code":6111,"message":"Invalid format for Authorization header"}]}],"messages":[],"result":null}%                                                                                 axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export API_TOKEN=wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -H "Authorization: Bearer $API_TOKEN" https://api.cloudflare.com/client/v4/user/tokens/verify
+{"success":false,"errors":[{"code":1000,"message":"Invalid API Token"}],"messages":[],"result":null}%                                                                                                                                                                         axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+export API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -H "Authorization: Bearer $API_TOKEN" \
+     https://api.cloudflare.com/client/v4/user/tokens/verify
+
+{"success":false,"errors":[{"code":1000,"message":"Invalid API Token"}],"messages":[],"result":null}%                                                                                                                                                                         axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % 
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -H "Authorization: Bearer $API_TOKEN" \
+     https://api.cloudflare.com/client/v4/user/tokens/verify
+{"success":false,"errors":[{"code":1000,"message":"Invalid API Token"}],"messages":[],"result":null}%                                                                                                                                                                         axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl "https://api.cloudflare.com/client/v4/accounts/325dbccc9f0ee308a35c492f8c2b88bd/tokens/verify" \
+     -H "Authorization: Bearer wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+{"result":{"id":"1d1f9e59cd881fdc960251f588bf53c4","status":"active","not_before":"2025-06-17T00:00:00Z","expires_on":"2025-12-31T23:59:59Z"},"success":true,"errors":[],"messages":[{"code":10000,"message":"This API Token is valid and active","type":null}]}%                                                                                                       axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % 104.145.90.20
+zsh: command not found: 104.145.90.20
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+export API_TOKEN="your_new_token_here"
+
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+{"success":false,"errors":[{"code":10001,"message":"Unable to authenticate request"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+{"success":false,"errors":[{"code":10001,"message":"Unable to authenticate request"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+{"success":false,"errors":[{"code":10001,"message":"Unable to authenticate request"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+{"success":false,"errors":[{"code":10001,"message":"Unable to authenticate request"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+# Create www CNAME
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+
+# Create root A record
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+zsh: command not found: #
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+zsh: command not found: #
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+export API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+# Add root A record
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+
+# Add www CNAME record
+curl -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+zsh: command not found: #
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+zsh: command not found: #
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % chmod +x add-dns-records.sh
+./add-dns-records.sh
+chmod: add-dns-records.sh: No such file or directory
+zsh: no such file or directory: ./add-dns-records.sh
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % chmod +x add-dns-records.sh
+./add-dns-records.shnano add-dns-records.sh
+chmod: add-dns-records.sh: No such file or directory
+zsh: no such file or directory: ./add-dns-records.shnano
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % nano add-dns-records.sh
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % s-records.sh
+zsh: command not found: s-records.sh
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % ./add-dns-records.sh
+zsh: no such file or directory: ./add-dns-records.sh
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % chmod +x add-dns-records.sh
+./add-dns-records.sh
+chmod: add-dns-records.sh: No such file or directory
+zsh: no such file or directory: ./add-dns-records.sh
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % #!/bin/bash
+
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+echo "🔧 Adding A record for @..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+
+echo "🔧 Adding CNAME record for www..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+echo "🔧 Adding A record for @..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+
+echo "🔧 Adding CNAME record for www..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+zsh: no such file or directory: #/bin/bash
+🔧 Adding A record for @...
+#!/bin/bash
+
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+echo "🔧 Adding A record for @..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+
+echo "🔧 Adding CNAME record for www..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+🔧 Adding CNAME record for www...
+#!/bin/bash
+
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+echo "🔧 Adding A record for @..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % #!/bin/bash
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+echo "🔧 Adding A record for @..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+
+echo "🔧 Adding CNAME record for www..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+#!/bin/bash
+
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+echo "🔧 Adding A record for @..."
+zsh: no such file or directory: #/bin/bashm/client/v4/zones/$ZONE_ID/dns_records" \
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % 
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % 
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % echo "🔧 Adding A record for @..."
+🔧 Adding A record for @...
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+>   -H "Authorization: Bearer $API_TOKEN" \
+>   -H "Content-Type: application/json" \
+>   --data '{
+quote>     "type": "A",
+quote>     "name": "@",
+quote>     "content": "76.76.21.21",
+quote>     "ttl": 3600,
+quote>     "proxied": false
+quote> }'
+
+echo "🔧 Adding CNAME record for www..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+#!/bin/bash
+
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+echo "🔧 Adding A record for @..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+
+echo "🔧 Adding CNAME record for www..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data {"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % 
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % echo "🔧 Adding CNAME record for www..."
+🔧 Adding CNAME record for www...
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+>   -H "Authorization: Bearer $API_TOKEN" \
+>   -H "Content-Type: application/json" \
+>   --data '{
+quote>     "type": "CNAME",
+quote>     "name": "www",
+quote>     "content": "cname.vercel-dns.com",
+quote>     "ttl": 3600,
+quote>     "proxied": false
+quote> }'
+#!/bin/bash
+
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+echo "🔧 Adding A record for @..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+
+echo "🔧 Adding CNAME record for www..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % #!/bin/bash
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+zsh: no such file or directory: #/bin/bash
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % 
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % 
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % echo "🔧 Adding A record for @..."
+🔧 Adding A record for @...
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+>   -H "Authorization: Bearer $API_TOKEN" \
+>   -H "Content-Type: application/json" \
+>   --data '{
+quote>     "type": "A",
+quote>     "name": "@",
+quote>     "content": "76.76.21.21",
+quote>     "ttl": 3600,
+quote>     "proxied": false
+quote> }'
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % 
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % echo "🔧 Adding CNAME record for www..."
+🔧 Adding CNAME record for www...
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+>   -H "Authorization: Bearer $API_TOKEN" \
+>   -H "Content-Type: application/json" \
+>   --data '{
+quote>     "type": "CNAME",
+quote>     "name": "www",
+quote>     "content": "cname.vercel-dns.com",
+quote>     "ttl": 3600,
+quote>     "proxied": false
+quote> }'
+export ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+export API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+export API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+export API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % echo $API_TOKEN
+wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json"
+{"success":false,"errors":[{"code":9109,"message":"Cannot use the access token from location: 104.145.90.20"}],"messages":[],"result":null}%                                                                                                    axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % ^[[200~curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
+>   -H "Authorization: Bearer $API_TOKEN" \
+>   -H "Content-Type: application/json"~
+zsh: bad pattern: ^[[200~curl
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json"
+{"success":false,"errors":[{"code":9109,"message":"Cannot use the access token from location: 104.145.90.20"}],"messages":[],"result":null}%                                                                                                    axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl ifconfig.me
+104.145.90.20%                                                                                                          axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X GET "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json"
+{"success":false,"errors":[{"code":9109,"message":"Cannot use the access token from location: 104.145.90.20"}],"messages":[],"result":null}%                                                                                                    axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % url "https://api.cloudflare.com/client/v4/zones/cd7d0123e3012345da9420df9514dad0" \
+-H "Authorization: Bearer 1234567893feefc5f0q5000bfo0c38d90bbeb"
+zsh: command not found: url
+zsh: command not found: -H
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % url "https://api.cloudflare.com/client/v4/zones/cd7d0123e3012345url "https://api.cloudflare.com/client/v4/zones/cd7d0123e3012345da9420df9514dad0" \ 
+-H "Authorization: Bearer 1234567893feefc5f0q5000bfo0c38d90bbeb"da9420df9514dad0" \
+-H "Authorization: Bearer 1234567893feefc5f0q5000bfo0c38d90bbeb"
+zsh: command not found: url
+zsh: command not found: -H
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl "https://api.cloudflare.com/client/v4/zones/cd7d0123e3012345da9420df9514dad0" \
+-H "Authorization: Bearer 1234567893feefc5f0q5000bfo0c38d90bbeb"
+{"success":false,"errors":[{"code":9106,"message":"Missing X-Auth-Email header"},{"code":9107,"message":"Missing X-Auth-Key header"}],"messages":[],"result":null}curl: (3) URL rejected: Malformed input to a URL function
+zsh: command not found: -H
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % url "https://api.cloudflare.com/client/v4/zones/cd7d0123e3012345da9420df9514dad0
+dquote> curl "https://api.cloudflare.com/client/v4/zones/cd7d0123e3012345da9420df9514dad0
+zsh: command not found: url
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X GET "https://api.cloudflare.com/client/v4/zones/cd7d0123e3012345da9420df9514dad0" \
+  -H "Authorization: Bearer YOUR_API_TOKEN_HERE" \
+  -H "Content-Type: application/json"
+{"success":false,"errors":[{"code":6003,"message":"Invalid request headers","error_chain":[{"code":6111,"message":"Invalid format for Authorization header"}]}],"messages":[],"result":null}%                                                   axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % export API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X GET "https://api.cloudflare.com/client/v4/zones/cd7d0123e3012345da9420df9514dad0" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json"
+{"success":false,"errors":[{"code":9109,"message":"Cannot use the access token from location: 104.145.90.20"}],"messages":[],"result":null}%                                                                                                    axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % curl -X GET "https://api.cloudflare.com/client/v4/zones/95630f075913ce585a9271ef6146b2f6" \
+  -H "Authorization: Bearer wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp" \
+  -H "Content-Type: application/json"
+{"success":false,"errors":[{"code":9109,"message":"Cannot use the access token from location: 104.145.90.20"}],"messages":[],"result":null}%                                                                                                    axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % #!/bin/bash
+
+# Set your credentials
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+# A record for root domain
+echo "🔧 Adding A record for @ (root domain)..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+
+# CNAME for www
+echo "🔧 Adding CNAME record for www..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Set your credentials
+ZONE_ID="95630f075913ce585a9271ef6146b2f6"
+API_TOKEN="wqgieCwlzNaL-6cXrLFvQZHZmynWwnsG8bBRNppp"
+
+# A record for root domain
+echo "🔧 Adding A record for @ (root domain)..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "A",
+    "name": "@",
+    "content": "76.76.21.21",
+    "ttl": 3600,
+    "proxied": false
+}'
+
+# CNAME for www
+echo "🔧 Adding CNAME record for www..."
+curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records" \
+  -H "Authorization: Bearer $API_TOKEN" \
+  -H "Content-Type: application/json" \
+  --data '{
+    "type": "CNAME",
+    "name": "www",
+    "content": "cname.vercel-dns.com",
+    "ttl": 3600,
+    "proxied": false
+}'
+zsh: no such file or directory: #/bin/bash
+zsh: command not found: #
+zsh: command not found: #
+🔧 Adding A record for @ (root domain)...
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+zsh: command not found: #
+🔧 Adding CNAME record for www...
+{"success":false,"errors":[{"code":10000,"message":"Authentication error"}]}
+axisthornllc@Axiss-Mac-Studio Axis-Thorn-LLC-Website % nano setup-dns.sh
+
+  UW PICO 5.09                                       File: setup-dns.sh                                       Modified  
+
+chmod +x setup-dns.sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^G Get Help         ^O WriteOut         ^R Read File        ^Y Prev Pg          ^K Cut Text         ^C Cur Pos          
+^X Exit             ^J Justify          ^W Where is         ^V Next Pg          ^U UnCut Text       ^T To Spell        

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1099 Access - Axis Thorn LLC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.svg" alt="Axis Thorn LLC" class="logo-img">
+                <span class="logo-text">Axis Thorn</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="1099.html" class="nav-link">1099 Access</a></li>
+                <li><a href="banking.html" class="nav-link">Banking</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">1099 Document Access</h1>
+            <p class="page-subtitle">Secure Access to Tax Documentation</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="main-content">
+                    <div class="access-portal">
+                        <h2>Axis Thorn LLC - 1099 Portal</h2>
+                        <p class="portal-description">Access your 1099 forms and related tax documentation through our secure portal.</p>
+                        
+                        <form class="login-form" id="accessForm">
+                            <div class="form-group">
+                                <label for="taxId">Tax ID / SSN</label>
+                                <input type="text" id="taxId" name="taxId" placeholder="XXX-XX-XXXX" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="businessName">Business/Individual Name</label>
+                                <input type="text" id="businessName" name="businessName" placeholder="As appears on tax documents" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="accessCode">Access Code</label>
+                                <input type="password" id="accessCode" name="accessCode" placeholder="Provided by Axis Thorn LLC" required>
+                            </div>
+                            
+                            <button type="submit" class="access-button">Access 1099 Documents</button>
+                        </form>
+                        
+                        <div class="security-notice">
+                            <h3>Security Notice</h3>
+                            <ul>
+                                <li>All access attempts are logged and monitored</li>
+                                <li>Documents are encrypted and require valid credentials</li>
+                                <li>Access codes expire annually and must be renewed</li>
+                                <li>For assistance, contact AI.info@axisthorn.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-content">
+                    <div class="info-card">
+                        <h3>Tax Year 2025</h3>
+                        <p>1099 forms will be available by January 31, 2026</p>
+                        <div class="status-indicator">
+                            <span class="status-dot processing"></span>
+                            <span>Processing</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Previous Years</h3>
+                        <ul class="year-list">
+                            <li><a href="#" class="year-link">2024 - Available</a></li>
+                            <li><a href="#" class="year-link">2023 - Available</a></li>
+                            <li><a href="#" class="year-link">2022 - Available</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>Document Types</h3>
+                        <ul class="doc-list">
+                            <li>1099-NEC (Non-Employee Compensation)</li>
+                            <li>1099-MISC (Miscellaneous Income)</li>
+                            <li>Supporting Documentation</li>
+                            <li>Payment Summary Reports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <h3>Need Help?</h3>
+                        <p>Contact our tax document support team:</p>
+                        <div class="contact-details">
+                            <p><strong>Email:</strong> AI.info@axisthorn.com</p>
+                            <p><strong>Subject:</strong> 1099 Access Request</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">Axis Thorn LLC</span>
+                </div>
+                <div class="footer-text">
+                    <p>&copy; 2025 Axis Thorn LLC. Secure Tax Document Access.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form handling for 1099 access
+        document.getElementById('accessForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Basic validation
+            if (!data.taxId || !data.businessName || !data.accessCode) {
+                showNotification('Please fill in all required fields.', 'error');
+                return;
+            }
+            
+            // Tax ID format validation (basic)
+            const taxIdRegex = /^\d{3}-\d{2}-\d{4}$|^\d{2}-\d{7}$/;
+            if (!taxIdRegex.test(data.taxId)) {
+                showNotification('Please enter a valid Tax ID format (XXX-XX-XXXX or XX-XXXXXXX).', 'error');
+                return;
+            }
+            
+            const submitButton = this.querySelector('.access-button');
+            const originalText = submitButton.textContent;
+            
+            submitButton.textContent = 'Verifying Access...';
+            submitButton.disabled = true;
+            
+            // Simulate authentication process
+            setTimeout(() => {
+                // For demo - in production this would authenticate against secure backend
+                showNotification('Authentication successful. Redirecting to document portal...', 'success');
+                
+                setTimeout(() => {
+                    // Redirect to secure document portal (placeholder)
+                    showNotification('Document portal integration pending. Contact AI.info@axisthorn.com for manual access.', 'info');
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                }, 2000);
+            }, 3000);
+        });
+
+        // Notification system (reused from main site)
+        function showNotification(message, type = 'info') {
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(notif => notif.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === 'success' ? '#2d5016' : type === 'error' ? '#5d1a1a' : '#1a1a1a'};
+                color: #e8e8e8;
+                padding: 1rem 2rem;
+                border-left: 4px solid ${type === 'success' ? '#4caf50' : type === 'error' ? '#f44336' : '#8B1538'};
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+                z-index: 10000;
+                opacity: 0;
+                transform: translateX(100%);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                max-width: 400px;
+                font-family: 'Inter', sans-serif;
+                font-size: 14px;
+                border-radius: 2px;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            requestAnimationFrame(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateX(0)';
+            });
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+        }
+
+        // Tax ID formatting
+        document.getElementById('taxId').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            if (value.length <= 9) {
+                // SSN format: XXX-XX-XXXX
+                if (value.length >= 6) {
+                    value = value.slice(0, 3) + '-' + value.slice(3, 5) + '-' + value.slice(5);
+                } else if (value.length >= 4) {
+                    value = value.slice(0, 3) + '-' + value.slice(3);
+                }
+            } else {
+                // EIN format: XX-XXXXXXX
+                value = value.slice(0, 2) + '-' + value.slice(2, 9);
+            }
+            
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>

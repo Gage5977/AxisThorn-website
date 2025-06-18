@@ -2065,7 +2065,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
 }
 
 .security-notice li::before {
-    content: '🔒';
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
