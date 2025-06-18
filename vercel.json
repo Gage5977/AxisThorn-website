@@ -1,16 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/invoices/:path*",
-      "destination": "/invoices/public/:path*"
-    },
-    {
-      "source": "/invoices",
-      "destination": "/invoices/public/index.html"
-    },
-    {
       "source": "/(.*)",
-      "destination": "/$1"
+      "destination": "/index.html"
     }
   ],
   "redirects": [
@@ -21,5 +13,16 @@
     }
   ],
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ]
 }

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis Thorn LLC - Client Portal</title>
+    <link rel="stylesheet" href="invoices/public/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Axis Thorn Client Portal</h1>
+            <nav>
+                <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+                <button class="nav-btn" data-view="create">Create Invoice</button>
+                <button class="nav-btn" data-view="customers">Customers</button>
+                <button class="nav-btn" data-view="products">Products</button>
+                <button class="nav-btn" data-view="tax1099">1099 Forms</button>
+            </nav>
+        </header>
+
+        <main>
+            <div id="dashboard" class="view active">
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total Invoices</h3>
+                        <p class="stat-value" id="totalInvoices">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Paid</h3>
+                        <p class="stat-value" id="paidInvoices">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pending</h3>
+                        <p class="stat-value" id="pendingInvoices">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Revenue</h3>
+                        <p class="stat-value" id="totalRevenue">$0.00</p>
+                    </div>
+                </div>
+
+                <div class="invoice-list">
+                    <h2>Welcome to Axis Thorn Client Portal</h2>
+                    <p>Professional invoice management with comprehensive payment processing.</p>
+                    <div class="features">
+                        <h3>Features:</h3>
+                        <ul>
+                            <li>✓ 21+ Payment Methods</li>
+                            <li>✓ Professional PDF Generation</li>
+                            <li>✓ Stripe Integration</li>
+                            <li>✓ 1099 Tax Form Support</li>
+                            <li>✓ Real-time Payment Processing</li>
+                        </ul>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <p><strong>Note:</strong> Full functionality is being deployed. Demo version available at: <a href="http://localhost:3001" style="color: var(--accent-primary);">localhost:3001</a></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        console.log('Axis Thorn Client Portal - Loading...');
+        
+        // Basic navigation functionality
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
