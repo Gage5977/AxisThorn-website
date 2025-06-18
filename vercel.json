@@ -1,23 +1,18 @@
 {
-  "version": 2,
-  "builds": [
+  "public": "public",
+  "rewrites": [
     {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
+      "source": "/invoices",
+      "destination": "/invoices.html"
     }
   ],
-  "routes": [
+  "redirects": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/invoices",
-      "dest": "/invoices.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/www.axisthorn.com/(.*)",
+      "destination": "https://axisthorn.com/$1",
+      "permanent": true
     }
-  ]
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
