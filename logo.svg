@@ -1,0 +1,225 @@
+<svg width="2400" height="2400" viewBox="0 0 2400 2400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="precision-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="6" dy="6" stdDeviation="12" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+    <filter id="inner-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="intense-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="outer-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="15" result="glow"/>
+      <feColorMatrix in="glow" type="matrix" values="1 0.8 0.2 0 0  1 0.8 0.2 0 0  1 0.8 0.2 0 0  0 0 0 0.6 0"/>
+      <feMerge> 
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Enhanced gradients for premium look -->
+    <radialGradient id="metalGradient" cx="40%" cy="30%" r="80%">
+      <stop offset="0%" style="stop-color:#8a8a8a;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#666666;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#333333;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </radialGradient>
+    
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B1538;stop-opacity:1" />
+      <stop offset="15%" style="stop-color:#A21621;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#6B0F2A;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#A21621;stop-opacity:1" />
+      <stop offset="85%" style="stop-color:#8B1538;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A21621;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="thornGradient" cx="20%" cy="20%" r="80%">
+      <stop offset="0%" style="stop-color:#8B1538;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#A21621;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#6B0F2A;stop-opacity:1" />
+      <stop offset="90%" style="stop-color:#5A0C22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A091C;stop-opacity:1" />
+    </radialGradient>
+    
+    <linearGradient id="precisionLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:transparent;stop-opacity:0" />
+      <stop offset="10%" style="stop-color:#8B1538;stop-opacity:0.4" />
+      <stop offset="25%" style="stop-color:#A21621;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#A21621;stop-opacity:1" />
+      <stop offset="90%" style="stop-color:#8B1538;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:transparent;stop-opacity:0" />
+    </linearGradient>
+    
+    <radialGradient id="energyGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#8B1538;stop-opacity:0.8" />
+      <stop offset="40%" style="stop-color:#A21621;stop-opacity:0.6" />
+      <stop offset="80%" style="stop-color:#6B0F2A;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:transparent;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <g transform="translate(1200,1200)">
+    <!-- Background energy field -->
+    <circle cx="0" cy="0" r="750" fill="url(#energyGradient)" opacity="0.3"/>
+    
+    <!-- Outer precision rings with enhanced detail -->
+    <circle cx="0" cy="0" r="700" fill="none" stroke="url(#metalGradient)" stroke-width="20" opacity="1" filter="url(#outer-glow)"/>
+    <circle cx="0" cy="0" r="692" fill="none" stroke="url(#goldGradient)" stroke-width="3" opacity="0.9"/>
+    <circle cx="0" cy="0" r="685" fill="none" stroke="#444444" stroke-width="6" opacity="0.8"/>
+    <circle cx="0" cy="0" r="675" fill="none" stroke="#666666" stroke-width="3" opacity="0.6"/>
+    <circle cx="0" cy="0" r="665" fill="none" stroke="url(#goldGradient)" stroke-width="1" opacity="0.7"/>
+    
+    <!-- Secondary precision rings -->
+    <circle cx="0" cy="0" r="600" fill="none" stroke="#333333" stroke-width="4" opacity="0.7"/>
+    <circle cx="0" cy="0" r="590" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.5"/>
+    <circle cx="0" cy="0" r="500" fill="none" stroke="#444444" stroke-width="3" opacity="0.5"/>
+    <circle cx="0" cy="0" r="490" fill="none" stroke="url(#goldGradient)" stroke-width="1" opacity="0.4"/>
+    
+    <!-- Tertiary detail rings -->
+    <circle cx="0" cy="0" r="400" fill="none" stroke="#333333" stroke-width="2" opacity="0.4"/>
+    <circle cx="0" cy="0" r="350" fill="none" stroke="url(#goldGradient)" stroke-width="1" opacity="0.3"/>
+    <circle cx="0" cy="0" r="300" fill="none" stroke="#444444" stroke-width="1" opacity="0.3"/>
+    
+    <!-- Main directional indicators with improved proportions -->
+    <polygon points="0,-1000 -35,-640 35,-640" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+    <polygon points="0,-1000 -25,-640 25,-640" fill="url(#goldGradient)" filter="url(#intense-glow)" opacity="0.8"/>
+    <polygon points="1000,0 640,-35 640,35" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+    <polygon points="1000,0 640,-25 640,25" fill="url(#goldGradient)" filter="url(#intense-glow)" opacity="0.8"/>
+    <polygon points="0,1000 35,640 -35,640" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+    <polygon points="0,1000 25,640 -25,640" fill="url(#goldGradient)" filter="url(#intense-glow)" opacity="0.8"/>
+    <polygon points="-1000,0 -640,35 -640,-35" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+    <polygon points="-1000,0 -640,25 -640,-25" fill="url(#goldGradient)" filter="url(#intense-glow)" opacity="0.8"/>
+    
+    <!-- Enhanced secondary directional indicators -->
+    <polygon points="707,-707 500,-500 540,-480 747,-687" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+    <polygon points="707,707 540,480 500,500 747,687" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+    <polygon points="-707,707 -747,687 -500,500 -540,480" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+    <polygon points="-707,-707 -540,-480 -500,-500 -747,-687" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+    
+    <!-- Intermediate navigation points -->
+    <polygon points="0,-440 -20,-300 20,-300" fill="url(#metalGradient)"/>
+    <polygon points="440,0 300,-20 300,20" fill="url(#metalGradient)"/>
+    <polygon points="0,440 20,300 -20,300" fill="url(#metalGradient)"/>
+    <polygon points="-440,0 -300,20 -300,-20" fill="url(#metalGradient)"/>
+    
+    <!-- The defining diagonal thorn element - enhanced -->
+    <path d="M -800,-440 L 660,560 L 630,600 L -830,-400 Z" fill="url(#goldGradient)" filter="url(#outer-glow)"/>
+    <path d="M -790,-430 L 650,550 L 640,570 L -820,-410 Z" fill="url(#thornGradient)" opacity="0.9"/>
+    <path d="M -780,-420 L 640,540 L 620,560 L -800,-400 Z" fill="url(#energyGradient)" opacity="0.6"/>
+    
+    <!-- Enhanced thorn cluster elements -->
+    <g filter="url(#intense-glow)">
+      <path d="M -620,-340 L -590,-310 L -605,-285 Z" fill="url(#thornGradient)"/>
+      <path d="M -580,-300 L -550,-270 L -565,-245 Z" fill="url(#thornGradient)"/>
+      <path d="M -520,-240 L -490,-210 L -505,-185 Z" fill="url(#thornGradient)"/>
+      <path d="M -480,-200 L -450,-170 L -465,-145 Z" fill="url(#thornGradient)"/>
+      <path d="M -440,-160 L -410,-130 L -425,-105 Z" fill="url(#thornGradient)"/>
+      <path d="M -400,-120 L -370,-90 L -385,-65 Z" fill="url(#thornGradient)"/>
+      <path d="M -360,-80 L -330,-50 L -345,-25 Z" fill="url(#thornGradient)"/>
+      <path d="M -320,-40 L -290,-10 L -305,15 Z" fill="url(#thornGradient)"/>
+      <path d="M -280,0 L -250,30 L -265,55 Z" fill="url(#thornGradient)"/>
+      <path d="M 280,0 L 310,30 L 295,55 Z" fill="url(#thornGradient)"/>
+      <path d="M 320,40 L 350,70 L 335,95 Z" fill="url(#thornGradient)"/>
+      <path d="M 360,80 L 390,110 L 375,135 Z" fill="url(#thornGradient)"/>
+      <path d="M 400,120 L 430,150 L 415,175 Z" fill="url(#thornGradient)"/>
+      <path d="M 440,160 L 470,190 L 455,215 Z" fill="url(#thornGradient)"/>
+      <path d="M 480,200 L 510,230 L 495,255 Z" fill="url(#thornGradient)"/>
+      <path d="M 520,240 L 550,270 L 535,295 Z" fill="url(#thornGradient)"/>
+      <path d="M 560,280 L 590,310 L 575,335 Z" fill="url(#thornGradient)"/>
+      <path d="M 600,320 L 630,350 L 615,375 Z" fill="url(#thornGradient)"/>
+      <path d="M 640,460 L 670,490 L 655,515 Z" fill="url(#thornGradient)"/>
+    </g>
+    
+    <!-- Central precision marker with enhanced detail -->
+    <g transform="translate(-60,60)">
+      <rect x="-8" y="-40" width="16" height="80" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+      <rect x="-40" y="-8" width="80" height="16" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+      <circle cx="0" cy="0" r="12" fill="url(#goldGradient)" filter="url(#inner-glow)"/>
+    </g>
+    
+    <!-- Central hub with layered detail -->
+    <circle cx="0" cy="0" r="140" fill="url(#energyGradient)" opacity="0.4" filter="url(#outer-glow)"/>
+    <circle cx="0" cy="0" r="120" fill="url(#metalGradient)" filter="url(#precision-shadow)"/>
+    <circle cx="0" cy="0" r="110" fill="none" stroke="url(#goldGradient)" stroke-width="3" opacity="0.9" filter="url(#intense-glow)"/>
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#2a2a2a" stroke-width="5"/>
+    <circle cx="0" cy="0" r="90" fill="none" stroke="url(#goldGradient)" stroke-width="2" opacity="0.7"/>
+    <circle cx="0" cy="0" r="80" fill="none" stroke="url(#goldGradient)" stroke-width="3" opacity="0.8" filter="url(#inner-glow)"/>
+    <circle cx="0" cy="0" r="70" fill="none" stroke="#444444" stroke-width="2"/>
+    <circle cx="0" cy="0" r="60" fill="none" stroke="url(#goldGradient)" stroke-width="1" opacity="0.6"/>
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#333333" stroke-width="2"/>
+    <circle cx="0" cy="0" r="40" fill="none" stroke="url(#goldGradient)" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Enhanced precision accent lines with multiple layers -->
+    <line x1="0" y1="-160" x2="0" y2="-500" stroke="url(#precisionLine)" stroke-width="8" opacity="1" filter="url(#intense-glow)"/>
+    <line x1="0" y1="-160" x2="0" y2="-500" stroke="url(#goldGradient)" stroke-width="4" opacity="0.6"/>
+    <line x1="160" y1="0" x2="500" y2="0" stroke="url(#precisionLine)" stroke-width="8" opacity="1" filter="url(#intense-glow)"/>
+    <line x1="160" y1="0" x2="500" y2="0" stroke="url(#goldGradient)" stroke-width="4" opacity="0.6"/>
+    <line x1="0" y1="160" x2="0" y2="500" stroke="url(#precisionLine)" stroke-width="8" opacity="1" filter="url(#intense-glow)"/>
+    <line x1="0" y1="160" x2="0" y2="500" stroke="url(#goldGradient)" stroke-width="4" opacity="0.6"/>
+    <line x1="-160" y1="0" x2="-500" y2="0" stroke="url(#precisionLine)" stroke-width="8" opacity="1" filter="url(#intense-glow)"/>
+    <line x1="-160" y1="0" x2="-500" y2="0" stroke="url(#goldGradient)" stroke-width="4" opacity="0.6"/>
+    
+    <!-- Secondary accent lines -->
+    <line x1="113" y1="-113" x2="354" y2="-354" stroke="url(#precisionLine)" stroke-width="4" opacity="0.7"/>
+    <line x1="113" y1="113" x2="354" y2="354" stroke="url(#precisionLine)" stroke-width="4" opacity="0.7"/>
+    <line x1="-113" y1="113" x2="-354" y2="354" stroke="url(#precisionLine)" stroke-width="4" opacity="0.7"/>
+    <line x1="-113" y1="-113" x2="-354" y2="-354" stroke="url(#precisionLine)" stroke-width="4" opacity="0.7"/>
+    
+    <!-- Detailed compass degree markings -->
+    <g opacity="0.6">
+      <!-- Major degree marks (every 30 degrees) -->
+      <line x1="0" y1="-640" x2="0" y2="-620" stroke="#8B1538" stroke-width="4"/>
+      <line x1="320" y1="-554" x2="311" y2="-539" stroke="#8B1538" stroke-width="3"/>
+      <line x1="554" y1="-320" x2="539" y2="-311" stroke="#8B1538" stroke-width="3"/>
+      <line x1="640" y1="0" x2="620" y2="0" stroke="#8B1538" stroke-width="4"/>
+      <line x1="554" y1="320" x2="539" y2="311" stroke="#8B1538" stroke-width="3"/>
+      <line x1="320" y1="554" x2="311" y2="539" stroke="#8B1538" stroke-width="3"/>
+      <line x1="0" y1="640" x2="0" y2="620" stroke="#8B1538" stroke-width="4"/>
+      <line x1="-320" y1="554" x2="-311" y2="539" stroke="#8B1538" stroke-width="3"/>
+      <line x1="-554" y1="320" x2="-539" y2="311" stroke="#8B1538" stroke-width="3"/>
+      <line x1="-640" y1="0" x2="-620" y2="0" stroke="#8B1538" stroke-width="4"/>
+      <line x1="-554" y1="-320" x2="-539" y2="-311" stroke="#8B1538" stroke-width="3"/>
+      <line x1="-320" y1="-554" x2="-311" y2="-539" stroke="#8B1538" stroke-width="3"/>
+      
+      <!-- Minor degree marks (every 15 degrees) -->
+      <line x1="166" y1="-609" x2="162" y2="-595" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="452" y1="-452" x2="442" y2="-442" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="609" y1="-166" x2="595" y2="-162" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="609" y1="166" x2="595" y2="162" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="452" y1="452" x2="442" y2="442" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="166" y1="609" x2="162" y2="595" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="-166" y1="609" x2="-162" y2="595" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="-452" y1="452" x2="-442" y2="442" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="-609" y1="166" x2="-595" y2="162" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="-609" y1="-166" x2="-595" y2="-162" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="-452" y1="-452" x2="-442" y2="-442" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+      <line x1="-166" y1="-609" x2="-162" y2="-595" stroke="#8B1538" stroke-width="2" opacity="0.8"/>
+    </g>
+    
+    <!-- Inner compass rose with enhanced detail -->
+    <g opacity="0.7">
+      <circle cx="0" cy="0" r="50" fill="none" stroke="url(#goldGradient)" stroke-width="2"/>
+      <circle cx="0" cy="0" r="30" fill="none" stroke="url(#goldGradient)" stroke-width="1"/>
+      <polygon points="0,-40 -6,-30 6,-30" fill="url(#goldGradient)"/>
+      <polygon points="40,0 30,-6 30,6" fill="url(#goldGradient)"/>
+      <polygon points="0,40 6,30 -6,30" fill="url(#goldGradient)"/>
+      <polygon points="-40,0 -30,6 -30,-6" fill="url(#goldGradient)"/>
+      
+      <!-- Diagonal indicators -->
+      <polygon points="28,-28 22,-22 30,-20 36,-26" fill="url(#goldGradient)" opacity="0.8"/>
+      <polygon points="28,28 22,22 30,20 36,26" fill="url(#goldGradient)" opacity="0.8"/>
+      <polygon points="-28,28 -36,26 -30,20 -22,22" fill="url(#goldGradient)" opacity="0.8"/>
+      <polygon points="-28,-28 -22,-22 -30,-20 -36,-26" fill="url(#goldGradient)" opacity="0.8"/>
+    </g>
+  </g>
+</svg>
