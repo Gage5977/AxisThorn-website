@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - Invoice Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .success-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .success-icon {
+            font-size: 80px;
+            color: #28a745;
+            margin-bottom: 30px;
+        }
+        .success-title {
+            font-size: 32px;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        .success-message {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .payment-details {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .detail-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .detail-label {
+            font-weight: 600;
+            color: #333;
+        }
+        .detail-value {
+            color: #666;
+        }
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #1e7e34;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+        }
+        @media (max-width: 768px) {
+            .actions {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div id="loading" class="loading">
+            <h3>Confirming payment...</h3>
+        </div>
+
+        <div id="success-content" style="display: none;">
+            <div class="success-icon">✅</div>
+            <h1 class="success-title">Payment Successful!</h1>
+            <p class="success-message">
+                Thank you for your payment. Your transaction has been processed successfully and a receipt has been sent to your email.
+            </p>
+
+            <div id="payment-details" class="payment-details"></div>
+
+            <div class="actions">
+                <a href="/" class="btn btn-primary">Return to Dashboard</a>
+                <button id="download-receipt" class="btn btn-success">Download Receipt</button>
+                <button id="email-receipt" class="btn btn-secondary">Email Receipt</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+
+        if (sessionId) {
+            loadPaymentDetails(sessionId);
+        } else {
+            showGenericSuccess();
+        }
+
+        async function loadPaymentDetails(id) {
+            try {
+                const response = await fetch(`/api/checkout/sessions/${id}`);
+                const session = await response.json();
+
+                if (response.ok) {
+                    displayPaymentDetails(session);
+                } else {
+                    showGenericSuccess();
+                }
+            } catch (error) {
+                console.error('Error loading payment details:', error);
+                showGenericSuccess();
+            }
+        }
+
+        function displayPaymentDetails(session) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('success-content').style.display = 'block';
+
+            const detailsContainer = document.getElementById('payment-details');
+            
+            const details = [
+                { label: 'Payment ID', value: session.id },
+                { label: 'Amount Paid', value: `$${(session.amount_total / 100).toFixed(2)}` },
+                { label: 'Payment Method', value: getPaymentMethodName(session.payment_method_types[0]) },
+                { label: 'Status', value: session.payment_status.charAt(0).toUpperCase() + session.payment_status.slice(1) },
+                { label: 'Date', value: new Date().toLocaleDateString() }
+            ];
+
+            if (session.customer_email) {
+                details.splice(1, 0, { label: 'Email', value: session.customer_email });
+            }
+
+            if (session.metadata && session.metadata.invoice_number) {
+                details.splice(0, 0, { label: 'Invoice Number', value: session.metadata.invoice_number });
+            }
+
+            detailsContainer.innerHTML = details.map(detail => `
+                <div class="detail-row">
+                    <span class="detail-label">${detail.label}:</span>
+                    <span class="detail-value">${detail.value}</span>
+                </div>
+            `).join('');
+
+            // Set up action buttons
+            setupActionButtons(session);
+        }
+
+        function showGenericSuccess() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('success-content').style.display = 'block';
+            
+            document.getElementById('payment-details').innerHTML = `
+                <div class="detail-row">
+                    <span class="detail-label">Status:</span>
+                    <span class="detail-value">Payment Completed</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Date:</span>
+                    <span class="detail-value">${new Date().toLocaleDateString()}</span>
+                </div>
+            `;
+
+            setupActionButtons();
+        }
+
+        function setupActionButtons(session = null) {
+            document.getElementById('download-receipt').addEventListener('click', () => {
+                if (session && session.metadata && session.metadata.invoice_id) {
+                    downloadInvoiceReceipt(session.metadata.invoice_id);
+                } else {
+                    downloadGenericReceipt(session);
+                }
+            });
+
+            document.getElementById('email-receipt').addEventListener('click', () => {
+                if (session && session.metadata && session.metadata.invoice_id) {
+                    emailInvoiceReceipt(session.metadata.invoice_id);
+                } else {
+                    alert('Receipt will be sent to your email address');
+                }
+            });
+        }
+
+        async function downloadInvoiceReceipt(invoiceId) {
+            try {
+                window.open(`/api/invoices/${invoiceId}/download`, '_blank');
+            } catch (error) {
+                console.error('Error downloading receipt:', error);
+                alert('Unable to download receipt. Please contact support.');
+            }
+        }
+
+        async function emailInvoiceReceipt(invoiceId) {
+            try {
+                const response = await fetch(`/api/invoices/${invoiceId}/send`, { method: 'POST' });
+                if (response.ok) {
+                    alert('Receipt sent to your email!');
+                } else {
+                    alert('Unable to send receipt. Please contact support.');
+                }
+            } catch (error) {
+                console.error('Error sending receipt:', error);
+                alert('Unable to send receipt. Please contact support.');
+            }
+        }
+
+        function downloadGenericReceipt(session) {
+            // Generate a simple receipt
+            const receiptContent = generateReceiptContent(session);
+            const blob = new Blob([receiptContent], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = `receipt-${session ? session.id : 'payment'}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function generateReceiptContent(session) {
+            const date = new Date().toLocaleDateString();
+            const content = `
+PAYMENT RECEIPT
+===============
+
+Date: ${date}
+${session ? `Payment ID: ${session.id}` : ''}
+${session ? `Amount: $${(session.amount_total / 100).toFixed(2)}` : ''}
+${session && session.customer_email ? `Email: ${session.customer_email}` : ''}
+Status: Paid
+
+Thank you for your payment!
+
+If you have any questions, please contact our support team.
+            `.trim();
+            
+            return content;
+        }
+
+        function getPaymentMethodName(type) {
+            const methods = {
+                'card': 'Credit/Debit Card',
+                'bank_account': 'Bank Transfer',
+                'paypal': 'PayPal',
+                'apple_pay': 'Apple Pay',
+                'google_pay': 'Google Pay'
+            };
+            return methods[type] || type.charAt(0).toUpperCase() + type.slice(1);
+        }
+    </script>
+</body>
+</html>
