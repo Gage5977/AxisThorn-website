@@ -1395,6 +1395,416 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     }
 }
 
+/* Page-specific styles for 1099 and Banking pages */
+.page-header {
+    padding: 8rem 0 4rem;
+    background: var(--gradient-dark);
+    text-align: center;
+    border-bottom: 1px solid rgba(139, 21, 56, 0.2);
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: -0.025em;
+}
+
+.page-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.content-section {
+    padding: 6rem 0;
+    background: var(--secondary-dark);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    margin-top: 2rem;
+}
+
+.banking-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    margin-top: 2rem;
+}
+
+/* 1099 Access Page Styles */
+.access-portal {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.95), rgba(20, 20, 20, 0.8));
+    border: 1px solid rgba(139, 21, 56, 0.2);
+    padding: 3rem;
+    border-radius: 16px;
+    backdrop-filter: blur(15px);
+}
+
+.access-portal h2 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.portal-description {
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.login-form label {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.access-button {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 2px solid var(--accent-primary);
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.access-button:hover {
+    background: var(--accent-primary);
+    color: var(--primary-dark);
+}
+
+.security-notice {
+    background: rgba(139, 21, 56, 0.1);
+    border: 1px solid rgba(139, 21, 56, 0.3);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.security-notice h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.security-notice ul {
+    list-style: none;
+    padding: 0;
+}
+
+.security-notice li {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.security-notice li::before {
+    content: '🔒';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Sidebar styles */
+.info-card, .contact-card, .security-card, .compliance-card, .roadmap-card {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.95), rgba(20, 20, 20, 0.8));
+    border: 1px solid rgba(139, 21, 56, 0.1);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(15px);
+}
+
+.info-card h3, .contact-card h3, .security-card h3, .compliance-card h3, .roadmap-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+}
+
+.status-dot.processing {
+    background: #ffa500;
+    animation: pulse 2s infinite;
+}
+
+.year-list, .doc-list, .security-list {
+    list-style: none;
+    padding: 0;
+}
+
+.year-list li, .doc-list li, .security-list li {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.year-list li::before, .doc-list li::before, .security-list li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-size: 0.8rem;
+}
+
+.year-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.year-link:hover {
+    color: var(--text-primary);
+}
+
+/* Banking Page Styles */
+.payment-methods {
+    margin-bottom: 4rem;
+}
+
+.payment-methods h2 {
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.method-card {
+    background: linear-gradient(145deg, rgba(10, 10, 10, 0.95), rgba(20, 20, 20, 0.8));
+    border: 1px solid rgba(139, 21, 56, 0.1);
+    padding: 2.5rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(15px);
+    transition: var(--transition-smooth);
+}
+
+.method-card.primary {
+    border-color: rgba(139, 21, 56, 0.4);
+    background: linear-gradient(145deg, rgba(139, 21, 56, 0.05), rgba(20, 20, 20, 0.9));
+}
+
+.method-card.digital {
+    border-color: rgba(139, 21, 56, 0.2);
+    opacity: 0.7;
+}
+
+.method-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.method-header h3 {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.method-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.method-badge {
+    background: rgba(139, 21, 56, 0.2);
+    color: var(--accent-primary);
+}
+
+.banking-details {
+    margin-bottom: 1.5rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-label {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.detail-value {
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.detail-value[data-sensitive="true"] {
+    color: var(--accent-primary);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.method-note {
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.digital-options {
+    margin-bottom: 1.5rem;
+}
+
+.payment-option {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    color: var(--text-secondary);
+}
+
+.option-status {
+    color: var(--accent-primary);
+    font-size: 0.9rem;
+}
+
+/* Payment Instructions */
+.payment-instructions h2 {
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.instruction-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.step-number {
+    background: var(--accent-primary);
+    color: var(--primary-dark);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.step-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Banking sidebar styles */
+.support-details, .compliance-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.support-item, .compliance-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.support-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.support-value {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.compliance-badge {
+    background: rgba(139, 21, 56, 0.2);
+    color: var(--accent-primary);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Roadmap Timeline */
+.roadmap-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+}
+
+.timeline-item.current {
+    background: rgba(139, 21, 56, 0.1);
+    border: 1px solid rgba(139, 21, 56, 0.3);
+}
+
+.timeline-date {
+    color: var(--accent-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.timeline-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-container {
