@@ -2,34 +2,26 @@
   "version": 2,
   "builds": [
     {
+      "src": "**/*.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "api/**/*.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
+      "src": "/invoices.html",
+      "dest": "/invoices.html"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/$1"
-    },
-    {
-      "src": "/invoices/(.*)",
-      "dest": "/invoices/$1"
-    },
-    {
-      "src": "/invoices",
-      "dest": "/invoices.html"
     },
     {
       "src": "/(.*)",
       "dest": "/$1"
     }
-  ],
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
