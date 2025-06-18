@@ -1,28 +1,35 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
   ],
-  "redirects": [
+  "routes": [
     {
-      "source": "/www.axisthorn.com",
-      "destination": "https://axisthorn.com",
-      "permanent": true
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/invoices/(.*)",
+      "dest": "/invoices/$1"
+    },
+    {
+      "src": "/invoices",
+      "dest": "/invoices.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ],
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
     }
-  ]
+  },
+  "env": {
+    "NODE_ENV": "production"
+  }
 }

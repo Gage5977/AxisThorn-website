@@ -1,0 +1,18 @@
+{
+  "name": "axisthorn-website",
+  "version": "1.0.0",
+  "description": "Axis Thorn LLC website with integrated invoice portal",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Build completed'",
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {},
+  "keywords": ["invoice", "axisthorn", "website"],
+  "author": "Axis Thorn LLC",
+  "license": "MIT"
+}
