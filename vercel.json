@@ -1,35 +1,16 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "invoices/server.js",
-      "use": "@vercel/node"
+      "source": "/invoices/:path*",
+      "destination": "/invoices/public/:path*"
     },
     {
-      "src": "invoices/public/**/*",
-      "use": "@vercel/static"
+      "source": "/invoices",
+      "destination": "/invoices/public/index.html"
     },
     {
-      "src": "**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/invoices/api/(.*)",
-      "dest": "/invoices/server.js"
-    },
-    {
-      "src": "/invoices/(.*)",
-      "dest": "/invoices/public/$1"
-    },
-    {
-      "src": "/invoices",
-      "dest": "/invoices/public/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/(.*)",
+      "destination": "/$1"
     }
   ],
   "redirects": [
