@@ -2207,6 +2207,48 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     }
 }
 
+/* AI Stats Styling */
+.ai-stat {
+    position: relative;
+    color: var(--text-muted);
+    font-style: italic;
+    transition: var(--transition-smooth);
+    cursor: help;
+}
+
+.ai-stat::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-primary);
+    transition: width 0.3s ease;
+}
+
+.ai-stat:hover::after {
+    width: 100%;
+}
+
+.ai-stat.loading {
+    animation: pulse 2s infinite;
+}
+
+.ai-stat.ready {
+    color: var(--text-primary);
+    font-style: normal;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
 @keyframes hexagonFloat {
     0%, 100% {
         transform: translate(-50%, -50%) scale(1.2) translateY(0);
