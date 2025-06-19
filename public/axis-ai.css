@@ -328,7 +328,7 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
-    color: var(--ai-dark);
+    color: var(--ai-light);
 }
 
 .features-grid {
@@ -366,7 +366,7 @@
 .feature-card h3 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
-    color: var(--ai-dark);
+    color: var(--ai-light);
 }
 
 .feature-card p {
@@ -396,7 +396,7 @@
 .integration-text h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--ai-dark);
+    color: var(--ai-light);
 }
 
 .integration-text p {
@@ -427,17 +427,22 @@
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .button.primary {
-    background: var(--ai-primary);
-    color: var(--ai-light);
+    background: var(--accent-primary);
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
 .button.secondary {
-    background: transparent;
-    color: var(--ai-primary);
-    border: 2px solid var(--ai-primary);
+    background: rgba(63, 114, 175, 0.2);
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
 }
 
 .button:hover {
@@ -445,11 +450,19 @@
 }
 
 .button.primary:hover {
-    background: #6a0f2a;
+    background: var(--accent-secondary);
+    color: var(--accent-electric);
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.8), 0 0 60px rgba(0, 217, 255, 0.6);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
 }
 
 .button.secondary:hover {
-    background: rgba(139, 21, 56, 0.1);
+    background: var(--accent-primary);
+    color: var(--accent-electric);
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.8), 0 0 50px rgba(0, 217, 255, 0.5);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.8);
 }
 
 .integration-code {
@@ -504,6 +517,143 @@
 .button.large {
     padding: 1.25rem 2.5rem;
     font-size: 1.125rem;
+}
+
+/* Under Construction Styles */
+.under-construction {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+}
+
+.construction-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.construction-icon {
+    margin-bottom: 2rem;
+    animation: clockRotate 10s linear infinite;
+}
+
+.construction-icon svg {
+    filter: drop-shadow(0 0 20px rgba(139, 21, 56, 0.5));
+}
+
+@keyframes clockRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.construction-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--ai-light);
+    font-family: var(--font-display);
+}
+
+.construction-message {
+    font-size: 1.25rem;
+    color: var(--ai-gray);
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+.launch-info {
+    background: rgba(139, 21, 56, 0.1);
+    border: 2px solid var(--ai-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.launch-label {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ai-gray);
+    margin-bottom: 0.5rem;
+}
+
+.launch-date {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--ai-primary);
+    font-family: var(--font-display);
+}
+
+.features-preview {
+    margin-bottom: 3rem;
+}
+
+.features-preview h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--ai-light);
+}
+
+.preview-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.preview-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 1px solid var(--ai-border);
+    transition: all 0.3s ease;
+}
+
+.preview-list li:hover {
+    background: rgba(139, 21, 56, 0.1);
+    transform: translateX(10px);
+}
+
+.preview-icon {
+    font-size: 1.5rem;
+    filter: grayscale(0.2);
+}
+
+.construction-cta {
+    margin-top: 2rem;
+}
+
+.construction-cta p {
+    font-size: 1.125rem;
+    color: var(--ai-gray);
+    margin-bottom: 1rem;
+}
+
+.notify-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--ai-primary);
+    color: var(--ai-light);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--ai-primary);
+}
+
+.notify-button:hover {
+    background: transparent;
+    color: var(--ai-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(139, 21, 56, 0.3);
 }
 
 /* Footer Adjustments for AI Page */

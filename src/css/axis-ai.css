@@ -1,13 +1,13 @@
-/* Axis AI Page Styles - Consistent Dark Theme */
+/* Axis AI Page Styles - Midnight Blue Theme */
 :root {
-    --ai-primary: #8b1538;
-    --ai-secondary: #e61651;
-    --ai-dark: #0a0a0a;
-    --ai-darker: #050505;
-    --ai-light: #ffffff;
-    --ai-gray: #999999;
-    --ai-border: rgba(139, 21, 56, 0.2);
-    --ai-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --ai-primary: #3F72AF;
+    --ai-secondary: #06B6D4;
+    --ai-dark: #0A0F1C;
+    --ai-darker: #0D1420;
+    --ai-light: #E6F8FF;
+    --ai-gray: #A0AEC0;
+    --ai-border: rgba(6, 182, 212, 0.2);
+    --ai-shadow: 0 4px 24px rgba(6, 182, 212, 0.3);
 }
 
 .axis-ai-page {
@@ -427,17 +427,22 @@
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .button.primary {
-    background: var(--ai-primary);
-    color: var(--ai-light);
+    background: var(--accent-primary);
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
 .button.secondary {
-    background: transparent;
-    color: var(--ai-primary);
-    border: 2px solid var(--ai-primary);
+    background: rgba(63, 114, 175, 0.2);
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
 }
 
 .button:hover {
@@ -445,11 +450,19 @@
 }
 
 .button.primary:hover {
-    background: #6a0f2a;
+    background: var(--accent-secondary);
+    color: var(--accent-electric);
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.8), 0 0 60px rgba(0, 217, 255, 0.6);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
 }
 
 .button.secondary:hover {
-    background: rgba(139, 21, 56, 0.1);
+    background: var(--accent-primary);
+    color: var(--accent-electric);
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.8), 0 0 50px rgba(0, 217, 255, 0.5);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.8);
 }
 
 .integration-code {

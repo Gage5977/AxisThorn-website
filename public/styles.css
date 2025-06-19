@@ -42,21 +42,25 @@
 }
 
 :root {
-    --primary-dark: #000000;
-    --secondary-dark: #0f0f0f;
-    --accent-dark: #1a1a1a;
-    --text-primary: #ffffff;
-    --text-secondary: #cccccc;
-    --text-muted: #B3B3B3; /* Improved contrast for WCAG compliance */
-    --accent-primary: #8B1538;
-    --accent-secondary: #A21621;
-    --accent-tertiary: #6B0F2A;
-    --gradient-dark: linear-gradient(135deg, #000000, #0f0f0f, #000000);
-    --shadow-harsh: 0 8px 32px rgba(0, 0, 0, 0.8);
-    --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.6);
+    --primary-dark: #0A0F1C; /* Midnight Blue */
+    --secondary-dark: #0D1420; /* Deeper Midnight */
+    --accent-dark: #111825; /* Dark Blue */
+    --text-primary: #E6F8FF; /* Electric Cyan */
+    --text-secondary: #A0AEC0; /* Cool Gray */
+    --text-muted: #64748B; /* Muted Blue-Gray */
+    --accent-primary: #3F72AF; /* Sky Blue */
+    --accent-secondary: #2563EB; /* Bright Blue */
+    --accent-tertiary: #1E40AF; /* Deep Blue */
+    --accent-cyan: #06B6D4; /* Cyan Accent */
+    --accent-electric: #00D9FF; /* Electric Blue */
+    --gradient-dark: linear-gradient(135deg, #0A0F1C, #0D1420, #0A0F1C);
+    --gradient-accent: linear-gradient(135deg, #3F72AF, #06B6D4);
+    --shadow-harsh: 0 8px 32px rgba(6, 182, 212, 0.3);
+    --shadow-subtle: 0 2px 8px rgba(63, 114, 175, 0.2);
+    --shadow-glow: 0 0 20px rgba(0, 217, 255, 0.5);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --font-primary: 'Inter', sans-serif;
-    --font-display: 'Playfair Display', serif;
+    --font-primary: 'Inter', 'Space Grotesk', sans-serif;
+    --font-display: 'Satoshi', 'Inter', serif;
 }
 
 body {
@@ -384,14 +388,15 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
 .cta-button {
     display: inline-flex;
     padding: 1rem 2.5rem;
-    background: transparent;
-    border: 2px solid var(--accent-primary);
-    color: var(--accent-primary);
+    background: var(--accent-primary);
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 500;
     font-size: 0.9rem;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
@@ -407,7 +412,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     left: -100%;
     width: 100%;
     height: 100%;
-    background: var(--accent-primary);
+    background: var(--accent-secondary);
     transition: var(--transition-smooth);
     z-index: -1;
 }
@@ -417,10 +422,11 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
 }
 
 .cta-button:hover {
-    color: var(--primary-dark);
-    box-shadow: 0 0 40px rgba(139, 21, 56, 0.6), 0 8px 32px rgba(0, 0, 0, 0.4);
+    color: var(--accent-electric);
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.8), 0 0 60px rgba(0, 217, 255, 0.6), 0 8px 32px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px) scale(1.02);
-    border-color: var(--accent-secondary);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
 }
 
 .hero-visual {
@@ -1160,14 +1166,15 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
 .service-button {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background: transparent;
-    border: 2px solid var(--accent-primary);
-    color: var(--accent-primary) !important;
+    background: var(--accent-primary);
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan) !important;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 500;
     font-size: 0.9rem;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
     border-radius: 6px;
     transition: var(--transition-smooth);
     position: relative;
@@ -1181,13 +1188,17 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     left: -100%;
     width: 100%;
     height: 100%;
-    background: var(--accent-primary);
+    background: var(--accent-secondary);
     transition: var(--transition-smooth);
     z-index: -1;
 }
 
 .service-button:hover {
-    color: var(--text-primary) !important;
+    color: var(--accent-electric) !important;
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.8), 0 0 50px rgba(0, 217, 255, 0.5);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.8);
+    transform: translateY(-2px);
 }
 
 .service-button:hover::before {
@@ -1521,9 +1532,9 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
 
 .admin-button {
     padding: 1rem 2rem;
-    background: transparent;
-    border: 2px solid var(--accent-primary);
-    color: var(--accent-primary) !important;
+    background: var(--accent-primary);
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan) !important;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 500;
@@ -1533,6 +1544,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     font-size: 0.9rem;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
 .admin-button::before {
@@ -1542,13 +1554,17 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     left: -100%;
     width: 100%;
     height: 100%;
-    background: var(--accent-primary);
+    background: var(--accent-secondary);
     transition: var(--transition-smooth);
     z-index: -1;
 }
 
 .admin-button:hover {
-    color: var(--primary-dark) !important;
+    color: var(--accent-electric) !important;
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.8), 0 0 60px rgba(0, 217, 255, 0.6);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
+    transform: translateY(-2px);
 }
 
 .admin-button:hover::before {
@@ -1839,15 +1855,16 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
 
 .submit-button {
     padding: 1rem 2rem;
-    background: transparent;
-    border: 2px solid var(--accent-primary);
-    color: var(--accent-primary);
+    background: var(--accent-primary);
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 500;
     cursor: pointer;
     transition: var(--transition-smooth);
     position: relative;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
     overflow: hidden;
 }
 
@@ -1858,7 +1875,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     left: -100%;
     width: 100%;
     height: 100%;
-    background: var(--accent-primary);
+    background: var(--accent-secondary);
     transition: var(--transition-smooth);
     z-index: -1;
 }
@@ -1868,7 +1885,40 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
 }
 
 .submit-button:hover {
-    color: var(--primary-dark);
+    color: var(--accent-electric);
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.8), 0 0 60px rgba(0, 217, 255, 0.6);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+/* Portal and Sidebar Layout */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.main-content {
+    min-width: 0;
+}
+
+.sidebar-content {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar-content {
+        position: static;
+        margin-top: 2rem;
+    }
 }
 
 /* Footer */
@@ -2584,26 +2634,40 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .ai-button.primary {
     background: var(--accent-primary);
-    color: white;
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
 .ai-button.primary:hover {
-    background: var(--accent-hover);
+    background: var(--accent-secondary);
     transform: translateY(-2px);
+    color: var(--accent-electric);
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.8), 0 0 60px rgba(0, 217, 255, 0.6);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
 }
 
 .ai-button.secondary {
-    background: transparent;
-    color: var(--accent-primary);
-    border: 2px solid var(--accent-primary);
+    background: rgba(63, 114, 175, 0.2);
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
 }
 
 .ai-button.secondary:hover {
-    background: rgba(139, 21, 56, 0.1);
+    background: var(--accent-primary);
+    color: var(--accent-electric);
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.8), 0 0 50px rgba(0, 217, 255, 0.5);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.8);
+    transform: translateY(-2px);
 }
 
 .ai-stats-row {
@@ -4245,24 +4309,34 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
 
 .cta-button.primary {
     background: var(--accent-primary);
-    color: white;
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
 .cta-button.primary:hover {
     background: var(--accent-secondary);
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(139, 21, 56, 0.3);
+    color: var(--accent-electric);
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.8), 0 0 60px rgba(0, 217, 255, 0.6);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
 }
 
 .cta-button.secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(63, 114, 175, 0.2);
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
 }
 
 .cta-button.secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--accent-primary);
+    background: var(--accent-primary);
+    color: var(--accent-electric);
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.8), 0 0 50px rgba(0, 217, 255, 0.5);
+    border-color: var(--accent-electric);
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.8);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
