@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /preview
+
+# Host
+Host: https://axisthorn.com
+
+# Sitemaps
+Sitemap: https://axisthorn.com/sitemap.xml
