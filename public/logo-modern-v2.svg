@@ -1,0 +1,56 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Tech gradient - cooler blues and grays -->
+    <linearGradient id="techGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A2332;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2D3748;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A5568;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Electric accent -->
+    <linearGradient id="electricAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00D9FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0099CC;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main logo centered -->
+  <g transform="translate(100,100)">
+    
+    <!-- Central hub -->
+    <rect x="-8" y="-8" width="16" height="16" fill="url(#techGradient)" rx="2"/>
+    
+    <!-- Axis extensions - clean lines -->
+    <g>
+      <!-- Top -->
+      <rect x="-2" y="-50" width="4" height="42" fill="url(#techGradient)"/>
+      <rect x="-6" y="-50" width="12" height="4" fill="url(#electricAccent)"/>
+      
+      <!-- Right -->
+      <rect x="8" y="-2" width="42" height="4" fill="url(#techGradient)"/>
+      <rect x="46" y="-6" width="4" height="12" fill="url(#electricAccent)"/>
+      
+      <!-- Bottom -->
+      <rect x="-2" y="8" width="4" height="42" fill="url(#techGradient)"/>
+      <rect x="-6" y="46" width="12" height="4" fill="url(#electricAccent)"/>
+      
+      <!-- Left -->
+      <rect x="-50" y="-2" width="42" height="4" fill="url(#techGradient)"/>
+      <rect x="-50" y="-6" width="4" height="12" fill="url(#electricAccent)"/>
+    </g>
+    
+    <!-- Corner thorns - angular -->
+    <g>
+      <polygon points="35,-35 45,-25 25,-25" fill="url(#electricAccent)" opacity="0.8"/>
+      <polygon points="35,35 45,25 25,25" fill="url(#electricAccent)" opacity="0.8"/>
+      <polygon points="-35,35 -45,25 -25,25" fill="url(#electricAccent)" opacity="0.8"/>
+      <polygon points="-35,-35 -45,-25 -25,-25" fill="url(#electricAccent)" opacity="0.8"/>
+    </g>
+    
+  </g>
+  
+  <!-- Optional text -->
+  <g opacity="0">
+    <text x="100" y="180" text-anchor="middle" font-family="'SF Mono', Monaco, monospace" font-size="14" font-weight="400" fill="#1A2332">AXIS THORN</text>
+  </g>
+</svg>
