@@ -1,0 +1,168 @@
+/* Single Page Styles for Axis Thorn */
+
+/* Overview Section */
+.overview {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.overview-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+}
+
+/* Pillars Section */
+.pillars {
+    padding: 4rem 2rem;
+    background: var(--secondary-dark);
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pillar {
+    background: var(--accent-dark);
+    border: 1px solid var(--accent-cyan-02);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+
+.pillar:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-cyan);
+    box-shadow: var(--shadow-glow);
+}
+
+.pillar h3 {
+    color: var(--accent-cyan);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.pillar p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* UI Showcase Section */
+.ui-showcase {
+    padding: 4rem 2rem;
+}
+
+.ui-showcase-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ui-visual {
+    margin: 2rem auto;
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.ui-description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-top: 2rem;
+}
+
+/* Contact Section */
+.contact {
+    padding: 4rem 2rem;
+    background: var(--secondary-dark);
+}
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-input,
+.form-textarea {
+    background: var(--accent-dark);
+    border: 1px solid var(--accent-cyan-02);
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 2px var(--accent-cyan-02);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.submit-button {
+    background: var(--accent-primary);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.submit-button:hover {
+    background: var(--accent-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Update hero for single page */
+.hero-title .title-line {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--accent-cyan);
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-title .title-line {
+        font-size: 3rem;
+    }
+    
+    .ui-visual {
+        width: 200px;
+        height: 200px;
+    }
+}

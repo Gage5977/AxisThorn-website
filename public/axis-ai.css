@@ -1,13 +1,22 @@
-/* Axis AI Page Styles - Consistent Dark Theme */
+/* Axis AI Page Styles - Midnight Blue Theme */
 :root {
-    --ai-primary: #8b1538;
-    --ai-secondary: #e61651;
-    --ai-dark: #0a0a0a;
-    --ai-darker: #050505;
-    --ai-light: #ffffff;
-    --ai-gray: #999999;
-    --ai-border: rgba(139, 21, 56, 0.2);
-    --ai-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --ai-primary: #3F72AF;
+    --ai-secondary: #06B6D4;
+    --ai-dark: #0A0F1C;
+    --ai-darker: #0D1420;
+    --ai-light: #E6F8FF;
+    --ai-gray: #A0AEC0;
+    --ai-border: var(--accent-cyan-02);
+    --ai-shadow: 0 4px 24px var(--accent-cyan-03);
+    
+    /* Import color opacity variations */
+    --accent-cyan-rgb: 6, 182, 212;
+    --accent-cyan-01: rgba(var(--accent-cyan-rgb), 0.1);
+    --accent-cyan-02: rgba(var(--accent-cyan-rgb), 0.2);
+    --accent-cyan-03: rgba(var(--accent-cyan-rgb), 0.3);
+    --accent-cyan-04: rgba(var(--accent-cyan-rgb), 0.4);
+    --accent-cyan-05: rgba(var(--accent-cyan-rgb), 0.5);
+    --accent-cyan-08: rgba(var(--accent-cyan-rgb), 0.8);
 }
 
 .axis-ai-page {

@@ -116,6 +116,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/single-page.css">
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
     <!-- Skip to main content link for accessibility -->
@@ -132,27 +133,20 @@
                 </svg>
             </button>
             <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">Axis AI</a></li>
-                <li role="none"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
-                <li role="none"><a href="#client-services" class="nav-link" role="menuitem">Client Services</a></li>
-                <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
-                <li role="none"><a href="invoices.html" class="nav-link" role="menuitem">Client Portal</a></li>
-                <li role="none"><a href="mailto:ai.info@axisthorn.com" class="nav-link" role="menuitem">Contact</a></li>
+                <li role="none"><a href="#overview" class="nav-link" role="menuitem">Overview</a></li>
+                <li role="none"><a href="#pillars" class="nav-link" role="menuitem">Pillars</a></li>
+                <li role="none"><a href="#ui" class="nav-link" role="menuitem">UI</a></li>
+                <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="hero" role="banner">
+    <header class="hero" role="banner" id="hero">
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="title-line">Intelligence</span>
-                <span class="title-line">Beyond</span>
-                <span class="title-line">Convention</span>
+                <span class="title-line">AXIS THORN</span>
             </h1>
-            <p class="hero-subtitle">Architecting the Unseen</p>
-            <div class="hero-cta">
-                <a href="mailto:ai.info@axisthorn.com?subject=Begin%20AI%20Consultation" class="cta-button" role="button" aria-label="Start consultation process">Begin Consultation</a>
-            </div>
+            <p class="hero-subtitle">Intelligence. Autonomy. Technology.</p>
         </div>
         <div class="hero-visual" aria-hidden="true">
             <div class="thorn-pattern"></div>
@@ -160,318 +154,66 @@
     </header>
 
     <main role="main" id="main-content">
-    <!-- Axis AI Showcase -->
-    <section class="axis-ai-showcase">
+    <!-- Overview Section -->
+    <section id="overview" class="overview">
         <div class="container">
-            <div class="ai-showcase-content">
-                <div class="ai-badge">INTRODUCING AXIS AI</div>
-                <h2 class="ai-showcase-title">
-                    <span class="gradient-text">Next-Generation AI</span>
-                    <span>for Financial Excellence</span>
-                </h2>
-                <p class="ai-showcase-description">
-                    Deploy autonomous AI agents that transform how you process, analyze, and act on financial data. 
-                    Our proprietary AI models deliver insights at the speed of thought.
-                </p>
-                <div class="ai-features-grid">
-                    <div class="ai-feature">
-                        <div class="ai-feature-icon icon-ai-brain"></div>
-                        <h3>Cognitive Processing</h3>
-                        <p>AI that understands context, nuance, and complexity in financial documents</p>
-                    </div>
-                    <div class="ai-feature">
-                        <div class="ai-feature-icon icon-ai-analytics"></div>
-                        <h3>Predictive Analytics</h3>
-                        <p>Machine learning models that forecast trends with <span class="ai-stat" data-stat="forecast-accuracy" data-unit="%">Computing...</span></p>
-                    </div>
-                    <div class="ai-feature">
-                        <div class="ai-feature-icon icon-ai-automation"></div>
-                        <h3>Real-Time Automation</h3>
-                        <p>Autonomous systems that execute complex workflows <span class="ai-stat" data-stat="system-availability">24/7 (Initializing)</span></p>
-                    </div>
-                    <div class="ai-feature">
-                        <div class="ai-feature-icon icon-ai-security"></div>
-                        <h3>Enterprise Security</h3>
-                        <p>Bank-grade encryption with SOC 2 Type II compliance</p>
-                    </div>
+            <p class="overview-text">
+                A private intelligence technology firm focused on advanced systems engineering and automation across financial, operational, and strategic domains.
+            </p>
+        </div>
+    </section>
+
+    <!-- Pillars Section -->
+    <section id="pillars" class="pillars">
+        <div class="container">
+            <div class="pillars-grid">
+                <div class="pillar">
+                    <h3>Technology</h3>
+                    <p>Advanced computational systems that process at scale</p>
                 </div>
-                <div class="ai-showcase-cta">
-                    <a href="axis-ai.html" class="cta-button primary">Explore Axis AI</a>
-                    <a href="mailto:ai.info@axisthorn.com?subject=Request%20AI%20Demo" class="cta-button secondary">Request AI Demo</a>
+                <div class="pillar">
+                    <h3>Intelligence</h3>
+                    <p>Pattern recognition beyond manual analysis constraints</p>
+                </div>
+                <div class="pillar">
+                    <h3>Autonomy</h3>
+                    <p>Self-optimizing algorithms that adapt to conditions</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="services" aria-labelledby="services-heading">
+    <!-- UI Showcase -->
+    <section id="ui" class="ui-showcase">
         <div class="container">
-            <h2 id="services-heading" class="section-title">Services</h2>
-            <div class="services-grid" role="list">
-                <article class="service-card" role="listitem">
-                    <div class="service-icon" aria-hidden="true">
-                        <div class="icon-accounting"></div>
+            <h2 class="section-title">Interface Preview</h2>
+            <div class="ui-showcase-content">
+                <div class="ui-visual">
+                    <div class="ai-brain">
+                        <div class="neural-layer layer-1"></div>
+                        <div class="neural-layer layer-2"></div>
+                        <div class="neural-layer layer-3"></div>
+                        <div class="ai-core"></div>
                     </div>
-                    <h3>Financial Systems</h3>
-                    <p>Automated processing of statements, transactions, and regulatory filings.</p>
-                    <ul class="service-details" aria-label="Financial Systems features">
-                        <li>Automated financial statement analysis</li>
-                        <li>Predictive compliance modeling</li>
-                        <li>Machine-learning audit preparation</li>
-                        <li>Algorithmic anomaly detection</li>
-                    </ul>
-                </article>
-                
-                <article class="service-card" role="listitem">
-                    <div class="service-icon" aria-hidden="true">
-                        <div class="icon-investment"></div>
-                    </div>
-                    <h3>Portfolio Engineering</h3>
-                    <p>Quantitative models for allocation, risk measurement, and performance tracking.</p>
-                    <ul class="service-details" aria-label="Portfolio Engineering features">
-                        <li>Neural network portfolio optimization</li>
-                        <li>Predictive risk modeling</li>
-                        <li>Automated strategy refinement</li>
-                        <li>Real-time performance synthesis</li>
-                    </ul>
-                </article>
-                
-                <article class="service-card" role="listitem">
-                    <div class="service-icon" aria-hidden="true">
-                        <div class="icon-contract"></div>
-                    </div>
-                    <h3>Contract Automation</h3>
-                    <p>Systematic review, compliance tracking, and obligation management.</p>
-                    <ul class="service-details" aria-label="Contract Automation features">
-                        <li>AI-assisted contract generation</li>
-                        <li>Automated compliance tracking</li>
-                        <li>Predictive risk assessment</li>
-                        <li>Intelligent negotiation modeling</li>
-                    </ul>
-                </article>
+                </div>
+                <p class="ui-description">Advanced visualization of complex financial data streams through intuitive interfaces.</p>
             </div>
         </div>
     </section>
 
-    <section id="client-services" class="client-services" aria-labelledby="client-services-heading">
-        <div class="container">
-            <h2 id="client-services-heading" class="section-title">Client Services</h2>
-            <div class="client-services-grid">
-                <div class="client-service-card">
-                    <div class="service-icon">
-                        <div class="icon-consultation"></div>
-                    </div>
-                    <h3>Strategic Consultation</h3>
-                    <p>Executive-level advisory services for complex financial architecture decisions.</p>
-                    <ul class="service-details">
-                        <li>C-suite financial strategy sessions</li>
-                        <li>Technology integration planning</li>
-                        <li>Risk assessment and mitigation</li>
-                        <li>Regulatory compliance roadmaps</li>
-                    </ul>
-                    <div class="service-cta">
-                        <a href="consultation.html" class="service-button">Schedule Consultation</a>
-                    </div>
-                </div>
-                
-                <div class="client-service-card">
-                    <div class="service-icon">
-                        <div class="icon-implementation"></div>
-                    </div>
-                    <h3>Implementation Services</h3>
-                    <p>Full-scale deployment and integration of AI-driven financial systems.</p>
-                    <ul class="service-details">
-                        <li>Custom system development</li>
-                        <li>Data migration and integration</li>
-                        <li>Staff training and onboarding</li>
-                        <li>Performance optimization</li>
-                    </ul>
-                    <div class="service-cta">
-                        <a href="implementation.html" class="service-button">Request Implementation</a>
-                    </div>
-                </div>
-                
-                <div class="client-service-card">
-                    <div class="service-icon">
-                        <div class="icon-support"></div>
-                    </div>
-                    <h3>Ongoing Support</h3>
-                    <p>Continuous monitoring, optimization, and strategic guidance for deployed systems.</p>
-                    <ul class="service-details">
-                        <li>24/7 system monitoring</li>
-                        <li>Quarterly performance reviews</li>
-                        <li>Algorithm refinement</li>
-                        <li>Compliance updates</li>
-                    </ul>
-                    <div class="service-cta">
-                        <a href="support.html" class="service-button">Access Support</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="admin-services-section">
-                <h3 class="section-subtitle">Administrative Services</h3>
-                <div class="admin-services-grid">
-                    <div class="admin-service-card">
-                        <div class="admin-service-header">
-                            <div class="service-icon">
-                                <div class="icon-documents"></div>
-                            </div>
-                            <div class="admin-service-title">
-                                <h4>Tax Documentation</h4>
-                                <p>Secure access to 1099 forms and tax records</p>
-                            </div>
-                        </div>
-                        <div class="admin-service-content">
-                            <p>Encrypted portal for annual tax documentation. Forms available by January 31st.</p>
-                            <ul class="service-features">
-                                <li>1099-NEC & 1099-MISC forms</li>
-                                <li>Multi-year historical access</li>
-                                <li>Secure credential authentication</li>
-                                <li>Automated compliance tracking</li>
-                            </ul>
-                            <div class="service-cta">
-                                <a href="1099.html" class="service-button">Access Portal</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="admin-service-card">
-                        <div class="admin-service-header">
-                            <div class="service-icon">
-                                <div class="icon-banking"></div>
-                            </div>
-                            <div class="admin-service-title">
-                                <h4>Payment Processing</h4>
-                                <p>Secure banking instructions and payment options</p>
-                            </div>
-                        </div>
-                        <div class="admin-service-content">
-                            <p>Encrypted banking details with multi-layered security protocols.</p>
-                            <ul class="service-features">
-                                <li>Wire transfer & ACH processing</li>
-                                <li>Encrypted instruction delivery</li>
-                                <li>Real-time payment confirmation</li>
-                                <li>PCI DSS compliant systems</li>
-                            </ul>
-                            <div class="service-cta">
-                                <a href="banking.html" class="service-button">Banking Instructions</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="client-value-proposition">
-                <div class="value-content">
-                    <h3>Measured Impact</h3>
-                    <p>Quantifiable improvements within the first quarter of implementation.</p>
-                    <div class="metrics-grid">
-                        <div class="metric">
-                            <span class="metric-value ai-stat" data-stat="manual-reduction" data-unit="%">TBD</span>
-                            <span class="metric-label">Reduction in Manual Processing</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value ai-stat" data-stat="analysis-speed" data-unit="x">Computing</span>
-                            <span class="metric-label">Faster Analysis Cycles</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value ai-stat" data-stat="model-accuracy" data-unit="%">TBD</span>
-                            <span class="metric-label">Accuracy in Predictive Models</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value ai-stat" data-stat="cost-savings" data-unit="$" data-format="currency">Calculating</span>
-                            <span class="metric-label">Average Annual Cost Savings</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- AI Showcase Section -->
-    <section id="axis-ai" class="ai-showcase" aria-labelledby="ai-heading">
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
         <div class="container">
-            <div class="ai-header">
-                <h2 id="ai-heading" class="section-title">Introducing Axis AI</h2>
-                <p class="section-subtitle">Advanced Financial Intelligence at Your Command</p>
-            </div>
-            
-            <div class="ai-showcase-content">
-                <div class="ai-demo-card">
-                    <div class="ai-visual">
-                        <div class="ai-brain">
-                            <div class="neural-layer layer-1"></div>
-                            <div class="neural-layer layer-2"></div>
-                            <div class="neural-layer layer-3"></div>
-                            <div class="ai-core"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="ai-features">
-                        <h3>Axis AI Capabilities</h3>
-                        <div class="feature-grid">
-                            <div class="ai-feature">
-                                <div class="feature-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M9 12h6m-3-3v6m-9 1V8a2 2 0 012-2h14a2 2 0 012 2v8m-5 4H8l-6-6h20l-6 6z" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <h4>Real-Time Analysis</h4>
-                                <p>Process financial data streams with millisecond latency</p>
-                            </div>
-                            
-                            <div class="ai-feature">
-                                <div class="feature-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <h4>Deep Learning Models</h4>
-                                <p>Custom-trained neural networks for financial prediction</p>
-                            </div>
-                            
-                            <div class="ai-feature">
-                                <div class="feature-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="2"/>
-                                        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="2"/>
-                                    </svg>
-                                </div>
-                                <h4>Automated Optimization</h4>
-                                <p>Self-improving algorithms that adapt to market conditions</p>
-                            </div>
-                        </div>
-                        
-                        <div class="ai-cta">
-                            <a href="axis-ai.html" class="ai-button primary">
-                                <span>Explore Axis AI</span>
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M7 10h6m0 0l-3-3m3 3l-3 3" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </a>
-                            <a href="mailto:ai.info@axisthorn.com?subject=Axis%20AI%20Demo%20Request" class="ai-button secondary">Request Demo</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="ai-stats-row">
-                    <div class="ai-stat">
-                        <span class="stat-number ai-stat" data-stat="overall-accuracy" data-unit="%">TBD</span>
-                        <span class="stat-label">Accuracy Rate</span>
-                    </div>
-                    <div class="ai-stat">
-                        <span class="stat-number ai-stat" data-stat="daily-queries" data-format="number">Processing</span>
-                        <span class="stat-label">Daily Queries</span>
-                    </div>
-                    <div class="ai-stat">
-                        <span class="stat-number ai-stat" data-stat="avg-response" data-unit="s">Calibrating</span>
-                        <span class="stat-label">Avg Response</span>
-                    </div>
-                    <div class="ai-stat">
-                        <span class="stat-number ai-stat" data-stat="availability">Initializing</span>
-                        <span class="stat-label">Availability</span>
-                    </div>
-                </div>
+            <h2 class="section-title">Connect Privately</h2>
+            <div class="contact-content">
+                <form action="mailto:contact@axisthorn.com" method="post" enctype="text/plain" class="contact-form">
+                    <input type="text" name="name" placeholder="Name" required class="form-input">
+                    <input type="email" name="email" placeholder="Email" required class="form-input">
+                    <textarea name="message" placeholder="Message" rows="5" class="form-textarea"></textarea>
+                    <button type="submit" class="submit-button">Send</button>
+                </form>
             </div>
         </div>
     </section>
