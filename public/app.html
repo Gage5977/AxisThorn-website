@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIS Terminal - Access Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="single-page.css">
+    <style>
+        .access-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: var(--primary-dark);
+        }
+        
+        .access-card {
+            background: var(--secondary-dark);
+            border: 1px solid var(--accent-cyan-02);
+            border-radius: 16px;
+            padding: 3rem;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-harsh);
+        }
+        
+        .access-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 2rem;
+            filter: brightness(0) saturate(100%) invert(73%) sepia(38%) saturate(3126%) hue-rotate(165deg) brightness(95%) contrast(80%);
+        }
+        
+        .access-title {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .access-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .access-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .access-input {
+            background: var(--accent-dark);
+            border: 1px solid var(--accent-cyan-02);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .access-input:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 2px var(--accent-cyan-02);
+        }
+        
+        .access-button {
+            background: var(--accent-primary);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 8px;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        
+        .access-button:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .access-error {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .access-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--accent-cyan-01);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .access-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        
+        .access-link:hover {
+            color: var(--accent-electric);
+        }
+    </style>
+</head>
+<body>
+    <div class="access-container">
+        <div class="access-card">
+            <img src="logo.svg" alt="AXIS Logo" class="access-logo">
+            <h1 class="access-title">AXIS Terminal</h1>
+            <p class="access-subtitle">Professional Access Required</p>
+            
+            <form class="access-form" id="accessForm">
+                <input 
+                    type="password" 
+                    class="access-input" 
+                    placeholder="Enter access code" 
+                    id="accessCode"
+                    required
+                    autocomplete="off"
+                >
+                <button type="submit" class="access-button">Access Terminal</button>
+                <div class="access-error" id="errorMessage">Invalid access code. Please try again.</div>
+            </form>
+            
+            <div class="access-info">
+                <p>For access inquiries, contact:</p>
+                <a href="mailto:ai.info@axisthorn.com" class="access-link">ai.info@axisthorn.com</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Simple client-side access control
+        // In production, this should be server-side with proper authentication
+        const VALID_CODES = [
+            'AXIS2025TERMINAL',
+            'THORNINTEL2025',
+            'AUTONOMY2025'
+        ];
+        
+        document.getElementById('accessForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const code = document.getElementById('accessCode').value.toUpperCase();
+            const errorMsg = document.getElementById('errorMessage');
+            
+            if (VALID_CODES.includes(code)) {
+                // Store access in session
+                sessionStorage.setItem('axis_terminal_access', 'granted');
+                sessionStorage.setItem('axis_access_time', Date.now());
+                
+                // Redirect to terminal
+                window.location.href = '/terminal.html';
+            } else {
+                // Show error
+                errorMsg.style.display = 'block';
+                document.getElementById('accessCode').value = '';
+                
+                // Hide error after 3 seconds
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -4,6 +4,10 @@
     {
       "source": "/invoices",
       "destination": "/invoices.html"
+    },
+    {
+      "source": "/app",
+      "destination": "/app.html"
     }
   ],
   "redirects": [
