@@ -1,13 +1,3 @@
 {
-  "framework": null,
-  "outputDirectory": "public",
-  "buildCommand": "echo 'Using pre-built files'",
-  "devCommand": "python -m http.server 8000",
-  "installCommand": "echo 'No install needed'",
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+  "outputDirectory": "public"
 }
