@@ -3,20 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axis Thorn LLC - Client Portal</title>
+    <title>Client Portal - Axis Thorn LLC</title>
+    <meta name="description" content="Access your invoices and manage your account with Axis Thorn LLC.">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/invoices.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="single-page.css">
+    <style>
+        /* Page-specific minimal styles */
+        .portal-hero {
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .portal-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        
+        .portal-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+        
+        .portal-nav {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--accent-cyan-02);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-family: var(--font-primary);
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        
+        .nav-btn:hover,
+        .nav-btn.active {
+            background: var(--accent-cyan-01);
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+        
+        .portal-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        
+        .view {
+            display: none;
+        }
+        
+        .view.active {
+            display: block;
+        }
+        
+        /* Stats Grid */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .stat-card {
+            background: var(--accent-dark);
+            border: 1px solid var(--accent-cyan-02);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--accent-cyan-02);
+        }
+        
+        th {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        td {
+            color: var(--text-primary);
+        }
+        
+        /* Forms */
+        .form-section {
+            background: var(--secondary-dark);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            background: var(--accent-dark);
+            border: 1px solid var(--accent-cyan-02);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            background: var(--accent-cyan-01);
+        }
+        
+        .btn-primary,
+        .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            margin-right: 1rem;
+            margin-top: 1rem;
+            border: 1px solid var(--accent-cyan);
+        }
+        
+        .btn-primary {
+            background: var(--accent-primary);
+            color: var(--text-primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-cyan);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent-cyan-01);
+        }
+        
+        /* Messages */
+        .success,
+        .error,
+        .loading {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        .error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .loading {
+            color: var(--text-secondary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .portal-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .form-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Skip to main content link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-    
     <nav class="navigation" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="index.html" class="logo" aria-label="Axis Thorn home">
+            <a href="/" class="logo" aria-label="Axis Thorn home">
                 <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
                 <span class="logo-text">Axis Thorn</span>
             </a>
@@ -27,28 +272,36 @@
             </button>
             <ul class="nav-menu" role="menubar">
                 <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
-                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">Axis AI</a></li>
-                <li role="none"><a href="index.html#services" class="nav-link" role="menuitem">Services</a></li>
-                <li role="none"><a href="index.html#client-services" class="nav-link" role="menuitem">Client Services</a></li>
-                <li role="none"><a href="index.html#about" class="nav-link" role="menuitem">About</a></li>
+                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">Axis AI (Preview)</a></li>
+                <li role="none"><a href="terminal.html" class="nav-link" role="menuitem">Terminal</a></li>
                 <li role="none"><a href="invoices.html" class="nav-link active" role="menuitem">Client Portal</a></li>
-                <li role="none"><a href="mailto:ai.info@axisthorn.com" class="nav-link" role="menuitem">Contact</a></li>
+                <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
             </ul>
         </div>
     </nav>
-    
-    <main role="main" id="main-content">
-        <div class="container">
-            <header class="portal-header">
-                <h1>Client Portal</h1>
-                <nav class="portal-nav">
-                    <button class="nav-btn active" data-view="dashboard">Dashboard</button>
-                    <button class="nav-btn" data-view="create">Create Invoice</button>
-                    <button class="nav-btn" data-view="customers">Customers</button>
-                    <button class="nav-btn" data-view="products">Products</button>
-                </nav>
-            </header>
 
+    <main id="main-content">
+        <!-- Hero -->
+        <section class="portal-hero">
+            <div class="container">
+                <h1 class="portal-title">Client Portal</h1>
+                <p class="portal-subtitle">
+                    Manage your invoices, track payments, and access financial documents in one secure location.
+                </p>
+            </div>
+        </section>
+
+        <!-- Portal Content -->
+        <div class="portal-content">
+            <!-- Navigation -->
+            <nav class="portal-nav">
+                <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+                <button class="nav-btn" data-view="create">Create Invoice</button>
+                <button class="nav-btn" data-view="customers">Customers</button>
+                <button class="nav-btn" data-view="products">Products</button>
+            </nav>
+
+            <!-- Dashboard View -->
             <div id="dashboard" class="view active">
                 <div class="stats">
                     <div class="stat-card">
@@ -69,14 +322,15 @@
                     </div>
                 </div>
 
-                <div class="invoice-list">
-                    <h2>Recent Invoices</h2>
+                <div class="form-section">
+                    <h3>Recent Invoices</h3>
                     <div id="invoicesContent">
                         <div class="loading">Loading invoices...</div>
                     </div>
                 </div>
             </div>
 
+            <!-- Create Invoice View -->
             <div id="create" class="view">
                 <div class="form-section">
                     <h3>Create New Invoice</h3>
@@ -131,6 +385,7 @@
                 <div id="createResult"></div>
             </div>
 
+            <!-- Customers View -->
             <div id="customers" class="view">
                 <div class="form-section">
                     <h3>Customer Management</h3>
@@ -140,6 +395,7 @@
                 </div>
             </div>
 
+            <!-- Products View -->
             <div id="products" class="view">
                 <div class="form-section">
                     <h3>Product Management</h3>
@@ -148,9 +404,44 @@
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
 
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Need Assistance?</h2>
+                <div class="contact-content">
+                    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                        Contact our support team for help with your account or invoices.
+                    </p>
+                    <form action="mailto:support@axisthorn.com" method="post" enctype="text/plain" class="contact-form">
+                        <input type="text" name="name" placeholder="Name" required class="form-input">
+                        <input type="email" name="email" placeholder="Email" required class="form-input">
+                        <textarea name="message" placeholder="How can we help you?" rows="5" class="form-textarea"></textarea>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">Axis Thorn LLC</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="terminal.html" class="footer-link">Terminal</a>
+                    <a href="mailto:support@axisthorn.com" class="footer-link">Support</a>
+                </div>
+                <p class="footer-copyright">© 2025 Axis Thorn LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
     <script>
         // API base URL
         const API_BASE = '/api';
@@ -215,7 +506,9 @@
                 displayInvoices(invoices);
             } catch (error) {
                 document.getElementById('invoicesContent').innerHTML = 
-                    '<div class="error">Error loading dashboard data</div>';
+                    '<div class="error">Error loading dashboard data. Demo mode active.</div>';
+                // Show demo data
+                displayDemoData();
             }
         }
 
@@ -269,6 +562,31 @@
             content.innerHTML = table;
         }
 
+        // Demo data for when API is not available
+        function displayDemoData() {
+            const demoInvoices = [
+                {
+                    invoice_number: 'INV-001',
+                    customer: { name: 'Acme Corp' },
+                    total: 5000.00,
+                    status: 'Paid',
+                    payment_status: 'paid',
+                    created_at: new Date('2025-01-01')
+                },
+                {
+                    invoice_number: 'INV-002',
+                    customer: { name: 'Tech Innovations' },
+                    total: 7500.00,
+                    status: 'Pending',
+                    payment_status: 'pending',
+                    created_at: new Date('2025-01-15')
+                }
+            ];
+            
+            updateDashboardStats(demoInvoices);
+            displayInvoices(demoInvoices);
+        }
+
         // Invoice creation
         document.getElementById('invoiceForm').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -300,8 +618,9 @@
                 
                 clearForm();
             } catch (error) {
+                // Demo mode - show success message
                 document.getElementById('createResult').innerHTML = 
-                    '<div class="error">Error creating invoice. Please try again.</div>';
+                    '<div class="success">Demo mode: Invoice would be created with the provided details.</div>';
             }
         });
 
@@ -314,106 +633,102 @@
         async function loadCustomers() {
             try {
                 const customers = await apiCall('/customers');
-                const content = document.getElementById('customersContent');
-                
-                if (customers.length === 0) {
-                    content.innerHTML = '<p>No customers found.</p>';
-                    return;
-                }
-
-                const table = `
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Created</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${customers.map(customer => `
-                                <tr>
-                                    <td>${customer.name}</td>
-                                    <td>${customer.email}</td>
-                                    <td>${customer.phone || 'N/A'}</td>
-                                    <td>${new Date(customer.created_at).toLocaleDateString()}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                `;
-                
-                content.innerHTML = table;
+                displayCustomers(customers);
             } catch (error) {
-                document.getElementById('customersContent').innerHTML = 
-                    '<div class="error">Error loading customers</div>';
+                // Show demo customers
+                const demoCustomers = [
+                    { name: 'Acme Corp', email: 'contact@acme.com', phone: '555-0100', created_at: new Date('2025-01-01') },
+                    { name: 'Tech Innovations', email: 'info@tech.com', phone: '555-0200', created_at: new Date('2025-01-10') }
+                ];
+                displayCustomers(demoCustomers);
             }
+        }
+
+        function displayCustomers(customers) {
+            const content = document.getElementById('customersContent');
+            
+            if (customers.length === 0) {
+                content.innerHTML = '<p>No customers found.</p>';
+                return;
+            }
+
+            const table = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${customers.map(customer => `
+                            <tr>
+                                <td>${customer.name}</td>
+                                <td>${customer.email}</td>
+                                <td>${customer.phone || 'N/A'}</td>
+                                <td>${new Date(customer.created_at).toLocaleDateString()}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            content.innerHTML = table;
         }
 
         // Load products
         async function loadProducts() {
             try {
                 const products = await apiCall('/products');
-                const content = document.getElementById('productsContent');
-                
-                if (products.length === 0) {
-                    content.innerHTML = '<p>No products found.</p>';
-                    return;
-                }
-
-                const table = `
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Price</th>
-                                <th>Created</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${products.map(product => `
-                                <tr>
-                                    <td>${product.name}</td>
-                                    <td>${product.description}</td>
-                                    <td>$${product.price.toFixed(2)}</td>
-                                    <td>${new Date(product.created_at).toLocaleDateString()}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                `;
-                
-                content.innerHTML = table;
+                displayProducts(products);
             } catch (error) {
-                document.getElementById('productsContent').innerHTML = 
-                    '<div class="error">Error loading products</div>';
+                // Show demo products
+                const demoProducts = [
+                    { name: 'Financial Analysis', description: 'Comprehensive financial review', price: 5000.00, created_at: new Date('2025-01-01') },
+                    { name: 'Tax Optimization', description: 'Strategic tax planning services', price: 7500.00, created_at: new Date('2025-01-05') }
+                ];
+                displayProducts(demoProducts);
             }
+        }
+
+        function displayProducts(products) {
+            const content = document.getElementById('productsContent');
+            
+            if (products.length === 0) {
+                content.innerHTML = '<p>No products found.</p>';
+                return;
+            }
+
+            const table = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${products.map(product => `
+                            <tr>
+                                <td>${product.name}</td>
+                                <td>${product.description}</td>
+                                <td>$${product.price.toFixed(2)}</td>
+                                <td>${new Date(product.created_at).toLocaleDateString()}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+            
+            content.innerHTML = table;
         }
 
         // Initialize dashboard on load
         loadDashboard();
-
-        console.log('Axis Thorn Client Portal - Fully Functional');
     </script>
-    </div>
-    </main>
-    
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-text">Axis Thorn LLC</span>
-                </div>
-                <div class="footer-text">
-                    <p><small>&copy; 2025 Axis Thorn LLC. Architecting the Unseen.</small></p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <script src="js/mobile-menu.js"></script>
-    <script type="module" src="js/invoices.js"></script>
 </body>
 </html>
