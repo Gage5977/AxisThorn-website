@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: 'export',
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
+  trailingSlash: true,
   
   images: {
     domains: ['axisthorn.com'],

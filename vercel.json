@@ -1,92 +1,13 @@
 {
-  "framework": "nextjs",
-  "rewrites": [],
-  "redirects": [
+  "framework": null,
+  "outputDirectory": "public",
+  "buildCommand": "echo 'Using pre-built files'",
+  "devCommand": "python -m http.server 8000",
+  "installCommand": "echo 'No install needed'",
+  "routes": [
     {
-      "source": "/www.axisthorn.com/(.*)",
-      "destination": "https://axisthorn.com/$1",
-      "permanent": true
-    },
-    {
-      "source": "/invoices",
-      "destination": "/billing",
-      "permanent": true
-    },
-    {
-      "source": "/1099",
-      "destination": "/billing",
-      "permanent": true
-    },
-    {
-      "source": "/banking",
-      "destination": "/billing",
-      "permanent": true
-    },
-    {
-      "source": "/client-portal",
-      "destination": "/billing",
-      "permanent": true
-    },
-    {
-      "source": "/consultation.html",
-      "destination": "/#services",
-      "permanent": true
-    },
-    {
-      "source": "/implementation.html",
-      "destination": "/#services",
-      "permanent": true
-    },
-    {
-      "source": "/support.html",
-      "destination": "/#services",
-      "permanent": true
-    },
-    {
-      "source": "/banking.html",
-      "destination": "/#contact",
-      "permanent": true
-    },
-    {
-      "source": "/1099.html",
-      "destination": "/#contact",
-      "permanent": true
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        }
-      ]
-    },
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate"
-        }
-      ]
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ]
 }
