@@ -1871,6 +1871,35 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     color: var(--primary-dark);
 }
 
+/* Portal and Sidebar Layout */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.main-content {
+    min-width: 0;
+}
+
+.sidebar-content {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar-content {
+        position: static;
+        margin-top: 2rem;
+    }
+}
+
 /* Footer */
 .footer {
     padding: 3rem 0;
