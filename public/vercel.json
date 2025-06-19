@@ -1,5 +1,5 @@
 {
-  "framework": "nextjs",
+  "framework": null,
   "rewrites": [
     {
       "source": "/invoices",
