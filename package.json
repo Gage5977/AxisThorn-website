@@ -4,17 +4,30 @@
   "description": "Axis Thorn LLC website with integrated invoice portal",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --mode development",
-    "build": "webpack --mode production",
-    "build:vercel": "npm run build && npm run copy:api",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "webpack:dev": "webpack serve --mode development",
+    "webpack:build": "webpack --mode production",
+    "build:vercel": "npm run build",
     "copy:api": "cp -r api dist/",
-    "start": "vercel dev",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist .next",
     "analyze": "webpack-bundle-analyzer dist/stats.json",
     "deploy": "./sync-build.sh",
     "watch": "webpack --watch --mode development"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^7.3.1",
+    "@types/node": "^24.0.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "cookie": "^1.0.2",
+    "next": "^15.3.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "stripe": "^18.2.1",
+    "typescript": "^5.8.3",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
@@ -37,7 +50,11 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
-  "keywords": ["invoice", "axisthorn", "website"],
+  "keywords": [
+    "invoice",
+    "axisthorn",
+    "website"
+  ],
   "author": "Axis Thorn LLC",
   "license": "MIT"
 }

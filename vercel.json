@@ -1,12 +1,5 @@
 {
-  "outputDirectory": "public",
-  "buildCommand": "echo 'No build needed for static site'",
-  "devCommand": "npm run dev",
-  "functions": {
-    "api/**/*.js": {
-      "maxDuration": 10
-    }
-  },
+  "framework": "nextjs",
   "rewrites": [
     {
       "source": "/invoices",
@@ -20,8 +13,6 @@
       "permanent": true
     }
   ],
-  "cleanUrls": true,
-  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
