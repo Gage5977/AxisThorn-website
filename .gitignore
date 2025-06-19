@@ -1,98 +1,38 @@
-# Dependencies
-node_modules/
-bower_components/
-
-# Build outputs
-dist/
-build/
-*.log
-
-# Environment variables
-.env
-.env.*
-.env.local
-.env.production
-.env.development
+# OS files
+.DS_Store
+Thumbs.db
 
 # IDE files
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
-.DS_Store
+*.sublime-*
 
-# Sensitive files
-*.pem
-*.key
-*.cert
-*.crt
-secrets.json
-config.json
-credentials.json
+# Dependencies
+node_modules/
+vendor/
 
-# API keys and tokens
-**/api-keys/
-**/secrets/
-**/credentials/
-
-# Test files
-coverage/
-.nyc_output/
-test-*.html
-test-*.js
-TEST_RESULTS.md
-
-# Temporary files
-*.tmp
-*.temp
-.cache/
-tmp/
-temp/
+# Build files
+dist/
+build/
+*.min.js
+*.min.css
 
 # Logs
-logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# OS files
-Thumbs.db
-.DS_Store
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+*~
 
 # Backup files
 *.backup
 *.bak
-backup-*/
-
-# Local development
-.vercel
-dev.log
-*.local
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-venv/
-env/
-
-# Cloudflare automation
-cloudflare_automation.py
-dns_applescript.scpt
-force-dns-update.sh
-setup-dns.sh
-dns-manual-setup.md
-nameserver-update.md
-
-# Personal/sensitive documentation
-Terminal Saved Output.txt
-SOLUTION.md
-image*.png
-Pantone Color TCX.jpeg
-
-# Stripe helper (contains test keys)
-stripe-helper.js
