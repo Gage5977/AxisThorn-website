@@ -14,31 +14,51 @@
     min-height: 100vh;
     background: var(--ai-dark);
     color: var(--ai-light);
+    padding-top: 80px;
 }
 
 /* Simple Page Header */
 .ai-page-header {
-    padding: 4rem 0 2rem;
+    padding: 6rem 0 3rem;
     text-align: center;
-    border-bottom: 1px solid var(--ai-border);
-    background: var(--ai-darker);
+    background: linear-gradient(180deg, var(--ai-darker) 0%, var(--ai-dark) 100%);
+    border-bottom: 2px solid var(--ai-primary);
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(139, 21, 56, 0.1) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .ai-title {
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(135deg, var(--ai-light) 0%, var(--ai-primary) 100%);
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+    background: linear-gradient(135deg, var(--ai-light) 0%, var(--ai-primary) 50%, var(--ai-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    text-transform: uppercase;
 }
 
 .ai-tagline {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
     font-weight: 300;
-    color: var(--ai-gray);
+    color: var(--ai-light);
+    opacity: 0.9;
+    letter-spacing: 0.02em;
+    font-style: italic;
 }
 
 .hero-content {
@@ -154,16 +174,23 @@
 .chat-header {
     text-align: center;
     margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--ai-border);
 }
 
 .chat-header h2 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--ai-dark);
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--ai-light);
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
 }
 
 .chat-header p {
     color: var(--ai-gray);
+    font-size: 1rem;
+    opacity: 0.8;
 }
 
 .chat-window {
