@@ -1,4 +1,18 @@
+import { useEffect } from 'react';
+
 export default function Home() {
+  useEffect(() => {
+    // Add click handler for AXIS Terminal link
+    const handleMessage = (e: MessageEvent) => {
+      if (e.data === 'navigate-to-app') {
+        window.location.href = '/app';
+      }
+    };
+    
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
   return (
     <div>
       <iframe 

@@ -1,6 +1,5 @@
 {
-  "framework": null,
-  "outputDirectory": "public",
+  "framework": "nextjs",
   "rewrites": [
     {
       "source": "/invoices",

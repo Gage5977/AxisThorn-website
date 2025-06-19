@@ -13,13 +13,26 @@ export default function App() {
     // Add user message
     setMessages(prev => [...prev, { role: 'user', content: query }]);
     
-    // Simulate AI response
+    // Simulate AI response based on query content
     setTimeout(() => {
+      let response = '';
+      const lowerQuery = query.toLowerCase();
+      
+      if (lowerQuery.includes('portfolio')) {
+        response = 'Based on your portfolio analysis request, I recommend:\n\n• Diversification: Your current allocation shows 65% equities, 25% bonds, 10% alternatives\n• Risk Assessment: Moderate risk profile with Sharpe ratio of 1.2\n• Optimization: Consider increasing alternative investments to 15% for better risk-adjusted returns\n• Market timing: Current conditions favor defensive positions';
+      } else if (lowerQuery.includes('market')) {
+        response = 'Market Analysis Summary:\n\n• S&P 500: +2.3% MTD, volatility index at 18.5\n• Key sectors: Technology (+3.1%), Healthcare (+1.8%), Energy (-0.5%)\n• Trend indicators: Bullish momentum in growth stocks\n• Risk factors: Rising interest rate expectations, geopolitical tensions';
+      } else if (lowerQuery.includes('risk')) {
+        response = 'Risk Assessment Report:\n\n• Value at Risk (95%): $125,000 over 10-day period\n• Beta coefficient: 1.15 (slightly above market)\n• Maximum drawdown: -12.3% (within acceptable range)\n• Stress test results: Portfolio resilient to 20% market decline';
+      } else {
+        response = `I've analyzed your query: "${query}".\n\nIn the full version, I would provide:\n• Detailed financial analysis\n• Real-time market data integration\n• Predictive modeling results\n• Actionable recommendations\n\nThis demo shows the interface capabilities.`;
+      }
+      
       setMessages(prev => [...prev, { 
         role: 'assistant', 
-        content: `I've analyzed your query: "${query}". This is a demo response. In the full version, I would provide detailed financial insights based on your data.` 
+        content: response
       }]);
-    }, 1000);
+    }, 1500);
     
     setQuery('');
   };

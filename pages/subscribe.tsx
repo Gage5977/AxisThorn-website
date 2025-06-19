@@ -1,21 +1,18 @@
-import { loadStripe } from '@stripe/stripe-js';
 import { useState } from 'react';
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+import { useRouter } from 'next/router';
 
 export default function Subscribe() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleSubscribe = async () => {
     setLoading(true);
-    try {
-      const res = await fetch('/api/create-checkout-session', { method: 'POST' });
-      const { url } = await res.json();
-      window.location.href = url;
-    } catch (error) {
-      console.error('Error creating checkout session:', error);
-      setLoading(false);
-    }
+    
+    // Demo mode - simulate checkout without Stripe
+    setTimeout(() => {
+      // For demo, just redirect to success page
+      router.push('/success');
+    }, 1500);
   };
 
   return (
@@ -31,6 +28,29 @@ export default function Subscribe() {
     }}>
       <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Subscribe to AXIS Terminal</h1>
       <p style={{ marginBottom: '2rem', color: '#A0AEC0' }}>Get unlimited access to our advanced financial intelligence platform</p>
+      
+      <div style={{
+        backgroundColor: 'rgba(13, 20, 32, 0.9)',
+        border: '1px solid rgba(6, 182, 212, 0.2)',
+        borderRadius: '12px',
+        padding: '2rem',
+        marginBottom: '2rem',
+        maxWidth: '400px',
+        width: '100%'
+      }}>
+        <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: '#06B6D4' }}>Professional Plan</h2>
+        <div style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+          $99<span style={{ fontSize: '1rem', color: '#A0AEC0' }}>/month</span>
+        </div>
+        <ul style={{ listStyle: 'none', padding: 0, marginBottom: '1.5rem' }}>
+          <li style={{ marginBottom: '0.5rem', color: '#A0AEC0' }}>✓ Unlimited AI queries</li>
+          <li style={{ marginBottom: '0.5rem', color: '#A0AEC0' }}>✓ Advanced financial analysis</li>
+          <li style={{ marginBottom: '0.5rem', color: '#A0AEC0' }}>✓ Real-time market data</li>
+          <li style={{ marginBottom: '0.5rem', color: '#A0AEC0' }}>✓ Portfolio optimization</li>
+          <li style={{ marginBottom: '0.5rem', color: '#A0AEC0' }}>✓ Priority support</li>
+        </ul>
+      </div>
+      
       <button 
         onClick={handleSubscribe}
         disabled={loading}
@@ -46,8 +66,12 @@ export default function Subscribe() {
           transition: 'all 0.3s ease'
         }}
       >
-        {loading ? 'Loading...' : 'Subscribe Now'}
+        {loading ? 'Processing...' : 'Start Free Trial'}
       </button>
+      
+      <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#A0AEC0' }}>
+        Demo Mode - No payment required
+      </p>
     </div>
   );
 }
