@@ -16,6 +16,8 @@ dist/
 build/
 *.min.js
 *.min.css
+.next/
+out/
 
 # Logs
 *.log
