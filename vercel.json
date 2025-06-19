@@ -1,6 +1,6 @@
 {
-  "outputDirectory": "dist",
-  "buildCommand": "npm run build:vercel",
+  "outputDirectory": "public",
+  "buildCommand": "echo 'No build needed for static site'",
   "devCommand": "npm run dev",
   "functions": {
     "api/**/*.js": {
