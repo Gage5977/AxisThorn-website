@@ -55,7 +55,7 @@ export default function Home() {
       
       <div>
         <iframe 
-          src="/index.html" 
+          src="/api/home" 
           style={{
             width: '100%',
             height: '100vh',
