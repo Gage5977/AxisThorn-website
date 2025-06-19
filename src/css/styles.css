@@ -47,7 +47,7 @@
     --accent-dark: #1a1a1a;
     --text-primary: #ffffff;
     --text-secondary: #cccccc;
-    --text-muted: #999999;
+    --text-muted: #B3B3B3; /* Improved contrast for WCAG compliance */
     --accent-primary: #8B1538;
     --accent-secondary: #A21621;
     --accent-tertiary: #6B0F2A;
@@ -258,12 +258,15 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     padding: 1rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    gap: 3rem;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    flex-shrink: 0;
+    margin-right: 2rem;
 }
 
 .logo-img {
@@ -1994,6 +1997,213 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
     }
     100% {
         transform: translate(-50%, -50%) rotate(405deg) scale(0.8);
+    }
+}
+
+/* Page Layout Consistency */
+.page-header {
+    padding: 4rem 0 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+.page-title {
+    font-size: 3rem;
+    font-family: var(--font-display);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--text-primary), var(--accent-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+.content-section {
+    padding: 4rem 0;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 3rem;
+    align-items: start;
+}
+
+.main-content {
+    min-height: 600px;
+}
+
+.sidebar-content {
+    position: sticky;
+    top: 100px;
+}
+
+.info-card {
+    background: var(--secondary-dark);
+    border: 1px solid rgba(139, 21, 56, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--accent-primary);
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+}
+
+.status-dot.processing {
+    background: #F59E0B;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.year-list {
+    list-style: none;
+    padding: 0;
+}
+
+.year-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition-smooth);
+}
+
+.year-link:hover {
+    color: var(--accent-primary);
+    padding-left: 0.5rem;
+}
+
+.doc-list {
+    list-style: none;
+    padding: 0;
+}
+
+.doc-list li {
+    padding: 0.5rem 0;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-card {
+    background: rgba(139, 21, 56, 0.1);
+    border: 1px solid rgba(139, 21, 56, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.contact-details p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.access-portal {
+    background: var(--secondary-dark);
+    border: 1px solid rgba(139, 21, 56, 0.2);
+    border-radius: 12px;
+    padding: 3rem;
+}
+
+.portal-description {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.login-form {
+    margin-bottom: 2rem;
+}
+
+.access-button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--accent-primary);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.access-button:hover:not(:disabled) {
+    background: var(--accent-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 21, 56, 0.4);
+}
+
+.access-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.security-notice {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.security-notice h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--accent-primary);
+}
+
+.security-notice ul {
+    list-style: none;
+    padding: 0;
+}
+
+.security-notice li {
+    padding: 0.5rem 0;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.security-notice li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+}
+
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar-content {
+        position: relative;
+        top: 0;
     }
 }
 
@@ -3996,4 +4206,248 @@ h1, h2, h3, h4, h5, h6, p, span, div, li, a, label, input, textarea, select, but
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+}
+
+/* =================================================
+   Mobile Menu & Responsive Fixes
+   ================================================= */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: #000000;
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid #8B1538;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+/* Skip link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    z-index: 100;
+    border-radius: 0 0 0.5rem 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Fix logo link styling */
+a.logo {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Ensure body has padding for fixed nav */
+body {
+    padding-top: 80px;
+}
+
+/* Main content scroll offset */
+#main-content {
+    scroll-margin-top: 80px;
+}
+
+/* Hero adjustment for fixed nav */
+.hero {
+    min-height: calc(100vh - 80px);
+}
+
+/* Improve section spacing */
+section {
+    padding: 5rem 0;
+}
+
+/* Fix service grid gaps */
+.services-grid,
+.client-services-grid {
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Fix footer spacing */
+.footer {
+    margin-top: 5rem;
+    padding: 3rem 0;
+}
+
+/* Ensure form inputs are visible */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #8B1538;
+    outline: none;
+}
+
+/* Fix text contrast */
+.service-details li {
+    color: #CCCCCC \!important;
+}
+
+.about-description {
+    color: #D0D0D0 \!important;
+}
+
+/* Hover effects for cards */
+.service-card,
+.client-service-card {
+    transition: all 0.3s ease;
+}
+
+.service-card:hover,
+.client-service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(139, 21, 56, 0.4);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* =================================================
+   Text Visibility Fixes
+   ================================================= */
+
+/* Ensure all form elements have visible text */
+input, textarea, select, option {
+    color: var(--text-primary) \!important;
+    background-color: rgba(255, 255, 255, 0.1) \!important;
+}
+
+/* Make select options more visible */
+select option {
+    background-color: var(--secondary-dark) \!important;
+    color: var(--text-primary) \!important;
+}
+
+/* Fix placeholder visibility */
+::placeholder {
+    color: var(--text-muted) \!important;
+    opacity: 1 \!important;
+}
+
+/* Ensure focus states are visible */
+input:focus, textarea:focus, select:focus {
+    background-color: rgba(255, 255, 255, 0.15) \!important;
+    border-color: var(--accent-primary) \!important;
+    color: var(--text-primary) \!important;
+}
+
+/* Fix any potential gradient text issues */
+.gradient-text {
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+/* Ensure metric values are visible */
+.metric-value {
+    color: var(--accent-primary) \!important;
+    font-weight: 700;
+}
+
+/* Fix any black text that might appear */
+h1, h2, h3, h4, h5, h6, p, span, a, li, label, td, th {
+    color: inherit;
+}
+
+/* Specific fixes for problematic areas */
+.contact-form label {
+    color: var(--text-secondary) \!important;
+}
+
+.service-button, .cta-button {
+    color: var(--text-primary) \!important;
+}
+
+.service-button:hover, .cta-button:hover {
+    color: var(--text-primary) \!important;
+}
+
+/* Ensure navigation is always visible */
+.nav-link {
+    color: var(--text-secondary) \!important;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-primary) \!important;
+}
+
+/* Fix any table text */
+table, tr, td, th {
+    color: var(--text-primary) \!important;
+}
+
+/* Ensure all card content is visible */
+.service-card *, .client-service-card * {
+    color: inherit;
+}
+
+/* Fix button text specifically */
+button {
+    color: inherit;
+}
+
+/* Primary buttons should have contrasting text */
+.cta-button.primary, .submit-button {
+    background: var(--accent-primary) \!important;
+    color: var(--text-primary) \!important;
+}
+
+.cta-button.secondary {
+    background: transparent \!important;
+    border: 2px solid var(--accent-primary) \!important;
+    color: var(--accent-primary) \!important;
+}
+
+/* Fix admin portal specific text */
+.portal-content *, .invoice-content * {
+    color: inherit;
 }

@@ -20,27 +20,42 @@
     <meta property="twitter:title" content="Tax Documentation Portal - Secure 1099 Access">
     <meta property="twitter:description" content="Encrypted access to annual tax documentation via secure authentication protocols.">
     <meta property="twitter:image" content="https://axisthorn.com/logo.svg">
-    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav class="navigation">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="navigation" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <div class="logo">
-                <img src="logo.svg" alt="Axis Thorn LLC" class="logo-img">
+            <a href="/" class="logo" aria-label="Axis Thorn home">
+                <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
                 <span class="logo-text">Axis Thorn</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html#services" class="nav-link">Services</a></li>
-                <li><a href="index.html#client-services" class="nav-link">Client Services</a></li>
-                <li><a href="index.html#about" class="nav-link">About</a></li>
-                <li><a href="/invoices.html" class="nav-link">Client Portal</a></li>
-                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+            </button>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="/" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="/axis-ai.html" class="nav-link" role="menuitem">Axis AI</a></li>
+                <li role="none"><a href="/#services" class="nav-link" role="menuitem">Services</a></li>
+                <li role="none"><a href="/#client-services" class="nav-link" role="menuitem">Client Services</a></li>
+                <li role="none"><a href="/#about" class="nav-link" role="menuitem">About</a></li>
+                <li role="none"><a href="/invoices.html" class="nav-link" role="menuitem">Client Portal</a></li>
+                <li role="none"><a href="/#contact" class="nav-link" role="menuitem">Contact</a></li>
             </ul>
         </div>
     </nav>
+
+    <main role="main" id="main-content">
 
     <section class="page-header">
         <div class="container">
@@ -245,5 +260,21 @@
             e.target.value = value;
         });
     </script>
+    </main>
+    
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">Axis Thorn LLC</span>
+                </div>
+                <div class="footer-text">
+                    <p><small>&copy; 2025 Axis Thorn LLC. Architecting the Unseen.</small></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/mobile-menu.js"></script>
 </body>
 </html>

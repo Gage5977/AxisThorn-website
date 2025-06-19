@@ -3,6 +3,7 @@ export const Navigation = {
     init() {
         this.initSmoothScrolling();
         this.initScrollEffects();
+        this.handleExternalLinks();
     },
     
     initSmoothScrolling() {
@@ -32,6 +33,29 @@ export const Navigation = {
             } else {
                 navigation.style.background = 'rgba(10, 10, 10, 0.95)';
                 navigation.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+            }
+        });
+    },
+    
+    handleExternalLinks() {
+        // Add confirmation for external links
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (!link) return;
+            
+            const href = link.getAttribute('href');
+            if (!href) return;
+            
+            // Check if it's an external link
+            const isExternal = href.startsWith('http') && !href.includes(window.location.hostname);
+            const isMailto = href.startsWith('mailto:');
+            
+            if (isExternal && !isMailto) {
+                e.preventDefault();
+                
+                if (confirm('You are leaving Axis Thorn LLC website. Continue to external site?')) {
+                    window.open(href, '_blank', 'noopener,noreferrer');
+                }
             }
         });
     }

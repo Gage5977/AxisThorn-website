@@ -99,9 +99,6 @@
     
     <!-- Stylesheets -->
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Favicon and app icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -110,20 +107,36 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#8B1538">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/icons.css">
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <nav class="navigation" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <div class="logo">
+            <a href="/" class="logo" aria-label="Axis Thorn home">
                 <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
                 <span class="logo-text">Axis Thorn</span>
-            </div>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+            </button>
             <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="/axis-ai.html" class="nav-link" role="menuitem">Axis AI</a></li>
+                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">Axis AI</a></li>
                 <li role="none"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
                 <li role="none"><a href="#client-services" class="nav-link" role="menuitem">Client Services</a></li>
                 <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
-                <li role="none"><a href="/invoices.html" class="nav-link" role="menuitem">Client Portal</a></li>
+                <li role="none"><a href="invoices.html" class="nav-link" role="menuitem">Client Portal</a></li>
                 <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
             </ul>
         </div>
@@ -146,7 +159,7 @@
         </div>
     </header>
 
-    <main role="main">
+    <main role="main" id="main-content">
     <!-- Axis AI Showcase -->
     <section class="axis-ai-showcase">
         <div class="container">
@@ -183,7 +196,7 @@
                     </div>
                 </div>
                 <div class="ai-showcase-cta">
-                    <a href="/axis-ai.html" class="cta-button primary">Explore Axis AI</a>
+                    <a href="axis-ai.html" class="cta-button primary">Explore Axis AI</a>
                     <a href="#contact" class="cta-button secondary">Request AI Demo</a>
                 </div>
             </div>
@@ -317,7 +330,7 @@
                                 <li>Automated compliance tracking</li>
                             </ul>
                             <div class="service-cta">
-                                <a href="/1099.html" class="service-button">Access Portal</a>
+                                <a href="1099.html" class="service-button">Access Portal</a>
                             </div>
                         </div>
                     </div>
@@ -341,7 +354,7 @@
                                 <li>PCI DSS compliant systems</li>
                             </ul>
                             <div class="service-cta">
-                                <a href="/banking.html" class="service-button">Banking Instructions</a>
+                                <a href="banking.html" class="service-button">Banking Instructions</a>
                             </div>
                         </div>
                     </div>
@@ -430,7 +443,7 @@
                         </div>
                         
                         <div class="ai-cta">
-                            <a href="/axis-ai.html" class="ai-button primary">
+                            <a href="axis-ai.html" class="ai-button primary">
                                 <span>Explore Axis AI</span>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M7 10h6m0 0l-3-3m3 3l-3 3" stroke="currentColor" stroke-width="2"/>
@@ -579,5 +592,6 @@
     </footer>
 
     
+    <script src="js/mobile-menu.js"></script>
 </body>
 </html><!-- Axis Thorn LLC - Architecting the Unseen -->

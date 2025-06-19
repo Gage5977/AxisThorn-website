@@ -93,15 +93,12 @@
     </script>
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
+    
+    
     <link rel="preload" href="logo.svg" as="image">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     
     <!-- Favicon and app icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -110,15 +107,32 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#8B1538">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/icons.css">
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <nav class="navigation" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <div class="logo">
+            <a href="/" class="logo" aria-label="Axis Thorn home">
                 <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
                 <span class="logo-text">Axis Thorn</span>
-            </div>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+            </button>
             <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="/axis-ai.html" class="nav-link" role="menuitem">Axis AI</a></li>
                 <li role="none"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
                 <li role="none"><a href="#client-services" class="nav-link" role="menuitem">Client Services</a></li>
                 <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
@@ -145,7 +159,50 @@
         </div>
     </header>
 
-    <main role="main">
+    <main role="main" id="main-content">
+    <!-- Axis AI Showcase -->
+    <section class="axis-ai-showcase">
+        <div class="container">
+            <div class="ai-showcase-content">
+                <div class="ai-badge">INTRODUCING AXIS AI</div>
+                <h2 class="ai-showcase-title">
+                    <span class="gradient-text">Next-Generation AI</span>
+                    <span>for Financial Excellence</span>
+                </h2>
+                <p class="ai-showcase-description">
+                    Deploy autonomous AI agents that transform how you process, analyze, and act on financial data. 
+                    Our proprietary AI models deliver insights at the speed of thought.
+                </p>
+                <div class="ai-features-grid">
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon icon-ai-brain"></div>
+                        <h3>Cognitive Processing</h3>
+                        <p>AI that understands context, nuance, and complexity in financial documents</p>
+                    </div>
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon icon-ai-analytics"></div>
+                        <h3>Predictive Analytics</h3>
+                        <p>Machine learning models that forecast trends with 94% accuracy</p>
+                    </div>
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon icon-ai-automation"></div>
+                        <h3>Real-Time Automation</h3>
+                        <p>Autonomous systems that execute complex workflows 24/7</p>
+                    </div>
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon icon-ai-security"></div>
+                        <h3>Enterprise Security</h3>
+                        <p>Bank-grade encryption with SOC 2 Type II compliance</p>
+                    </div>
+                </div>
+                <div class="ai-showcase-cta">
+                    <a href="/axis-ai.html" class="cta-button primary">Explore Axis AI</a>
+                    <a href="#contact" class="cta-button secondary">Request AI Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="services" class="services" aria-labelledby="services-heading">
         <div class="container">
             <h2 id="services-heading" class="section-title">Services</h2>
@@ -331,6 +388,94 @@
         </div>
     </section>
 
+    <!-- AI Showcase Section -->
+    <section id="axis-ai" class="ai-showcase" aria-labelledby="ai-heading">
+        <div class="container">
+            <div class="ai-header">
+                <h2 id="ai-heading" class="section-title">Introducing Axis AI</h2>
+                <p class="section-subtitle">Advanced Financial Intelligence at Your Command</p>
+            </div>
+            
+            <div class="ai-showcase-content">
+                <div class="ai-demo-card">
+                    <div class="ai-visual">
+                        <div class="ai-brain">
+                            <div class="neural-layer layer-1"></div>
+                            <div class="neural-layer layer-2"></div>
+                            <div class="neural-layer layer-3"></div>
+                            <div class="ai-core"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-features">
+                        <h3>Axis AI Capabilities</h3>
+                        <div class="feature-grid">
+                            <div class="ai-feature">
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 12h6m-3-3v6m-9 1V8a2 2 0 012-2h14a2 2 0 012 2v8m-5 4H8l-6-6h20l-6 6z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h4>Real-Time Analysis</h4>
+                                <p>Process financial data streams with millisecond latency</p>
+                            </div>
+                            
+                            <div class="ai-feature">
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h4>Deep Learning Models</h4>
+                                <p>Custom-trained neural networks for financial prediction</p>
+                            </div>
+                            
+                            <div class="ai-feature">
+                                <div class="feature-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <h4>Automated Optimization</h4>
+                                <p>Self-improving algorithms that adapt to market conditions</p>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-cta">
+                            <a href="/axis-ai.html" class="ai-button primary">
+                                <span>Explore Axis AI</span>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M7 10h6m0 0l-3-3m3 3l-3 3" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </a>
+                            <a href="#contact" class="ai-button secondary">Request Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ai-stats-row">
+                    <div class="ai-stat">
+                        <span class="stat-number">99.7%</span>
+                        <span class="stat-label">Accuracy Rate</span>
+                    </div>
+                    <div class="ai-stat">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Daily Queries</span>
+                    </div>
+                    <div class="ai-stat">
+                        <span class="stat-number">1.2s</span>
+                        <span class="stat-label">Avg Response</span>
+                    </div>
+                    <div class="ai-stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Availability</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="about" class="about" aria-labelledby="about-heading">
         <div class="container">
             <div class="about-content">
@@ -446,6 +591,7 @@
         </div>
     </footer>
 
-    <script type="module" src="script.js"></script>
+    
+    <script src="js/mobile-menu.js"></script>
 </body>
 </html><!-- Axis Thorn LLC - Architecting the Unseen -->

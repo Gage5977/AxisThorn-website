@@ -1,11 +1,18 @@
-// Main Application Module
-import Navigation from './navigation.js';
-import AnimationModule from './animation.js';
-import FormModule from './form.js';
-import VisualEffects from './visual-effects.js';
-import AdminServices from './admin-services.js';
-import MobileModule from './mobile.js';
-import PerformanceModule from './performance.js';
+// Main Application Module - Entry point for main website
+import '../css/styles.css';
+
+// Import modules
+import Navigation from './navigation';
+import AnimationModule from './animation';
+import FormModule from './form';
+import VisualEffects from './visual-effects';
+import AdminServices from './admin-services';
+import MobileModule from './mobile';
+import PerformanceModule from './performance';
+import { showNotification } from './notification';
+
+// Make showNotification globally available for inline event handlers
+window.showNotification = showNotification;
 
 // Initialize all modules when DOM is ready
 export function initializeApp() {
