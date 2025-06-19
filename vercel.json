@@ -1,15 +1,30 @@
 {
   "framework": "nextjs",
-  "rewrites": [
-    {
-      "source": "/invoices",
-      "destination": "/invoices.html"
-    }
-  ],
+  "rewrites": [],
   "redirects": [
     {
       "source": "/www.axisthorn.com/(.*)",
       "destination": "https://axisthorn.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/invoices",
+      "destination": "/billing",
+      "permanent": true
+    },
+    {
+      "source": "/1099",
+      "destination": "/billing",
+      "permanent": true
+    },
+    {
+      "source": "/banking",
+      "destination": "/billing",
+      "permanent": true
+    },
+    {
+      "source": "/client-portal",
+      "destination": "/billing",
       "permanent": true
     },
     {
@@ -34,31 +49,6 @@
     },
     {
       "source": "/1099.html",
-      "destination": "/#contact",
-      "permanent": true
-    },
-    {
-      "source": "/consultation",
-      "destination": "/#services",
-      "permanent": true
-    },
-    {
-      "source": "/implementation",
-      "destination": "/#services",
-      "permanent": true
-    },
-    {
-      "source": "/support",
-      "destination": "/#services",
-      "permanent": true
-    },
-    {
-      "source": "/banking",
-      "destination": "/#contact",
-      "permanent": true
-    },
-    {
-      "source": "/1099",
       "destination": "/#contact",
       "permanent": true
     }

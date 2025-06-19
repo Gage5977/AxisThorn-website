@@ -19,5 +19,10 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/app/:path*'],
+  matcher: [
+    '/app/:path*',
+    '/terminal',
+    '/axis-ai', 
+    '/billing'
+  ],
 };
