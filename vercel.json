@@ -2,7 +2,11 @@
   "outputDirectory": "dist",
   "buildCommand": "npm run build:vercel",
   "devCommand": "npm run dev",
-  "functions": "api",
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 10
+    }
+  },
   "rewrites": [
     {
       "source": "/invoices",
