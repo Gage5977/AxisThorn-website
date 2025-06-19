@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis AI - Advanced Financial Intelligence | Axis Thorn LLC</title>
+    <meta name="description" content="Experience Axis AI - Advanced artificial intelligence for financial analysis, predictive modeling, and automated decision-making.">
+    <meta name="keywords" content="AI, artificial intelligence, financial AI, machine learning, predictive analytics, automated analysis">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://axisthorn.com/axis-ai">
+    <meta property="og:title" content="Axis AI - Advanced Financial Intelligence">
+    <meta property="og:description" content="Experience the future of financial analysis with Axis AI.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navigation" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
+                <span class="logo-text">Axis Thorn</span>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="/" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="/axis-ai.html" class="nav-link active" role="menuitem">Axis AI</a></li>
+                <li role="none"><a href="/#services" class="nav-link" role="menuitem">Services</a></li>
+                <li role="none"><a href="/#about" class="nav-link" role="menuitem">About</a></li>
+                <li role="none"><a href="/invoices.html" class="nav-link" role="menuitem">Client Portal</a></li>
+                <li role="none"><a href="/#contact" class="nav-link" role="menuitem">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="axis-ai-container">
+        <div class="ai-interface">
+            <aside class="ai-sidebar">
+                <div class="ai-branding">
+                    <h1 class="ai-logo">AXIS AI</h1>
+                    <p class="ai-tagline">Financial Intelligence Redefined</p>
+                </div>
+                
+                <div class="ai-capabilities">
+                    <h2>Capabilities</h2>
+                    <ul class="capability-list">
+                        <li class="capability-item" data-capability="analysis">
+                            <div class="capability-icon"></div>
+                            <div class="capability-content">
+                                <h3>Financial Analysis</h3>
+                                <p>Deep analysis of financial statements, ratios, and trends</p>
+                            </div>
+                        </li>
+                        <li class="capability-item" data-capability="prediction">
+                            <div class="capability-icon"></div>
+                            <div class="capability-content">
+                                <h3>Predictive Modeling</h3>
+                                <p>Forecast market movements and financial outcomes</p>
+                            </div>
+                        </li>
+                        <li class="capability-item" data-capability="compliance">
+                            <div class="capability-icon"></div>
+                            <div class="capability-content">
+                                <h3>Compliance Check</h3>
+                                <p>Automated regulatory compliance verification</p>
+                            </div>
+                        </li>
+                        <li class="capability-item" data-capability="portfolio">
+                            <div class="capability-icon"></div>
+                            <div class="capability-content">
+                                <h3>Portfolio Optimization</h3>
+                                <p>AI-driven portfolio allocation and risk management</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="ai-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" data-value="99.7">0</span>
+                        <span class="stat-label">Accuracy Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" data-value="1.2">0</span>
+                        <span class="stat-label">Response Time</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" data-value="50000">0</span>
+                        <span class="stat-label">Queries Daily</span>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="ai-chat-section">
+                <div class="chat-header">
+                    <div class="chat-status">
+                        <span class="status-indicator"></span>
+                        <span class="status-text">Axis AI Online</span>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="action-btn" id="clearChat" aria-label="Clear chat">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M3 6h14M8 6V4a1 1 0 011-1h2a1 1 0 011 1v2m3 0v8a2 2 0 01-2 2H7a2 2 0 01-2-2V6h10z" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn" id="exportChat" aria-label="Export chat">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 14l-7-7m0 0l7-7m-7 7h18" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="chat-container" id="chatContainer">
+                    <div class="chat-welcome">
+                        <h2>Welcome to Axis AI</h2>
+                        <p>I'm your advanced financial intelligence assistant. How can I help you today?</p>
+                        
+                        <div class="suggested-queries">
+                            <button class="suggestion-btn" data-query="Analyze the key financial ratios for a tech company">
+                                Financial Ratio Analysis
+                            </button>
+                            <button class="suggestion-btn" data-query="What are the current market trends in renewable energy?">
+                                Market Trend Analysis
+                            </button>
+                            <button class="suggestion-btn" data-query="How can I optimize my portfolio for risk-adjusted returns?">
+                                Portfolio Optimization
+                            </button>
+                            <button class="suggestion-btn" data-query="Explain the implications of recent Fed policy changes">
+                                Policy Impact Analysis
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages"></div>
+                </div>
+
+                <div class="chat-input-container">
+                    <form class="chat-form" id="chatForm">
+                        <div class="input-wrapper">
+                            <textarea 
+                                class="chat-input" 
+                                id="chatInput" 
+                                placeholder="Ask Axis AI anything about finance, markets, or analysis..."
+                                rows="1"
+                                maxlength="2000"
+                            ></textarea>
+                            <button type="submit" class="send-button" id="sendButton" aria-label="Send message">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M2 10l16-7-7 16-2-7-7-2z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="input-info">
+                            <span class="char-count">0 / 2000</span>
+                            <span class="model-info">Powered by GPT-4 Financial</span>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <section class="ai-features">
+            <div class="container">
+                <h2 class="section-title">Enterprise AI Features</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-realtime"></div>
+                            <h3>Real-Time Processing</h3>
+                        </div>
+                        <p>Process millions of data points per second with sub-millisecond latency for instant insights.</p>
+                        <ul class="feature-list">
+                            <li>Live market data integration</li>
+                            <li>Streaming analytics pipeline</li>
+                            <li>Real-time anomaly detection</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-security"></div>
+                            <h3>Bank-Grade Security</h3>
+                        </div>
+                        <p>Enterprise security with end-to-end encryption and compliance with global standards.</p>
+                        <ul class="feature-list">
+                            <li>SOC 2 Type II certified</li>
+                            <li>256-bit AES encryption</li>
+                            <li>Zero-knowledge architecture</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-api"></div>
+                            <h3>API Integration</h3>
+                        </div>
+                        <p>Seamlessly integrate Axis AI into your existing systems with our comprehensive API.</p>
+                        <ul class="feature-list">
+                            <li>RESTful & GraphQL APIs</li>
+                            <li>WebSocket support</li>
+                            <li>SDK for major languages</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card highlight">
+                        <div class="feature-header">
+                            <div class="feature-icon icon-custom"></div>
+                            <h3>Custom Models</h3>
+                        </div>
+                        <p>Train custom AI models on your proprietary data for specialized analysis.</p>
+                        <ul class="feature-list">
+                            <li>Private model training</li>
+                            <li>Domain-specific optimization</li>
+                            <li>Continuous learning pipeline</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Ready to transform your financial operations?</h3>
+                    <div class="cta-buttons">
+                        <a href="#schedule-demo" class="cta-button primary">Schedule Demo</a>
+                        <a href="/api-docs" class="cta-button secondary">View API Docs</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Axis AI</h4>
+                    <p>Advanced Financial Intelligence</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>AI.solutions@axisthorn.com</p>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Axis Thorn LLC. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -93,12 +93,12 @@
     </script>
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="script.js" as="script">
+    
+    
     <link rel="preload" href="logo.svg" as="image">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -119,6 +119,7 @@
                 <span class="logo-text">Axis Thorn</span>
             </div>
             <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="/axis-ai.html" class="nav-link" role="menuitem">Axis AI</a></li>
                 <li role="none"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
                 <li role="none"><a href="#client-services" class="nav-link" role="menuitem">Client Services</a></li>
                 <li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
@@ -146,6 +147,49 @@
     </header>
 
     <main role="main">
+    <!-- Axis AI Showcase -->
+    <section class="axis-ai-showcase">
+        <div class="container">
+            <div class="ai-showcase-content">
+                <div class="ai-badge-large">INTRODUCING AXIS AI</div>
+                <h2 class="ai-showcase-title">
+                    <span class="gradient-text">Next-Generation AI</span>
+                    <span>for Financial Excellence</span>
+                </h2>
+                <p class="ai-showcase-description">
+                    Deploy autonomous AI agents that transform how you process, analyze, and act on financial data. 
+                    Our proprietary AI models deliver insights at the speed of thought.
+                </p>
+                <div class="ai-features-grid">
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon icon-ai-brain"></div>
+                        <h3>Cognitive Processing</h3>
+                        <p>AI that understands context, nuance, and complexity in financial documents</p>
+                    </div>
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon icon-ai-analytics"></div>
+                        <h3>Predictive Analytics</h3>
+                        <p>Machine learning models that forecast trends with 94% accuracy</p>
+                    </div>
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon icon-ai-automation"></div>
+                        <h3>Real-Time Automation</h3>
+                        <p>Autonomous systems that execute complex workflows 24/7</p>
+                    </div>
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon icon-ai-security"></div>
+                        <h3>Enterprise Security</h3>
+                        <p>Bank-grade encryption with SOC 2 Type II compliance</p>
+                    </div>
+                </div>
+                <div class="ai-showcase-cta">
+                    <a href="/axis-ai.html" class="cta-button primary">Explore Axis AI</a>
+                    <a href="#contact" class="cta-button secondary">Request AI Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="services" class="services" aria-labelledby="services-heading">
         <div class="container">
             <h2 id="services-heading" class="section-title">Services</h2>
@@ -446,6 +490,6 @@
         </div>
     </footer>
 
-    <script type="module" src="script.js"></script>
+    
 </body>
 </html><!-- Axis Thorn LLC - Architecting the Unseen -->

@@ -4,14 +4,39 @@
   "description": "Axis Thorn LLC website with integrated invoice portal",
   "main": "index.js",
   "scripts": {
-    "dev": "vercel dev",
-    "build": "echo 'Build completed'",
-    "start": "vercel dev"
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "build:vercel": "npm run build && npm run copy:api",
+    "copy:api": "cp -r api dist/",
+    "start": "vercel dev",
+    "clean": "rm -rf dist",
+    "analyze": "webpack-bundle-analyzer dist/stats.json",
+    "deploy": "./sync-build.sh",
+    "watch": "webpack --watch --mode development"
   },
   "dependencies": {
     "uuid": "^9.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "autoprefixer": "^10.4.16",
+    "babel-loader": "^9.1.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "cssnano": "^6.0.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.31",
+    "postcss-loader": "^7.3.3",
+    "style-loader": "^3.3.3",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.89.0",
+    "webpack-bundle-analyzer": "^4.9.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
   "keywords": ["invoice", "axisthorn", "website"],
   "author": "Axis Thorn LLC",
   "license": "MIT"
