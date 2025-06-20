@@ -1,0 +1,57 @@
+# Source files
+src/
+*.src.js
+
+# Development files
+node_modules/
+.git/
+.gitignore
+.env
+.env.local
+.env.*.local
+
+# Build files not needed for deployment
+webpack.config.js
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Documentation
+*.md
+LICENSE
+docs/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test files
+*.test.js
+*.spec.js
+__tests__/
+coverage/
+
+# Temporary files
+*.log
+*.tmp
+temp/
+tmp/
+
+# Output directory (already built)
+out/
+
+# Backup files
+*.backup
+*.bak
+
+# Scripts
+scripts/
+*.sh
+
+# Other unnecessary files
+backups/
+STRIPE_SETUP.md

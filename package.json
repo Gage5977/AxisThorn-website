@@ -1,0 +1,44 @@
+{
+  "name": "axis-thorn-llc-website",
+  "version": "1.0.0",
+  "description": "Axis Thorn LLC - Financial Consulting and Administrative Services",
+  "private": true,
+  "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "build:vercel": "npm run build && npm run copy-files",
+    "copy-files": "cp -r dist/* public/",
+    "lint": "eslint src/**/*.js",
+    "preview": "npx serve public"
+  },
+  "dependencies": {
+    "stripe": "^14.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "css-loader": "^6.8.1",
+    "style-loader": "^3.3.3",
+    "html-webpack-plugin": "^5.5.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "eslint": "^8.55.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/axisthorn/axis-thorn-llc-website.git"
+  },
+  "keywords": [
+    "financial-consulting",
+    "accounting",
+    "administrative-services",
+    "axis-thorn"
+  ],
+  "author": "Axis Thorn LLC",
+  "license": "UNLICENSED"
+}

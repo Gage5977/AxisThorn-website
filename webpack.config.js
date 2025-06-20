@@ -70,28 +70,13 @@ module.exports = {
       chunks: ['invoices']
     }),
     new HtmlWebpackPlugin({
-      template: './src/1099.html',
-      filename: '1099.html',
-      chunks: ['main']
-    }),
-    new HtmlWebpackPlugin({
       template: './src/banking.html',
       filename: 'banking.html',
       chunks: ['main']
     }),
     new HtmlWebpackPlugin({
-      template: './src/consultation.html',
-      filename: 'consultation.html',
-      chunks: ['main']
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/implementation.html',
-      filename: 'implementation.html',
-      chunks: ['main']
-    }),
-    new HtmlWebpackPlugin({
-      template: './src/support.html',
-      filename: 'support.html',
+      template: './src/banking-portal.html',
+      filename: 'banking-portal.html',
       chunks: ['main']
     }),
     new HtmlWebpackPlugin({
