@@ -1,3 +1,9 @@
 {
-  "outputDirectory": "public"
+  "outputDirectory": "public",
+  "buildCommand": "echo 'No build required'",
+  "devCommand": "echo 'No dev command'",
+  "installCommand": "echo 'No install required'",
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false
 }
