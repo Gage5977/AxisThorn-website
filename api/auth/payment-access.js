@@ -2,13 +2,28 @@ const { generateAccessToken, rateLimit } = require('../middleware/auth');
 const crypto = require('crypto');
 
 // In production, store these in a database
-const VALID_CLIENTS = new Map([
-  ['demo-client', {
-    secret: process.env.DEMO_CLIENT_SECRET || 'demo-secret-key',
+const VALID_CLIENTS = new Map();
+
+// Only add demo client in non-production environments
+if (process.env.NODE_ENV !== 'production' && process.env.DEMO_CLIENT_SECRET) {
+  VALID_CLIENTS.set('demo-client', {
+    secret: process.env.DEMO_CLIENT_SECRET,
     name: 'Demo Client',
     allowedInvoicePatterns: ['*']
-  }]
-]);
+  });
+}
+
+// Add production clients from environment variables
+if (process.env.PRODUCTION_CLIENTS) {
+  try {
+    const clients = JSON.parse(process.env.PRODUCTION_CLIENTS);
+    Object.entries(clients).forEach(([id, config]) => {
+      VALID_CLIENTS.set(id, config);
+    });
+  } catch (error) {
+    console.error('Failed to parse PRODUCTION_CLIENTS:', error);
+  }
+}
 
 // Validate client credentials
 function validateClient(clientId, clientSecret) {
