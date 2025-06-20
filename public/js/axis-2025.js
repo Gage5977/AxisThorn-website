@@ -5,7 +5,7 @@ class AxisExperience {
     this.initRevealAnimations();
     this.initSmoothScrolling();
     this.initParallax();
-    this.initCursor();
+    this.initHoverEffects();
     this.initTypewriter();
   }
 
@@ -80,52 +80,56 @@ class AxisExperience {
     window.addEventListener('scroll', requestTick);
   }
 
-  // Custom cursor
-  initCursor() {
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+  // Enhanced hover effects
+  initHoverEffects() {
+    // Magnetic button effect
+    const buttons = document.querySelectorAll('.btn-2025');
     
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    document.body.appendChild(cursor);
-    
-    const cursorDot = document.createElement('div');
-    cursorDot.className = 'cursor-dot';
-    cursor.appendChild(cursorDot);
-    
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-    
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-    
-    function animate() {
-      const distX = mouseX - cursorX;
-      const distY = mouseY - cursorY;
-      
-      cursorX += distX * 0.1;
-      cursorY += distY * 0.1;
-      
-      cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-      
-      requestAnimationFrame(animate);
-    }
-    
-    animate();
-    
-    // Hover effects
-    const hoverTargets = document.querySelectorAll('a, button, .card-2025');
-    
-    hoverTargets.forEach(target => {
-      target.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover');
+    buttons.forEach(button => {
+      button.addEventListener('mousemove', (e) => {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
       });
       
-      target.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover');
+      button.addEventListener('mouseleave', () => {
+        button.style.transform = 'translate(0, 0)';
+      });
+    });
+    
+    // Card tilt effect
+    const cards = document.querySelectorAll('.card-2025, .system-showcase');
+    
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        
+        const tiltX = (y - 0.5) * 10;
+        const tiltY = (x - 0.5) * -10;
+        
+        card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(20px)`;
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+      });
+    });
+    
+    // Link underline animation
+    const links = document.querySelectorAll('.contact-link, .nav-link-2025');
+    
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => {
+        link.style.textDecoration = 'underline';
+        link.style.textUnderlineOffset = '4px';
+      });
+      
+      link.addEventListener('mouseleave', () => {
+        link.style.textDecoration = 'none';
       });
     });
   }

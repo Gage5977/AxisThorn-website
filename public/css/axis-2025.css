@@ -674,49 +674,53 @@ a:hover {
   color: var(--axis-neutral-600);
 }
 
-/* Custom Cursor */
-.custom-cursor {
-  position: fixed;
-  width: 40px;
-  height: 40px;
-  pointer-events: none;
-  z-index: 9999;
-  mix-blend-mode: difference;
-  transition: width var(--duration-base) var(--ease-out-expo),
-              height var(--duration-base) var(--ease-out-expo);
-}
-
-.cursor-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  background: var(--axis-pure-white);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: all var(--duration-base) var(--ease-out-expo);
-}
-
-.custom-cursor.hover {
-  width: 60px;
-  height: 60px;
-}
-
-.custom-cursor.hover .cursor-dot {
-  width: 60px;
-  height: 60px;
-  background: transparent;
-  border: 1px solid var(--axis-pure-white);
-}
-
-/* Hide default cursor */
+/* Cursor Styles */
 body {
-  cursor: none;
+  cursor: auto;
 }
 
 a, button {
-  cursor: none;
+  cursor: pointer;
+}
+
+/* Enhanced hover states for interactive elements */
+a:not(.btn-2025):hover {
+  color: var(--axis-accent-primary);
+}
+
+button {
+  cursor: pointer;
+  position: relative;
+}
+
+/* Interactive element hover enhancements */
+.card-2025, .system-showcase {
+  cursor: pointer;
+  position: relative;
+}
+
+.card-2025:hover,
+.system-showcase:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Link hover with dot indicator */
+.nav-link-2025 {
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-link-2025::before {
+  content: '•';
+  position: absolute;
+  left: -16px;
+  opacity: 0;
+  color: var(--axis-accent-primary);
+  transition: opacity var(--duration-base) var(--ease-out-quart);
+}
+
+.nav-link-2025:hover::before {
+  opacity: 1;
 }
 
 /* Loading State */
@@ -798,11 +802,29 @@ body:not(.loaded) * {
   outline-offset: 4px;
 }
 
+/* Enhanced Button Styles */
+.btn-2025 {
+  transition: all var(--duration-base) var(--ease-out-expo);
+  transform-style: preserve-3d;
+}
+
+/* Card 3D Transform */
+.card-2025, .system-showcase {
+  transition: transform var(--duration-base) var(--ease-out-expo);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Smooth link transitions */
+.contact-link, .nav-link-2025 {
+  transition: all var(--duration-fast) var(--ease-out-quart);
+  text-decoration-thickness: 1px;
+}
+
 /* Print Styles */
 @media print {
   .nav-2025,
-  .noise-overlay,
-  .custom-cursor {
+  .noise-overlay {
     display: none;
   }
   
