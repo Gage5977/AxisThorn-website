@@ -55,11 +55,6 @@
       "source": "/1099.html",
       "destination": "/banking-portal.html",
       "permanent": false
-    },
-    {
-      "source": "https://www.axisthorn.com/:path*",
-      "destination": "https://axisthorn.com/:path*",
-      "permanent": true
     }
   ],
   "headers": [
