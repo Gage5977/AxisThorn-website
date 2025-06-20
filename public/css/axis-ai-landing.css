@@ -16,10 +16,10 @@
     display: inline-block;
     padding: 0.5rem 1rem;
     background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(63, 114, 175, 0.1) 100%);
-    border: 1px solid var(--accent-burgundy);
+    border: 1px solid var(--accent-cyan);
     border-radius: 24px;
     font-size: 0.875rem;
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     margin-bottom: 1.5rem;
     font-weight: 600;
     letter-spacing: 1px;
@@ -35,7 +35,7 @@
     font-size: 5rem;
     font-weight: 900;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-burgundy) 50%, var(--accent-electric) 100%);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 50%, var(--accent-electric) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -65,7 +65,7 @@
     display: block;
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     margin-bottom: 0.5rem;
 }
 
@@ -97,9 +97,9 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    background: var(--accent-burgundy);
+    background: var(--accent-cyan);
     border-radius: 50%;
-    box-shadow: 0 0 40px var(--accent-burgundy);
+    box-shadow: 0 0 40px var(--accent-cyan);
     animation: pulse calc(2s + var(--delay)) ease-in-out infinite;
     left: var(--x);
     top: var(--y);
@@ -113,7 +113,7 @@
 
 .connection {
     position: absolute;
-    background: linear-gradient(90deg, transparent, var(--accent-burgundy), transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
     height: 2px;
     animation: flow 3s linear infinite;
 }
@@ -133,7 +133,7 @@
 
 .capability-card {
     background: rgba(13, 20, 32, 0.9);
-    border: 1px solid var(--accent-burgundy-02);
+    border: 1px solid var(--accent-cyan-02);
     border-radius: 16px;
     padding: 2.5rem;
     position: relative;
@@ -148,7 +148,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent-burgundy), transparent);
+    background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
     animation: scan 3s linear infinite;
 }
 
@@ -159,7 +159,7 @@
 
 .capability-card:hover {
     transform: translateY(-4px);
-    border-color: var(--accent-burgundy);
+    border-color: var(--accent-cyan);
     box-shadow: 0 20px 60px rgba(6, 182, 212, 0.2);
 }
 
@@ -177,7 +177,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, var(--accent-burgundy-04) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--accent-cyan-04) 0%, transparent 70%);
     border-radius: 50%;
     animation: glow-pulse 2s ease-in-out infinite;
 }
@@ -190,7 +190,7 @@
 .capability-icon svg {
     position: relative;
     z-index: 1;
-    stroke: var(--accent-burgundy);
+    stroke: var(--accent-cyan);
 }
 
 .capability-card h3 {
@@ -207,7 +207,7 @@
 
 .capability-metric {
     padding-top: 1.5rem;
-    border-top: 1px solid var(--accent-burgundy-02);
+    border-top: 1px solid var(--accent-cyan-02);
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -245,7 +245,7 @@
 
 .demo-interface {
     background: #000;
-    border: 1px solid var(--accent-burgundy-02);
+    border: 1px solid var(--accent-cyan-02);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
@@ -257,23 +257,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--accent-burgundy-02);
+    border-bottom: 1px solid var(--accent-cyan-02);
 }
 
 .demo-status {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     font-weight: 600;
 }
 
 .status-dot {
     width: 8px;
     height: 8px;
-    background: var(--accent-burgundy);
+    background: var(--accent-cyan);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent-burgundy);
+    box-shadow: 0 0 10px var(--accent-cyan);
     animation: blink 1s ease-in-out infinite;
 }
 
@@ -293,7 +293,7 @@
 
 .demo-query {
     background: rgba(6, 182, 212, 0.1);
-    border: 1px solid var(--accent-burgundy-02);
+    border: 1px solid var(--accent-cyan-02);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 2rem;
@@ -301,7 +301,7 @@
 
 .query-label {
     display: block;
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
@@ -330,7 +330,7 @@
 }
 
 .step-icon {
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     font-weight: bold;
 }
 
@@ -375,11 +375,11 @@
     padding: 1.5rem;
     background: rgba(13, 20, 32, 0.9);
     text-align: center;
-    border-top: 1px solid var(--accent-burgundy-02);
+    border-top: 1px solid var(--accent-cyan-02);
 }
 
 .demo-cta {
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition-smooth);
@@ -406,7 +406,7 @@
 .tab-button {
     padding: 0.75rem 1.5rem;
     background: transparent;
-    border: 1px solid var(--accent-burgundy-02);
+    border: 1px solid var(--accent-cyan-02);
     border-radius: 8px;
     color: var(--text-secondary);
     font-weight: 600;
@@ -416,9 +416,9 @@
 
 .tab-button.active,
 .tab-button:hover {
-    background: var(--accent-burgundy-01);
-    border-color: var(--accent-burgundy);
-    color: var(--accent-burgundy);
+    background: var(--accent-cyan-01);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
 }
 
 .tab-panel {
@@ -481,13 +481,13 @@
     width: 120px;
     height: 120px;
     background: var(--accent-dark);
-    border: 2px solid var(--accent-burgundy);
+    border: 2px solid var(--accent-cyan);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     box-shadow: 0 0 40px rgba(6, 182, 212, 0.4);
 }
 
@@ -502,7 +502,7 @@
     width: 80px;
     height: 80px;
     background: rgba(13, 20, 32, 0.9);
-    border: 1px solid var(--accent-burgundy-02);
+    border: 1px solid var(--accent-cyan-02);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -522,12 +522,12 @@
 .integration-features .feature {
     padding: 1.5rem;
     background: rgba(13, 20, 32, 0.9);
-    border: 1px solid var(--accent-burgundy-02);
+    border: 1px solid var(--accent-cyan-02);
     border-radius: 12px;
 }
 
 .integration-features h4 {
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     margin-bottom: 0.5rem;
 }
 
@@ -540,13 +540,13 @@
     padding: 6rem 2rem;
     background: linear-gradient(135deg, var(--accent-dark) 0%, var(--primary-dark) 100%);
     text-align: center;
-    border-top: 1px solid var(--accent-burgundy-02);
+    border-top: 1px solid var(--accent-cyan-02);
 }
 
 .cta-content h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-burgundy) 100%);
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-cyan) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

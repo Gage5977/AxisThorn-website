@@ -1,4 +1,4 @@
-/* Axis AI Page Styles - Midnight burgundy Theme */
+/* Axis AI Page Styles - Midnight cyan Theme */
 :root {
     --ai-primary: #3F72AF;
     --ai-secondary: #06B6D4;
@@ -6,17 +6,17 @@
     --ai-darker: #0D1420;
     --ai-light: #E6F8FF;
     --ai-gray: #A0AEC0;
-    --ai-border: var(--accent-burgundy-02);
-    --ai-shadow: 0 4px 24px var(--accent-burgundy-03);
+    --ai-border: var(--accent-cyan-02);
+    --ai-shadow: 0 4px 24px var(--accent-cyan-03);
     
     /* Import color opacity variations */
-    --accent-burgundy-rgb: 6, 182, 212;
-    --accent-burgundy-01: rgba(var(--accent-burgundy-rgb), 0.1);
-    --accent-burgundy-02: rgba(var(--accent-burgundy-rgb), 0.2);
-    --accent-burgundy-03: rgba(var(--accent-burgundy-rgb), 0.3);
-    --accent-burgundy-04: rgba(var(--accent-burgundy-rgb), 0.4);
-    --accent-burgundy-05: rgba(var(--accent-burgundy-rgb), 0.5);
-    --accent-burgundy-08: rgba(var(--accent-burgundy-rgb), 0.8);
+    --accent-cyan-rgb: 6, 182, 212;
+    --accent-cyan-01: rgba(var(--accent-cyan-rgb), 0.1);
+    --accent-cyan-02: rgba(var(--accent-cyan-rgb), 0.2);
+    --accent-cyan-03: rgba(var(--accent-cyan-rgb), 0.3);
+    --accent-cyan-04: rgba(var(--accent-cyan-rgb), 0.4);
+    --accent-cyan-05: rgba(var(--accent-cyan-rgb), 0.5);
+    --accent-cyan-08: rgba(var(--accent-cyan-rgb), 0.8);
 }
 
 .axis-ai-page {
@@ -44,7 +44,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(139, 21, 56, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -367,7 +367,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(139, 21, 56, 0.1);
+    background: rgba(6, 182, 212, 0.1);
     border-radius: 50%;
     color: var(--ai-primary);
 }
@@ -442,15 +442,15 @@
 
 .button.primary {
     background: var(--accent-primary);
-    color: var(--accent-burgundy);
-    border: 2px solid var(--accent-burgundy);
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
     box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
 .button.secondary {
     background: rgba(63, 114, 175, 0.2);
-    color: var(--accent-burgundy);
-    border: 2px solid var(--accent-burgundy);
+    color: var(--accent-cyan);
+    border: 2px solid var(--accent-cyan);
     box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
 }
 
@@ -549,7 +549,7 @@
 }
 
 .construction-icon svg {
-    filter: drop-shadow(0 0 20px rgba(139, 21, 56, 0.5));
+    filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.5));
 }
 
 @keyframes clockRotate {
@@ -573,7 +573,7 @@
 }
 
 .launch-info {
-    background: rgba(139, 21, 56, 0.1);
+    background: rgba(6, 182, 212, 0.1);
     border: 2px solid var(--ai-border);
     border-radius: 12px;
     padding: 2rem;
@@ -626,7 +626,7 @@
 }
 
 .preview-list li:hover {
-    background: rgba(139, 21, 56, 0.1);
+    background: rgba(6, 182, 212, 0.1);
     transform: translateX(10px);
 }
 
@@ -662,7 +662,7 @@
     background: transparent;
     color: var(--ai-primary);
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(139, 21, 56, 0.3);
+    box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
 }
 
 /* Footer Adjustments for AI Page */

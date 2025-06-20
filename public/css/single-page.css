@@ -30,7 +30,7 @@
 
 .pillar {
     background: var(--accent-dark);
-    border: 1px solid var(--accent-burgundy-02);
+    border: 1px solid var(--accent-cyan-02);
     border-radius: 12px;
     padding: 2rem;
     text-align: center;
@@ -39,12 +39,12 @@
 
 .pillar:hover {
     transform: translateY(-4px);
-    border-color: var(--accent-burgundy);
+    border-color: var(--accent-cyan);
     box-shadow: var(--shadow-glow);
 }
 
 .pillar h3 {
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
@@ -69,7 +69,7 @@
 
 .service-card {
     background: var(--accent-dark);
-    border: 1px solid var(--accent-burgundy-02);
+    border: 1px solid var(--accent-cyan-02);
     border-radius: 12px;
     padding: 2rem;
     transition: var(--transition-smooth);
@@ -78,7 +78,7 @@
 
 .service-card:hover {
     transform: translateY(-4px);
-    border-color: var(--accent-burgundy);
+    border-color: var(--accent-cyan);
     box-shadow: var(--shadow-glow);
 }
 
@@ -95,13 +95,13 @@
 }
 
 .service-link {
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition-smooth);
     display: inline-block;
     padding: 0.5rem 1rem;
-    border: 1px solid var(--accent-burgundy);
+    border: 1px solid var(--accent-cyan);
     border-radius: 6px;
     background: rgba(6, 182, 212, 0.1);
     position: relative;
@@ -118,7 +118,7 @@
 .admin-services {
     margin-top: 4rem;
     padding-top: 3rem;
-    border-top: 1px solid var(--accent-burgundy-02);
+    border-top: 1px solid var(--accent-cyan-02);
 }
 
 .subsection-title {
@@ -138,7 +138,7 @@
 
 .admin-card {
     background: var(--secondary-dark);
-    border: 1px solid var(--accent-burgundy-01);
+    border: 1px solid var(--accent-cyan-01);
     border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
@@ -150,7 +150,7 @@
 }
 
 .admin-card:hover {
-    border-color: var(--accent-burgundy);
+    border-color: var(--accent-cyan);
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(6, 182, 212, 0.2);
     background: rgba(6, 182, 212, 0.05);
@@ -172,7 +172,7 @@
 }
 
 .admin-card h4 {
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
     font-family: 'Space Mono', monospace;
@@ -196,7 +196,7 @@
 }
 
 .admin-link:hover {
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
 }
 
 /* Contact Section */
@@ -219,7 +219,7 @@
 .form-input,
 .form-textarea {
     background: var(--accent-dark);
-    border: 1px solid var(--accent-burgundy-02);
+    border: 1px solid var(--accent-cyan-02);
     border-radius: 8px;
     padding: 1rem;
     color: var(--text-primary);
@@ -231,8 +231,8 @@
 .form-input:focus,
 .form-textarea:focus {
     outline: none;
-    border-color: var(--accent-burgundy);
-    box-shadow: 0 0 0 2px var(--accent-burgundy-02);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 2px var(--accent-cyan-02);
 }
 
 .form-input::placeholder,
@@ -267,7 +267,7 @@
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: var(--accent-burgundy);
+    color: var(--accent-cyan);
     margin-top: 1rem;
 }
 
