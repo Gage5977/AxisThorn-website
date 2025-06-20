@@ -674,6 +674,98 @@ a:hover {
   color: var(--axis-neutral-600);
 }
 
+/* Navigation Dropdown */
+.nav-dropdown-2025 {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--axis-pure-black);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 220px;
+  padding: var(--space-2) 0;
+  margin-top: var(--space-2);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s var(--ease-out-expo);
+  z-index: 1000;
+  box-shadow: var(--shadow-xl);
+}
+
+.dropdown-link-2025 {
+  display: block;
+  padding: var(--space-3) var(--space-6);
+  color: var(--axis-neutral-300);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.dropdown-link-2025:hover {
+  color: var(--axis-pure-white);
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: var(--space-8);
+}
+
+.dropdown-link-2025::before {
+  content: '→';
+  position: absolute;
+  left: var(--space-3);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.dropdown-link-2025:hover::before {
+  opacity: 1;
+}
+
+/* Mobile Menu Toggle */
+.mobile-toggle-2025 {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--axis-pure-white);
+  cursor: pointer;
+  padding: var(--space-2);
+  margin-left: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle-2025 {
+    display: block;
+  }
+  
+  .nav-links-2025 {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--axis-pure-black);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-direction: column;
+    padding: var(--space-4);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s var(--ease-out-expo);
+  }
+  
+  .nav-links-2025.mobile-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .nav-dropdown-2025 {
+    position: static;
+    margin: var(--space-2) 0 0 var(--space-4);
+    box-shadow: none;
+    border: none;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
 /* Cursor Styles */
 body {
   cursor: auto;

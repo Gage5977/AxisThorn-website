@@ -45,14 +45,13 @@
     {
       "source": "/support",
       "destination": "/support.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/services.html"
     }
   ],
   "redirects": [
-    {
-      "source": "/services",
-      "destination": "/#services",
-      "permanent": false
-    },
     {
       "source": "/1099.html",
       "destination": "/banking-portal.html",
@@ -61,6 +60,56 @@
     {
       "source": "/1099",
       "destination": "/banking-portal#1099",
+      "permanent": false
+    },
+    {
+      "source": "/client-portal",
+      "destination": "/invoices",
+      "permanent": false
+    },
+    {
+      "source": "/portal",
+      "destination": "/invoices",
+      "permanent": false
+    },
+    {
+      "source": "/invoice",
+      "destination": "/invoices",
+      "permanent": false
+    },
+    {
+      "source": "/pay",
+      "destination": "/invoices",
+      "permanent": false
+    },
+    {
+      "source": "/payment",
+      "destination": "/invoices",
+      "permanent": false
+    },
+    {
+      "source": "/axis-terminal",
+      "destination": "/terminal",
+      "permanent": false
+    },
+    {
+      "source": "/ai",
+      "destination": "/axis-ai",
+      "permanent": false
+    },
+    {
+      "source": "/banking.html",
+      "destination": "/banking-portal",
+      "permanent": true
+    },
+    {
+      "source": "/consult",
+      "destination": "/consultation",
+      "permanent": false
+    },
+    {
+      "source": "/implement",
+      "destination": "/implementation",
       "permanent": false
     }
   ],
