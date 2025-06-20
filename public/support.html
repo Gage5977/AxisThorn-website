@@ -21,26 +21,30 @@
     <meta property="twitter:description" content="Maintain peak system performance through continuous monitoring, proactive optimization, and strategic evolution of AI-driven financial systems.">
     <meta property="twitter:image" content="https://axisthorn.com/logo.svg">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/single-page.css">
 </head>
 <body>
     <nav class="navigation">
         <div class="nav-container">
-            <div class="logo">
-                <img src="logo.svg" alt="Axis Thorn LLC" class="logo-img">
+            <a href="/" class="logo" aria-label="Axis Thorn home">
+                <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
                 <span class="logo-text">Axis Thorn</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="/" class="nav-link">Home</a></li>
-                <li><a href="/axis-ai.html" class="nav-link">Axis AI</a></li>
-                <li><a href="index.html#services" class="nav-link">Services</a></li>
-                <li><a href="index.html#client-services" class="nav-link">Client Services</a></li>
-                <li><a href="index.html#about" class="nav-link">About</a></li>
-                <li><a href="/invoices.html" class="nav-link">Client Portal</a></li>
-                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </a>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="/" class="nav-link" role="menuitem">/home</a></li>
+                <li role="none"><a href="invoices.html" class="nav-link" role="menuitem">/client-portal</a></li>
+                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">/axis-ai</a></li>
+                <li role="none"><a href="/app" class="nav-link" role="menuitem">/axis-terminal</a></li>
             </ul>
         </div>
     </nav>
