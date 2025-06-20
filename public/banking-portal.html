@@ -15,10 +15,22 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="single-page.css">
     <style>
+        /* AXIS Terminal Branding Variables */
+        :root {
+            --axis-primary-bg: #0A0F1C; /* Midnight Blue */
+            --axis-primary-fg: #E6F8FF; /* Electric Cyan */
+            --axis-secondary-fg: #A0AEC0; /* Cool Gray */
+            --axis-accent-color: #3F72AF; /* Sky Blue Accent */
+            --axis-green-primary: #22C55E; /* Primary Green from AXIS Terminal */
+            --axis-green-secondary: #16A34A; /* Secondary Green */
+            --axis-green-accent: rgba(34, 197, 94, 0.1); /* Green accent background */
+        }
+        
         /* Page-specific minimal styles */
         .portal-hero {
             padding: 6rem 2rem 4rem;
             text-align: center;
+            background: linear-gradient(180deg, var(--axis-primary-bg) 0%, rgba(10, 15, 28, 0.8) 100%);
         }
         
         .portal-title {
@@ -26,11 +38,12 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
+            color: var(--axis-primary-fg);
         }
         
         .portal-subtitle {
             font-size: 1.25rem;
-            color: var(--text-secondary);
+            color: var(--axis-secondary-fg);
             max-width: 600px;
             margin: 0 auto 3rem;
             line-height: 1.6;
@@ -47,20 +60,28 @@
         .nav-btn {
             padding: 0.75rem 1.5rem;
             background: transparent;
-            border: 1px solid var(--accent-cyan-02);
+            border: 1px solid var(--axis-accent-color);
             border-radius: 8px;
-            color: var(--text-secondary);
+            color: var(--axis-secondary-fg);
             font-family: var(--font-primary);
             font-size: 0.875rem;
             cursor: pointer;
-            transition: var(--transition-smooth);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .nav-btn:hover,
+        .nav-btn:hover {
+            background: rgba(63, 114, 175, 0.1);
+            color: var(--axis-primary-fg);
+            border-color: var(--axis-primary-fg);
+            box-shadow: 0 0 20px rgba(230, 248, 255, 0.3);
+        }
+        
         .nav-btn.active {
-            background: var(--accent-cyan-01);
-            color: var(--accent-cyan);
-            border-color: var(--accent-cyan);
+            background: var(--axis-green-accent);
+            color: var(--axis-green-primary);
+            border-color: var(--axis-green-primary);
         }
         
         .portal-content {
@@ -79,11 +100,17 @@
         
         /* Banking Instructions */
         .method-card {
-            background: var(--accent-dark);
-            border: 1px solid var(--accent-cyan-02);
+            background: var(--axis-primary-bg);
+            border: 1px solid var(--axis-accent-color);
             border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .method-card:hover {
+            border-color: var(--axis-primary-fg);
+            box-shadow: 0 0 30px rgba(230, 248, 255, 0.1);
         }
         
         .method-header {
@@ -101,12 +128,13 @@
         
         .method-badge {
             padding: 0.25rem 0.75rem;
-            background: var(--accent-cyan-01);
-            color: var(--accent-cyan);
+            background: var(--axis-green-accent);
+            color: var(--axis-green-primary);
             border-radius: 20px;
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-weight: 600;
         }
         
         .banking-details {
@@ -117,7 +145,7 @@
             display: flex;
             justify-content: space-between;
             padding: 0.75rem 0;
-            border-bottom: 1px solid var(--accent-cyan-02);
+            border-bottom: 1px solid rgba(63, 114, 175, 0.3);
         }
         
         .detail-label {
@@ -131,14 +159,22 @@
         }
         
         .detail-value[data-sensitive="true"] {
-            color: var(--accent-cyan);
+            color: var(--axis-primary-fg);
             cursor: pointer;
             text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+        
+        .detail-value[data-sensitive="true"]:hover {
+            color: var(--axis-green-primary);
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
         }
         
         /* 1099 Forms */
         .form-section {
-            background: var(--secondary-dark);
+            background: rgba(10, 15, 28, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--axis-accent-color);
             border-radius: 12px;
             padding: 3rem;
             margin-bottom: 2rem;
@@ -170,21 +206,22 @@
         
         .form-group input,
         .form-group select {
-            background: var(--accent-dark);
-            border: 1px solid var(--accent-cyan-02);
+            background: var(--axis-primary-bg);
+            border: 1px solid var(--axis-accent-color);
             border-radius: 8px;
             padding: 0.75rem 1rem;
-            color: var(--text-primary);
+            color: var(--axis-primary-fg);
             font-family: var(--font-primary);
             font-size: 1rem;
-            transition: var(--transition-smooth);
+            transition: all 0.3s ease;
         }
         
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--accent-cyan);
-            background: var(--accent-cyan-01);
+            border-color: var(--axis-green-primary);
+            background: rgba(34, 197, 94, 0.05);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
         }
         
         /* Tables */
@@ -197,7 +234,7 @@
         th, td {
             padding: 1rem;
             text-align: left;
-            border-bottom: 1px solid var(--accent-cyan-02);
+            border-bottom: 1px solid rgba(63, 114, 175, 0.3);
         }
         
         th {
@@ -219,29 +256,36 @@
             font-weight: 500;
             font-size: 1rem;
             cursor: pointer;
-            transition: var(--transition-smooth);
+            transition: all 0.3s ease;
             margin-right: 1rem;
             margin-top: 1rem;
-            border: 1px solid var(--accent-cyan);
+            position: relative;
+            overflow: hidden;
         }
         
         .btn-primary {
-            background: var(--accent-primary);
-            color: var(--text-primary);
+            background: var(--axis-green-primary);
+            color: var(--axis-primary-bg);
+            border: 1px solid var(--axis-green-primary);
+            font-weight: 600;
         }
         
         .btn-primary:hover {
-            background: var(--accent-secondary);
+            background: var(--axis-green-secondary);
             transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4);
         }
         
         .btn-secondary {
             background: transparent;
-            color: var(--accent-cyan);
+            color: var(--axis-primary-fg);
+            border: 1px solid var(--axis-accent-color);
         }
         
         .btn-secondary:hover {
-            background: var(--accent-cyan-01);
+            background: rgba(63, 114, 175, 0.1);
+            border-color: var(--axis-primary-fg);
+            box-shadow: 0 0 20px rgba(230, 248, 255, 0.2);
         }
         
         /* Messages */
@@ -255,9 +299,10 @@
         }
         
         .success {
-            background: rgba(34, 197, 94, 0.1);
-            color: #22c55e;
-            border: 1px solid rgba(34, 197, 94, 0.3);
+            background: var(--axis-green-accent);
+            color: var(--axis-green-primary);
+            border: 1px solid var(--axis-green-primary);
+            font-weight: 500;
         }
         
         .error {
@@ -279,11 +324,18 @@
         }
         
         .stat-card {
-            background: var(--accent-dark);
-            border: 1px solid var(--accent-cyan-02);
+            background: var(--axis-primary-bg);
+            border: 1px solid var(--axis-accent-color);
             border-radius: 12px;
             padding: 2rem;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            border-color: var(--axis-green-primary);
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.1);
+            transform: translateY(-2px);
         }
         
         .stat-card h3 {
@@ -297,7 +349,8 @@
         .stat-value {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--accent-cyan);
+            color: var(--axis-green-primary);
+            text-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
         }
         
         /* Security Notice */
@@ -565,17 +618,17 @@
                     </div>
                 </div>
 
-                <div class="form-section" style="background: rgba(6, 182, 212, 0.05); border: 1px solid var(--accent-cyan-02);">
-                    <h3 style="color: var(--accent-cyan);">Terminal Integration</h3>
+                <div class="form-section" style="background: var(--axis-green-accent); border: 1px solid var(--axis-green-primary);">
+                    <h3 style="color: var(--axis-green-primary);">Terminal Integration</h3>
                     <p style="color: var(--text-secondary); margin-bottom: 1rem;">
                         Use the AXIS Terminal for advanced 1099 operations:
                     </p>
                     <ul style="color: var(--text-secondary); list-style: none; padding: 0;">
-                        <li style="padding: 0.5rem 0;"><code style="color: var(--accent-cyan);">analyze 1099</code> - Full 1099 analysis report</li>
-                        <li style="padding: 0.5rem 0;"><code style="color: var(--accent-cyan);">tax strategy</code> - Generate tax optimization plan</li>
-                        <li style="padding: 0.5rem 0;"><code style="color: var(--accent-cyan);">validate 1099 [id]</code> - Validate specific form</li>
-                        <li style="padding: 0.5rem 0;"><code style="color: var(--accent-cyan);">export 1099 efile</code> - Generate IRS e-file format</li>
-                        <li style="padding: 0.5rem 0;"><code style="color: var(--accent-cyan);">estimate quarterly</code> - Calculate quarterly payments</li>
+                        <li style="padding: 0.5rem 0;"><code style="color: var(--axis-primary-fg);">analyze 1099</code> - Full 1099 analysis report</li>
+                        <li style="padding: 0.5rem 0;"><code style="color: var(--axis-primary-fg);">tax strategy</code> - Generate tax optimization plan</li>
+                        <li style="padding: 0.5rem 0;"><code style="color: var(--axis-primary-fg);">validate 1099 [id]</code> - Validate specific form</li>
+                        <li style="padding: 0.5rem 0;"><code style="color: var(--axis-primary-fg);">export 1099 efile</code> - Generate IRS e-file format</li>
+                        <li style="padding: 0.5rem 0;"><code style="color: var(--axis-primary-fg);">estimate quarterly</code> - Calculate quarterly payments</li>
                     </ul>
                     <a href="terminal.html" class="btn-secondary" style="display: inline-block; text-decoration: none;">Open Terminal</a>
                 </div>
