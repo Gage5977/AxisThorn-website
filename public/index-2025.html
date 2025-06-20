@@ -27,12 +27,8 @@
     <nav class="nav-2025" role="navigation">
         <div class="nav-2025-inner">
             <a href="/" class="logo-2025" aria-label="Axis Thorn">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z" 
-                          fill="currentColor" opacity="1"/>
-                    <path d="M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z" 
-                          fill="currentColor" opacity="1"/>
-                    <rect x="16" y="20" width="16" height="8" fill="currentColor" opacity="0.2"/>
+                <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <use href="logo-2025.svg#at-monogram" x="0" y="0" width="48" height="48"/>
                 </svg>
                 <span>Axis Thorn</span>
             </a>
@@ -208,16 +204,36 @@
     </footer>
     
     <!-- Scripts -->
-    <script src="js/axis-2025.js"></script>
     <script>
-        // Enhanced card hover effect with mouse tracking
-        document.querySelectorAll('.card-2025').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-                card.style.setProperty('--mouse-x', `${x}%`);
-                card.style.setProperty('--mouse-y', `${y}%`);
+        // Reveal animations on scroll
+        const reveals = document.querySelectorAll('.reveal-2025');
+        
+        function checkReveals() {
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkReveals);
+        checkReveals();
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
     </script>
