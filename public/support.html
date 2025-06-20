@@ -32,19 +32,34 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/single-page.css">
+    <link rel="stylesheet" href="css/axis-terminal-override.css">
 </head>
 <body>
-    <nav class="navigation">
+    <nav class="navigation" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="/" class="logo" aria-label="Axis Thorn home">
                 <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
                 <span class="logo-text">Axis Thorn</span>
             </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"/>
+                </svg>
+            </button>
             <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="/" class="nav-link" role="menuitem">/home</a></li>
-                <li role="none"><a href="invoices.html" class="nav-link" role="menuitem">/client-portal</a></li>
-                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">/axis-ai</a></li>
-                <li role="none"><a href="/app" class="nav-link" role="menuitem">/axis-terminal</a></li>
+                <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">Axis AI</a></li>
+                <li role="none"><a href="terminal.html" class="nav-link" role="menuitem">Terminal</a></li>
+                <li role="none" class="nav-dropdown">
+                    <a href="#services" class="nav-link active" role="menuitem">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="consultation.html" class="dropdown-link">Strategic Consultation</a></li>
+                        <li><a href="implementation.html" class="dropdown-link">Implementation</a></li>
+                        <li><a href="support.html" class="dropdown-link">Ongoing Support</a></li>
+                    </ul>
+                </li>
+                <li role="none"><a href="invoices.html" class="nav-link" role="menuitem">Client Portal</a></li>
+                <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -321,5 +336,6 @@
 
     <script src="js/mobile-menu.js"></script>
     <script src="js/ai-stats.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

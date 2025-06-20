@@ -33,27 +33,34 @@
     {
       "source": "/axis-ai",
       "destination": "/axis-ai.html"
+    },
+    {
+      "source": "/consultation",
+      "destination": "/consultation.html"
+    },
+    {
+      "source": "/implementation",
+      "destination": "/implementation.html"
+    },
+    {
+      "source": "/support",
+      "destination": "/support.html"
     }
   ],
   "redirects": [
     {
-      "source": "/consultation.html",
-      "destination": "/#services",
-      "permanent": false
-    },
-    {
-      "source": "/implementation.html",
-      "destination": "/#services",
-      "permanent": false
-    },
-    {
-      "source": "/support.html",
+      "source": "/services",
       "destination": "/#services",
       "permanent": false
     },
     {
       "source": "/1099.html",
       "destination": "/banking-portal.html",
+      "permanent": false
+    },
+    {
+      "source": "/1099",
+      "destination": "/banking-portal#1099",
       "permanent": false
     }
   ],
