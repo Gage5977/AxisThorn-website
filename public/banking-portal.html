@@ -646,4 +646,18 @@ Thank you.`);
         }
 
         // Initialize on load
-        loadOverview();</script></body></html>
+        loadOverview();</script>
+<script src="js/loading.js"></script>
+<script src="js/portal-auth.js"></script>
+<script>
+// Require authentication for this portal
+if (!portalAuth.requireAuth()) {
+    // Hide content until authenticated
+    document.querySelector('.portal-content').style.display = 'none';
+    portalAuth.onAuthenticated = function() {
+        document.querySelector('.portal-content').style.display = 'block';
+        loadOverview();
+    };
+}
+</script>
+</body></html>

@@ -17,6 +17,22 @@
     {
       "source": "/app",
       "destination": "/app.html"
+    },
+    {
+      "source": "/banking",
+      "destination": "/banking.html"
+    },
+    {
+      "source": "/banking-portal",
+      "destination": "/banking-portal.html"
+    },
+    {
+      "source": "/terminal",
+      "destination": "/terminal.html"
+    },
+    {
+      "source": "/axis-ai",
+      "destination": "/axis-ai.html"
     }
   ],
   "redirects": [
@@ -33,11 +49,6 @@
     {
       "source": "/support.html",
       "destination": "/#services",
-      "permanent": false
-    },
-    {
-      "source": "/banking.html",
-      "destination": "/banking.html",
       "permanent": false
     },
     {

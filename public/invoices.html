@@ -523,4 +523,18 @@
         }
 
         // Initialize dashboard on load
-        loadDashboard();</script></body></html>
+        loadDashboard();</script>
+<script src="js/loading.js"></script>
+<script src="js/portal-auth.js"></script>
+<script>
+// Require authentication for this portal
+if (!portalAuth.requireAuth()) {
+    // Hide content until authenticated
+    document.querySelector('.container').style.display = 'none';
+    portalAuth.onAuthenticated = function() {
+        document.querySelector('.container').style.display = 'block';
+        loadDashboard();
+    };
+}
+</script>
+</body></html>
