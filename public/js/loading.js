@@ -5,7 +5,7 @@ class LoadingIndicator {
   }
 
   createStyles() {
-    if (document.getElementById('loading-styles')) return;
+    if (document.getElementById('loading-styles')) {return;}
     
     const styles = document.createElement('style');
     styles.id = 'loading-styles';
@@ -113,7 +113,7 @@ class LoadingIndicator {
 
   // Hide loading overlay
   hideOverlay(overlay) {
-    if (!overlay) return;
+    if (!overlay) {return;}
     
     overlay.classList.remove('show');
     document.body.style.overflow = '';

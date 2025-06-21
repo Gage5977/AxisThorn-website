@@ -12,20 +12,20 @@ window.showNotification = showNotification;
 
 // Invoice-specific functionality
 export function initializeInvoicePortal() {
-    // Initialize shared modules
-    Navigation.init();
-    FormModule.init();
+  // Initialize shared modules
+  Navigation.init();
+  FormModule.init();
     
-    // Optimize scroll performance
-    PerformanceModule.optimizeScrollPerformance();
+  // Optimize scroll performance
+  PerformanceModule.optimizeScrollPerformance();
     
-    console.log('Invoice portal initialized');
+  console.log('Invoice portal initialized');
 }
 
 // Auto-initialize when DOM is loaded
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeInvoicePortal);
+  document.addEventListener('DOMContentLoaded', initializeInvoicePortal);
 } else {
-    // DOM is already loaded
-    initializeInvoicePortal();
+  // DOM is already loaded
+  initializeInvoicePortal();
 }

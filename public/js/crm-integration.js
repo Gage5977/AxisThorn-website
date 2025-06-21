@@ -54,7 +54,7 @@ class CRMIntegration {
   }
 
   async sendToWebhook(leadData) {
-    if (!this.webhookEndpoint) return;
+    if (!this.webhookEndpoint) {return;}
     
     try {
       await fetch(this.webhookEndpoint, {

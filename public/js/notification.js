@@ -1,17 +1,17 @@
 // Notification Module
 export const NotificationModule = {
-    show(message, type = 'info') {
-        // Remove existing notifications
-        const existingNotifications = document.querySelectorAll('.notification');
-        existingNotifications.forEach(notif => notif.remove());
+  show(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notif => notif.remove());
         
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.textContent = message;
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
         
-        // Add styles
-        notification.style.cssText = `
+    // Add styles
+    notification.style.cssText = `
             position: fixed;
             top: 100px;
             right: 20px;
@@ -30,26 +30,26 @@ export const NotificationModule = {
             border-radius: 2px;
         `;
         
-        document.body.appendChild(notification);
+    document.body.appendChild(notification);
         
-        // Animate in
-        requestAnimationFrame(() => {
-            notification.style.opacity = '1';
-            notification.style.transform = 'translateX(0)';
-        });
+    // Animate in
+    requestAnimationFrame(() => {
+      notification.style.opacity = '1';
+      notification.style.transform = 'translateX(0)';
+    });
         
-        // Remove after delay
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => notification.remove(), 300);
-        }, 5000);
-    }
+    // Remove after delay
+    setTimeout(() => {
+      notification.style.opacity = '0';
+      notification.style.transform = 'translateX(100%)';
+      setTimeout(() => notification.remove(), 300);
+    }, 5000);
+  }
 };
 
 // Export convenience function
 export function showNotification(message, type = 'info') {
-    NotificationModule.show(message, type);
+  NotificationModule.show(message, type);
 }
 
 export default NotificationModule;

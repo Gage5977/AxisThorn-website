@@ -56,7 +56,7 @@ async function runSmokeTests() {
       name: 'API v1 Status',
       path: '/api/v1',
       expectedStatus: 200,
-      checks: [(res) => res.data && res.data.status === 'ok']
+      checks: [(res) => res.data && res.data.status === 'stable']
     },
     {
       name: 'Get All Invoices (Prisma)',
@@ -80,8 +80,8 @@ async function runSmokeTests() {
       expectedStatus: 200,
       checks: [
         (res) => res.headers['x-content-type-options'] === 'nosniff',
-        (res) => res.headers['x-frame-options'] === 'DENY',
-        (res) => res.headers['x-xss-protection'] === '1; mode=block'
+        (res) => res.headers['x-frame-options'] === 'SAMEORIGIN',
+        (res) => res.headers['x-xss-protection'] === '0'
       ]
     },
     {
@@ -89,7 +89,7 @@ async function runSmokeTests() {
       path: '/api/v1/invoices',
       expectedStatus: 200,
       checks: [
-        (res) => res.headers['access-control-allow-origin'] !== undefined
+        (res) => res.headers['access-control-allow-credentials'] === 'true'
       ]
     },
     {

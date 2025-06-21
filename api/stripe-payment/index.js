@@ -29,12 +29,12 @@ module.exports = async function handler(req, res) {
   // Apply authentication middleware
   await new Promise((resolve, reject) => {
     authenticate(req, res, (err) => {
-      if (err) reject(err);
-      else resolve();
+      if (err) {reject(err);}
+      else {resolve();}
     });
   }).catch(() => {
     // Response already sent by middleware
-    return;
+    
   });
 
   if (!req.auth) {
@@ -43,26 +43,26 @@ module.exports = async function handler(req, res) {
 
   try {
     switch (req.method) {
-      case 'POST':
-        const { action } = req.body;
+    case 'POST':
+      const { action } = req.body;
 
-        switch (action) {
-          case 'create-payment-intent':
-            return await createPaymentIntent(req, res);
+      switch (action) {
+      case 'create-payment-intent':
+        return await createPaymentIntent(req, res);
           
-          case 'confirm-payment':
-            return await confirmPayment(req, res);
+      case 'confirm-payment':
+        return await confirmPayment(req, res);
           
-          case 'get-payment-status':
-            return await getPaymentStatus(req, res);
+      case 'get-payment-status':
+        return await getPaymentStatus(req, res);
           
-          default:
-            return res.status(400).json({ error: 'Invalid action' });
-        }
-
       default:
-        res.setHeader('Allow', ['POST', 'OPTIONS']);
-        return res.status(405).json({ error: 'Method not allowed' });
+        return res.status(400).json({ error: 'Invalid action' });
+      }
+
+    default:
+      res.setHeader('Allow', ['POST', 'OPTIONS']);
+      return res.status(405).json({ error: 'Method not allowed' });
     }
   } catch (error) {
     console.error('Stripe API Error:', error);
@@ -71,17 +71,17 @@ module.exports = async function handler(req, res) {
       message: error.message 
     });
   }
-}
+};
 
 async function createPaymentIntent(req, res) {
   // Apply payment amount validation
   await new Promise((resolve, reject) => {
     validatePaymentAmount(req, res, (err) => {
-      if (err) reject(err);
-      else resolve();
+      if (err) {reject(err);}
+      else {resolve();}
     });
   }).catch(() => {
-    return;
+    
   });
 
   const { 

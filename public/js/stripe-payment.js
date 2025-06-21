@@ -96,7 +96,7 @@ class StripePaymentHandler {
         Object.assign(headers, authHeaders);
       }
       
-      const response = await fetch('/api/stripe-payment', {
+      const response = await fetch('/api/v1/stripe-payment', {
         method: 'POST',
         headers,
         body: JSON.stringify({
@@ -159,7 +159,7 @@ class StripePaymentHandler {
         Object.assign(headers, authHeaders);
       }
       
-      const response = await fetch('/api/stripe-payment', {
+      const response = await fetch('/api/v1/stripe-payment', {
         method: 'POST',
         headers,
         body: JSON.stringify({

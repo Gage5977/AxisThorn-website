@@ -54,7 +54,7 @@ class AxisExperience {
   initParallax() {
     const parallaxElements = document.querySelectorAll('[data-parallax]');
     
-    if (parallaxElements.length === 0) return;
+    if (parallaxElements.length === 0) {return;}
     
     let ticking = false;
     
@@ -137,7 +137,7 @@ class AxisExperience {
   // Typewriter effect for hero
   initTypewriter() {
     const typewriterElement = document.querySelector('.typewriter');
-    if (!typewriterElement) return;
+    if (!typewriterElement) {return;}
     
     const text = typewriterElement.textContent;
     typewriterElement.textContent = '';

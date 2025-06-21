@@ -61,36 +61,36 @@ module.exports = async function handler(req, res) {
 
   try {
     switch (req.method) {
-      case 'GET':
-        const { country, currency, enabled } = req.query;
-        let filteredMethods = [...paymentMethods];
+    case 'GET':
+      const { country, currency, enabled } = req.query;
+      let filteredMethods = [...paymentMethods];
 
-        if (country) {
-          filteredMethods = filteredMethods.filter(method => 
-            method.countries.includes(country.toUpperCase())
-          );
-        }
+      if (country) {
+        filteredMethods = filteredMethods.filter(method => 
+          method.countries.includes(country.toUpperCase())
+        );
+      }
 
-        if (currency) {
-          filteredMethods = filteredMethods.filter(method =>
-            method.currencies.includes(currency.toLowerCase())
-          );
-        }
+      if (currency) {
+        filteredMethods = filteredMethods.filter(method =>
+          method.currencies.includes(currency.toLowerCase())
+        );
+      }
 
-        if (enabled !== undefined) {
-          filteredMethods = filteredMethods.filter(method =>
-            method.enabled === (enabled === 'true')
-          );
-        }
+      if (enabled !== undefined) {
+        filteredMethods = filteredMethods.filter(method =>
+          method.enabled === (enabled === 'true')
+        );
+      }
 
-        return res.status(200).json(filteredMethods);
+      return res.status(200).json(filteredMethods);
 
-      default:
-        res.setHeader('Allow', ['GET', 'OPTIONS']);
-        return res.status(405).json({ error: 'Method not allowed' });
+    default:
+      res.setHeader('Allow', ['GET', 'OPTIONS']);
+      return res.status(405).json({ error: 'Method not allowed' });
     }
   } catch (error) {
     console.error('Payment Methods API Error:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
-}
+};

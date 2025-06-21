@@ -32,21 +32,21 @@ module.exports = async function handler(req, res) {
 
   try {
     switch (req.method) {
-      case 'GET':
-        const productList = products.map(product => product.toJSON());
-        return res.status(200).json(productList);
+    case 'GET':
+      const productList = products.map(product => product.toJSON());
+      return res.status(200).json(productList);
 
-      case 'POST':
-        const newProduct = new Product(req.body);
-        products.push(newProduct);
-        return res.status(201).json(newProduct.toJSON());
+    case 'POST':
+      const newProduct = new Product(req.body);
+      products.push(newProduct);
+      return res.status(201).json(newProduct.toJSON());
 
-      default:
-        res.setHeader('Allow', ['GET', 'POST', 'OPTIONS']);
-        return res.status(405).json({ error: 'Method not allowed' });
+    default:
+      res.setHeader('Allow', ['GET', 'POST', 'OPTIONS']);
+      return res.status(405).json({ error: 'Method not allowed' });
     }
   } catch (error) {
     console.error('Product API Error:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
-}
+};

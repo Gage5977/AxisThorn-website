@@ -24,28 +24,28 @@ module.exports = async function handler(req, res) {
 
   try {
     switch (event.type) {
-      case 'payment_intent.succeeded':
-        await handlePaymentSuccess(event.data.object);
-        break;
+    case 'payment_intent.succeeded':
+      await handlePaymentSuccess(event.data.object);
+      break;
       
-      case 'payment_intent.payment_failed':
-        await handlePaymentFailure(event.data.object);
-        break;
+    case 'payment_intent.payment_failed':
+      await handlePaymentFailure(event.data.object);
+      break;
       
-      case 'charge.succeeded':
-        await handleChargeSuccess(event.data.object);
-        break;
+    case 'charge.succeeded':
+      await handleChargeSuccess(event.data.object);
+      break;
       
-      case 'charge.failed':
-        await handleChargeFailed(event.data.object);
-        break;
+    case 'charge.failed':
+      await handleChargeFailed(event.data.object);
+      break;
       
-      case 'customer.created':
-        await handleCustomerCreated(event.data.object);
-        break;
+    case 'customer.created':
+      await handleCustomerCreated(event.data.object);
+      break;
       
-      default:
-        console.log(`Unhandled event type ${event.type}`);
+    default:
+      console.log(`Unhandled event type ${event.type}`);
     }
 
     return res.status(200).json({ received: true });
@@ -53,7 +53,7 @@ module.exports = async function handler(req, res) {
     console.error('Webhook handler error:', error);
     return res.status(500).json({ error: 'Webhook handler error' });
   }
-}
+};
 
 async function handlePaymentSuccess(paymentIntent) {
   console.log('Payment succeeded:', paymentIntent.id);

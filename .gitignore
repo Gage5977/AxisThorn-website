@@ -40,3 +40,5 @@ yarn-error.log*
 *.bak
 .vercel
 backups/
+
+/src/generated/prisma

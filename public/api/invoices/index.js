@@ -65,53 +65,53 @@ module.exports = async function handler(req, res) {
 
   try {
     switch (req.method) {
-      case 'GET':
-        // List all invoices
-        const invoiceList = invoices.map(inv => inv.toJSON());
-        return res.status(200).json(invoiceList);
+    case 'GET':
+      // List all invoices
+      const invoiceList = invoices.map(inv => inv.toJSON());
+      return res.status(200).json(invoiceList);
 
-      case 'POST':
-        // Create new invoice
-        const invoiceData = req.body;
+    case 'POST':
+      // Create new invoice
+      const invoiceData = req.body;
         
-        // Calculate totals
-        let subtotal = 0;
-        if (invoiceData.items && Array.isArray(invoiceData.items)) {
-          subtotal = invoiceData.items.reduce((sum, item) => {
-            return sum + (parseFloat(item.quantity || 0) * parseFloat(item.unitPrice || 0));
-          }, 0);
+      // Calculate totals
+      let subtotal = 0;
+      if (invoiceData.items && Array.isArray(invoiceData.items)) {
+        subtotal = invoiceData.items.reduce((sum, item) => {
+          return sum + (parseFloat(item.quantity || 0) * parseFloat(item.unitPrice || 0));
+        }, 0);
+      }
+
+      let discountAmount = 0;
+      if (invoiceData.discount) {
+        if (invoiceData.discountType === 'percentage') {
+          discountAmount = subtotal * (parseFloat(invoiceData.discount) / 100);
+        } else {
+          discountAmount = parseFloat(invoiceData.discount);
         }
+      }
 
-        let discountAmount = 0;
-        if (invoiceData.discount) {
-          if (invoiceData.discountType === 'percentage') {
-            discountAmount = subtotal * (parseFloat(invoiceData.discount) / 100);
-          } else {
-            discountAmount = parseFloat(invoiceData.discount);
-          }
-        }
+      const afterDiscount = subtotal - discountAmount;
+      const taxAmount = afterDiscount * (parseFloat(invoiceData.taxRate || 0) / 100);
+      const total = afterDiscount + taxAmount;
 
-        const afterDiscount = subtotal - discountAmount;
-        const taxAmount = afterDiscount * (parseFloat(invoiceData.taxRate || 0) / 100);
-        const total = afterDiscount + taxAmount;
+      const newInvoice = new Invoice({
+        ...invoiceData,
+        subtotal: subtotal,
+        tax: taxAmount,
+        total: total,
+        amount_due: total
+      });
 
-        const newInvoice = new Invoice({
-          ...invoiceData,
-          subtotal: subtotal,
-          tax: taxAmount,
-          total: total,
-          amount_due: total
-        });
+      invoices.push(newInvoice);
+      return res.status(201).json(newInvoice.toJSON());
 
-        invoices.push(newInvoice);
-        return res.status(201).json(newInvoice.toJSON());
-
-      default:
-        res.setHeader('Allow', ['GET', 'POST', 'OPTIONS']);
-        return res.status(405).json({ error: 'Method not allowed' });
+    default:
+      res.setHeader('Allow', ['GET', 'POST', 'OPTIONS']);
+      return res.status(405).json({ error: 'Method not allowed' });
     }
   } catch (error) {
     console.error('Invoice API Error:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
-}
+};

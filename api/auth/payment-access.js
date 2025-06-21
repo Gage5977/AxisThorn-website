@@ -28,7 +28,7 @@ if (process.env.PRODUCTION_CLIENTS) {
 // Validate client credentials
 function validateClient(clientId, clientSecret) {
   const client = VALID_CLIENTS.get(clientId);
-  if (!client) return false;
+  if (!client) {return false;}
   
   // In production, use bcrypt or similar for comparing secrets
   return client.secret === clientSecret;
@@ -37,10 +37,10 @@ function validateClient(clientId, clientSecret) {
 // Validate invoice access
 function hasInvoiceAccess(clientId, invoiceNumber) {
   const client = VALID_CLIENTS.get(clientId);
-  if (!client) return false;
+  if (!client) {return false;}
 
   // Check if client has access to all invoices
-  if (client.allowedInvoicePatterns.includes('*')) return true;
+  if (client.allowedInvoicePatterns.includes('*')) {return true;}
 
   // Check specific invoice patterns
   return client.allowedInvoicePatterns.some(pattern => {
