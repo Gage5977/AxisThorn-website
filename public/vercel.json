@@ -8,27 +8,24 @@
     {
       "source": "/app",
       "destination": "/app.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/portfolio.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/services.html"
     }
   ],
   "redirects": [
     {
       "source": "/www.axisthorn.com/(.*)",
       "destination": "https://axisthorn.com/$1",
-      "permanent": true
-    },
-    {
-      "source": "/consultation.html",
-      "destination": "/#services",
-      "permanent": true
-    },
-    {
-      "source": "/implementation.html",
-      "destination": "/#services",
-      "permanent": true
-    },
-    {
-      "source": "/support.html",
-      "destination": "/#services",
       "permanent": true
     },
     {
@@ -39,21 +36,6 @@
     {
       "source": "/1099.html",
       "destination": "/#contact",
-      "permanent": true
-    },
-    {
-      "source": "/consultation",
-      "destination": "/#services",
-      "permanent": true
-    },
-    {
-      "source": "/implementation",
-      "destination": "/#services",
-      "permanent": true
-    },
-    {
-      "source": "/support",
-      "destination": "/#services",
       "permanent": true
     },
     {
