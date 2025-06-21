@@ -913,6 +913,19 @@ body:not(.loaded) * {
   text-decoration-thickness: 1px;
 }
 
+/* Animation for Invoice Generator Icon */
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
 /* Print Styles */
 @media print {
   .nav-2025,

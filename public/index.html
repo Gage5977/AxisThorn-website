@@ -242,13 +242,16 @@
             
             <div class="grid-2025 grid-4-2025">
                 <div class="system-showcase reveal-2025">
-                    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-                        <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 36L14 12H18L28 36H24L21 28H11L8 36H4ZM12 24H20L16 14L12 24Z" fill="currentColor"/>
-                            <path d="M20 12H44V16H34V36H30V16H20V12Z" fill="currentColor"/>
-                            <circle cx="37" cy="36" r="2" fill="#0066FF"/>
-                        </svg>
-                        <h3>Invoice Generator</h3>
+                    <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
+                        <div style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: linear-gradient(135deg, var(--axis-neutral-900) 0%, var(--axis-neutral-800) 100%); border-radius: 12px; border: 1px solid var(--axis-neutral-700); backdrop-filter: blur(10px); position: relative; overflow: hidden;">
+                            <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: var(--axis-pure-white); filter: drop-shadow(0 0 8px rgba(0, 102, 255, 0.4));">
+                                <path d="M4 36L14 12H18L28 36H24L21 28H11L8 36H4ZM12 24H20L16 14L12 24Z" fill="currentColor"/>
+                                <path d="M20 12H44V16H34V36H30V16H20V12Z" fill="currentColor"/>
+                                <circle cx="37" cy="36" r="2" fill="#0066FF" style="filter: drop-shadow(0 0 6px #0066FF);"/>
+                            </svg>
+                            <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent); animation: shimmer 3s infinite;"></div>
+                        </div>
+                        <h3 style="color: var(--axis-pure-white); text-shadow: 0 0 12px rgba(0, 102, 255, 0.2);">Invoice Generator</h3>
                     </div>
                     <p>Professional invoice creation and management system.</p>
                     <a href="/invoices" class="contact-link">Launch Generator →</a>
