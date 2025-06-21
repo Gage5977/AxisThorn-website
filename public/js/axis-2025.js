@@ -157,13 +157,224 @@ class AxisExperience {
   }
 }
 
+// Lead Magnet System
+function showLeadMagnet(type) {
+  const modal = document.getElementById('leadMagnetModal');
+  const content = document.getElementById('modalContent');
+  
+  const leadMagnets = {
+    assessment: {
+      title: 'AI Readiness Assessment',
+      subtitle: 'Discover your automation potential in 5 minutes',
+      form: `
+        <div style="margin-bottom: var(--space-6);">
+          <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">Current Monthly Processing Volume</label>
+          <select style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-800); border: 1px solid var(--axis-neutral-700); border-radius: 8px; color: var(--axis-pure-white);">
+            <option>[ calculating... ]</option>
+            <option>Under 100 transactions</option>
+            <option>100-1,000 transactions</option>
+            <option>1,000-10,000 transactions</option>
+            <option>10,000+ transactions</option>
+          </select>
+        </div>
+        <div style="margin-bottom: var(--space-6);">
+          <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">Primary Challenge</label>
+          <select style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-800); border: 1px solid var(--axis-neutral-700); border-radius: 8px; color: var(--axis-pure-white);">
+            <option>[ architecting... ]</option>
+            <option>Manual data entry</option>
+            <option>Analysis time</option>
+            <option>Compliance tracking</option>
+            <option>Risk assessment</option>
+          </select>
+        </div>
+      `,
+      cta: 'Generate My Report'
+    },
+    demo: {
+      title: 'Interactive Demo',
+      subtitle: 'See AI financial processing in action',
+      form: `
+        <div style="margin-bottom: var(--space-6);">
+          <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">Preferred Demo Focus</label>
+          <select style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-800); border: 1px solid var(--axis-neutral-700); border-radius: 8px; color: var(--axis-pure-white);">
+            <option>[ amplifying... ]</option>
+            <option>Financial Statement Processing</option>
+            <option>Portfolio Risk Analysis</option>
+            <option>Contract Intelligence</option>
+            <option>Custom Integration</option>
+          </select>
+        </div>
+        <div style="margin-bottom: var(--space-6);">
+          <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">Best Time for Demo</label>
+          <select style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-800); border: 1px solid var(--axis-neutral-700); border-radius: 8px; color: var(--axis-pure-white);">
+            <option>[ scheduling... ]</option>
+            <option>This week</option>
+            <option>Next week</option>
+            <option>Within 30 days</option>
+            <option>Just exploring</option>
+          </select>
+        </div>
+      `,
+      cta: 'Book My Demo'
+    },
+    consultation: {
+      title: 'Strategic Consultation',
+      subtitle: 'Executive-level AI architecture discussion',
+      form: `
+        <div style="margin-bottom: var(--space-6);">
+          <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">Organization Type</label>
+          <select style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-800); border: 1px solid var(--axis-neutral-700); border-radius: 8px; color: var(--axis-pure-white);">
+            <option>[ identifying... ]</option>
+            <option>Family Office</option>
+            <option>Asset Manager</option>
+            <option>Financial Institution</option>
+            <option>Corporate Treasury</option>
+          </select>
+        </div>
+        <div style="margin-bottom: var(--space-6);">
+          <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">Investment Timeline</label>
+          <select style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-800); border: 1px solid var(--axis-neutral-700); border-radius: 8px; color: var(--axis-pure-white);">
+            <option>[ planning... ]</option>
+            <option>Immediate (Q1 2025)</option>
+            <option>Near-term (Q2-Q3 2025)</option>
+            <option>Future planning</option>
+            <option>Research phase</option>
+          </select>
+        </div>
+      `,
+      cta: 'Schedule Consultation'
+    }
+  };
+  
+  const magnet = leadMagnets[type];
+  
+  content.innerHTML = `
+    <div style="margin-bottom: var(--space-8);">
+      <h3 style="font-size: var(--text-2xl); margin-bottom: var(--space-2); color: var(--axis-accent-primary);">${magnet.title}</h3>
+      <p style="color: var(--axis-neutral-400);">${magnet.subtitle}</p>
+    </div>
+    
+    <form onsubmit="submitLeadMagnet(event, '${type}')">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
+        <div>
+          <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">Name</label>
+          <input required type="text" style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-800); border: 1px solid var(--axis-neutral-700); border-radius: 8px; color: var(--axis-pure-white);">
+        </div>
+        <div>
+          <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">Email</label>
+          <input required type="email" style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-800); border: 1px solid var(--axis-neutral-700); border-radius: 8px; color: var(--axis-pure-white);">
+        </div>
+      </div>
+      
+      ${magnet.form}
+      
+      <button type="submit" class="btn-2025 btn-primary-2025" style="width: 100%; margin-top: var(--space-6);">
+        ${magnet.cta} →
+      </button>
+    </form>
+  `;
+  
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLeadMagnet() {
+  const modal = document.getElementById('leadMagnetModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function submitLeadMagnet(event, type) {
+  event.preventDefault();
+  
+  // Here you would integrate with your CRM/email system
+  // For now, show a thank you message
+  const content = document.getElementById('modalContent');
+  
+  const thankYouMessages = {
+    assessment: 'Your AI readiness report is being generated. Check your email in 5 minutes.',
+    demo: 'Demo scheduled! Our team will contact you within 24 hours to confirm timing.',
+    consultation: 'Consultation request received. Our executive team will reach out within 48 hours.'
+  };
+  
+  content.innerHTML = `
+    <div style="text-align: center;">
+      <div style="font-size: 48px; margin-bottom: var(--space-4);">✓</div>
+      <h3 style="color: var(--axis-accent-secondary); margin-bottom: var(--space-4);">Success!</h3>
+      <p style="color: var(--axis-neutral-300); margin-bottom: var(--space-6);">${thankYouMessages[type]}</p>
+      <button onclick="closeLeadMagnet()" class="btn-2025 btn-primary-2025">Continue Exploring</button>
+    </div>
+  `;
+  
+  // Analytics tracking would go here
+  console.log(`Lead magnet submitted: ${type}`);
+}
+
+// Progressive Disclosure for Services
+function expandService(serviceType) {
+  event.stopPropagation();
+  
+  const serviceCard = event.currentTarget;
+  const details = serviceCard.querySelector('.service-details');
+  const expandIcon = serviceCard.querySelector('.expand-icon');
+  
+  const isExpanded = details.style.display === 'block';
+  
+  // Close all other expanded services
+  document.querySelectorAll('.service-card').forEach(card => {
+    const cardDetails = card.querySelector('.service-details');
+    const cardIcon = card.querySelector('.expand-icon');
+    if (card !== serviceCard) {
+      cardDetails.style.display = 'none';
+      cardIcon.textContent = '[ expand ]';
+      card.style.transform = 'scale(1)';
+    }
+  });
+  
+  if (isExpanded) {
+    details.style.display = 'none';
+    expandIcon.textContent = '[ expand ]';
+    serviceCard.style.transform = 'scale(1)';
+  } else {
+    details.style.display = 'block';
+    expandIcon.textContent = '[ collapse ]';
+    serviceCard.style.transform = 'scale(1.02)';
+    
+    // Smooth scroll to bring the expanded card into view
+    setTimeout(() => {
+      serviceCard.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    }, 100);
+  }
+}
+
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', () => {
   new AxisExperience();
   
   // Add loaded class for initial animations
   document.body.classList.add('loaded');
+  
+  // Close modal on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeLeadMagnet();
+    }
+  });
+  
+  // Close modal on backdrop click
+  document.getElementById('leadMagnetModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'leadMagnetModal') {
+      closeLeadMagnet();
+    }
+  });
 });
 
 // Export for use in other modules
 window.AxisExperience = AxisExperience;
+window.showLeadMagnet = showLeadMagnet;
+window.closeLeadMagnet = closeLeadMagnet;
+window.submitLeadMagnet = submitLeadMagnet;
+window.expandService = expandService;
