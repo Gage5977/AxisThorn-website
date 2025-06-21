@@ -63,7 +63,7 @@ const RedisStore = require('rate-limit-redis');
 const Redis = require('ioredis');
 
 const createRateLimiter = (windowMs = 15 * 60 * 1000, max = 100) => {
-  const { isProduction } = validateEnvironment();
+  const isProduction = process.env.NODE_ENV === 'production';
   
   // Use Redis in production, memory store in development
   let store = undefined;

@@ -18,7 +18,7 @@ const versionAliases = {
 };
 
 // Main router handler
-module.exports = async (req, res) => {
+module.exports = async (req, res, next) => {
   try {
     // Extract version from URL
     const urlParts = req.url.split('?')[0].split('/').filter(Boolean);

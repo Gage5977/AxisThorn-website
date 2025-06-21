@@ -52,14 +52,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// Health check - no auth required
+// Health check - no auth required (before gateway)
 app.all('/api/health', require('./api/health'));
 
-// Apply auth gateway to all /api routes
+// Static files (must come before API routes)
+app.use(express.static('public'));
+
+// Apply auth gateway to all /api routes (after health check)
 app.use('/api', apiGateway);
 
 // API routes
-app.use('/api', require('./api/router'));
+app.use('/api/v1', require('./api/v1'));
 
 // 404 handler
 app.use((req, res) => {

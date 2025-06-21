@@ -1,191 +1,265 @@
-// Comprehensive smoke tests for Axis Thorn website and API
+#!/usr/bin/env node
+
 const http = require('http');
+const https = require('https');
 
-const BASE_URL = 'http://localhost:3001';
+// Configuration
+const BASE_URL = process.env.API_URL || 'http://localhost:3000';
+const isHTTPS = BASE_URL.startsWith('https');
+const httpModule = isHTTPS ? https : http;
 
-async function makeRequest(path, method = 'GET', data = null) {
+// Test credentials
+const TEST_ACCESS_CODE = 'DEMO-2025-AXIS';
+const TEST_EMAIL = 'demo@axisthorn.com';
+const TEST_PASSWORD = 'demo123';
+
+// Colors for output
+const colors = {
+  green: '\x1b[32m',
+  red: '\x1b[31m',
+  yellow: '\x1b[33m',
+  reset: '\x1b[0m'
+};
+
+// Helper functions
+function makeRequest(options, data = null) {
   return new Promise((resolve, reject) => {
-    const url = new URL(path, BASE_URL);
-    const options = {
-      hostname: url.hostname,
-      port: url.port,
-      path: url.pathname + url.search,
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-        'User-Agent': 'SmokeTest/1.0'
-      }
-    };
-
-    const req = http.request(options, (res) => {
+    const req = httpModule.request(options, (res) => {
       let body = '';
       res.on('data', chunk => body += chunk);
       res.on('end', () => {
-        resolve({
-          status: res.statusCode,
-          headers: res.headers,
-          body: body,
-          data: body ? (() => {
-            try { return JSON.parse(body); } catch { return body; }
-          })() : null
-        });
+        try {
+          const result = {
+            status: res.statusCode,
+            headers: res.headers,
+            body: body ? JSON.parse(body) : null
+          };
+          resolve(result);
+        } catch (e) {
+          resolve({
+            status: res.statusCode,
+            headers: res.headers,
+            body: body
+          });
+        }
       });
     });
-
+    
     req.on('error', reject);
-    
-    if (data) {
-      req.write(JSON.stringify(data));
-    }
-    
+    if (data) req.write(JSON.stringify(data));
     req.end();
   });
 }
 
-async function runSmokeTests() {
-  console.log('🧪 Running Comprehensive Smoke Tests for Axis Thorn\n');
-  
-  const tests = [
-    {
-      name: 'Main Website',
-      path: '/',
-      expectedStatus: 200,
-      checks: [(res) => res.body.includes('Axis Thorn')]
-    },
-    {
-      name: 'API v1 Status',
-      path: '/api/v1',
-      expectedStatus: 200,
-      checks: [(res) => res.data && res.data.status === 'stable']
-    },
-    {
-      name: 'Get All Invoices (Prisma)',
-      path: '/api/v1/invoices',
-      expectedStatus: 200,
-      checks: [
-        (res) => res.data && Array.isArray(res.data.data),
-        (res) => res.data.data.length > 0,
-        (res) => res.data.pagination && typeof res.data.pagination.total === 'number'
-      ]
-    },
-    {
-      name: 'Get Single Invoice',
-      path: '/api/v1/invoices?id=test-id',
-      expectedStatus: [200, 404], // 404 is acceptable for test ID
-      checks: []
-    },
-    {
-      name: 'Security Headers Check',
-      path: '/api/v1/invoices',
-      expectedStatus: 200,
-      checks: [
-        (res) => res.headers['x-content-type-options'] === 'nosniff',
-        (res) => res.headers['x-frame-options'] === 'SAMEORIGIN',
-        (res) => res.headers['x-xss-protection'] === '0'
-      ]
-    },
-    {
-      name: 'CORS Headers',
-      path: '/api/v1/invoices',
-      expectedStatus: 200,
-      checks: [
-        (res) => res.headers['access-control-allow-credentials'] === 'true'
-      ]
-    },
-    {
-      name: 'Portal Page',
-      path: '/invoices',
-      expectedStatus: 200,
-      checks: [(res) => res.body.includes('html')]
-    },
-    {
-      name: 'Navigation Update Check',
-      path: '/',
-      expectedStatus: 200,
-      checks: [(res) => res.body.includes('Portal')]
-    }
-  ];
-
-  let passed = 0;
-  let failed = 0;
-
-  for (const test of tests) {
-    try {
-      console.log(`🔍 Testing: ${test.name}`);
-      const response = await makeRequest(test.path);
-      
-      // Check status code
-      const expectedStatuses = Array.isArray(test.expectedStatus) 
-        ? test.expectedStatus 
-        : [test.expectedStatus];
-      
-      if (!expectedStatuses.includes(response.status)) {
-        console.log(`   ❌ Status code mismatch. Expected: ${test.expectedStatus}, Got: ${response.status}`);
-        failed++;
-        continue;
-      }
-
-      // Run custom checks
-      let checksPassed = true;
-      for (const check of test.checks) {
-        try {
-          if (!check(response)) {
-            checksPassed = false;
-            break;
-          }
-        } catch (error) {
-          console.log(`   ❌ Check failed: ${error.message}`);
-          checksPassed = false;
-          break;
-        }
-      }
-
-      if (checksPassed) {
-        console.log(`   ✅ Passed`);
-        passed++;
-      } else {
-        console.log(`   ❌ Custom checks failed`);
-        failed++;
-      }
-
-    } catch (error) {
-      console.log(`   ❌ Request failed: ${error.message}`);
-      failed++;
-    }
-  }
-
-  console.log(`\n📊 Test Results:`);
-  console.log(`   ✅ Passed: ${passed}`);
-  console.log(`   ❌ Failed: ${failed}`);
-  console.log(`   📈 Success Rate: ${Math.round((passed / (passed + failed)) * 100)}%`);
-
-  if (failed === 0) {
-    console.log(`\n🎉 All smoke tests passed! System is ready for deployment.`);
-  } else {
-    console.log(`\n⚠️  Some tests failed. Please review before deployment.`);
-  }
-
-  // Test PDF generation endpoint
+async function test(name, fn) {
   try {
-    console.log(`\n🔍 Testing PDF Generation...`);
-    const invoicesResponse = await makeRequest('/api/v1/invoices');
-    if (invoicesResponse.data && invoicesResponse.data.data.length > 0) {
-      const firstInvoice = invoicesResponse.data.data[0];
-      const pdfResponse = await makeRequest(`/api/invoices/pdf?id=${firstInvoice.id}`);
-      
-      if (pdfResponse.status === 200 && pdfResponse.headers['content-type'] === 'application/pdf') {
-        console.log(`   ✅ PDF generation working`);
-      } else {
-        console.log(`   ❌ PDF generation failed. Status: ${pdfResponse.status}`);
-      }
-    } else {
-      console.log(`   ⚠️  No invoices found for PDF test`);
-    }
+    await fn();
+    console.log(`${colors.green}✓${colors.reset} ${name}`);
+    return true;
   } catch (error) {
-    console.log(`   ❌ PDF test error: ${error.message}`);
+    console.log(`${colors.red}✗${colors.reset} ${name}`);
+    console.log(`  ${colors.red}${error.message}${colors.reset}`);
+    return false;
   }
-
-  return { passed, failed };
 }
 
-runSmokeTests().catch(console.error);
+// Parse URL
+const url = new URL(BASE_URL);
+const baseOptions = {
+  hostname: url.hostname,
+  port: url.port || (isHTTPS ? 443 : 80),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+};
+
+// Test suites
+async function runTests() {
+  console.log('\\n🧪 Running Comprehensive Smoke Tests\\n');
+  console.log(`Base URL: ${BASE_URL}\\n`);
+  
+  let passCount = 0;
+  let totalTests = 0;
+  let authToken = '';
+
+  // 1. Basic connectivity
+  totalTests++;
+  if (await test('Health check endpoint', async () => {
+    const res = await makeRequest({
+      ...baseOptions,
+      path: '/api/health',
+      method: 'GET'
+    });
+    if (res.status !== 200) throw new Error(`Expected 200, got ${res.status}`);
+  })) passCount++;
+
+  // 2. API version info
+  totalTests++;
+  if (await test('API version endpoint', async () => {
+    const res = await makeRequest({
+      ...baseOptions,
+      path: '/api/v1',
+      method: 'GET'
+    });
+    if (res.status !== 200) throw new Error(`Expected 200, got ${res.status}`);
+    if (!res.body.version) throw new Error('Missing version info');
+  })) passCount++;
+
+  // 3. Authentication flow
+  totalTests++;
+  if (await test('User login', async () => {
+    const res = await makeRequest({
+      ...baseOptions,
+      path: '/api/v1/auth/login',
+      method: 'POST'
+    }, {
+      email: TEST_EMAIL,
+      password: TEST_PASSWORD
+    });
+    if (res.status !== 200) throw new Error(`Expected 200, got ${res.status}`);
+    if (!res.body.token) throw new Error('No token received');
+    authToken = res.body.token;
+  })) passCount++;
+
+  // 4. Protected endpoint with JWT
+  totalTests++;
+  if (await test('Access protected endpoint with JWT', async () => {
+    const res = await makeRequest({
+      ...baseOptions,
+      path: '/api/v1/invoices',
+      method: 'GET',
+      headers: {
+        ...baseOptions.headers,
+        'Authorization': `Bearer ${authToken}`
+      }
+    });
+    if (res.status !== 200) throw new Error(`Expected 200, got ${res.status}`);
+  })) passCount++;
+
+  // 5. Access code validation
+  totalTests++;
+  if (await test('Validate access code', async () => {
+    const res = await makeRequest({
+      ...baseOptions,
+      path: '/api/v1/access-codes?action=validate',
+      method: 'POST',
+      headers: {
+        ...baseOptions.headers,
+        'Authorization': `Bearer ${authToken}`
+      }
+    }, {
+      code: TEST_ACCESS_CODE
+    });
+    if (res.status !== 200 && res.status !== 403) {
+      throw new Error(`Expected 200 or 403, got ${res.status}`);
+    }
+  })) passCount++;
+
+  // 6. Access exclusive content with code
+  totalTests++;
+  if (await test('Access exclusive content with valid code', async () => {
+    const res = await makeRequest({
+      ...baseOptions,
+      path: '/api/v1/exclusive',
+      method: 'GET',
+      headers: {
+        ...baseOptions.headers,
+        'X-Access-Code': TEST_ACCESS_CODE
+      }
+    });
+    if (res.status !== 200) throw new Error(`Expected 200, got ${res.status}`);
+    if (!res.body.access || res.body.access !== 'granted') {
+      throw new Error('Access not granted');
+    }
+  })) passCount++;
+
+  // 7. Test rate limiting on access codes
+  totalTests++;
+  if (await test('Rate limiting on access code attempts', async () => {
+    const invalidCode = 'XXXX-XXXX-XXXX';
+    let rateLimited = false;
+    
+    // Make 6 attempts (limit is 5 per minute)
+    for (let i = 0; i < 6; i++) {
+      const res = await makeRequest({
+        ...baseOptions,
+        path: '/api/v1/exclusive',
+        method: 'GET',
+        headers: {
+          ...baseOptions.headers,
+          'X-Access-Code': invalidCode
+        }
+      });
+      
+      if (res.status === 429) {
+        rateLimited = true;
+        break;
+      }
+    }
+    
+    if (!rateLimited) {
+      throw new Error('Rate limiting not triggered after 6 attempts');
+    }
+  })) passCount++;
+
+  // 8. Test CORS headers
+  totalTests++;
+  if (await test('CORS headers present', async () => {
+    const res = await makeRequest({
+      ...baseOptions,
+      path: '/api/v1',
+      method: 'OPTIONS',
+      headers: {
+        ...baseOptions.headers,
+        'Origin': 'https://axisthorn.com'
+      }
+    });
+    if (!res.headers['access-control-allow-origin']) {
+      throw new Error('CORS headers missing');
+    }
+  })) passCount++;
+
+  // 9. Static file serving
+  totalTests++;
+  if (await test('Static files accessible', async () => {
+    const res = await makeRequest({
+      ...baseOptions,
+      path: '/invite.html',
+      method: 'GET',
+      headers: {}
+    });
+    if (res.status !== 200) throw new Error(`Expected 200, got ${res.status}`);
+  })) passCount++;
+
+  // 10. Invalid access code rejection
+  totalTests++;
+  if (await test('Invalid access code rejected', async () => {
+    const res = await makeRequest({
+      ...baseOptions,
+      path: '/api/v1/exclusive',
+      method: 'GET',
+      headers: {
+        ...baseOptions.headers,
+        'X-Access-Code': 'INVALID-CODE-HERE'
+      }
+    });
+    if (res.status !== 401) throw new Error(`Expected 401, got ${res.status}`);
+  })) passCount++;
+
+  // Summary
+  console.log(`\\n📊 Test Summary: ${passCount}/${totalTests} passed\\n`);
+  
+  if (passCount === totalTests) {
+    console.log(`${colors.green}✅ All tests passed!${colors.reset}\\n`);
+    process.exit(0);
+  } else {
+    console.log(`${colors.red}❌ ${totalTests - passCount} tests failed${colors.reset}\\n`);
+    process.exit(1);
+  }
+}
+
+// Run tests
+runTests().catch(error => {
+  console.error('Test runner error:', error);
+  process.exit(1);
+});
