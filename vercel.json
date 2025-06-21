@@ -70,27 +70,27 @@
     },
     {
       "source": "/client-portal",
-      "destination": "/invoices",
+      "destination": "/invoices.html",
       "permanent": false
     },
     {
       "source": "/portal",
-      "destination": "/invoices",
+      "destination": "/invoices.html",
       "permanent": false
     },
     {
       "source": "/invoice",
-      "destination": "/invoices",
+      "destination": "/invoices.html",
       "permanent": false
     },
     {
       "source": "/pay",
-      "destination": "/invoices",
+      "destination": "/invoices.html",
       "permanent": false
     },
     {
       "source": "/payment",
-      "destination": "/invoices",
+      "destination": "/invoices.html",
       "permanent": false
     },
     {
@@ -104,8 +104,8 @@
       "permanent": false
     },
     {
-      "source": "/banking.html",
-      "destination": "/banking-portal",
+      "source": "/banking",
+      "destination": "/banking-portal.html",
       "permanent": true
     },
     {
