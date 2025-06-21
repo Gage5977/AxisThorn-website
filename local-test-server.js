@@ -76,7 +76,9 @@ const pages = [
   { route: '/services', file: 'services.html' },
   { route: '/support', file: 'support.html' },
   { route: '/privacy', file: 'privacy.html' },
-  { route: '/terms', file: 'terms.html' }
+  { route: '/terms', file: 'terms.html' },
+  { route: '/invite', file: 'invite.html' },
+  { route: '/exclusive', file: 'exclusive.html' }
 ];
 
 pages.forEach(({ route, file }) => {

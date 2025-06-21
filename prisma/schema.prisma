@@ -21,10 +21,12 @@ model User {
   updatedAt DateTime @updatedAt
 
   // Relations
-  invoices  Invoice[]
-  customers Customer[]
-  products  Product[]
-  sessions  Session[]
+  invoices      Invoice[]
+  customers     Customer[]
+  products      Product[]
+  sessions      Session[]
+  accessCodes   AccessCode[]
+  accessCodeUses AccessCodeUse[]
 
   @@map("users")
 }
@@ -183,4 +185,41 @@ enum PaymentMethod {
   CHECK
   CASH
   OTHER
+}
+
+model AccessCode {
+  id          String    @id @default(cuid())
+  code        String    @unique
+  description String?
+  maxUses     Int?      @default(1)
+  usedCount   Int       @default(0)
+  expiresAt   DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  createdById String?
+
+  // Relations
+  createdBy User?           @relation(fields: [createdById], references: [id])
+  uses      AccessCodeUse[]
+
+  @@index([expiresAt])
+  @@map("access_codes")
+}
+
+model AccessCodeUse {
+  id           String   @id @default(cuid())
+  accessCodeId String
+  userId       String?
+  email        String?
+  usedAt       DateTime @default(now())
+  ipAddress    String?
+  userAgent    String?
+
+  // Relations
+  accessCode AccessCode @relation(fields: [accessCodeId], references: [id], onDelete: Cascade)
+  user       User?      @relation(fields: [userId], references: [id])
+
+  @@index([accessCodeId])
+  @@index([userId])
+  @@map("access_code_uses")
 }

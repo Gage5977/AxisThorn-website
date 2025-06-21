@@ -18,7 +18,9 @@ const endpoints = {
   'stripe-payment': require('../stripe-payment'),
   'payment-methods': require('../payment-methods'),
   'ai-chat': require('../ai-chat'),
-  'ai-demo': require('../ai-demo')
+  'ai-demo': require('../ai-demo'),
+  'access-codes': require('../access-codes'),
+  'exclusive/content': require('../exclusive/content')
 };
 
 // Version information

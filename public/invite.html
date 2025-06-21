@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Access - Axis Thorn LLC</title>
+    <meta name="description" content="Enter your invitation code to access exclusive Axis Thorn content and features.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/axis-2025.css">
+    
+    <style>
+        .invite-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: var(--axis-primary-bg);
+        }
+        
+        .invite-card {
+            background: rgba(10, 15, 28, 0.9);
+            border: 1px solid var(--axis-accent-color);
+            border-radius: 16px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 0 60px rgba(63, 114, 175, 0.3);
+            text-align: center;
+        }
+        
+        .invite-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--axis-accent-primary), var(--axis-accent-secondary));
+            border-radius: 20px;
+            font-size: 2rem;
+        }
+        
+        .invite-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--axis-pure-white);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .invite-subtitle {
+            color: var(--axis-neutral-400);
+            margin-bottom: 3rem;
+            font-size: 1.125rem;
+        }
+        
+        .code-form {
+            margin-bottom: 2rem;
+        }
+        
+        .code-input-group {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .code-input {
+            width: 5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--axis-accent-color);
+            border-radius: 12px;
+            color: var(--axis-pure-white);
+            font-family: 'Space Grotesk', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        
+        .code-input:focus {
+            outline: none;
+            border-color: var(--axis-primary-fg);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(230, 248, 255, 0.2);
+        }
+        
+        .code-input::placeholder {
+            color: var(--axis-neutral-600);
+        }
+        
+        .dash {
+            display: flex;
+            align-items: center;
+            color: var(--axis-neutral-500);
+            font-size: 2rem;
+            font-weight: 300;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: var(--axis-accent-primary);
+            border: none;
+            border-radius: 12px;
+            color: var(--axis-primary-bg);
+            font-family: var(--font-primary);
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover:not(:disabled) {
+            background: var(--axis-accent-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(63, 114, 175, 0.5);
+        }
+        
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .message.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+        
+        .message.success {
+            background: var(--axis-green-accent);
+            border: 1px solid var(--axis-green-primary);
+            color: var(--axis-green-primary);
+        }
+        
+        .footer-links {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(63, 114, 175, 0.3);
+        }
+        
+        .footer-links a {
+            color: var(--axis-neutral-400);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin: 0 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--axis-primary-fg);
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: var(--axis-pure-white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="invite-container">
+        <div class="invite-card">
+            <div class="invite-icon">
+                🔐
+            </div>
+            
+            <h1 class="invite-title">Exclusive Access</h1>
+            <p class="invite-subtitle">Enter your invitation code to continue</p>
+            
+            <div id="message" class="message"></div>
+            
+            <form id="codeForm" class="code-form">
+                <div class="code-input-group">
+                    <input type="text" class="code-input" maxlength="4" id="code1" placeholder="XXXX" autocomplete="off">
+                    <span class="dash">-</span>
+                    <input type="text" class="code-input" maxlength="4" id="code2" placeholder="XXXX" autocomplete="off">
+                    <span class="dash">-</span>
+                    <input type="text" class="code-input" maxlength="4" id="code3" placeholder="XXXX" autocomplete="off">
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Verify Access Code
+                </button>
+            </form>
+            
+            <div class="footer-links">
+                <a href="/">Return to Home</a>
+                <a href="mailto:access@axisthorn.com">Request Access</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-advance to next input
+        const inputs = ['code1', 'code2', 'code3'].map(id => document.getElementById(id));
+        
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                const value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+                e.target.value = value;
+                
+                if (value.length === 4 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+            
+            input.addEventListener('paste', (e) => {
+                e.preventDefault();
+                const pastedText = e.clipboardData.getData('text').toUpperCase().replace(/[^A-Z0-9-]/g, '');
+                const parts = pastedText.split('-');
+                
+                parts.forEach((part, i) => {
+                    if (inputs[index + i]) {
+                        inputs[index + i].value = part.slice(0, 4);
+                    }
+                });
+            });
+        });
+        
+        // Form submission
+        document.getElementById('codeForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const code = inputs.map(input => input.value).join('-');
+            const messageDiv = document.getElementById('message');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Validate format
+            if (!/^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code)) {
+                showMessage('Please enter a valid access code', 'error');
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="loading-spinner"></span> Verifying...';
+            hideMessage();
+            
+            try {
+                // Validate the code
+                const response = await fetch('/api/v1/access-codes?action=validate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code })
+                });
+                
+                const result = await response.json();
+                
+                if (result.valid) {
+                    showMessage('Access granted! Redirecting...', 'success');
+                    
+                    // Store the code for the session
+                    sessionStorage.setItem('access_code', code);
+                    
+                    // Redirect to protected content
+                    setTimeout(() => {
+                        const redirect = new URLSearchParams(window.location.search).get('redirect') || '/exclusive';
+                        window.location.href = redirect + '?access_code=' + code;
+                    }, 1500);
+                } else {
+                    let errorMessage = 'Invalid access code';
+                    if (result.reason === 'expired') {
+                        errorMessage = 'This access code has expired';
+                    } else if (result.reason === 'limit_reached') {
+                        errorMessage = 'This access code has reached its usage limit';
+                    }
+                    showMessage(errorMessage, 'error');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Verify Access Code';
+                }
+            } catch (error) {
+                showMessage('Error validating code. Please try again.', 'error');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Verify Access Code';
+            }
+        });
+        
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+        }
+        
+        function hideMessage() {
+            const messageDiv = document.getElementById('message');
+            messageDiv.style.display = 'none';
+        }
+        
+        // Check if code is in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlCode = urlParams.get('code');
+        if (urlCode && /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(urlCode)) {
+            const parts = urlCode.split('-');
+            parts.forEach((part, index) => {
+                if (inputs[index]) {
+                    inputs[index].value = part;
+                }
+            });
+            // Auto-submit
+            document.getElementById('codeForm').dispatchEvent(new Event('submit'));
+        }
+    </script>
+</body>
+</html>
