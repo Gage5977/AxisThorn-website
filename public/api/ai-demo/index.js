@@ -67,7 +67,7 @@ export default async function handler(req, res) {
     // 4. Add to CRM system
 
     // For now, log the request
-    // AI Demo request processed
+    console.log('AI Demo Request:', demoRequest);
 
     // Return success response
     return res.status(200).json({

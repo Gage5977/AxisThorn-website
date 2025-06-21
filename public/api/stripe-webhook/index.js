@@ -1,4 +1,6 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const { logger } = require('../middleware/security');
+const prisma = require('../../lib/prisma');
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
@@ -6,6 +8,11 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  if (!process.env.STRIPE_SECRET_KEY || !endpointSecret) {
+    logger.error('Stripe configuration missing');
+    return res.status(500).json({ error: 'Stripe configuration missing' });
   }
 
   const sig = req.headers['stripe-signature'];
@@ -18,45 +25,46 @@ module.exports = async function handler(req, res) {
       endpointSecret
     );
   } catch (err) {
-    console.error('Webhook signature verification failed:', err);
+    logger.error('Webhook signature verification failed:', err.message);
     return res.status(400).json({ error: `Webhook Error: ${err.message}` });
   }
 
   try {
     switch (event.type) {
-      case 'payment_intent.succeeded':
-        await handlePaymentSuccess(event.data.object);
-        break;
+    case 'payment_intent.succeeded':
+      await handlePaymentSuccess(event.data.object);
+      break;
       
-      case 'payment_intent.payment_failed':
-        await handlePaymentFailure(event.data.object);
-        break;
+    case 'payment_intent.payment_failed':
+      await handlePaymentFailure(event.data.object);
+      break;
       
-      case 'charge.succeeded':
-        await handleChargeSuccess(event.data.object);
-        break;
+    case 'charge.succeeded':
+      await handleChargeSuccess(event.data.object);
+      break;
       
-      case 'charge.failed':
-        await handleChargeFailed(event.data.object);
-        break;
+    case 'charge.failed':
+      await handleChargeFailed(event.data.object);
+      break;
       
-      case 'customer.created':
-        await handleCustomerCreated(event.data.object);
-        break;
+    case 'customer.created':
+      await handleCustomerCreated(event.data.object);
+      break;
       
-      default:
-        // // console.log(`Unhandled event type ${event.type}`);
+    default:
+      logger.info(`Unhandled event type ${event.type}`);
     }
 
     return res.status(200).json({ received: true });
   } catch (error) {
-    // Error would be logged to monitoring service in production
-    return res.status(500).json({ error: 'Webhook handler error' });
+    logger.error('Webhook handler error:', error);
+    // Return 200 to prevent Stripe retries on processing errors
+    return res.status(200).json({ received: true, error: 'Processing error' });
   }
-}
+};
 
 async function handlePaymentSuccess(paymentIntent) {
-  // // console.log('Payment succeeded:', paymentIntent.id);
+  logger.info('Payment succeeded:', paymentIntent.id);
   
   const { 
     amount, 
@@ -66,8 +74,39 @@ async function handlePaymentSuccess(paymentIntent) {
     charges
   } = paymentIntent;
 
-  // Log payment details
-  // // console.log({
+  const { invoice_id } = metadata || {};
+  
+  if (invoice_id) {
+    try {
+      // Update invoice status in database
+      await prisma.invoice.update({
+        where: { id: invoice_id },
+        data: {
+          paymentStatus: 'paid',
+          paidAt: new Date(),
+          stripePaymentIntentId: paymentIntent.id,
+          payments: {
+            create: {
+              amount: amount / 100,
+              method: 'stripe',
+              stripePaymentIntentId: paymentIntent.id,
+              stripeChargeId: charges?.data[0]?.id,
+              receiptUrl: charges?.data[0]?.receipt_url,
+              status: 'completed'
+            }
+          }
+        }
+      });
+      
+      logger.info(`Invoice ${invoice_id} marked as paid`);
+    } catch (error) {
+      logger.error('Failed to update invoice:', error);
+    }
+  }
+
+  // Log payment for accounting
+  logger.info({
+    event: 'payment_succeeded',
     paymentIntentId: paymentIntent.id,
     amount: amount / 100,
     currency,
@@ -75,14 +114,10 @@ async function handlePaymentSuccess(paymentIntent) {
     invoice_id: metadata.invoice_id,
     receipt_url: charges?.data[0]?.receipt_url
   });
-
-  // TODO: Update invoice status in database
-  // TODO: Send confirmation email to customer
-  // TODO: Update accounting records
 }
 
 async function handlePaymentFailure(paymentIntent) {
-  // // console.log('Payment failed:', paymentIntent.id);
+  console.log('Payment failed:', paymentIntent.id);
   
   const { 
     amount, 
@@ -105,10 +140,10 @@ async function handlePaymentFailure(paymentIntent) {
 }
 
 async function handleChargeSuccess(charge) {
-  // // console.log('Charge succeeded:', charge.id);
+  console.log('Charge succeeded:', charge.id);
   
   // Additional charge processing if needed
-  // // console.log({
+  console.log({
     chargeId: charge.id,
     amount: charge.amount / 100,
     currency: charge.currency,
@@ -118,17 +153,22 @@ async function handleChargeSuccess(charge) {
 }
 
 async function handleChargeFailed(charge) {
-  // // console.log('Charge failed:', charge.id);
+  console.log('Charge failed:', charge.id);
   
-  // Charge failure would be logged to monitoring service
-  // failure details would be tracked for analytics
+  console.error({
+    chargeId: charge.id,
+    amount: charge.amount / 100,
+    currency: charge.currency,
+    failure_code: charge.failure_code,
+    failure_message: charge.failure_message
+  });
 }
 
 async function handleCustomerCreated(customer) {
-  // // console.log('Customer created:', customer.id);
+  console.log('Customer created:', customer.id);
   
   // Store customer information for future use
-  // // console.log({
+  console.log({
     customerId: customer.id,
     email: customer.email,
     name: customer.name,

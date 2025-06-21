@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Performance Test - Axis Thorn</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow: hidden;
+        }
+        
+        #stats {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        
+        .metric {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .metric strong {
+            color: #0066FF;
+        }
+        
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .particles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #0066FF;
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: float 10s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateZ(0) rotateX(0deg); }
+            50% { transform: translateY(-100px) translateZ(100px) rotateX(180deg); }
+        }
+        
+        .gpu-stress {
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, #0066FF, #00DC82, #FF0066);
+            animation: rotate 2s linear infinite;
+            opacity: 0.1;
+            transform-origin: center;
+            will-change: transform;
+            transform: translateZ(0);
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg) scale(1.5); }
+            100% { transform: rotate(360deg) scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div id="stats">
+        <h2>GPU Performance Test</h2>
+        <div class="metric">FPS: <strong id="fps">Calculating...</strong></div>
+        <div class="metric">Frame Time: <strong id="frametime">Calculating...</strong></div>
+        <div class="metric">GPU: <strong id="gpu">Detecting...</strong></div>
+        <div class="metric">WebGL: <strong id="webgl">Checking...</strong></div>
+        <div class="metric">Hardware Acceleration: <strong id="hwaccel">Checking...</strong></div>
+        <div class="metric">Particles: <strong id="particles">0</strong></div>
+    </div>
+    
+    <div class="gpu-stress"></div>
+    <div class="particles" id="particleContainer"></div>
+    <canvas id="canvas"></canvas>
+    
+    <script>
+        // FPS Counter
+        let fps = 0;
+        let frameTime = 0;
+        let lastTime = performance.now();
+        let frames = 0;
+        
+        function updateStats() {
+            frames++;
+            const currentTime = performance.now();
+            const delta = currentTime - lastTime;
+            
+            if (delta >= 1000) {
+                fps = Math.round(frames * 1000 / delta);
+                frameTime = (delta / frames).toFixed(2);
+                
+                document.getElementById('fps').textContent = fps + ' FPS';
+                document.getElementById('frametime').textContent = frameTime + ' ms';
+                
+                frames = 0;
+                lastTime = currentTime;
+                
+                // Color code FPS
+                const fpsElement = document.getElementById('fps');
+                if (fps >= 60) {
+                    fpsElement.style.color = '#00DC82';
+                } else if (fps >= 30) {
+                    fpsElement.style.color = '#0066FF';
+                } else {
+                    fpsElement.style.color = '#FF0066';
+                }
+            }
+            
+            requestAnimationFrame(updateStats);
+        }
+        
+        // GPU Detection
+        const canvas = document.getElementById('canvas');
+        const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+        
+        if (gl) {
+            document.getElementById('webgl').textContent = gl.getParameter(gl.VERSION);
+            
+            const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            if (debugInfo) {
+                const gpu = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                document.getElementById('gpu').textContent = gpu;
+            }
+            
+            // Check hardware acceleration
+            const hwAccel = gl.getParameter(gl.RENDERER).toLowerCase().includes('angle') || 
+                           !gl.getParameter(gl.RENDERER).toLowerCase().includes('swiftshader');
+            document.getElementById('hwaccel').textContent = hwAccel ? 'Enabled ✓' : 'Disabled ✗';
+            document.getElementById('hwaccel').style.color = hwAccel ? '#00DC82' : '#FF0066';
+        }
+        
+        // Particle System
+        const particleContainer = document.getElementById('particleContainer');
+        let particleCount = 0;
+        
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = Math.random() * window.innerHeight + 'px';
+            particle.style.animationDuration = (5 + Math.random() * 10) + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
+            particleContainer.appendChild(particle);
+            particleCount++;
+            document.getElementById('particles').textContent = particleCount;
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                particle.remove();
+                particleCount--;
+                document.getElementById('particles').textContent = particleCount;
+            }, 15000);
+        }
+        
+        // Create particles continuously
+        setInterval(createParticle, 100);
+        
+        // WebGL Performance Test
+        if (gl) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+            gl.shaderSource(vertexShader, `
+                attribute vec2 position;
+                void main() {
+                    gl_Position = vec4(position, 0.0, 1.0);
+                }
+            `);
+            gl.compileShader(vertexShader);
+            
+            const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+            gl.shaderSource(fragmentShader, `
+                precision highp float;
+                uniform float time;
+                uniform vec2 resolution;
+                
+                void main() {
+                    vec2 uv = gl_FragCoord.xy / resolution.xy;
+                    vec3 color = vec3(
+                        sin(uv.x * 10.0 + time) * 0.5 + 0.5,
+                        sin(uv.y * 10.0 + time + 2.0) * 0.5 + 0.5,
+                        sin((uv.x + uv.y) * 10.0 + time + 4.0) * 0.5 + 0.5
+                    );
+                    gl_FragColor = vec4(color * 0.2, 1.0);
+                }
+            `);
+            gl.compileShader(fragmentShader);
+            
+            const program = gl.createProgram();
+            gl.attachShader(program, vertexShader);
+            gl.attachShader(program, fragmentShader);
+            gl.linkProgram(program);
+            gl.useProgram(program);
+            
+            const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
+            const buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+            
+            const position = gl.getAttribLocation(program, 'position');
+            gl.enableVertexAttribArray(position);
+            gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+            
+            const timeUniform = gl.getUniformLocation(program, 'time');
+            const resolutionUniform = gl.getUniformLocation(program, 'resolution');
+            
+            function render() {
+                gl.uniform1f(timeUniform, performance.now() / 1000);
+                gl.uniform2f(resolutionUniform, canvas.width, canvas.height);
+                gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                requestAnimationFrame(render);
+            }
+            
+            render();
+        }
+        
+        // Start FPS counter
+        updateStats();
+        
+        // Resize handler
+        window.addEventListener('resize', () => {
+            if (canvas && gl) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+        });
+    </script>
+</body>
+</html>

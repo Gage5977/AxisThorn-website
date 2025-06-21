@@ -49,8 +49,12 @@ export default async function handler(req, res) {
     // Generate response based on message content
     const response = generateAIResponse(message, context);
         
-    // Future: Log request to monitoring service
-    // Request data would be sent to analytics platform
+    // Log request for monitoring (without sensitive data)
+    console.log('AI Chat Request:', {
+      timestamp: new Date().toISOString(),
+      messageLength: message.length,
+      ip: clientIP
+    });
 
     return res.status(200).json({
       success: true,

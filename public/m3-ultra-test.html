@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M3 Ultra Performance Test - 75Hz</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow: hidden;
+        }
+        
+        #stats {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.9);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .metric {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        
+        .metric strong {
+            color: #00DC82;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Ultra high quality particles */
+        .particle-field {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .ultra-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: radial-gradient(circle, rgba(0,220,130,1) 0%, rgba(0,220,130,0) 100%);
+            border-radius: 50%;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        /* 75Hz optimized animation */
+        @keyframes float75 {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(100px, -100px, 100px) scale(1.5); }
+            100% { transform: translate3d(0, 0, 0) scale(1); }
+        }
+        
+        .fps-75 {
+            animation-duration: 0.8s; /* Optimized for 75Hz */
+        }
+    </style>
+</head>
+<body>
+    <div id="stats">
+        <h2>M3 Ultra Test @ 75Hz</h2>
+        <div class="metric">FPS: <strong id="fps">0</strong></div>
+        <div class="metric">Frame Time: <strong id="frametime">0</strong> ms</div>
+        <div class="metric">1% Low: <strong id="low1">0</strong> FPS</div>
+        <div class="metric">GPU: <strong id="gpu">Detecting...</strong></div>
+        <div class="metric">Refresh Rate: <strong id="refresh">75Hz Target</strong></div>
+        <div class="metric">Particles: <strong id="particles">0</strong></div>
+        <div class="metric">Draw Calls: <strong id="draws">0</strong></div>
+    </div>
+    
+    <div class="particle-field" id="particleField"></div>
+    <canvas id="canvas"></canvas>
+    
+    <script>
+        // Enhanced FPS counter for 75Hz
+        let frameCount = 0;
+        let fps = 0;
+        let frameTime = 0;
+        let lastTime = performance.now();
+        let fpsHistory = [];
+        let drawCalls = 0;
+        
+        function updateStats() {
+            frameCount++;
+            const currentTime = performance.now();
+            const delta = currentTime - lastTime;
+            
+            if (delta >= 1000) {
+                fps = Math.round(frameCount * 1000 / delta);
+                frameTime = (delta / frameCount).toFixed(2);
+                
+                // Track FPS history for 1% low
+                fpsHistory.push(fps);
+                if (fpsHistory.length > 100) fpsHistory.shift();
+                
+                const sorted = [...fpsHistory].sort((a, b) => a - b);
+                const low1 = sorted[Math.floor(sorted.length * 0.01)] || fps;
+                
+                document.getElementById('fps').textContent = fps;
+                document.getElementById('frametime').textContent = frameTime;
+                document.getElementById('low1').textContent = low1;
+                document.getElementById('draws').textContent = drawCalls;
+                
+                // Color based on 75Hz target
+                const fpsElement = document.getElementById('fps');
+                if (fps >= 75) {
+                    fpsElement.style.color = '#00DC82';
+                } else if (fps >= 60) {
+                    fpsElement.style.color = '#0066FF';
+                } else {
+                    fpsElement.style.color = '#FF0066';
+                }
+                
+                frameCount = 0;
+                lastTime = currentTime;
+                drawCalls = 0;
+            }
+            
+            requestAnimationFrame(updateStats);
+        }
+        
+        // WebGL 2.0 Ultra Quality Setup
+        const canvas = document.getElementById('canvas');
+        canvas.width = window.innerWidth * window.devicePixelRatio;
+        canvas.height = window.innerHeight * window.devicePixelRatio;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        
+        const gl = canvas.getContext('webgl2', {
+            alpha: false,
+            antialias: true,
+            depth: true,
+            desynchronized: true,
+            powerPreference: 'high-performance',
+            preserveDrawingBuffer: false,
+            premultipliedAlpha: false,
+            stencil: false
+        });
+        
+        if (gl) {
+            // Get GPU info
+            const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+            if (debugInfo) {
+                const gpu = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                document.getElementById('gpu').textContent = gpu;
+            }
+            
+            // Ultra quality vertex shader
+            const vertexShaderSource = `#version 300 es
+                in vec2 position;
+                out vec2 vUv;
+                
+                void main() {
+                    vUv = position * 0.5 + 0.5;
+                    gl_Position = vec4(position, 0.0, 1.0);
+                }
+            `;
+            
+            // Ultra quality fragment shader
+            const fragmentShaderSource = `#version 300 es
+                precision highp float;
+                
+                in vec2 vUv;
+                out vec4 fragColor;
+                
+                uniform float time;
+                uniform vec2 resolution;
+                uniform float fps;
+                
+                vec3 hsv2rgb(vec3 c) {
+                    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+                    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+                    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+                }
+                
+                void main() {
+                    vec2 uv = vUv;
+                    vec2 center = vec2(0.5);
+                    
+                    // Complex animated pattern
+                    float dist = length(uv - center);
+                    float angle = atan(uv.y - center.y, uv.x - center.x);
+                    
+                    // Multiple wave functions
+                    float wave1 = sin(dist * 30.0 - time * 3.0) * 0.5 + 0.5;
+                    float wave2 = sin(angle * 8.0 + time * 2.0) * 0.5 + 0.5;
+                    float wave3 = sin((dist + angle) * 15.0 - time * 4.0) * 0.5 + 0.5;
+                    
+                    // Combine waves
+                    float combined = wave1 * wave2 * wave3;
+                    
+                    // HSV color animation
+                    vec3 color = hsv2rgb(vec3(
+                        fract(time * 0.1 + dist * 0.5),
+                        0.8 + sin(time * 2.0) * 0.2,
+                        combined
+                    ));
+                    
+                    // Add glow effect
+                    color += vec3(0.1, 0.2, 0.3) * (1.0 - dist) * 0.5;
+                    
+                    // FPS-based intensity
+                    float intensity = smoothstep(60.0, 75.0, fps);
+                    color *= 0.8 + intensity * 0.2;
+                    
+                    fragColor = vec4(color, 1.0);
+                }
+            `;
+            
+            // Compile shaders
+            function createShader(type, source) {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                    console.error(gl.getShaderInfoLog(shader));
+                    gl.deleteShader(shader);
+                    return null;
+                }
+                return shader;
+            }
+            
+            const vertexShader = createShader(gl.VERTEX_SHADER, vertexShaderSource);
+            const fragmentShader = createShader(gl.FRAGMENT_SHADER, fragmentShaderSource);
+            
+            // Create program
+            const program = gl.createProgram();
+            gl.attachShader(program, vertexShader);
+            gl.attachShader(program, fragmentShader);
+            gl.linkProgram(program);
+            
+            if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+                console.error(gl.getProgramInfoLog(program));
+            }
+            
+            gl.useProgram(program);
+            
+            // Set up geometry
+            const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
+            const buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+            
+            const positionLocation = gl.getAttribLocation(program, 'position');
+            gl.enableVertexAttribArray(positionLocation);
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+            
+            // Get uniform locations
+            const timeLocation = gl.getUniformLocation(program, 'time');
+            const resolutionLocation = gl.getUniformLocation(program, 'resolution');
+            const fpsLocation = gl.getUniformLocation(program, 'fps');
+            
+            // Render loop optimized for 75Hz
+            function render() {
+                drawCalls++;
+                
+                gl.uniform1f(timeLocation, performance.now() / 1000);
+                gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+                gl.uniform1f(fpsLocation, fps);
+                
+                gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                
+                requestAnimationFrame(render);
+            }
+            
+            render();
+        }
+        
+        // Ultra particles
+        let particleCount = 0;
+        const particleField = document.getElementById('particleField');
+        
+        function createUltraParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'ultra-particle fps-75';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = Math.random() * window.innerHeight + 'px';
+            particle.style.animation = `float75 ${0.8 + Math.random() * 0.4}s infinite ease-in-out`;
+            particleField.appendChild(particle);
+            particleCount++;
+            document.getElementById('particles').textContent = particleCount;
+            
+            setTimeout(() => {
+                particle.remove();
+                particleCount--;
+                document.getElementById('particles').textContent = particleCount;
+            }, 5000);
+        }
+        
+        // Create more particles for M3 Ultra
+        setInterval(createUltraParticle, 50);
+        
+        // Start monitoring
+        updateStats();
+        
+        // Handle resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth * window.devicePixelRatio;
+            canvas.height = window.innerHeight * window.devicePixelRatio;
+            canvas.style.width = window.innerWidth + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+            gl.viewport(0, 0, canvas.width, canvas.height);
+        });
+    </script>
+</body>
+</html>

@@ -124,11 +124,11 @@ async function authenticate(req, res, next) {
     });
   }
 
-  // Validate token type
-  if (decoded.type !== 'payment_access') {
+  // Validate token type (allow both user tokens and payment access tokens)
+  if (decoded.type && decoded.type !== 'payment_access' && !decoded.userId) {
     return res.status(403).json({
       error: 'Invalid token type',
-      message: 'This token cannot be used for payment operations'
+      message: 'This token cannot be used for this operation'
     });
   }
 
