@@ -3,28 +3,93 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const winston = require('winston');
 
-// Configure logger
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  defaultMeta: { service: 'axis-thorn-api' },
-  transports: [
+// Configure logger with production log aggregation support
+const transports = [
+  new winston.transports.Console({
+    format: winston.format.combine(
+      winston.format.colorize(),
+      winston.format.simple()
+    )
+  })
+];
+
+// Add file transports in development
+if (process.env.NODE_ENV !== 'production') {
+  transports.push(
     new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' }),
-    new winston.transports.Console({
-      format: winston.format.simple()
-    })
-  ]
+    new winston.transports.File({ filename: 'combined.log' })
+  );
+}
+
+// Add external log aggregation in production
+if (process.env.NODE_ENV === 'production' && process.env.LOG_TOKEN) {
+  // Example: Datadog
+  if (process.env.LOG_SERVICE === 'datadog') {
+    const DatadogTransport = require('winston-datadog-transport');
+    transports.push(new DatadogTransport({
+      apiKey: process.env.LOG_TOKEN,
+      service: 'axis-thorn-api',
+      ddsource: 'nodejs',
+      ddtags: `env:${process.env.NODE_ENV}`,
+      hostname: process.env.HOSTNAME || 'api',
+    }));
+  }
+  // Example: Logtail
+  else if (process.env.LOG_SERVICE === 'logtail') {
+    const { Logtail } = require('@logtail/node');
+    const { LogtailTransport } = require('@logtail/winston');
+    const logtail = new Logtail(process.env.LOG_TOKEN);
+    transports.push(new LogtailTransport(logtail));
+  }
+}
+
+const logger = winston.createLogger({
+  level: process.env.LOG_LEVEL || 'info',
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.errors({ stack: true }),
+    winston.format.json()
+  ),
+  defaultMeta: { 
+    service: 'axis-thorn-api',
+    environment: process.env.NODE_ENV || 'development',
+    version: process.env.npm_package_version || '1.0.0'
+  },
+  transports
 });
 
-// Rate limiting configuration
+// Rate limiting configuration with Redis support
+const RedisStore = require('rate-limit-redis');
+const Redis = require('ioredis');
+
 const createRateLimiter = (windowMs = 15 * 60 * 1000, max = 100) => {
+  const { isProduction } = validateEnvironment();
+  
+  // Use Redis in production, memory store in development
+  let store = undefined;
+  
+  if (isProduction && process.env.REDIS_URL) {
+    const client = new Redis(process.env.REDIS_URL);
+    store = new RedisStore({
+      client: client,
+      prefix: 'rl:',
+    });
+    
+    logger.info('Rate limiter using Redis store');
+  } else if (isProduction && !process.env.REDIS_URL) {
+    logger.error('REDIS_URL not set in production - rate limiting will not work properly across replicas');
+    process.exit(1);
+  } else {
+    logger.info('Rate limiter using memory store (development mode)');
+  }
+  
   return rateLimit({
     windowMs,
     max,
     message: 'Too many requests from this IP, please try again later.',
     standardHeaders: true,
     legacyHeaders: false,
+    store,
   });
 };
 

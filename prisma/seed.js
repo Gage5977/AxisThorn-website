@@ -6,12 +6,43 @@ const prisma = new PrismaClient();
 
 async function main() {
   console.log('Start seeding...');
+  
+  // Check if we're in production
+  if (process.env.NODE_ENV === 'production') {
+    console.log('⚠️  Production environment detected - only seeding essential data');
+    
+    // Only create admin user in production
+    if (process.env.ADMIN_EMAIL && process.env.ADMIN_PASSWORD) {
+      const adminPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
+      const adminUser = await prisma.user.upsert({
+        where: { email: process.env.ADMIN_EMAIL },
+        update: {}, // Don't update existing admin
+        create: {
+          email: process.env.ADMIN_EMAIL,
+          name: process.env.ADMIN_NAME || 'Admin',
+          password: adminPassword,
+          role: 'ADMIN',
+          apiKey: `at_${uuidv4()}`,
+        },
+      });
+      console.log('Admin user ready:', adminUser.email);
+    } else {
+      console.error('❌ ADMIN_EMAIL and ADMIN_PASSWORD required in production');
+      process.exit(1);
+    }
+    
+    console.log('Production seeding complete - no demo data created');
+    return;
+  }
+
+  // Development/staging seeding continues below
+  console.log('Development environment - creating demo data...');
 
   // Create admin user
   const adminPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'admin123', 10);
   const adminUser = await prisma.user.upsert({
     where: { email: process.env.ADMIN_EMAIL || 'admin@axisthorn.com' },
-    update: {},
+    update: {}, // Don't update if exists
     create: {
       email: process.env.ADMIN_EMAIL || 'admin@axisthorn.com',
       name: process.env.ADMIN_NAME || 'Axis Thorn Admin',
@@ -21,134 +52,152 @@ async function main() {
     },
   });
 
-  console.log('Created admin user:', adminUser.email);
+  console.log('Admin user ready:', adminUser.email);
 
   // Create demo user
   const demoPassword = await bcrypt.hash('demo123', 10);
   const demoUser = await prisma.user.upsert({
     where: { email: 'demo@axisthorn.com' },
-    update: {},
+    update: {}, // Don't update if exists
     create: {
       email: 'demo@axisthorn.com',
       name: 'Demo User',
       password: demoPassword,
       role: 'USER',
-      apiKey: `at_${uuidv4()}`,
+      apiKey: `at_demo_${uuidv4()}`,
     },
   });
 
-  console.log('Created demo user:', demoUser.email);
+  console.log('Demo user ready:', demoUser.email);
 
-  // Create demo customers
-  const customers = await Promise.all([
-    prisma.customer.create({
-      data: {
-        name: 'Acme Corporation',
-        email: 'billing@acme.com',
-        phone: '555-0100',
-        company: 'Acme Corporation',
-        address: {
-          street: '123 Business Ave',
-          city: 'San Francisco',
-          state: 'CA',
-          zip: '94105',
-          country: 'USA'
-        },
-        taxId: '12-3456789',
+  // Create demo customers (idempotent)
+  const customerData = [
+    {
+      name: 'Acme Corporation',
+      email: 'billing@acme.com',
+      phone: '555-0100',
+      company: 'Acme Corporation',
+      address: {
+        street: '123 Business Ave',
+        city: 'San Francisco',
+        state: 'CA',
+        zip: '94105',
+        country: 'USA'
+      },
+      taxId: '12-3456789',
+    },
+    {
+      name: 'Tech Innovations Inc',
+      email: 'accounts@techinnovations.com',
+      phone: '555-0200',
+      company: 'Tech Innovations Inc',
+      address: {
+        street: '456 Tech Boulevard',
+        city: 'Austin',
+        state: 'TX',
+        zip: '78701',
+        country: 'USA'
+      },
+      taxId: '98-7654321',
+    },
+    {
+      name: 'Global Enterprises Ltd',
+      email: 'finance@globalent.com',
+      phone: '555-0300',
+      company: 'Global Enterprises Ltd',
+      address: {
+        street: '789 International Way',
+        city: 'New York',
+        state: 'NY',
+        zip: '10001',
+        country: 'USA'
+      },
+      taxId: '55-1234567',
+    },
+  ];
+
+  const customers = [];
+  for (const data of customerData) {
+    let customer = await prisma.customer.findFirst({
+      where: {
+        email: data.email,
         userId: demoUser.id,
       },
-    }),
-    prisma.customer.create({
-      data: {
-        name: 'Tech Innovations Inc',
-        email: 'accounts@techinnovations.com',
-        phone: '555-0200',
-        company: 'Tech Innovations Inc',
-        address: {
-          street: '456 Tech Boulevard',
-          city: 'Austin',
-          state: 'TX',
-          zip: '78701',
-          country: 'USA'
+    });
+    
+    if (!customer) {
+      customer = await prisma.customer.create({
+        data: {
+          ...data,
+          userId: demoUser.id,
         },
-        taxId: '98-7654321',
-        userId: demoUser.id,
-      },
-    }),
-    prisma.customer.create({
-      data: {
-        name: 'Global Enterprises Ltd',
-        email: 'finance@globalent.com',
-        phone: '555-0300',
-        company: 'Global Enterprises Ltd',
-        address: {
-          street: '789 International Way',
-          city: 'New York',
-          state: 'NY',
-          zip: '10001',
-          country: 'USA'
-        },
-        taxId: '55-1234567',
-        userId: demoUser.id,
-      },
-    }),
-  ]);
+      });
+    }
+    
+    customers.push(customer);
+  }
 
   console.log(`Created ${customers.length} customers`);
 
-  // Create demo products
-  const products = await Promise.all([
-    prisma.product.create({
-      data: {
-        name: 'Financial Consulting - Hourly',
-        description: 'Professional financial consulting services billed hourly',
-        price: 250.00,
-        category: 'Consulting',
-        sku: 'FIN-CONS-HR',
+  // Create demo products (idempotent)
+  const productData = [
+    {
+      name: 'Financial Consulting - Hourly',
+      description: 'Professional financial consulting services billed hourly',
+      price: 250.00,
+      category: 'Consulting',
+      sku: 'FIN-CONS-HR',
+    },
+    {
+      name: 'Tax Preparation - Individual',
+      description: 'Individual tax return preparation and filing',
+      price: 500.00,
+      category: 'Tax Services',
+      sku: 'TAX-IND-001',
+    },
+    {
+      name: 'Business Tax Filing',
+      description: 'Corporate tax return preparation and filing',
+      price: 1500.00,
+      category: 'Tax Services',
+      sku: 'TAX-BUS-001',
+    },
+    {
+      name: 'Bookkeeping Services - Monthly',
+      description: 'Monthly bookkeeping and financial record maintenance',
+      price: 800.00,
+      category: 'Bookkeeping',
+      sku: 'BOOK-MON-001',
+    },
+    {
+      name: 'Financial Audit',
+      description: 'Comprehensive financial audit and review',
+      price: 5000.00,
+      category: 'Audit',
+      sku: 'AUD-FIN-001',
+    },
+  ];
+
+  const products = [];
+  for (const data of productData) {
+    let product = await prisma.product.findFirst({
+      where: {
+        sku: data.sku,
         userId: demoUser.id,
       },
-    }),
-    prisma.product.create({
-      data: {
-        name: 'Tax Preparation - Individual',
-        description: 'Individual tax return preparation and filing',
-        price: 500.00,
-        category: 'Tax Services',
-        sku: 'TAX-IND-001',
-        userId: demoUser.id,
-      },
-    }),
-    prisma.product.create({
-      data: {
-        name: 'Business Tax Filing',
-        description: 'Corporate tax return preparation and filing',
-        price: 1500.00,
-        category: 'Tax Services',
-        sku: 'TAX-BUS-001',
-        userId: demoUser.id,
-      },
-    }),
-    prisma.product.create({
-      data: {
-        name: 'Bookkeeping Services - Monthly',
-        description: 'Monthly bookkeeping and financial record maintenance',
-        price: 800.00,
-        category: 'Bookkeeping',
-        sku: 'BOOK-MON-001',
-        userId: demoUser.id,
-      },
-    }),
-    prisma.product.create({
-      data: {
-        name: 'Financial Audit',
-        description: 'Comprehensive financial audit and review',
-        price: 5000.00,
-        category: 'Audit',
-        sku: 'AUD-FIN-001',
-        userId: demoUser.id,
-      },
-    }),
-  ]);
+    });
+    
+    if (!product) {
+      product = await prisma.product.create({
+        data: {
+          ...data,
+          userId: demoUser.id,
+        },
+      });
+    }
+    
+    products.push(product);
+  }
 
   console.log(`Created ${products.length} products`);
 

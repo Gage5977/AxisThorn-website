@@ -3,6 +3,7 @@
 // Local Test Server for Axis Thorn Website
 // This server simulates the Vercel environment locally for testing
 
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -68,7 +69,8 @@ const pages = [
   { route: '/terminal', file: 'terminal.html' },
   { route: '/axis-ai', file: 'axis-ai.html' },
   { route: '/invoices', file: 'invoices.html' },
-  { route: '/banking-portal', file: 'banking-portal.html' },
+  { route: '/portal', file: 'portal.html' },
+  { route: '/portal-login', file: 'portal-login.html' },
   { route: '/about', file: 'about.html' },
   { route: '/portfolio', file: 'portfolio.html' },
   { route: '/services', file: 'services.html' },
