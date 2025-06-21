@@ -49,6 +49,14 @@
     {
       "source": "/services",
       "destination": "/services.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/portfolio.html"
     }
   ],
   "redirects": [
