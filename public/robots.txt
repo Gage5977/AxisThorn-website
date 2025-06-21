@@ -1,32 +1,11 @@
-# Allow all web crawlers
+# *
 User-agent: *
 Allow: /
-
-# Block access to private/sensitive areas
 Disallow: /api/
-Disallow: /admin/
-Disallow: /_next/
-Disallow: /preview/
-Disallow: /test/
-Disallow: /.well-known/
-Disallow: /private/
+Disallow: /preview
 
-# Allow access to important resources
-Allow: /css/
-Allow: /js/
-Allow: /images/
-Allow: /*.svg$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.gif$
-Allow: /*.webp$
-
-# Crawl delay (optional - helps with server load)
-Crawl-delay: 1
-
-# Host directive
+# Host
 Host: https://axisthorn.com
 
-# Sitemap location
+# Sitemaps
 Sitemap: https://axisthorn.com/sitemap.xml

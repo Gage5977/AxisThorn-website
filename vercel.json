@@ -1,121 +1,65 @@
 {
-  "buildCommand": "echo 'No build needed'",
-  "outputDirectory": "public",
-  "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
-  "env": {
-    "NEXT_PUBLIC_API_URL": "https://axisthorn.com/api"
-  },
   "rewrites": [
     {
-      "source": "/invoices",
-      "destination": "/invoices.html"
-    },
-    {
-      "source": "/app",
-      "destination": "/app.html"
-    },
-    {
-      "source": "/banking",
-      "destination": "/banking.html"
+      "source": "/portal",
+      "destination": "/banking-portal.html"
     },
     {
       "source": "/banking-portal",
       "destination": "/banking-portal.html"
-    },
-    {
-      "source": "/terminal",
-      "destination": "/terminal.html"
-    },
-    {
-      "source": "/axis-ai",
-      "destination": "/axis-ai.html"
-    },
-    {
-      "source": "/consultation",
-      "destination": "/consultation.html"
-    },
-    {
-      "source": "/implementation",
-      "destination": "/implementation.html"
-    },
-    {
-      "source": "/support",
-      "destination": "/support.html"
-    },
-    {
-      "source": "/services",
-      "destination": "/services.html"
-    },
-    {
-      "source": "/about",
-      "destination": "/about.html"
-    },
-    {
-      "source": "/portfolio",
-      "destination": "/portfolio.html"
     }
   ],
   "redirects": [
     {
-      "source": "/1099.html",
-      "destination": "/banking-portal.html",
+      "source": "/consultation",
+      "destination": "/#contact",
       "permanent": false
     },
     {
-      "source": "/1099",
-      "destination": "/banking-portal#1099",
+      "source": "/implementation",
+      "destination": "/#services",
       "permanent": false
     },
     {
-      "source": "/client-portal",
-      "destination": "/invoices.html",
+      "source": "/support",
+      "destination": "/#client-services",
       "permanent": false
     },
     {
-      "source": "/portal",
-      "destination": "/invoices.html",
+      "source": "/services",
+      "destination": "/#services",
       "permanent": false
     },
     {
-      "source": "/invoice",
-      "destination": "/invoices.html",
+      "source": "/about",
+      "destination": "/#method",
       "permanent": false
     },
     {
-      "source": "/pay",
-      "destination": "/invoices.html",
+      "source": "/privacy",
+      "destination": "/privacy-policy.html",
       "permanent": false
     },
     {
-      "source": "/payment",
-      "destination": "/invoices.html",
+      "source": "/terms",
+      "destination": "/terms-of-service.html",
       "permanent": false
     },
     {
-      "source": "/axis-terminal",
-      "destination": "/terminal",
+      "source": "/privacy-policy",
+      "destination": "/privacy-policy.html",
       "permanent": false
     },
     {
-      "source": "/ai",
-      "destination": "/axis-ai",
+      "source": "/terms-of-service",
+      "destination": "/terms-of-service.html",
       "permanent": false
     },
     {
-      "source": "/banking",
-      "destination": "/banking-portal.html",
-      "permanent": true
-    },
-    {
-      "source": "/consult",
-      "destination": "/consultation",
-      "permanent": false
-    },
-    {
-      "source": "/implement",
-      "destination": "/implementation",
+      "source": "/cookie-policy",
+      "destination": "/cookie-policy.html",
       "permanent": false
     }
   ],
@@ -142,6 +86,15 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate"
         }
       ]
     }

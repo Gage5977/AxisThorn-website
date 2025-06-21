@@ -30,152 +30,205 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/axis-2025.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/single-page.css">
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
-    <nav class="nav-2025" role="navigation">
-    <div class="nav-2025-inner">
-        <a href="/" class="logo-2025" aria-label="Axis Thorn">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z" 
-                      fill="currentColor" opacity="1"/>
-                <path d="M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z" 
-                      fill="currentColor" opacity="1"/>
-                <rect x="16" y="20" width="16" height="8" fill="currentColor" opacity="0.2"/>
-            </svg>
-            <span>Axis Thorn</span>
-        </a>
-        
-        <ul class="nav-links-2025">
-            <li><a href="/" class="nav-link-2025">Home</a></li>
-            <li><a href="/portal" class="nav-link-2025">Banking</a></li>
-            <li><a href="/invoices" class="nav-link-2025">Invoices</a></li>
-            <li><a href="/terminal" class="nav-link-2025">Terminal</a></li>
-            <li><a href="/axis-ai" class="nav-link-2025">AXIS AI</a></li>
-        </ul>
-    </div>
-</nav>
-
-    <!-- Hero Section -->
-    <section class="hero-2025" style="min-height: 60vh;">
-        <div class="hero-content-2025">
-            <h1 class="hero-title-2025" style="font-size: var(--text-5xl);">
-                Strategic<br>
-                <span style="color: var(--axis-accent-primary);">Consultation</span>
-            </h1>
-            <p class="hero-subtitle-2025" style="font-size: var(--text-xl); letter-spacing: 0.1em; margin-top: var(--space-8);">
-                Executive-Level Advisory for Complex Financial Architecture
-            </p>
+    <nav class="navigation" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="/" class="logo" aria-label="Axis Thorn home">
+                <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
+                <span class="logo-text">Axis Thorn</span>
+            </a>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="/" class="nav-link" role="menuitem">/home</a></li>
+                <li role="none"><a href="invoices.html" class="nav-link" role="menuitem">/client-portal</a></li>
+                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">/axis-ai</a></li>
+                <li role="none"><a href="/app" class="nav-link" role="menuitem">/axis-terminal</a></li>
+            </ul>
         </div>
-    </section>
+    </nav>
 
-    <!-- Main Content -->
-    <section class="section-2025">
-        <div class="section-inner-2025">
-            <div class="grid-2025 grid-2-2025">
-                <div class="card-2025 reveal-2025">
-                    <h2 style="color: var(--axis-accent-primary); margin-bottom: var(--space-6);">C-Suite Financial Strategy</h2>
-                    <p style="margin-bottom: var(--space-8);">Transform organizational financial architecture through strategic AI implementation and advanced analytical frameworks designed for executive decision-making.</p>
-                    
-                    <div style="display: grid; gap: var(--space-6);">
-                        <div style="padding: var(--space-6); background: var(--axis-neutral-950); border-radius: 8px; border: 1px solid var(--axis-neutral-800);">
-                            <h4 style="color: var(--axis-pure-white); margin-bottom: var(--space-3);">Technology Integration Planning</h4>
-                            <p>Architect comprehensive AI deployment strategies that align with existing infrastructure while preparing for future scalability requirements.</p>
+    <header class="page-header" role="banner">
+        <div class="container">
+            <h1 class="page-title">Strategic Consultation</h1>
+            <p class="page-subtitle">Executive-Level Advisory for Complex Financial Architecture Decisions</p>
+        </div>
+    </header>
+
+    <main role="main">
+    <section class="content-section" aria-labelledby="consultation-heading">
+        <div class="container">
+            <div class="service-detail-grid">
+                <div class="main-content">
+                    <div class="service-overview">
+                        <div class="service-icon-large" aria-hidden="true">
+                            <div class="icon-consultation"></div>
                         </div>
-                        <div style="padding: var(--space-6); background: var(--axis-neutral-950); border-radius: 8px; border: 1px solid var(--axis-neutral-800);">
-                            <h4 style="color: var(--axis-pure-white); margin-bottom: var(--space-3);">Risk Assessment & Mitigation</h4>
-                            <p>Quantitative risk modeling and scenario analysis to identify vulnerabilities and optimize defensive positioning across all financial operations.</p>
+                        <div class="overview-content">
+                            <h2 id="consultation-heading">C-Suite Financial Strategy</h2>
+                            <p>Transform organizational financial architecture through strategic AI implementation and advanced analytical frameworks designed for executive decision-making.</p>
+                            
+                            <div class="consultation-areas">
+                                <div class="area-item">
+                                    <h4>Technology Integration Planning</h4>
+                                    <p>Architect comprehensive AI deployment strategies that align with existing infrastructure while preparing for future scalability requirements.</p>
+                                </div>
+                                <div class="area-item">
+                                    <h4>Risk Assessment & Mitigation</h4>
+                                    <p>Quantitative risk modeling and scenario analysis to identify vulnerabilities and optimize defensive positioning across all financial operations.</p>
+                                </div>
+                                <div class="area-item">
+                                    <h4>Regulatory Compliance Roadmaps</h4>
+                                    <p>Strategic compliance architecture ensuring adherence to evolving regulatory frameworks while maintaining operational efficiency.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div style="padding: var(--space-6); background: var(--axis-neutral-950); border-radius: 8px; border: 1px solid var(--axis-neutral-800);">
-                            <h4 style="color: var(--axis-pure-white); margin-bottom: var(--space-3);">Regulatory Compliance Roadmaps</h4>
-                            <p>Strategic compliance architecture ensuring adherence to evolving regulatory frameworks while maintaining operational efficiency.</p>
+                    </div>
+
+                    <div class="consultation-process">
+                        <h3>Engagement Structure</h3>
+                        <div class="process-grid">
+                            <div class="process-phase">
+                                <div class="phase-header">
+                                    <h4>Discovery & Assessment</h4>
+                                    <span class="phase-duration">2-3 weeks</span>
+                                </div>
+                                <ul class="phase-activities">
+                                    <li>Comprehensive organizational analysis</li>
+                                    <li>Technology stack evaluation</li>
+                                    <li>Regulatory landscape mapping</li>
+                                    <li>Competitive positioning review</li>
+                                </ul>
+                            </div>
+                            <div class="process-phase">
+                                <div class="phase-header">
+                                    <h4>Strategy Development</h4>
+                                    <span class="phase-duration">3-4 weeks</span>
+                                </div>
+                                <ul class="phase-activities">
+                                    <li>AI implementation roadmap</li>
+                                    <li>Resource allocation optimization</li>
+                                    <li>Risk mitigation framework</li>
+                                    <li>Performance measurement systems</li>
+                                </ul>
+                            </div>
+                            <div class="process-phase">
+                                <div class="phase-header">
+                                    <h4>Implementation Planning</h4>
+                                    <span class="phase-duration">2-3 weeks</span>
+                                </div>
+                                <ul class="phase-activities">
+                                    <li>Detailed project timelines</li>
+                                    <li>Team structure design</li>
+                                    <li>Budget allocation framework</li>
+                                    <li>Success metrics definition</li>
+                                </ul>
+                            </div>
+                            <div class="process-phase">
+                                <div class="phase-header">
+                                    <h4>Ongoing Advisory</h4>
+                                    <span class="phase-duration">Continuous</span>
+                                </div>
+                                <ul class="phase-activities">
+                                    <li>Monthly strategy reviews</li>
+                                    <li>Performance optimization</li>
+                                    <li>Emerging technology assessment</li>
+                                    <li>Strategic pivot guidance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="deliverables-section">
+                        <h3>Strategic Deliverables</h3>
+                        <div class="deliverables-grid">
+                            <div class="deliverable-item">
+                                <h5>AI Integration Blueprint</h5>
+                                <p>Comprehensive implementation strategy with technical specifications, resource requirements, and timeline projections.</p>
+                            </div>
+                            <div class="deliverable-item">
+                                <h5>Risk Management Framework</h5>
+                                <p>Quantitative risk assessment models with scenario planning and mitigation strategies for all identified vulnerabilities.</p>
+                            </div>
+                            <div class="deliverable-item">
+                                <h5>Regulatory Compliance Matrix</h5>
+                                <p>Detailed compliance roadmap addressing current and anticipated regulatory requirements with implementation guidelines.</p>
+                            </div>
+                            <div class="deliverable-item">
+                                <h5>Performance Measurement System</h5>
+                                <p>KPI framework with automated tracking and reporting capabilities for continuous strategy optimization.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card-2025 reveal-2025">
-                    <h3 style="color: var(--axis-accent-secondary); margin-bottom: var(--space-8);">Engagement Structure</h3>
-                    <div class="grid-2025 grid-2-2025">
-                        <div style="padding: var(--space-6); background: var(--axis-neutral-950); border-radius: 8px; border: 1px solid var(--axis-neutral-800);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
-                                <h4 style="color: var(--axis-pure-white);">Discovery & Assessment</h4>
-                                <span style="color: var(--axis-accent-primary); font-size: var(--text-sm); font-weight: var(--font-medium);">2-3 weeks</span>
-                            </div>
-                            <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400);">
-                                <li style="padding: var(--space-1) 0;">• Comprehensive organizational analysis</li>
-                                <li style="padding: var(--space-1) 0;">• Technology stack evaluation</li>
-                                <li style="padding: var(--space-1) 0;">• Regulatory landscape mapping</li>
-                                <li style="padding: var(--space-1) 0;">• Competitive positioning review</li>
-                            </ul>
+                <div class="sidebar-content">
+                    <div class="cta-card">
+                        <h3>Schedule Consultation</h3>
+                        <p>Transform your financial architecture through strategic AI implementation.</p>
+                        <a href="mailto:ai.info@axisthorn.com?subject=Request%20Strategy%20Session" class="cta-button">Request Strategy Session</a>
+                        <div class="contact-info" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(139, 21, 56, 0.2);">
+                            <p style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">Contact:</p>
+                            <p style="color: #8B1538; font-weight: 600;">ai.info@axisthorn.com</p>
                         </div>
-                        <div style="padding: var(--space-6); background: var(--axis-neutral-950); border-radius: 8px; border: 1px solid var(--axis-neutral-800);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
-                                <h4 style="color: var(--axis-pure-white);">Strategy Development</h4>
-                                <span style="color: var(--axis-accent-primary); font-size: var(--text-sm); font-weight: var(--font-medium);">3-4 weeks</span>
+                    </div>
+
+                    <div class="expertise-card">
+                        <h3>Executive Focus Areas</h3>
+                        <div class="expertise-list">
+                            <div class="expertise-item">
+                                <span class="expertise-icon"></span>
+                                <span class="expertise-text">Digital Transformation Strategy</span>
                             </div>
-                            <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400);">
-                                <li style="padding: var(--space-1) 0;">• AI implementation roadmap</li>
-                                <li style="padding: var(--space-1) 0;">• Resource allocation optimization</li>
-                                <li style="padding: var(--space-1) 0;">• Risk mitigation framework</li>
-                                <li style="padding: var(--space-1) 0;">• Performance measurement systems</li>
-                            </ul>
+                            <div class="expertise-item">
+                                <span class="expertise-icon"></span>
+                                <span class="expertise-text">AI Implementation Roadmaps</span>
+                            </div>
+                            <div class="expertise-item">
+                                <span class="expertise-icon"></span>
+                                <span class="expertise-text">Risk Management Systems</span>
+                            </div>
+                            <div class="expertise-item">
+                                <span class="expertise-icon"></span>
+                                <span class="expertise-text">Performance Optimization</span>
+                            </div>
                         </div>
-                        <div style="padding: var(--space-6); background: var(--axis-neutral-950); border-radius: 8px; border: 1px solid var(--axis-neutral-800);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
-                                <h4 style="color: var(--axis-pure-white);">Implementation Planning</h4>
-                                <span style="color: var(--axis-accent-primary); font-size: var(--text-sm); font-weight: var(--font-medium);">2-3 weeks</span>
-                            </div>
-                            <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400);">
-                                <li style="padding: var(--space-1) 0;">• Detailed project timelines</li>
-                                <li style="padding: var(--space-1) 0;">• Team structure design</li>
-                                <li style="padding: var(--space-1) 0;">• Budget allocation framework</li>
-                                <li style="padding: var(--space-1) 0;">• Success metrics definition</li>
-                            </ul>
-                        </div>
-                        <div style="padding: var(--space-6); background: var(--axis-neutral-950); border-radius: 8px; border: 1px solid var(--axis-neutral-800);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-4);">
-                                <h4 style="color: var(--axis-pure-white);">Ongoing Advisory</h4>
-                                <span style="color: var(--axis-accent-primary); font-size: var(--text-sm); font-weight: var(--font-medium);">Continuous</span>
-                            </div>
-                            <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400);">
-                                <li style="padding: var(--space-1) 0;">• Monthly strategy reviews</li>
-                                <li style="padding: var(--space-1) 0;">• Performance optimization</li>
-                                <li style="padding: var(--space-1) 0;">• Emerging technology assessment</li>
-                                <li style="padding: var(--space-1) 0;">• Strategic pivot guidance</li>
-                            </ul>
+                    </div>
+
+                    <div class="related-services">
+                        <h3>Related Services</h3>
+                        <div class="service-links" role="navigation" aria-label="Related services">
+                            <a href="implementation.html" class="service-link">
+                                <span class="service-name">Implementation Services</span>
+                                <span class="service-desc">Full-scale system deployment</span>
+                            </a>
+                            <a href="support.html" class="service-link">
+                                <span class="service-name">Ongoing Support</span>
+                                <span class="service-desc">Continuous optimization</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
-    <!-- Contact Section -->
-    <section class="section-2025" style="background: var(--axis-neutral-950);">
-        <div class="section-inner-2025">
-            <div style="text-align: center; margin-bottom: var(--space-12);">
-                <h2 class="section-title-2025">Schedule Consultation</h2>
-                <p style="font-size: var(--text-xl); color: var(--axis-neutral-400); max-width: 600px; margin: 0 auto;">Transform your financial architecture through strategic AI implementation.</p>
-            </div>
-            
-            <div style="max-width: 400px; margin: 0 auto; text-align: center;">
-                <a href="mailto:ai.info@axisthorn.com?subject=Request%20Strategy%20Session" class="btn-2025 btn-primary-2025" style="width: 100%; margin-bottom: var(--space-6);">Request Strategy Session →</a>
-                <p style="color: var(--axis-neutral-500); font-size: var(--text-sm);">or email us directly at <a href="mailto:ai.info@axisthorn.com" style="color: var(--axis-accent-primary);">ai.info@axisthorn.com</a></p>
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">Axis Thorn LLC</span>
+                </div>
+                <div class="footer-text">
+                    <p><small>&copy; 2025 Axis Thorn LLC. Architecting the Unseen.</small></p>
+                </div>
             </div>
         </div>
-    </section>
+    </footer>
 
-    <!-- Footer -->
-    <footer class="footer-2025">
-        <div class="footer-inner">
-            <p>&copy; 2025 Axis Thorn LLC. Architecting the Unseen.</p>
-        </div>
-            <div class="footer-links">
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-            </div>    </footer>
     
-    <!-- Scripts -->
-    <script src="js/axis-2025.js"></script>
 </body>
 </html>

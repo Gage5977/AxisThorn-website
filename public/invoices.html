@@ -1,4 +1,21 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Client Portal - Axis Thorn LLC</title><meta name="description" content="Access your invoices and manage your account with Axis Thorn LLC."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="single-page.css"><style>/* Page-specific minimal styles */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal - Axis Thorn LLC</title>
+    <meta name="description" content="Access your invoices and manage your account with Axis Thorn LLC.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="single-page.css">
+    <style>
+        /* Page-specific minimal styles */
         .portal-hero {
             padding: 6rem 2rem 4rem;
             text-align: center;
@@ -238,7 +255,195 @@
             .form-section {
                 padding: 2rem 1.5rem;
             }
-        }</style><script defer="defer" src="js/239.c2dd7d073b72dceb3d92.js"></script><script defer="defer" src="js/invoices.13c356ec88c83e51e2cc.js"></script></head><body><nav class="navigation" role="navigation" aria-label="Main navigation"><div class="nav-container"><a href="/" class="logo" aria-label="Axis Thorn home"><img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40"> <span class="logo-text">Axis Thorn</span> </a><button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button><ul class="nav-menu" role="menubar"><li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li><li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">Axis AI (Preview)</a></li><li role="none"><a href="terminal.html" class="nav-link" role="menuitem">Terminal</a></li><li role="none"><a href="invoices.html" class="nav-link active" role="menuitem">Client Portal</a></li><li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li></ul></div></nav><main id="main-content"><section class="portal-hero"><div class="container"><h1 class="portal-title">Client Portal</h1><p class="portal-subtitle">Manage your invoices, track payments, and access financial documents in one secure location.</p></div></section><div class="portal-content"><nav class="portal-nav"><button class="nav-btn active" data-view="dashboard">Dashboard</button> <button class="nav-btn" data-view="create">Create Invoice</button> <button class="nav-btn" data-view="customers">Customers</button> <button class="nav-btn" data-view="products">Products</button></nav><div id="dashboard" class="view active"><div class="stats"><div class="stat-card"><h3>Total Invoices</h3><p class="stat-value" id="totalInvoices">0</p></div><div class="stat-card"><h3>Paid Invoices</h3><p class="stat-value" id="paidInvoices">0</p></div><div class="stat-card"><h3>Pending</h3><p class="stat-value" id="pendingInvoices">0</p></div><div class="stat-card"><h3>Total Revenue</h3><p class="stat-value" id="totalRevenue">$0.00</p></div></div><div class="form-section"><h3>Recent Invoices</h3><div id="invoicesContent"><div class="loading">Loading invoices...</div></div></div></div><div id="create" class="view"><div class="form-section"><h3>Create New Invoice</h3><form id="invoiceForm"><div class="form-row"><div class="form-group"><label>Customer Name</label> <input id="customerName" required placeholder="Enter customer name"></div><div class="form-group"><label>Customer Email</label> <input type="email" id="customerEmail" required placeholder="customer@example.com"></div></div><div class="form-row"><div class="form-group"><label>Description</label> <input id="itemDescription" required placeholder="Service description"></div><div class="form-group"><label>Quantity</label> <input type="number" id="itemQuantity" min="1" value="1"></div><div class="form-group"><label>Unit Price</label> <input type="number" id="itemPrice" step="0.01" min="0" placeholder="0.00"></div></div><div class="form-row"><div class="form-group"><label>Tax Rate (%)</label> <input type="number" id="taxRate" step="0.01" min="0" value="0" placeholder="8.25"></div><div class="form-group"><label>Discount</label> <input type="number" id="discount" step="0.01" min="0" value="0" placeholder="0.00"></div></div><div class="form-group"><label>Notes</label> <textarea id="notes" rows="3" placeholder="Additional notes or terms"></textarea></div><button type="submit" class="btn-primary">Create Invoice</button> <button type="button" class="btn-secondary" onclick="clearForm()">Clear Form</button></form></div><div id="createResult"></div></div><div id="customers" class="view"><div class="form-section"><h3>Customer Management</h3><div id="customersContent"><div class="loading">Loading customers...</div></div></div></div><div id="products" class="view"><div class="form-section"><h3>Product Management</h3><div id="productsContent"><div class="loading">Loading products...</div></div></div></div></div><section id="contact" class="contact"><div class="container"><h2 class="section-title">Need Assistance?</h2><div class="contact-content"><p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Contact our support team for help with your account or invoices.</p><form action="mailto:support@axisthorn.com" method="post" enctype="text/plain" class="contact-form"><input name="name" placeholder="Name" required class="form-input"> <input type="email" name="email" placeholder="Email" required class="form-input"> <textarea name="message" placeholder="How can we help you?" rows="5" class="form-textarea"></textarea> <button type="submit" class="submit-button">Send Message</button></form></div></div></section></main><footer class="footer"><div class="container"><div class="footer-content"><div class="footer-logo"><span class="logo-text">Axis Thorn LLC</span></div><div class="footer-links"><a href="index.html" class="footer-link">Home</a> <a href="terminal.html" class="footer-link">Terminal</a> <a href="mailto:support@axisthorn.com" class="footer-link">Support</a></div><p class="footer-copyright">© 2025 Axis Thorn LLC. All rights reserved.</p></div></div></footer><script src="script.js"></script><script>// API base URL
+        }
+    </style>
+</head>
+<body>
+    <nav class="navigation" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="/" class="logo" aria-label="Axis Thorn home">
+                <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
+                <span class="logo-text">Axis Thorn</span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+            </button>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">Axis AI (Preview)</a></li>
+                <li role="none"><a href="terminal.html" class="nav-link" role="menuitem">Terminal</a></li>
+                <li role="none"><a href="invoices.html" class="nav-link active" role="menuitem">Client Portal</a></li>
+                <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero -->
+        <section class="portal-hero">
+            <div class="container">
+                <h1 class="portal-title">Client Portal</h1>
+                <p class="portal-subtitle">
+                    Manage your invoices, track payments, and access financial documents in one secure location.
+                </p>
+            </div>
+        </section>
+
+        <!-- Portal Content -->
+        <div class="portal-content">
+            <!-- Navigation -->
+            <nav class="portal-nav">
+                <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+                <button class="nav-btn" data-view="create">Create Invoice</button>
+                <button class="nav-btn" data-view="customers">Customers</button>
+                <button class="nav-btn" data-view="products">Products</button>
+            </nav>
+
+            <!-- Dashboard View -->
+            <div id="dashboard" class="view active">
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total Invoices</h3>
+                        <p class="stat-value" id="totalInvoices">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Paid Invoices</h3>
+                        <p class="stat-value" id="paidInvoices">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pending</h3>
+                        <p class="stat-value" id="pendingInvoices">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Revenue</h3>
+                        <p class="stat-value" id="totalRevenue">$0.00</p>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Recent Invoices</h3>
+                    <div id="invoicesContent">
+                        <div class="loading">Loading invoices...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Invoice View -->
+            <div id="create" class="view">
+                <div class="form-section">
+                    <h3>Create New Invoice</h3>
+                    <form id="invoiceForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Customer Name</label>
+                                <input type="text" id="customerName" required placeholder="Enter customer name">
+                            </div>
+                            <div class="form-group">
+                                <label>Customer Email</label>
+                                <input type="email" id="customerEmail" required placeholder="customer@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <input type="text" id="itemDescription" required placeholder="Service description">
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                <input type="number" id="itemQuantity" min="1" value="1">
+                            </div>
+                            <div class="form-group">
+                                <label>Unit Price</label>
+                                <input type="number" id="itemPrice" step="0.01" min="0" placeholder="0.00">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Tax Rate (%)</label>
+                                <input type="number" id="taxRate" step="0.01" min="0" value="0" placeholder="8.25">
+                            </div>
+                            <div class="form-group">
+                                <label>Discount</label>
+                                <input type="number" id="discount" step="0.01" min="0" value="0" placeholder="0.00">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Notes</label>
+                            <textarea id="notes" rows="3" placeholder="Additional notes or terms"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary">Create Invoice</button>
+                        <button type="button" class="btn-secondary" onclick="clearForm()">Clear Form</button>
+                    </form>
+                </div>
+
+                <div id="createResult"></div>
+            </div>
+
+            <!-- Customers View -->
+            <div id="customers" class="view">
+                <div class="form-section">
+                    <h3>Customer Management</h3>
+                    <div id="customersContent">
+                        <div class="loading">Loading customers...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products View -->
+            <div id="products" class="view">
+                <div class="form-section">
+                    <h3>Product Management</h3>
+                    <div id="productsContent">
+                        <div class="loading">Loading products...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Need Assistance?</h2>
+                <div class="contact-content">
+                    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                        Contact our support team for help with your account or invoices.
+                    </p>
+                    <form action="mailto:support@axisthorn.com" method="post" enctype="text/plain" class="contact-form">
+                        <input type="text" name="name" placeholder="Name" required class="form-input">
+                        <input type="email" name="email" placeholder="Email" required class="form-input">
+                        <textarea name="message" placeholder="How can we help you?" rows="5" class="form-textarea"></textarea>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">Axis Thorn LLC</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="terminal.html" class="footer-link">Terminal</a>
+                    <a href="mailto:support@axisthorn.com" class="footer-link">Support</a>
+                </div>
+                <p class="footer-copyright">© 2025 Axis Thorn LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // API base URL
         const API_BASE = '/api';
 
         // Navigation functionality
@@ -523,4 +728,7 @@
         }
 
         // Initialize dashboard on load
-        loadDashboard();</script></body></html>
+        loadDashboard();
+    </script>
+</body>
+</html>

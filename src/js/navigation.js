@@ -28,13 +28,11 @@ export const Navigation = {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
       if (scrollTop > 50) {
-        navigation.style.background = 'rgba(10, 15, 28, 0.98)';
-        navigation.style.borderBottom = '1px solid rgba(6, 182, 212, 0.3)';
-        navigation.style.boxShadow = '0 0 20px rgba(6, 182, 212, 0.1)';
+        navigation.style.background = 'rgba(10, 10, 10, 0.98)';
+        navigation.style.borderBottom = '1px solid rgba(212, 175, 55, 0.3)';
       } else {
-        navigation.style.background = 'rgba(10, 15, 28, 0.95)';
-        navigation.style.borderBottom = '1px solid rgba(6, 182, 212, 0.1)';
-        navigation.style.boxShadow = 'none';
+        navigation.style.background = 'rgba(10, 10, 10, 0.95)';
+        navigation.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
       }
     });
   },

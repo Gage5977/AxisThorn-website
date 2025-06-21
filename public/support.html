@@ -29,31 +29,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/axis-2025.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/single-page.css">
 </head>
 <body>
-    <nav class="nav-2025" role="navigation">
-    <div class="nav-2025-inner">
-        <a href="/" class="logo-2025" aria-label="Axis Thorn">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z" 
-                      fill="currentColor" opacity="1"/>
-                <path d="M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z" 
-                      fill="currentColor" opacity="1"/>
-                <rect x="16" y="20" width="16" height="8" fill="currentColor" opacity="0.2"/>
-            </svg>
-            <span>Axis Thorn</span>
-        </a>
-        
-        <ul class="nav-links-2025">
-            <li><a href="/" class="nav-link-2025">Home</a></li>
-            <li><a href="/portal" class="nav-link-2025">Banking</a></li>
-            <li><a href="/invoices" class="nav-link-2025">Invoices</a></li>
-            <li><a href="/terminal" class="nav-link-2025">Terminal</a></li>
-            <li><a href="/axis-ai" class="nav-link-2025">AXIS AI</a></li>
-        </ul>
-    </div>
-</nav>
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="/" class="logo" aria-label="Axis Thorn home">
+                <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
+                <span class="logo-text">Axis Thorn</span>
+            </a>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="/" class="nav-link" role="menuitem">/home</a></li>
+                <li role="none"><a href="invoices.html" class="nav-link" role="menuitem">/client-portal</a></li>
+                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">/axis-ai</a></li>
+                <li role="none"><a href="/app" class="nav-link" role="menuitem">/axis-terminal</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <section class="page-header">
         <div class="container">
@@ -247,7 +241,7 @@
                         <a href="/invoices.html" class="cta-button">Access Support Portal</a>
                         <div class="contact-info" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(139, 21, 56, 0.2);">
                             <p style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">Contact:</p>
-                            <p style="color: #06B6D4; font-weight: 600;">ai.info@axisthorn.com</p>
+                            <p style="color: #8B1538; font-weight: 600;">ai.info@axisthorn.com</p>
                         </div>
                     </div>
 
@@ -312,18 +306,20 @@
         </div>
     </section>
 
-    <footer class="footer-2025">
-    <div class="footer-inner">
-        <p>&copy; 2025 Axis Thorn LLC. Pioneering the future of finance.</p>
-    </div>
-            <div class="footer-links">
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-            </div></footer>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">Axis Thorn LLC</span>
+                </div>
+                <div class="footer-text">
+                    <p>&copy; 2025 Axis Thorn LLC. Architecting the Unseen.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="js/mobile-menu.js"></script>
     <script src="js/ai-stats.js"></script>
-    <script src="script.js"></script>
-<script src="js/axis-2025.js"></script>
 </body>
 </html>

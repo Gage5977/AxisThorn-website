@@ -116,7 +116,7 @@
     <meta name="theme-color" content="#0A0F1C">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
@@ -138,10 +138,10 @@
                 </svg>
             </button>
             <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="#overview" class="nav-link" role="menuitem">Overview</a></li>
-                <li role="none"><a href="#pillars" class="nav-link" role="menuitem">Pillars</a></li>
-                <li role="none"><a href="#services" class="nav-link" role="menuitem">Services</a></li>
-                <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+                <li role="none"><a href="/" class="nav-link" role="menuitem">/home</a></li>
+                <li role="none"><a href="invoices.html" class="nav-link" role="menuitem">/client-portal</a></li>
+                <li role="none"><a href="axis-ai.html" class="nav-link" role="menuitem">/axis-ai</a></li>
+                <li role="none"><a href="terminal.html" class="nav-link" role="menuitem">/axis-terminal</a></li>
             </ul>
         </div>
     </nav>
@@ -196,39 +196,36 @@
                 <div class="service-card">
                     <h3>Strategic Consultation</h3>
                     <p>Executive-level advisory for complex financial architecture decisions.</p>
-                    <a href="#contact" class="service-link">Schedule Consultation →</a>
+                    <a href="consultation.html" class="service-link">Schedule Consultation →</a>
                 </div>
                 <div class="service-card">
                     <h3>Implementation</h3>
                     <p>Full-scale deployment and integration of AI-driven financial systems.</p>
-                    <a href="#contact" class="service-link">Request Implementation →</a>
+                    <a href="implementation.html" class="service-link">Request Implementation →</a>
                 </div>
                 <div class="service-card">
                     <h3>Ongoing Support</h3>
                     <p>Continuous monitoring, optimization, and strategic guidance.</p>
-                    <a href="#contact" class="service-link">Access Support →</a>
+                    <a href="support.html" class="service-link">Access Support →</a>
                 </div>
             </div>
             
             <!-- Administrative Services -->
             <div class="admin-services">
-                <h3 class="subsection-title">Administrative Services</h3>
+                <h3 class="subsection-title">System Access</h3>
                 <div class="admin-grid">
-                    <div class="admin-card">
-                        <h4>Client Portal</h4>
+                    <a href="invoices.html" class="admin-card portal-link">
+                        <h4>/client-portal</h4>
                         <p>Secure access to invoices and account management.</p>
-                        <a href="invoices.html" class="admin-link">Access Portal →</a>
-                    </div>
-                    <div class="admin-card">
-                        <h4>Axis AI (Preview)</h4>
+                    </a>
+                    <a href="axis-ai.html" class="admin-card portal-link">
+                        <h4>/axis-ai</h4>
                         <p>Advanced AI capabilities for financial intelligence.</p>
-                        <a href="axis-ai.html" class="admin-link">Explore Axis AI →</a>
-                    </div>
-                    <div class="admin-card">
-                        <h4>AXIS Terminal</h4>
+                    </a>
+                    <a href="/app" class="admin-card portal-link">
+                        <h4>/axis-terminal</h4>
                         <p>Professional AI-powered financial analysis platform.</p>
-                        <a href="/app" class="admin-link">Access Terminal →</a>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

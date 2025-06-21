@@ -4,20 +4,9 @@
   "description": "Axis Thorn LLC - Financial Consulting and Administrative Services",
   "private": true,
   "scripts": {
-    "dev": "webpack serve --mode development",
-    "build": "webpack --mode production",
-    "build:vercel": "npm run build && npm run copy-files",
-    "copy-files": "cp -r dist/* public/",
-    "lint": "eslint . --ext .js,.jsx",
-    "lint:fix": "eslint . --ext .js,.jsx --fix",
-    "format": "prettier --write \"**/*.{js,jsx,json,css,md}\"",
-    "format:check": "prettier --check \"**/*.{js,jsx,json,css,md}\"",
-    "preview": "npx serve public",
-    "test": "node test-suite.js",
-    "test:api": "node test-api.js",
-    "test:local": "curl -f http://localhost:3000/api/ping || exit 1",
-    "clean": "rm -rf dist public/js/*.old.js",
-    "postbuild": "echo 'Build completed successfully'"
+    "dev": "npx serve public",
+    "build": "echo 'Static site - no build required'",
+    "preview": "npx serve public"
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",

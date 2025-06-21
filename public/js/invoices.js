@@ -19,7 +19,7 @@ export function initializeInvoicePortal() {
   // Optimize scroll performance
   PerformanceModule.optimizeScrollPerformance();
     
-  // Invoice portal initialized
+  console.log('Invoice portal initialized');
 }
 
 // Auto-initialize when DOM is loaded
