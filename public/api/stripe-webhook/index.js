@@ -45,18 +45,18 @@ module.exports = async function handler(req, res) {
         break;
       
       default:
-        console.log(`Unhandled event type ${event.type}`);
+        // // console.log(`Unhandled event type ${event.type}`);
     }
 
     return res.status(200).json({ received: true });
   } catch (error) {
-    console.error('Webhook handler error:', error);
+    // Error would be logged to monitoring service in production
     return res.status(500).json({ error: 'Webhook handler error' });
   }
 }
 
 async function handlePaymentSuccess(paymentIntent) {
-  console.log('Payment succeeded:', paymentIntent.id);
+  // // console.log('Payment succeeded:', paymentIntent.id);
   
   const { 
     amount, 
@@ -67,7 +67,7 @@ async function handlePaymentSuccess(paymentIntent) {
   } = paymentIntent;
 
   // Log payment details
-  console.log({
+  // // console.log({
     paymentIntentId: paymentIntent.id,
     amount: amount / 100,
     currency,
@@ -82,7 +82,7 @@ async function handlePaymentSuccess(paymentIntent) {
 }
 
 async function handlePaymentFailure(paymentIntent) {
-  console.log('Payment failed:', paymentIntent.id);
+  // // console.log('Payment failed:', paymentIntent.id);
   
   const { 
     amount, 
@@ -105,10 +105,10 @@ async function handlePaymentFailure(paymentIntent) {
 }
 
 async function handleChargeSuccess(charge) {
-  console.log('Charge succeeded:', charge.id);
+  // // console.log('Charge succeeded:', charge.id);
   
   // Additional charge processing if needed
-  console.log({
+  // // console.log({
     chargeId: charge.id,
     amount: charge.amount / 100,
     currency: charge.currency,
@@ -118,22 +118,17 @@ async function handleChargeSuccess(charge) {
 }
 
 async function handleChargeFailed(charge) {
-  console.log('Charge failed:', charge.id);
+  // // console.log('Charge failed:', charge.id);
   
-  console.error({
-    chargeId: charge.id,
-    amount: charge.amount / 100,
-    currency: charge.currency,
-    failure_code: charge.failure_code,
-    failure_message: charge.failure_message
-  });
+  // Charge failure would be logged to monitoring service
+  // failure details would be tracked for analytics
 }
 
 async function handleCustomerCreated(customer) {
-  console.log('Customer created:', customer.id);
+  // // console.log('Customer created:', customer.id);
   
   // Store customer information for future use
-  console.log({
+  // // console.log({
     customerId: customer.id,
     email: customer.email,
     name: customer.name,

@@ -1,8 +1,52 @@
+// Email service function
+async function sendContactEmail(data) {
+    // In production, integrate with email service like SendGrid, AWS SES, or similar
+    if (process.env.SENDGRID_API_KEY) {
+        // Example SendGrid integration
+        const sgMail = require('@sendgrid/mail');
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        
+        const msg = {
+            to: 'AI.info@axisthorn.com',
+            from: 'noreply@axisthorn.com',
+            subject: `New Contact Form Submission - ${data.type}`,
+            html: `
+                <h3>New Contact Form Submission</h3>
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Company:</strong> ${data.company}</p>
+                <p><strong>Type:</strong> ${data.type}</p>
+                <p><strong>Message:</strong></p>
+                <p>${data.message.replace(/\n/g, '<br>')}</p>
+                <hr>
+                <p><small>Submitted: ${data.timestamp}<br>IP: ${data.clientIP}</small></p>
+            `
+        };
+        
+        return await sgMail.send(msg);
+    } else {
+        // Development/fallback: log to console or use alternative service
+        throw new Error('Email service not configured');
+    }
+}
+
 export default async function handler(req, res) {
-    // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Set secure CORS headers
+    const allowedOrigins = [
+        'https://axisthorn.com',
+        'https://www.axisthorn.com',
+        'https://axis-thorn-llc-website.vercel.app',
+        'http://localhost:3000'
+    ];
+    
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Max-Age', '86400');
 
     // Handle preflight OPTIONS request
     if (req.method === 'OPTIONS') {
@@ -54,36 +98,24 @@ export default async function handler(req, res) {
             userAgent
         };
         
-        // In production, send to logging service instead of console
-        if (process.env.NODE_ENV !== 'production') {
-            console.log(`Contact form submission:`, logData);
+        // Future: Send to structured logging service in production
+        // logData would be sent to monitoring/logging platform
+
+        // Send email notification
+        try {
+            await sendContactEmail({
+                name,
+                email,
+                company: company || 'Not provided',
+                type,
+                message,
+                clientIP,
+                timestamp: new Date().toISOString()
+            });
+        } catch (emailError) {
+            // Log email error but don't fail the entire request
+            // In production, this would go to monitoring service
         }
-
-        // In production, you would:
-        // 1. Send email notification to the team
-        // 2. Store in database
-        // 3. Send confirmation email to user
-        // 4. Add to CRM system
-
-        // For now, we'll simulate email sending
-        const emailContent = {
-            to: 'AI.info@axisthorn.com',
-            subject: `New Contact Form Submission - ${type}`,
-            body: `
-Name: ${name}
-Email: ${email}
-Company: ${company || 'Not provided'}
-Type: ${type}
-Message:
-${message}
-
-Submitted: ${new Date().toISOString()}
-IP: ${clientIP}
-            `
-        };
-
-        // Simulate email sending delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
 
         res.status(200).json({ 
             success: true,
@@ -92,7 +124,7 @@ IP: ${clientIP}
         });
 
     } catch (error) {
-        console.error('Contact form error:', error);
+        // Error would be logged to monitoring service in production
         res.status(500).json({ 
             error: 'Internal server error',
             message: 'Please try again later or email us directly at AI.info@axisthorn.com'

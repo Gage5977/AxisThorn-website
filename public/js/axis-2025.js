@@ -284,13 +284,50 @@ function closeLeadMagnet() {
   document.body.style.overflow = 'auto';
 }
 
-function submitLeadMagnet(event, type) {
+async function submitLeadMagnet(event, type) {
   event.preventDefault();
   
-  // Here you would integrate with your CRM/email system
-  // For now, show a thank you message
+  const form = event.target;
+  const formData = new FormData(form);
   const content = document.getElementById('modalContent');
   
+  // Show loading state
+  content.innerHTML = `
+    <div style="text-align: center;">
+      <div style="font-size: 24px; margin-bottom: var(--space-4);">⟳</div>
+      <h3 style="color: var(--axis-accent-primary); margin-bottom: var(--space-4);">Processing...</h3>
+      <p style="color: var(--axis-neutral-300);">Please wait while we process your request.</p>
+    </div>
+  `;
+  
+  try {
+    // Initialize CRM integration
+    const crm = new CRMIntegration();
+    
+    // Prepare lead data
+    const leadData = {
+      name: formData.get('name') || form.querySelector('input[type="text"]').value,
+      email: formData.get('email') || form.querySelector('input[type="email"]').value,
+      company: formData.get('company') || '',
+      type: type,
+      timestamp: new Date().toISOString(),
+      source: 'website-lead-magnet'
+    };
+    
+    // Submit lead
+    const result = await crm.submitLead(leadData);
+    
+    if (result.success) {
+      showSuccessMessage(type, content);
+    } else {
+      showErrorMessage(content);
+    }
+  } catch (error) {
+    showErrorMessage(content);
+  }
+}
+
+function showSuccessMessage(type, content) {
   const thankYouMessages = {
     assessment: 'Your AI readiness report is being generated. Check your email in 5 minutes.',
     demo: 'Demo scheduled! Our team will contact you within 24 hours to confirm timing.',
@@ -305,9 +342,19 @@ function submitLeadMagnet(event, type) {
       <button onclick="closeLeadMagnet()" class="btn-2025 btn-primary-2025">Continue Exploring</button>
     </div>
   `;
-  
-  // Analytics tracking would go here
-  console.log(`Lead magnet submitted: ${type}`);
+}
+
+function showErrorMessage(content) {
+  content.innerHTML = `
+    <div style="text-align: center;">
+      <div style="font-size: 48px; margin-bottom: var(--space-4);">⚠</div>
+      <h3 style="color: var(--axis-accent-tertiary); margin-bottom: var(--space-4);">Connection Error</h3>
+      <p style="color: var(--axis-neutral-300); margin-bottom: var(--space-6);">
+        We're experiencing technical difficulties. Please try again or contact us directly at AI.info@axisthorn.com
+      </p>
+      <button onclick="closeLeadMagnet()" class="btn-2025">Close</button>
+    </div>
+  `;
 }
 
 // Progressive Disclosure for Services
