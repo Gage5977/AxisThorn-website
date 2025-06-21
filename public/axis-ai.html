@@ -1,176 +1,200 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Axis AI (Preview) - Advanced Financial Intelligence | Axis Thorn LLC</title><meta name="description" content="Deploy autonomous AI agents that think, analyze, and execute at superhuman speed."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="single-page.css"><style>/* Page-specific minimal styles */
-        .ai-hero {
-            padding: 6rem 2rem 4rem;
-            text-align: center;
-        }
-        
-        .ai-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-        
-        .ai-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
-        
-        .capabilities {
-            padding: 4rem 2rem;
-            background: var(--secondary-dark);
-        }
-        
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 2rem auto;
-        }
-        
-        .capability {
-            text-align: center;
-        }
-        
-        .capability h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        
-        .capability p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        .capability-metric {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            margin-top: 1rem;
-        }
-        
-        .ai-demo {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        
-        .demo-box {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: var(--accent-dark);
-            border: 1px solid var(--accent-cyan-02);
-            border-radius: 12px;
-        }
-        
-        .demo-label {
-            font-size: 0.875rem;
-            color: var(--accent-cyan);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-        
-        .demo-query {
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-        }
-        
-        .demo-results {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            text-align: center;
-        }
-        
-        .result-item {
-            padding: 1rem;
-            background: rgba(10, 15, 28, 0.5);
-            border-radius: 8px;
-        }
-        
-        .result-value {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .result-label {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-        
-        .ai-cta {
-            padding: 4rem 2rem;
-            text-align: center;
-            background: var(--secondary-dark);
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        
-        .cta-button {
-            padding: 1rem 2rem;
-            border: 1px solid var(--accent-cyan);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--accent-cyan);
-            font-weight: 500;
-            transition: var(--transition-smooth);
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            background: var(--accent-cyan-01);
-            transform: translateY(-2px);
-        }
-        
-        .cta-button.primary {
-            background: var(--accent-primary);
-            color: var(--text-primary);
-            border-color: var(--accent-cyan);
-        }
-        
-        .cta-button.primary:hover {
-            background: var(--accent-secondary);
-        }</style><script defer="defer" src="js/axis-ai.d4eed458f94658deb07c.js"></script><link rel="stylesheet" href="css/axis-terminal-override.css">
-</head><body><nav class="nav-2025" role="navigation">
-    <div class="nav-2025-inner">
-        <a href="/" class="logo-2025" aria-label="Axis Thorn">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z" 
-                      fill="currentColor" opacity="1"/>
-                <path d="M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z" 
-                      fill="currentColor" opacity="1"/>
-                <rect x="16" y="20" width="16" height="8" fill="currentColor" opacity="0.2"/>
-            </svg>
-            <span>Axis Thorn</span>
-        </a>
-        
-        <ul class="nav-links-2025">
-            <li><a href="/" class="nav-link-2025">Home</a></li>
-            <li><a href="/banking-portal" class="nav-link-2025">Banking</a></li>
-            <li><a href="/invoices" class="nav-link-2025">Invoices</a></li>
-            <li><a href="/terminal" class="nav-link-2025">Terminal</a></li>
-            <li><a href="/axis-ai" class="nav-link-2025">AXIS AI</a></li>
-        </ul>
-    </div>
-</nav><main id="main-content"><section class="ai-hero"><div class="container"><h1 class="ai-title">AXIS AI <span style="font-size: 0.6em; color: var(--accent-cyan); font-weight: 400;">(Preview)</span></h1><p class="ai-subtitle">Autonomous intelligence that processes financial data at the speed of light. Deploy AI agents that think, analyze, and execute beyond human capabilities.</p></div></section><section class="capabilities"><div class="container"><h2 class="section-title-2025">Core Capabilities</h2><div class="capabilities-grid"><div class="capability"><h3>Cognitive Analysis</h3><p>Process unstructured data from earnings calls to market sentiment with contextual understanding.</p><div class="capability-metric">347TB/day</div></div><div class="capability"><h3>Predictive Intelligence</h3><p>Machine learning models trained on decades of market data to forecast trends.</p><div class="capability-metric">94.7%</div></div><div class="capability"><h3>Autonomous Execution</h3><p>Self-optimizing algorithms that adapt to market conditions in real-time.</p><div class="capability-metric">&lt;10ms</div></div></div></div></section><section class="ai-demo"><div class="container"><h2 class="section-title-2025">Live Analysis</h2><div class="demo-box"><div class="demo-label">Query</div><div class="demo-query">"Analyze tech sector volatility and recommend hedging strategies for $50M portfolio"</div><div class="demo-results"><div class="result-item"><span class="result-value">27.3%</span> <span class="result-label">Volatility Index</span></div><div class="result-item"><span class="result-value">15%</span> <span class="result-label">Put Options</span></div><div class="result-item"><span class="result-value">-12%</span> <span class="result-label">Max Drawdown</span></div><div class="result-item"><span class="result-value">0.8%</span> <span class="result-label">Annual Cost</span></div></div></div></div></section><section class="services"><div class="container"><h2 class="section-title-2025">Applications</h2><div class="services-grid"><div class="card-2025"><h3>Hedge Funds</h3><p>Alpha generation through AI-driven strategies and real-time risk management.</p><a href="#contact" class="service-link">Deploy AI →</a></div><div class="card-2025"><h3>Family Offices</h3><p>Multi-generational wealth preservation with intelligent tax optimization.</p><a href="#contact" class="service-link">Learn More →</a></div><div class="card-2025"><h3>Institutions</h3><p>Large-scale portfolio optimization with automated compliance monitoring.</p><a href="#contact" class="service-link">Get Started →</a></div></div></div></section><section class="ai-cta"><div class="container"><h2 class="section-title-2025">Deploy Superhuman Intelligence</h2><p style="color: var(--text-secondary); margin-bottom: 2rem;">Join the vanguard of financial institutions leveraging AI.</p><div class="cta-buttons"><a href="/app" class="cta-button primary">Launch Axis AI</a> <a href="mailto:ai@axisthorn.com" class="cta-button">Schedule Demo</a></div></div></section><section id="contact" class="contact"><div class="container"><h2 class="section-title-2025">Connect</h2><div class="contact-content"><form action="mailto:ai@axisthorn.com" method="post" enctype="text/plain" class="contact-form"><input name="name" placeholder="Name" required class="form-input"> <input type="email" name="email" placeholder="Email" required class="form-input"> <textarea name="message" placeholder="How can AI transform your operations?" rows="5" class="form-textarea"></textarea> <button type="submit" class="submit-button">Send</button></form></div></div></section></main><footer class="footer-2025">
-    <div class="footer-inner">
-        <p>&copy; 2025 Axis Thorn LLC. Pioneering the future of finance.</p>
-    </div>
-</footer><script src="script.js"></script><script src="js/axis-2025.js"></script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axis AI - Advanced Financial Intelligence | Axis Thorn LLC</title>
+    <meta name="description" content="Deploy autonomous AI agents that think, analyze, and execute at superhuman speed. Advanced financial intelligence platform for complex computational analysis.">
+    <meta name="keywords" content="AI financial intelligence, autonomous agents, computational analysis, AI platform, financial AI, machine learning finance">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://axisthorn.com/axis-ai">
+    <meta property="og:title" content="Axis AI - Advanced Financial Intelligence">
+    <meta property="og:description" content="Deploy autonomous AI agents that think, analyze, and execute at superhuman speed.">
+    <meta property="og:image" content="https://axisthorn.com/logo-2025.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://axisthorn.com/axis-ai">
+    <meta property="twitter:title" content="Axis AI - Advanced Financial Intelligence">
+    <meta property="twitter:description" content="Deploy autonomous AI agents that think, analyze, and execute at superhuman speed.">
+    <meta property="twitter:image" content="https://axisthorn.com/logo-2025.svg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/axis-2025.css">
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav-2025" role="navigation">
+        <div class="nav-2025-inner">
+            <a href="/" class="logo-2025" aria-label="Axis Thorn">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <path d="M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <rect x="16" y="20" width="16" height="8" fill="currentColor" opacity="0.2"/>
+                </svg>
+                <span>Axis Thorn</span>
+            </a>
+            
+            <ul class="nav-links-2025">
+                <li><a href="/#method" class="nav-link-2025">Method</a></li>
+                <li><a href="/#services" class="nav-link-2025">Services</a></li>
+                <li><a href="/portfolio" class="nav-link-2025">Portfolio</a></li>
+                <li><a href="/about" class="nav-link-2025">About</a></li>
+                <li><a href="/#contact" class="nav-link-2025">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero -->
+    <section class="hero-2025">
+        <div class="hero-content-2025">
+            <h1 class="hero-title-2025">
+                <span style="color: var(--axis-accent-primary);">Axis AI</span><br>
+                Advanced<br>
+                <span class="text-outline-2025">Intelligence</span>
+            </h1>
+            <p class="hero-subtitle-2025" style="font-size: var(--text-xl); letter-spacing: 0.1em; text-transform: uppercase; color: var(--axis-neutral-500); margin-top: var(--space-8);">
+                Deploy Autonomous Agents at Superhuman Speed
+            </p>
+        </div>
+    </section>
+    
+    <!-- Capabilities -->
+    <section class="section-2025">
+        <div class="section-inner-2025">
+            <h2 class="section-title-2025 reveal-2025">AI Capabilities</h2>
+            
+            <div class="grid-2025 grid-3-2025">
+                <div class="card-2025 reveal-2025">
+                    <h3 style="color: var(--axis-accent-primary); margin-bottom: var(--space-6);">Autonomous Analysis</h3>
+                    <p style="margin-bottom: var(--space-6);">AI agents that independently process financial data, identify patterns, and generate insights without human intervention.</p>
+                    <div class="card-metric">
+                        <span class="metric-value">[ processing... ]</span>
+                        <span class="metric-label">Documents per Hour</span>
+                    </div>
+                </div>
+                
+                <div class="card-2025 reveal-2025">
+                    <h3 style="color: var(--axis-accent-secondary); margin-bottom: var(--space-6);">Real-time Learning</h3>
+                    <p style="margin-bottom: var(--space-6);">Continuous model adaptation based on market conditions, regulatory changes, and organizational feedback loops.</p>
+                    <div class="card-metric">
+                        <span class="metric-value">[ adapting... ]</span>
+                        <span class="metric-label">Model Updates Daily</span>
+                    </div>
+                </div>
+                
+                <div class="card-2025 reveal-2025">
+                    <h3 style="color: var(--axis-accent-tertiary); margin-bottom: var(--space-6);">Computational Scale</h3>
+                    <p style="margin-bottom: var(--space-6);">Process complex financial scenarios across thousands of variables simultaneously with quantum-grade precision.</p>
+                    <div class="card-metric">
+                        <span class="metric-value">[ calculating... ]</span>
+                        <span class="metric-label">Variables Processed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features -->
+    <section class="section-2025" style="background: var(--axis-neutral-950);">
+        <div class="section-inner-2025">
+            <h2 class="section-title-2025 reveal-2025">Platform Features</h2>
+            
+            <div class="grid-2025 grid-2-2025">
+                <div class="card-2025 reveal-2025">
+                    <h3 style="margin-bottom: var(--space-6);">Natural Language Interface</h3>
+                    <p style="margin-bottom: var(--space-8);">Communicate with AI agents using natural language commands. No programming required.</p>
+                    
+                    <div class="system-demo">
+                        <div class="code-prompt">→ analyze portfolio risk for Q1 scenarios</div>
+                        <div class="code-output">[ analyzing 47 risk factors across 12 asset classes ]</div>
+                        <div class="code-output">[ Monte Carlo simulation: 10,000 iterations ]</div>
+                        <div class="code-output">→ Risk analysis complete. VaR: 2.3%, Expected shortfall: 4.1%</div>
+                    </div>
+                </div>
+                
+                <div class="card-2025 reveal-2025">
+                    <h3 style="margin-bottom: var(--space-6);">Multi-Agent Coordination</h3>
+                    <p style="margin-bottom: var(--space-8);">Deploy specialized agents that collaborate to solve complex financial problems.</p>
+                    
+                    <div class="neural-viz">
+                        <div class="neural-layer">Agent 01: Data Acquisition → [ sourcing... ]</div>
+                        <div class="neural-layer">Agent 02: Pattern Recognition → [ analyzing... ]</div>
+                        <div class="neural-layer">Agent 03: Risk Assessment → [ evaluating... ]</div>
+                        <div class="neural-layer">Agent 04: Strategy Formation → [ optimizing... ]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Access -->
+    <section class="section-2025">
+        <div class="section-inner-2025">
+            <div style="text-align: center; margin-bottom: var(--space-12);">
+                <h2 class="section-title-2025 reveal-2025">Access Axis AI</h2>
+                <p style="font-size: var(--text-xl); color: var(--axis-neutral-400); max-width: 600px; margin: 0 auto;">
+                    Experience the future of financial intelligence through our secure platform.
+                </p>
+            </div>
+            
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <div style="background: var(--axis-neutral-950); padding: var(--space-12); border-radius: 12px; border: 1px solid var(--axis-neutral-800); margin-bottom: var(--space-8);">
+                    <h3 style="color: var(--axis-accent-primary); margin-bottom: var(--space-6);">Preview Access</h3>
+                    <p style="margin-bottom: var(--space-8);">Axis AI is currently in advanced preview. Limited access available for qualified organizations.</p>
+                    
+                    <div style="display: grid; gap: var(--space-4); margin-bottom: var(--space-8);">
+                        <div style="padding: var(--space-4); background: var(--axis-neutral-900); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Enterprise Integration</span>
+                            <span style="color: var(--axis-accent-secondary);">[ available ]</span>
+                        </div>
+                        <div style="padding: var(--space-4); background: var(--axis-neutral-900); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>API Access</span>
+                            <span style="color: var(--axis-accent-secondary);">[ available ]</span>
+                        </div>
+                        <div style="padding: var(--space-4); background: var(--axis-neutral-900); border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>White-label Deployment</span>
+                            <span style="color: var(--axis-accent-primary);">[ Q2 2025 ]</span>
+                        </div>
+                    </div>
+                    
+                    <a href="mailto:ai.info@axisthorn.com?subject=Axis%20AI%20Preview%20Access" class="btn-2025 btn-primary-2025" style="width: 100%;">Request Preview Access →</a>
+                </div>
+                
+                <p style="color: var(--axis-neutral-500); font-size: var(--text-sm);">
+                    For immediate consultation: <a href="mailto:ai.info@axisthorn.com" style="color: var(--axis-accent-primary);">ai.info@axisthorn.com</a>
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer-2025">
+        <div class="footer-inner">
+            <p>&copy; 2025 Axis Thorn LLC. Architecting the Unseen.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/axis-2025.js"></script>
+</body>
+</html>
