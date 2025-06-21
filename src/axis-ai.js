@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add more tab content dynamically
   const tabContent = {
     'family-offices': {
-      title: 'Family Office Solutions',
+      title: 'Private Investment Platform Solutions',
       items: [
         {
           title: 'Wealth Preservation',

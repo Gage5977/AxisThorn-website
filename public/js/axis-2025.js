@@ -225,7 +225,7 @@ function showLeadMagnet(type) {
           <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">Organization Type</label>
           <select style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-800); border: 1px solid var(--axis-neutral-700); border-radius: 8px; color: var(--axis-pure-white);">
             <option>[ identifying... ]</option>
-            <option>Family Office</option>
+            <option>Private Investment Platform</option>
             <option>Asset Manager</option>
             <option>Financial Institution</option>
             <option>Corporate Treasury</option>
