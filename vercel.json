@@ -8,7 +8,7 @@
     "NEXT_PUBLIC_API_URL": "https://axisthorn.com/api"
   },
   "functions": {
-    "api/**/*.js": {
+    "public/api/**/*.js": {
       "maxDuration": 10
     }
   },
