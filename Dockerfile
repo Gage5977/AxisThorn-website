@@ -1,5 +1,5 @@
 # Multi-stage Dockerfile for Axis Thorn API
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 # Install dependencies for native builds
 RUN apk add --no-cache python3 make g++
@@ -15,7 +15,7 @@ RUN npm ci
 RUN npx prisma generate
 
 # Production stage
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Install dumb-init for proper signal handling
 RUN apk add --no-cache dumb-init
