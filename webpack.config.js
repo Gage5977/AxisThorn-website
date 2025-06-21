@@ -84,6 +84,11 @@ module.exports = {
       filename: 'axis-ai.html',
       chunks: ['axis-ai']
     }),
+    new HtmlWebpackPlugin({
+      template: './src/terminal.html',
+      filename: 'terminal.html',
+      chunks: ['main']
+    }),
     new CopyPlugin({
       patterns: [
         // Only copy if they exist and aren't already in public
@@ -92,7 +97,9 @@ module.exports = {
         { from: 'src/assets/images/logo-modern-v1.svg', to: 'logo-modern-v1.svg', noErrorOnMissing: true },
         { from: 'src/assets/images/logo-modern-v2.svg', to: 'logo-modern-v2.svg', noErrorOnMissing: true },
         { from: 'src/assets/images/logo-modern-v3.svg', to: 'logo-modern-v3.svg', noErrorOnMissing: true },
-        { from: 'src/site.webmanifest', to: 'site.webmanifest', noErrorOnMissing: true }
+        { from: 'src/site.webmanifest', to: 'site.webmanifest', noErrorOnMissing: true },
+        // Copy API folder for serverless functions
+        { from: 'api', to: 'api', noErrorOnMissing: true }
       ]
     })
   ],
