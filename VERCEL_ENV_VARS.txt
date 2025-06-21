@@ -1,0 +1,54 @@
+# Environment Variables for Vercel
+# Add these at: https://vercel.com/axis-thorns-projects/axis-thorn-llc-website/settings/environment-variables
+
+# JWT Configuration (Required)
+JWT_SECRET=t3k50m2o9ONFqlvSQjNCwY9xrYlxKXwoZOBYuu0R5wc=
+JWT_EXPIRY=30d
+
+# Stripe Test Keys (Get from https://dashboard.stripe.com/test/apikeys)
+STRIPE_SECRET_KEY=sk_test_51XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+STRIPE_PUBLISHABLE_KEY=pk_test_51XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+# Optional: Webhook secret (get after creating webhook in Stripe)
+STRIPE_WEBHOOK_SECRET=whsec_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+# Node Environment
+NODE_ENV=production
+
+# API Configuration
+NEXT_PUBLIC_API_URL=https://axisthorn.com/api
+
+# Demo Configuration (optional)
+DEMO_SECRET=demo2024
+
+# Database URL (if using Prisma - optional for now)
+# DATABASE_URL=postgresql://user:password@host:port/database
+
+# Email Service (optional)
+# SENDGRID_API_KEY=SG.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+# EMAIL_FROM=noreply@axisthorn.com
+
+---
+HOW TO ADD IN VERCEL:
+
+1. Go to: https://vercel.com/axis-thorns-projects/axis-thorn-llc-website/settings/environment-variables
+
+2. For each variable above:
+   - Click "Add New"
+   - Key: Copy the variable name (e.g., JWT_SECRET)
+   - Value: Copy the value after the = sign
+   - Environment: Select all (Production, Preview, Development)
+   - Click "Save"
+
+3. After adding all variables, redeploy:
+   - Go to Deployments tab
+   - Click "..." on the latest deployment
+   - Select "Redeploy"
+
+---
+TEST STRIPE KEYS:
+
+If you don't have a Stripe account yet, use the test keys from:
+https://stripe.com/docs/testing#test-api-keys
+
+Note: Never commit real API keys to your repository.
