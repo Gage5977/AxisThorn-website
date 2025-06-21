@@ -4,10 +4,8 @@ const { authenticate, validatePaymentAmount } = require('../middleware/auth');
 const ALLOWED_ORIGINS = [
   'https://axisthorn.com',
   'https://www.axisthorn.com',
-  process.env.VERCEL_URL,
-  'http://localhost:3000',
-  'http://localhost:5173'
-];
+  process.env.VERCEL_URL
+].filter(Boolean);
 
 module.exports = async function handler(req, res) {
   const origin = req.headers.origin;

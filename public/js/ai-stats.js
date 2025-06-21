@@ -121,7 +121,7 @@ class AIStatsManager {
         this.apiEndpoint = endpoint;
         
         // This will be implemented when backend is ready
-        console.log('AI Stats API endpoint configured:', endpoint);
+        // AI Stats API endpoint configured
         
         // Example implementation structure:
         /*

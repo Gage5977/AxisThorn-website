@@ -174,7 +174,7 @@ class PortalAuth {
   onAuthenticated() {
     // Callback for when authentication succeeds
     // Can be overridden by specific pages
-    console.log('Authentication successful');
+    // Authentication successful
   }
 
   logout() {
