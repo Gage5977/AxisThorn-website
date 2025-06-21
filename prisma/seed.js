@@ -301,6 +301,47 @@ async function main() {
   }
 
   console.log(`Created ${invoices.length} invoices with items and payments`);
+
+  // Create demo access codes (development only)
+  if (process.env.NODE_ENV !== 'production') {
+    const accessCodes = [
+      {
+        code: 'DEMO-2025-AXIS',
+        description: 'Demo access code for testing',
+        maxUses: 100,
+        expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) // 1 year
+      },
+      {
+        code: 'VIP1-TEST-CODE',
+        description: 'VIP test access with limited uses',
+        maxUses: 5,
+        expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // 30 days
+      },
+      {
+        code: 'BETA-AXIS-2025',
+        description: 'Beta program access',
+        maxUses: 50,
+        expiresAt: null // No expiration
+      }
+    ];
+
+    for (const codeData of accessCodes) {
+      try {
+        await prisma.accessCode.upsert({
+          where: { code: codeData.code },
+          update: {}, // Don't update if exists
+          create: {
+            ...codeData,
+            createdById: adminUser.id
+          }
+        });
+        console.log(`Created access code: ${codeData.code}`);
+      } catch (error) {
+        console.log(`Access code ${codeData.code} already exists`);
+      }
+    }
+  }
+
   console.log('Seeding finished.');
 }
 

@@ -1,12 +1,19 @@
 const prisma = require('../../lib/prisma');
-const { logger } = require('./security');
+const { logger, createRateLimiter } = require('./security');
+
+// Rate limiter for access code attempts (5 attempts per minute per IP)
+const accessCodeLimiter = createRateLimiter(60 * 1000, 5); // 1 minute, 5 attempts
 
 /**
  * Middleware to validate access codes for protected routes
  * Can be used for invite-only features or limited access
  */
 async function requireAccessCode(req, res, next) {
-  const accessCode = req.headers['x-access-code'] || req.query.access_code;
+  // Apply rate limiting first
+  accessCodeLimiter(req, res, async () => {
+    if (res.headersSent) return;
+    
+    const accessCode = req.headers['x-access-code'] || req.query.access_code;
   
   if (!accessCode) {
     return res.status(401).json({ 
@@ -87,6 +94,7 @@ async function requireAccessCode(req, res, next) {
       message: 'Failed to validate access code'
     });
   }
+  }); // End of rate limiter callback
 }
 
 /**
