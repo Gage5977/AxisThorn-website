@@ -4,10 +4,8 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {
-    "api/**/*.js": {
-      "maxDuration": 10
-    }
+  "env": {
+    "NEXT_PUBLIC_API_URL": "https://axis-thorn-api.onrender.com"
   },
   "rewrites": [
     {

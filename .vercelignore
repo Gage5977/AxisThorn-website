@@ -55,3 +55,7 @@ scripts/
 # Other unnecessary files
 backups/
 STRIPE_SETUP.md
+
+# API files (using Render for API)
+api/
+api-deployment/
