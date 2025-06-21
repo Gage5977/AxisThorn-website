@@ -7,11 +7,6 @@
   "env": {
     "NEXT_PUBLIC_API_URL": "https://axisthorn.com/api"
   },
-  "functions": {
-    "public/api/**/*.js": {
-      "maxDuration": 10
-    }
-  },
   "rewrites": [
     {
       "source": "/invoices",
