@@ -5,7 +5,12 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "env": {
-    "NEXT_PUBLIC_API_URL": "https://axis-thorn-api.onrender.com"
+    "NEXT_PUBLIC_API_URL": "https://axisthorn.com/api"
+  },
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 10
+    }
   },
   "rewrites": [
     {
