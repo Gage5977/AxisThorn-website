@@ -15,9 +15,9 @@ module.exports = {
     'axis-ai': './src/js/axis-ai.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
     filename: 'js/[name].[contenthash].js',
-    clean: true
+    clean: false // Don't clean public directory as it has other files
   },
   module: {
     rules: [
@@ -86,13 +86,13 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: 'src/assets/images/favicon.svg', to: 'favicon.svg' },
-        { from: 'src/assets/images/logo.svg', to: 'logo.svg' },
-        { from: 'src/assets/images/logo-modern-v1.svg', to: 'logo-modern-v1.svg' },
-        { from: 'src/assets/images/logo-modern-v2.svg', to: 'logo-modern-v2.svg' },
-        { from: 'src/assets/images/logo-modern-v3.svg', to: 'logo-modern-v3.svg' },
-        { from: 'src/site.webmanifest', to: 'site.webmanifest' },
-        { from: 'api', to: 'api' }
+        // Only copy if they exist and aren't already in public
+        { from: 'src/assets/images/favicon.svg', to: 'favicon.svg', noErrorOnMissing: true },
+        { from: 'src/assets/images/logo.svg', to: 'logo.svg', noErrorOnMissing: true },
+        { from: 'src/assets/images/logo-modern-v1.svg', to: 'logo-modern-v1.svg', noErrorOnMissing: true },
+        { from: 'src/assets/images/logo-modern-v2.svg', to: 'logo-modern-v2.svg', noErrorOnMissing: true },
+        { from: 'src/assets/images/logo-modern-v3.svg', to: 'logo-modern-v3.svg', noErrorOnMissing: true },
+        { from: 'src/site.webmanifest', to: 'site.webmanifest', noErrorOnMissing: true }
       ]
     })
   ],
@@ -121,7 +121,7 @@ module.exports = {
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist')
+      directory: path.join(__dirname, 'public')
     },
     compress: true,
     port: 3000,
