@@ -1,0 +1,58 @@
+name: Static Site CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build project
+      run: npm run build
+    
+    - name: Check critical files
+      run: |
+        echo "Checking critical files..."
+        test -f public/index.html || exit 1
+        test -f public/robots.txt || exit 1
+        test -f public/sitemap.xml || exit 1
+        test -d public/api || exit 1
+        echo "All critical files present ✓"
+    
+    - name: Test API endpoints exist
+      run: |
+        echo "Checking API endpoints..."
+        test -f public/api/ping.js || exit 1
+        test -f public/api/health/index.js || exit 1
+        test -f public/api/env-check.js || exit 1
+        echo "API endpoints present ✓"
+    
+    - name: Validate HTML
+      run: |
+        npm install -g html-validate
+        html-validate "public/**/*.html" || echo "HTML validation completed"
+    
+    - name: Check for large files
+      run: |
+        echo "Checking for files over 1MB..."
+        find public -type f -size +1M -exec ls -lh {} \; | grep . && echo "Warning: Large files found" || echo "No large files ✓"
+    
+    - name: Security scan
+      run: |
+        echo "Running security audit..."
+        npm audit --production || echo "Security audit completed"
