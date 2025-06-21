@@ -162,11 +162,11 @@
             <h2 class="section-title-2025 reveal-2025">Services</h2>
             
             <div class="grid-2025 grid-3-2025">
-                <div class="card-2025 reveal-2025 service-card" onclick="expandService('financial')" style="cursor: pointer; transition: all 0.3s ease;">
-                    <h3 style="display: flex; justify-content: space-between; align-items: center;">
-                        Financial Systems
-                        <span class="expand-icon" style="font-size: var(--text-sm); color: var(--axis-accent-primary);">[ expand ]</span>
-                    </h3>
+                <div class="card-2025 reveal-2025 service-card" onclick="expandService('financial')">
+                    <div class="service-header">
+                        <h3>Financial Systems</h3>
+                        <span class="expand-icon">[ expand ]</span>
+                    </div>
                     <p style="margin-bottom: var(--space-6);">Automated processing of statements, transactions, and regulatory filings.</p>
                     <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400); font-size: var(--text-sm);">
                         <li style="padding: var(--space-2) 0;">• Automated financial statement analysis</li>
@@ -187,11 +187,11 @@
                     </div>
                 </div>
                 
-                <div class="card-2025 reveal-2025 service-card" onclick="expandService('portfolio')" style="cursor: pointer; transition: all 0.3s ease;">
-                    <h3 style="display: flex; justify-content: space-between; align-items: center;">
-                        Portfolio Engineering
-                        <span class="expand-icon" style="font-size: var(--text-sm); color: var(--axis-accent-secondary);">[ expand ]</span>
-                    </h3>
+                <div class="card-2025 reveal-2025 service-card" onclick="expandService('portfolio')">
+                    <div class="service-header">
+                        <h3>Portfolio Engineering</h3>
+                        <span class="expand-icon">[ expand ]</span>
+                    </div>
                     <p style="margin-bottom: var(--space-6);">Quantitative models for allocation, risk measurement, and performance tracking.</p>
                     <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400); font-size: var(--text-sm);">
                         <li style="padding: var(--space-2) 0;">• Neural network portfolio optimization</li>
@@ -212,11 +212,11 @@
                     </div>
                 </div>
                 
-                <div class="card-2025 reveal-2025 service-card" onclick="expandService('contract')" style="cursor: pointer; transition: all 0.3s ease;">
-                    <h3 style="display: flex; justify-content: space-between; align-items: center;">
-                        Contract Automation
-                        <span class="expand-icon" style="font-size: var(--text-sm); color: var(--axis-accent-tertiary);">[ expand ]</span>
-                    </h3>
+                <div class="card-2025 reveal-2025 service-card" onclick="expandService('contract')">
+                    <div class="service-header">
+                        <h3>Contract Automation</h3>
+                        <span class="expand-icon">[ expand ]</span>
+                    </div>
                     <p style="margin-bottom: var(--space-6);">Systematic review, compliance tracking, and obligation management.</p>
                     <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400); font-size: var(--text-sm);">
                         <li style="padding: var(--space-2) 0;">• AI-assisted contract generation</li>
@@ -284,35 +284,50 @@
             
             <div class="grid-2025 grid-4-2025">
                 <div class="system-showcase reveal-2025">
-                    <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
-                        <div style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; background: linear-gradient(135deg, var(--axis-neutral-900) 0%, var(--axis-neutral-800) 100%); border-radius: 12px; border: 1px solid var(--axis-neutral-700); backdrop-filter: blur(10px); position: relative; overflow: hidden;">
-                            <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: var(--axis-pure-white); filter: drop-shadow(0 0 8px rgba(0, 102, 255, 0.4));">
+                    <div class="system-icon-header">
+                        <div class="system-icon-container">
+                            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="color: var(--axis-pure-white); filter: drop-shadow(0 0 8px rgba(0, 102, 255, 0.4));">
                                 <path d="M4 36L14 12H18L28 36H24L21 28H11L8 36H4ZM12 24H20L16 14L12 24Z" fill="currentColor"/>
                                 <path d="M20 12H44V16H34V36H30V16H20V12Z" fill="currentColor"/>
                                 <circle cx="37" cy="36" r="2" fill="#0066FF" style="filter: drop-shadow(0 0 6px #0066FF);"/>
                             </svg>
                             <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent); animation: shimmer 3s infinite;"></div>
                         </div>
-                        <h3 style="color: var(--axis-pure-white); text-shadow: 0 0 12px rgba(0, 102, 255, 0.2);">Invoice Generator</h3>
+                        <h3>Invoice Generator</h3>
                     </div>
                     <p>Professional invoice creation and management system.</p>
                     <a href="/invoices" class="contact-link">Launch Generator →</a>
                 </div>
                 
                 <div class="system-showcase reveal-2025">
-                    <h3>Banking Portal</h3>
+                    <div class="system-icon-header">
+                        <div class="system-icon-container">
+                            <div class="system-icon-placeholder" style="background: var(--axis-accent-secondary);"></div>
+                        </div>
+                        <h3>Banking Portal</h3>
+                    </div>
                     <p>Wire instructions and 1099 tax form management.</p>
                     <a href="/banking-portal" class="contact-link">Banking Portal →</a>
                 </div>
                 
                 <div class="system-showcase reveal-2025">
-                    <h3>Axis AI</h3>
+                    <div class="system-icon-header">
+                        <div class="system-icon-container">
+                            <div class="system-icon-placeholder" style="background: var(--axis-accent-tertiary);"></div>
+                        </div>
+                        <h3>Axis AI</h3>
+                    </div>
                     <p>Advanced AI assistant for financial intelligence.</p>
                     <a href="/axis-ai" class="contact-link">Launch Axis AI →</a>
                 </div>
                 
                 <div class="system-showcase reveal-2025">
-                    <h3>AXIS Terminal</h3>
+                    <div class="system-icon-header">
+                        <div class="system-icon-container">
+                            <div class="system-icon-placeholder" style="background: var(--axis-accent-primary);"></div>
+                        </div>
+                        <h3>AXIS Terminal</h3>
+                    </div>
                     <p>Professional financial analysis platform.</p>
                     <a href="/app" class="contact-link">Access Terminal →</a>
                 </div>
@@ -326,40 +341,40 @@
             <h2 class="section-title-2025 reveal-2025">Choose Your Path</h2>
             
             <div class="grid-2025 grid-3-2025" style="margin-top: var(--space-12);">
-                <div class="card-2025 reveal-2025" style="position: relative; overflow: hidden; cursor: pointer;" onclick="showLeadMagnet('assessment')">
-                    <div style="position: absolute; top: var(--space-4); right: var(--space-4); background: var(--axis-accent-primary); color: var(--axis-pure-white); padding: var(--space-1) var(--space-3); border-radius: 20px; font-size: var(--text-xs); font-weight: var(--font-semibold);">FREE</div>
-                    <h3 style="color: var(--axis-accent-primary);">AI Readiness Assessment</h3>
+                <div class="card-2025 reveal-2025 lead-magnet-card" onclick="showLeadMagnet('assessment')">
+                    <div class="lead-magnet-badge free">FREE</div>
+                    <h3 style="color: var(--axis-accent-primary); margin-bottom: var(--space-4);">AI Readiness Assessment</h3>
                     <p style="margin-bottom: var(--space-6);">5-minute evaluation of your financial systems' automation potential.</p>
-                    <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400); font-size: var(--text-sm); margin-bottom: var(--space-6);">
+                    <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400); font-size: var(--text-sm); margin-bottom: var(--space-8);">
                         <li style="padding: var(--space-1) 0;">• Instant personalized report</li>
                         <li style="padding: var(--space-1) 0;">• ROI projection calculator</li>
                         <li style="padding: var(--space-1) 0;">• Implementation roadmap</li>
                     </ul>
-                    <div class="btn-2025 btn-primary-2025" style="width: 100%; text-align: center;">Start Assessment →</div>
+                    <div class="btn-2025 btn-primary-2025" style="width: 100%; text-align: center; margin-top: auto;">Start Assessment →</div>
                 </div>
                 
-                <div class="card-2025 reveal-2025" style="position: relative; overflow: hidden; cursor: pointer;" onclick="showLeadMagnet('demo')">
-                    <div style="position: absolute; top: var(--space-4); right: var(--space-4); background: var(--axis-accent-secondary); color: var(--axis-pure-white); padding: var(--space-1) var(--space-3); border-radius: 20px; font-size: var(--text-xs); font-weight: var(--font-semibold);">LIVE</div>
-                    <h3 style="color: var(--axis-accent-secondary);">Interactive Demo</h3>
+                <div class="card-2025 reveal-2025 lead-magnet-card" onclick="showLeadMagnet('demo')">
+                    <div class="lead-magnet-badge live">LIVE</div>
+                    <h3 style="color: var(--axis-accent-secondary); margin-bottom: var(--space-4);">Interactive Demo</h3>
                     <p style="margin-bottom: var(--space-6);">See our AI systems process real financial data in real-time.</p>
-                    <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400); font-size: var(--text-sm); margin-bottom: var(--space-6);">
+                    <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400); font-size: var(--text-sm); margin-bottom: var(--space-8);">
                         <li style="padding: var(--space-1) 0;">• 15-minute guided walkthrough</li>
                         <li style="padding: var(--space-1) 0;">• Q&A with technical team</li>
                         <li style="padding: var(--space-1) 0;">• Custom use case discussion</li>
                     </ul>
-                    <div class="btn-2025" style="width: 100%; text-align: center; border: 1px solid var(--axis-accent-secondary); color: var(--axis-accent-secondary);">Book Demo →</div>
+                    <div class="btn-2025" style="width: 100%; text-align: center; border: 1px solid var(--axis-accent-secondary); color: var(--axis-accent-secondary); margin-top: auto;">Book Demo →</div>
                 </div>
                 
-                <div class="card-2025 reveal-2025" style="position: relative; overflow: hidden; cursor: pointer;" onclick="showLeadMagnet('consultation')">
-                    <div style="position: absolute; top: var(--space-4); right: var(--space-4); background: var(--axis-accent-tertiary); color: var(--axis-pure-white); padding: var(--space-1) var(--space-3); border-radius: 20px; font-size: var(--text-xs); font-weight: var(--font-semibold);">PREMIUM</div>
-                    <h3 style="color: var(--axis-accent-tertiary);">Strategic Consultation</h3>
+                <div class="card-2025 reveal-2025 lead-magnet-card" onclick="showLeadMagnet('consultation')">
+                    <div class="lead-magnet-badge premium">PREMIUM</div>
+                    <h3 style="color: var(--axis-accent-tertiary); margin-bottom: var(--space-4);">Strategic Consultation</h3>
                     <p style="margin-bottom: var(--space-6);">Executive-level discussion of your computational finance requirements.</p>
-                    <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400); font-size: var(--text-sm); margin-bottom: var(--space-6);">
+                    <ul style="list-style: none; padding: 0; color: var(--axis-neutral-400); font-size: var(--text-sm); margin-bottom: var(--space-8);">
                         <li style="padding: var(--space-1) 0;">• 60-minute strategy session</li>
                         <li style="padding: var(--space-1) 0;">• Architecture recommendations</li>
                         <li style="padding: var(--space-1) 0;">• Investment roadmap</li>
                     </ul>
-                    <div class="btn-2025" style="width: 100%; text-align: center; border: 1px solid var(--axis-accent-tertiary); color: var(--axis-accent-tertiary);">Schedule Call →</div>
+                    <div class="btn-2025" style="width: 100%; text-align: center; border: 1px solid var(--axis-accent-tertiary); color: var(--axis-accent-tertiary); margin-top: auto;">Schedule Call →</div>
                 </div>
             </div>
         </div>

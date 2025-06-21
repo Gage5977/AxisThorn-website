@@ -318,7 +318,7 @@ function expandService(serviceType) {
   const details = serviceCard.querySelector('.service-details');
   const expandIcon = serviceCard.querySelector('.expand-icon');
   
-  const isExpanded = details.style.display === 'block';
+  const isExpanded = serviceCard.classList.contains('expanded');
   
   // Close all other expanded services
   document.querySelectorAll('.service-card').forEach(card => {
@@ -327,18 +327,18 @@ function expandService(serviceType) {
     if (card !== serviceCard) {
       cardDetails.style.display = 'none';
       cardIcon.textContent = '[ expand ]';
-      card.style.transform = 'scale(1)';
+      card.classList.remove('expanded');
     }
   });
   
   if (isExpanded) {
     details.style.display = 'none';
     expandIcon.textContent = '[ expand ]';
-    serviceCard.style.transform = 'scale(1)';
+    serviceCard.classList.remove('expanded');
   } else {
     details.style.display = 'block';
     expandIcon.textContent = '[ collapse ]';
-    serviceCard.style.transform = 'scale(1.02)';
+    serviceCard.classList.add('expanded');
     
     // Smooth scroll to bring the expanded card into view
     setTimeout(() => {
@@ -346,7 +346,7 @@ function expandService(serviceType) {
         behavior: 'smooth', 
         block: 'center' 
       });
-    }, 100);
+    }, 200);
   }
 }
 
