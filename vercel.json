@@ -13,28 +13,8 @@
   ],
   "redirects": [
     {
-      "source": "/consultation",
-      "destination": "/#contact",
-      "permanent": false
-    },
-    {
-      "source": "/implementation",
-      "destination": "/#services",
-      "permanent": false
-    },
-    {
-      "source": "/support",
-      "destination": "/#client-services",
-      "permanent": false
-    },
-    {
       "source": "/services",
       "destination": "/#services",
-      "permanent": false
-    },
-    {
-      "source": "/about",
-      "destination": "/#method",
       "permanent": false
     },
     {
@@ -45,21 +25,6 @@
     {
       "source": "/terms",
       "destination": "/terms-of-service.html",
-      "permanent": false
-    },
-    {
-      "source": "/privacy-policy",
-      "destination": "/privacy-policy.html",
-      "permanent": false
-    },
-    {
-      "source": "/terms-of-service",
-      "destination": "/terms-of-service.html",
-      "permanent": false
-    },
-    {
-      "source": "/cookie-policy",
-      "destination": "/cookie-policy.html",
       "permanent": false
     }
   ],
