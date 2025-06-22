@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banking & Billing Portal — Axis Thorn</title>
-    <meta name="description" content="Access banking instructions, generate invoices, and manage 1099 tax forms through the Axis Thorn secure portal.">
+    <meta name="description" content="Access banking instructions, manage billing, generate invoices, and handle 1099 tax forms through the Axis Thorn secure portal.">
     <meta name="robots" content="noindex, nofollow">
     
     <!-- Preconnect -->
@@ -19,6 +19,158 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="logo-2025.svg">
+    
+    <style>
+        /* Custom styles for banking section */
+        .banking-section {
+            background: var(--axis-neutral-950);
+            padding: var(--space-16) 0;
+        }
+        
+        .method-card {
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            padding: var(--space-6);
+            margin-bottom: var(--space-6);
+        }
+        
+        .method-card.primary {
+            border-color: var(--axis-accent-primary);
+        }
+        
+        .method-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-6);
+        }
+        
+        .method-badge {
+            display: inline-block;
+            padding: var(--space-1) var(--space-3);
+            background: var(--axis-gradient-primary);
+            border-radius: 100px;
+            font-size: var(--text-sm);
+            font-weight: 600;
+        }
+        
+        .banking-details {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-3) 0;
+            border-bottom: 1px solid var(--axis-neutral-800);
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: var(--axis-neutral-400);
+            font-weight: 500;
+        }
+        
+        .detail-value {
+            font-family: 'Monaco', monospace;
+            color: var(--axis-accent-primary);
+        }
+        
+        .detail-value[data-sensitive="true"] {
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+        }
+        
+        .instruction-steps {
+            display: grid;
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+        
+        .step {
+            display: flex;
+            gap: var(--space-4);
+        }
+        
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--axis-gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step-content h4 {
+            margin-bottom: var(--space-2);
+            color: var(--axis-neutral-100);
+        }
+        
+        .step-content p {
+            color: var(--axis-neutral-400);
+            font-size: var(--text-sm);
+        }
+        
+        .security-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .security-list li {
+            padding: var(--space-3) 0;
+            padding-left: var(--space-6);
+            position: relative;
+            color: var(--axis-neutral-300);
+            font-size: var(--text-sm);
+        }
+        
+        .security-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
+        }
+        
+        .billing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+        
+        .stat-card {
+            background: var(--axis-gradient-subtle);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            padding: var(--space-6);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            color: var(--axis-accent-primary);
+            margin-bottom: var(--space-2);
+        }
+        
+        .stat-label {
+            color: var(--axis-neutral-400);
+            font-size: var(--text-sm);
+        }
+    </style>
 </head>
 <body>
     <!-- Noise Overlay -->
@@ -37,12 +189,17 @@
                 </svg>
                 <span>Axis Thorn</span>
             </a>
-            
-            <ul class="nav-links-2025">
-                <li><a href="/" class="nav-link-2025">Home</a></li>
-                <li><a href="/#services" class="nav-link-2025">Services</a></li>
-                <li><a href="/portfolio" class="nav-link-2025">Portfolio</a></li>
-                <li><a href="/#contact" class="nav-link-2025">Contact</a></li>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+            </button>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="/" class="nav-link" role="menuitem">Home</a></li>
+                <li role="none"><a href="/#services" class="nav-link" role="menuitem">Services</a></li>
+                <li role="none"><a href="/portfolio" class="nav-link" role="menuitem">Portfolio</a></li>
+                <li role="none"><a href="/about" class="nav-link" role="menuitem">About</a></li>
+                <li role="none"><a href="/#contact" class="nav-link" role="menuitem">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -55,15 +212,137 @@
                 Billing Portal
             </h1>
             <p class="hero-subtitle-2025" style="font-size: var(--text-lg); color: var(--axis-neutral-400); margin-top: var(--space-6);">
-                Secure access to financial operations
+                Secure financial operations and payment processing
             </p>
         </div>
     </section>
     
-    <!-- Portal Services -->
+    <!-- Banking Section -->
+    <section class="banking-section">
+        <div class="section-inner-2025">
+            <h2 class="section-title-2025 reveal-2025">Banking Instructions</h2>
+            <p class="section-subtitle-2025 reveal-2025">Encrypted banking details and secure transfer protocols</p>
+            
+            <div style="max-width: 900px; margin: var(--space-12) auto;">
+                <!-- Wire Transfer -->
+                <div class="method-card primary reveal-2025">
+                    <div class="method-header">
+                        <h3 style="font-size: var(--text-xl);">Wire Transfer (Preferred)</h3>
+                        <span class="method-badge">PRIMARY</span>
+                    </div>
+                    <div class="banking-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Bank Name:</span>
+                            <span class="detail-value" data-sensitive="true" onclick="requestBankingDetails('Wire Transfer')">[Click for Details]</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Account Name:</span>
+                            <span class="detail-value">Axis Thorn LLC</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Routing Number:</span>
+                            <span class="detail-value" data-sensitive="true" onclick="requestBankingDetails('Wire Transfer')">[Click for Details]</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Account Number:</span>
+                            <span class="detail-value" data-sensitive="true" onclick="requestBankingDetails('Wire Transfer')">[Click for Details]</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">SWIFT Code:</span>
+                            <span class="detail-value" data-sensitive="true" onclick="requestBankingDetails('Wire Transfer')">[International Only]</span>
+                        </div>
+                    </div>
+                    <p style="color: var(--axis-neutral-400); font-size: var(--text-sm);">
+                        Encrypted transfers for enterprise transactions. Same-day settlement available.
+                    </p>
+                </div>
+                
+                <!-- ACH Transfer -->
+                <div class="method-card reveal-2025">
+                    <div class="method-header">
+                        <h3 style="font-size: var(--text-xl);">ACH Transfer</h3>
+                        <span class="method-badge" style="background: var(--axis-gradient-secondary);">STANDARD</span>
+                    </div>
+                    <div class="banking-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Routing Number:</span>
+                            <span class="detail-value" data-sensitive="true" onclick="requestBankingDetails('ACH Transfer')">[Click for Details]</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Account Number:</span>
+                            <span class="detail-value" data-sensitive="true" onclick="requestBankingDetails('ACH Transfer')">[Click for Details]</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Account Type:</span>
+                            <span class="detail-value">Business Checking</span>
+                        </div>
+                    </div>
+                    <p style="color: var(--axis-neutral-400); font-size: var(--text-sm);">
+                        Automated clearing. 2-3 business day settlement cycle.
+                    </p>
+                </div>
+                
+                <!-- Payment Instructions -->
+                <div class="card-2025 reveal-2025" style="margin-top: var(--space-8);">
+                    <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-6);">Payment Instructions</h3>
+                    
+                    <div class="instruction-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Contact for Banking Details</h4>
+                                <p>Email AI.info@axisthorn.com with your payment details and invoice reference.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Receive Secure Instructions</h4>
+                                <p>Banking details will be provided via encrypted email within 2 hours.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Execute Payment</h4>
+                                <p>Process payment using provided instructions. Include invoice number in memo.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Confirmation</h4>
+                                <p>Payment confirmation and receipt will be sent within 24 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Security Protocols -->
+                <div class="card-2025 reveal-2025" style="margin-top: var(--space-6); background: var(--axis-gradient-subtle);">
+                    <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Security Protocols</h3>
+                    <ul class="security-list">
+                        <li>Banking details provided only via encrypted channels</li>
+                        <li>Multi-factor authentication required</li>
+                        <li>All transactions monitored and logged</li>
+                        <li>PCI DSS compliant processing</li>
+                        <li>FDIC insured banking partners</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Billing Section -->
     <section class="section-2025">
         <div class="section-inner-2025">
-            <div class="grid-2025 grid-4-2025">
+            <h2 class="section-title-2025 reveal-2025">Billing & Financial Services</h2>
+            <p class="section-subtitle-2025 reveal-2025">Comprehensive billing management and tax documentation</p>
+            
+            <div class="grid-2025 grid-3-2025" style="margin-top: var(--space-12);">
                 <!-- Vendor Payment Portal -->
                 <div class="card-2025 reveal-2025" style="cursor: pointer;" onclick="window.location.href='/vendor-payment-portal.html'">
                     <div style="margin-bottom: var(--space-6);">
@@ -82,26 +361,6 @@
                     </div>
                 </div>
                 
-                <!-- Banking Instructions -->
-                <div class="card-2025 reveal-2025" style="cursor: pointer;" onclick="window.location.href='/invoices'">
-                    <div style="margin-bottom: var(--space-6);">
-                        <div style="width: 48px; height: 48px; background: var(--axis-gradient-primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                <line x1="3" y1="9" x2="21" y2="9"/>
-                                <line x1="9" y1="21" x2="9" y2="9"/>
-                            </svg>
-                        </div>
-                        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Banking Instructions</h3>
-                    </div>
-                    <p style="color: var(--axis-neutral-400); margin-bottom: var(--space-6);">
-                        Access wire transfer details, ACH information, and payment routing instructions.
-                    </p>
-                    <div class="btn-2025" style="width: 100%; text-align: center;">
-                        Access Banking →
-                    </div>
-                </div>
-                
                 <!-- Invoice Generation -->
                 <div class="card-2025 reveal-2025" style="cursor: pointer;" onclick="window.location.href='/invoices'">
                     <div style="margin-bottom: var(--space-6);">
@@ -114,18 +373,18 @@
                                 <polyline points="10 9 9 9 8 9"/>
                             </svg>
                         </div>
-                        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Invoice Generation</h3>
+                        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-2);">Invoice Management</h3>
                     </div>
                     <p style="color: var(--axis-neutral-400); margin-bottom: var(--space-6);">
                         Create professional invoices with automated calculations and PDF export.
                     </p>
                     <div class="btn-2025" style="width: 100%; text-align: center; border: 1px solid var(--axis-accent-secondary); color: var(--axis-accent-secondary);">
-                        Generate Invoice →
+                        Manage Invoices →
                     </div>
                 </div>
                 
                 <!-- 1099 Tax Forms -->
-                <div class="card-2025 reveal-2025" style="cursor: pointer;" onclick="showTaxFormAccess()">
+                <div class="card-2025 reveal-2025" style="cursor: pointer;" onclick="show1099Access()">
                     <div style="margin-bottom: var(--space-6);">
                         <div style="width: 48px; height: 48px; background: var(--axis-gradient-tertiary); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -139,51 +398,89 @@
                         Generate and manage 1099-NEC forms for contractors and vendors.
                     </p>
                     <div class="btn-2025" style="width: 100%; text-align: center; border: 1px solid var(--axis-accent-tertiary); color: var(--axis-accent-tertiary);">
-                        Manage 1099s →
+                        Tax Documents →
                     </div>
+                </div>
+            </div>
+            
+            <!-- Billing Stats -->
+            <div class="billing-grid" style="margin-top: var(--space-12);">
+                <div class="stat-card reveal-2025">
+                    <div class="stat-value">$0</div>
+                    <div class="stat-label">Outstanding Invoices</div>
+                </div>
+                <div class="stat-card reveal-2025">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Pending Payments</div>
+                </div>
+                <div class="stat-card reveal-2025">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">1099s Generated</div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Quick Actions -->
+    <!-- Payment Methods Section -->
     <section class="section-2025" style="background: var(--axis-neutral-950);">
         <div class="section-inner-2025">
-            <h2 class="section-title-2025 reveal-2025">Quick Actions</h2>
+            <h2 class="section-title-2025 reveal-2025">Accepted Payment Methods</h2>
             
-            <div class="grid-2025 grid-4-2025" style="margin-top: var(--space-12);">
-                <a href="/invoices#new" class="card-2025 reveal-2025" style="text-align: center; text-decoration: none; color: inherit;">
-                    <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">+</div>
-                    <p style="font-size: var(--text-sm); color: var(--axis-neutral-400);">New Invoice</p>
-                </a>
+            <div class="grid-2025 grid-4-2025" style="margin-top: var(--space-8);">
+                <div class="card-2025 reveal-2025" style="text-align: center;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto var(--space-4);">
+                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                        <line x1="1" y1="10" x2="23" y2="10"/>
+                    </svg>
+                    <h4 style="font-size: var(--text-lg);">Credit/Debit Cards</h4>
+                    <p style="color: var(--axis-neutral-400); font-size: var(--text-sm); margin-top: var(--space-2);">Visa, Mastercard, Amex</p>
+                </div>
                 
-                <a href="/invoices#templates" class="card-2025 reveal-2025" style="text-align: center; text-decoration: none; color: inherit;">
-                    <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">📄</div>
-                    <p style="font-size: var(--text-sm); color: var(--axis-neutral-400);">Templates</p>
-                </a>
+                <div class="card-2025 reveal-2025" style="text-align: center;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto var(--space-4);">
+                        <path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7"/>
+                        <path d="M18 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        <path d="M22 21l-1.5-1.5"/>
+                    </svg>
+                    <h4 style="font-size: var(--text-lg);">ACH Transfer</h4>
+                    <p style="color: var(--axis-neutral-400); font-size: var(--text-sm); margin-top: var(--space-2);">Bank transfers</p>
+                </div>
                 
-                <a href="/invoices#history" class="card-2025 reveal-2025" style="text-align: center; text-decoration: none; color: inherit;">
-                    <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">📊</div>
-                    <p style="font-size: var(--text-sm); color: var(--axis-neutral-400);">History</p>
-                </a>
+                <div class="card-2025 reveal-2025" style="text-align: center;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto var(--space-4);">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                    <h4 style="font-size: var(--text-lg);">Wire Transfer</h4>
+                    <p style="color: var(--axis-neutral-400); font-size: var(--text-sm); margin-top: var(--space-2);">Same-day available</p>
+                </div>
                 
-                <a href="/#contact" class="card-2025 reveal-2025" style="text-align: center; text-decoration: none; color: inherit;">
-                    <div style="font-size: var(--text-2xl); margin-bottom: var(--space-2);">💬</div>
-                    <p style="font-size: var(--text-sm); color: var(--axis-neutral-400);">Support</p>
-                </a>
+                <div class="card-2025 reveal-2025" style="text-align: center; opacity: 0.5;">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto var(--space-4);">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                    <h4 style="font-size: var(--text-lg);">Crypto</h4>
+                    <p style="color: var(--axis-neutral-400); font-size: var(--text-sm); margin-top: var(--space-2);">Coming Q2 2025</p>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- Security Notice -->
+    <!-- Support Section -->
     <section class="section-2025">
         <div class="section-inner-2025">
             <div style="background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 12px; padding: var(--space-8); text-align: center;">
-                <h3 style="color: var(--axis-accent-primary); margin-bottom: var(--space-4);">Security Notice</h3>
-                <p style="color: var(--axis-neutral-400); max-width: 600px; margin: 0 auto;">
-                    This portal uses bank-level encryption and security protocols. All data is encrypted in transit and at rest. 
-                    For assistance, contact AI.info@axisthorn.com
+                <h3 style="color: var(--axis-accent-primary); margin-bottom: var(--space-4);">Banking & Billing Support</h3>
+                <p style="color: var(--axis-neutral-400); max-width: 600px; margin: 0 auto var(--space-6);">
+                    For banking instructions, payment assistance, or billing inquiries, our support team is ready to help.
                 </p>
+                <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+                    <a href="mailto:AI.info@axisthorn.com?subject=Banking%20Support" class="btn-2025 btn-primary-2025">
+                        Contact Support
+                    </a>
+                    <a href="/invoices" class="btn-2025 btn-secondary-2025">
+                        Client Portal
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -199,7 +496,7 @@
         </div>
     </footer>
     
-    <!-- Tax Form Modal -->
+    <!-- 1099 Modal -->
     <div id="taxFormModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 10000; align-items: center; justify-content: center;">
         <div style="background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-700); border-radius: 16px; padding: var(--space-8); max-width: 500px; width: 90%; position: relative;">
             <button onclick="closeTaxFormModal()" style="position: absolute; top: var(--space-4); right: var(--space-4); background: none; border: none; color: var(--axis-neutral-400); font-size: 24px; cursor: pointer;">×</button>
@@ -219,7 +516,24 @@
     <script src="js/navigation-2025.js"></script>
     <script src="js/axis-2025.js"></script>
     <script>
-        function showTaxFormAccess() {
+        function requestBankingDetails(paymentMethod) {
+            const subject = encodeURIComponent(`Banking Instructions Request - ${paymentMethod}`);
+            const body = encodeURIComponent(`Hello,
+
+I am requesting banking instructions for: ${paymentMethod}
+
+Please provide secure banking details for payment processing.
+
+Invoice/Reference Number: [Please specify]
+Expected Payment Amount: [Please specify]
+Payment Date: [Please specify]
+
+Thank you.`);
+            
+            window.location.href = `mailto:AI.info@axisthorn.com?subject=${subject}&body=${body}`;
+        }
+        
+        function show1099Access() {
             document.getElementById('taxFormModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
@@ -234,6 +548,14 @@
             if (e.key === 'Escape') {
                 closeTaxFormModal();
             }
+        });
+        
+        // Add hover effect to sensitive data
+        document.addEventListener('DOMContentLoaded', function() {
+            const sensitiveElements = document.querySelectorAll('[data-sensitive="true"]');
+            sensitiveElements.forEach(element => {
+                element.title = 'Click to request banking details';
+            });
         });
     </script>
 </body>
