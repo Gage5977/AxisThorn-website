@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Dashboard — Axis Thorn</title>
+    <meta name="description" content="View payment history, manage transactions, and track revenue with the Axis Thorn payment dashboard.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/axis-2025.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo-2025.svg">
+    
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+            margin-bottom: var(--space-12);
+        }
+        
+        .metric-card {
+            background: var(--axis-gradient-subtle);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            padding: var(--space-6);
+        }
+        
+        .metric-value {
+            font-size: var(--text-3xl);
+            font-weight: 700;
+            color: var(--axis-accent-primary);
+            margin-bottom: var(--space-2);
+        }
+        
+        .metric-label {
+            color: var(--axis-neutral-400);
+            font-size: var(--text-sm);
+        }
+        
+        .metric-change {
+            font-size: var(--text-sm);
+            margin-top: var(--space-2);
+        }
+        
+        .metric-change.positive {
+            color: #10b981;
+        }
+        
+        .metric-change.negative {
+            color: #ef4444;
+        }
+        
+        .transaction-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .transaction-table th {
+            text-align: left;
+            padding: var(--space-3);
+            border-bottom: 1px solid var(--axis-neutral-800);
+            color: var(--axis-neutral-400);
+            font-weight: 500;
+            font-size: var(--text-sm);
+        }
+        
+        .transaction-table td {
+            padding: var(--space-4) var(--space-3);
+            border-bottom: 1px solid var(--axis-neutral-800);
+        }
+        
+        .transaction-table tr:hover {
+            background: var(--axis-neutral-900);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: var(--space-1) var(--space-2);
+            border-radius: 100px;
+            font-size: var(--text-xs);
+            font-weight: 600;
+        }
+        
+        .status-badge.succeeded {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+        
+        .status-badge.pending {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+        
+        .status-badge.failed {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        
+        .filter-bar {
+            display: flex;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+            flex-wrap: wrap;
+        }
+        
+        .filter-select {
+            padding: var(--space-2) var(--space-4);
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 8px;
+            color: white;
+            font-size: var(--text-sm);
+        }
+        
+        .chart-container {
+            height: 300px;
+            background: var(--axis-neutral-900);
+            border-radius: 12px;
+            padding: var(--space-6);
+            margin-bottom: var(--space-8);
+            position: relative;
+        }
+        
+        .loading-skeleton {
+            background: linear-gradient(90deg, var(--axis-neutral-800) 0%, var(--axis-neutral-700) 50%, var(--axis-neutral-800) 100%);
+            background-size: 200% 100%;
+            animation: skeleton 1.5s ease-in-out infinite;
+            border-radius: 4px;
+        }
+        
+        @keyframes skeleton {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav-2025" role="navigation">
+        <div class="nav-2025-inner">
+            <a href="/" class="logo-2025" aria-label="Axis Thorn">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <path d="M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <rect x="16" y="20" width="16" height="8" fill="currentColor" opacity="0.2"/>
+                </svg>
+                <span>Axis Thorn</span>
+            </a>
+            
+            <button class="mobile-toggle-2025" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            
+            <ul class="nav-links-2025">
+                <li><a href="/banking-portal" class="nav-link-2025">Banking Portal</a></li>
+                <li><a href="/invoices" class="nav-link-2025">Invoices</a></li>
+                <li><a href="/payment-links" class="nav-link-2025">Payment Links</a></li>
+                <li><a href="#" class="nav-link-2025 active">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-2025" style="padding-top: 120px; padding-bottom: 60px;">
+        <div class="hero-content-2025">
+            <h1 class="hero-title-2025" style="font-size: var(--text-4xl);">
+                Payment Dashboard
+            </h1>
+            <p class="hero-subtitle-2025" style="font-size: var(--text-lg); color: var(--axis-neutral-400); margin-top: var(--space-4);">
+                Real-time payment analytics and transaction history
+            </p>
+        </div>
+    </section>
+    
+    <!-- Metrics Section -->
+    <section class="section-2025">
+        <div class="section-inner-2025">
+            <div class="dashboard-grid">
+                <!-- Total Revenue -->
+                <div class="metric-card reveal-2025">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value" id="totalRevenue">
+                        <div class="loading-skeleton" style="width: 120px; height: 36px;"></div>
+                    </div>
+                    <div class="metric-change positive" id="revenueChange"></div>
+                </div>
+                
+                <!-- Successful Payments -->
+                <div class="metric-card reveal-2025">
+                    <div class="metric-label">Successful Payments</div>
+                    <div class="metric-value" id="successfulPayments">
+                        <div class="loading-skeleton" style="width: 80px; height: 36px;"></div>
+                    </div>
+                    <div class="metric-change" id="paymentsChange"></div>
+                </div>
+                
+                <!-- Average Transaction -->
+                <div class="metric-card reveal-2025">
+                    <div class="metric-label">Average Transaction</div>
+                    <div class="metric-value" id="avgTransaction">
+                        <div class="loading-skeleton" style="width: 100px; height: 36px;"></div>
+                    </div>
+                    <div class="metric-change" id="avgChange"></div>
+                </div>
+                
+                <!-- Pending Payments -->
+                <div class="metric-card reveal-2025">
+                    <div class="metric-label">Pending Payments</div>
+                    <div class="metric-value" id="pendingPayments">
+                        <div class="loading-skeleton" style="width: 60px; height: 36px;"></div>
+                    </div>
+                    <div class="metric-change" id="pendingChange"></div>
+                </div>
+            </div>
+            
+            <!-- Revenue Chart -->
+            <div class="card-2025 reveal-2025">
+                <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-6);">Revenue Trend</h2>
+                <div class="chart-container" id="revenueChart">
+                    <canvas id="revenueCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Transactions Section -->
+    <section class="section-2025" style="background: var(--axis-neutral-950);">
+        <div class="section-inner-2025">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+                <h2 class="section-title-2025">Recent Transactions</h2>
+                <button class="btn-2025 btn-secondary-2025" onclick="exportTransactions()">
+                    Export CSV
+                </button>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filter-bar">
+                <select class="filter-select" id="statusFilter" onchange="filterTransactions()">
+                    <option value="">All Status</option>
+                    <option value="succeeded">Succeeded</option>
+                    <option value="pending">Pending</option>
+                    <option value="failed">Failed</option>
+                </select>
+                
+                <select class="filter-select" id="dateFilter" onchange="filterTransactions()">
+                    <option value="7">Last 7 days</option>
+                    <option value="30">Last 30 days</option>
+                    <option value="90">Last 90 days</option>
+                    <option value="365">Last year</option>
+                </select>
+                
+                <input type="text" placeholder="Search by customer or invoice..." 
+                       class="filter-select" style="flex: 1; min-width: 200px;" 
+                       id="searchFilter" onkeyup="filterTransactions()">
+            </div>
+            
+            <!-- Transactions Table -->
+            <div class="card-2025" style="overflow-x: auto;">
+                <table class="transaction-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsList">
+                        <!-- Loading state -->
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: var(--space-8);">
+                                <div class="loading-skeleton" style="width: 100%; height: 40px; margin-bottom: var(--space-3);"></div>
+                                <div class="loading-skeleton" style="width: 100%; height: 40px; margin-bottom: var(--space-3);"></div>
+                                <div class="loading-skeleton" style="width: 100%; height: 40px;"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: var(--space-6);">
+                <div style="color: var(--axis-neutral-400); font-size: var(--text-sm);">
+                    Showing <span id="showingCount">0</span> of <span id="totalCount">0</span> transactions
+                </div>
+                <div style="display: flex; gap: var(--space-2);">
+                    <button class="btn-2025 btn-secondary-2025" onclick="previousPage()" id="prevBtn" disabled>
+                        Previous
+                    </button>
+                    <button class="btn-2025 btn-secondary-2025" onclick="nextPage()" id="nextBtn">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer-2025">
+        <div class="footer-inner">
+            <p>&copy; 2025 Axis Thorn LLC. All rights reserved.</p>
+            <div style="margin-top: var(--space-4);">
+                <a href="/privacy-policy" style="color: var(--axis-neutral-400); text-decoration: none; margin-right: var(--space-4);">Privacy Policy</a>
+                <a href="/terms-of-service" style="color: var(--axis-neutral-400); text-decoration: none;">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/navigation-2025.js"></script>
+    <script src="js/axis-2025.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        // Dashboard functionality
+        let transactions = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        let revenueChart = null;
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadDashboardData();
+            initializeChart();
+        });
+        
+        async function loadDashboardData() {
+            try {
+                // In production, this would fetch from your API
+                // For now, using mock data
+                setTimeout(() => {
+                    updateMetrics();
+                    loadTransactions();
+                }, 1000);
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+        
+        function updateMetrics() {
+            // Mock data - replace with API call
+            document.getElementById('totalRevenue').innerHTML = '$125,430';
+            document.getElementById('revenueChange').innerHTML = '↑ 12.5% from last month';
+            
+            document.getElementById('successfulPayments').innerHTML = '342';
+            document.getElementById('paymentsChange').innerHTML = '↑ 8 from last week';
+            
+            document.getElementById('avgTransaction').innerHTML = '$366';
+            document.getElementById('avgChange').innerHTML = '↓ 3.2% from last month';
+            
+            document.getElementById('pendingPayments').innerHTML = '5';
+            document.getElementById('pendingChange').innerHTML = '$2,150 pending';
+        }
+        
+        function loadTransactions() {
+            // Mock transaction data
+            transactions = [
+                {
+                    id: 'pi_1234567890',
+                    date: new Date('2024-12-22'),
+                    customer: 'Tech Innovations LLC',
+                    email: 'billing@techinnovations.com',
+                    description: 'Invoice #INV-2024-047',
+                    amount: 5500,
+                    status: 'succeeded'
+                },
+                {
+                    id: 'pi_0987654321',
+                    date: new Date('2024-12-21'),
+                    customer: 'Digital Solutions Inc',
+                    email: 'accounts@digitalsolutions.com',
+                    description: 'Consultation Services',
+                    amount: 3200,
+                    status: 'succeeded'
+                },
+                {
+                    id: 'pi_1122334455',
+                    date: new Date('2024-12-20'),
+                    customer: 'StartUp Ventures',
+                    email: 'finance@startupventures.com',
+                    description: 'Invoice #INV-2024-046',
+                    amount: 8750,
+                    status: 'pending'
+                },
+                {
+                    id: 'pi_5544332211',
+                    date: new Date('2024-12-19'),
+                    customer: 'Enterprise Corp',
+                    email: 'ap@enterprisecorp.com',
+                    description: 'Monthly Retainer',
+                    amount: 15000,
+                    status: 'succeeded'
+                },
+                {
+                    id: 'pi_6677889900',
+                    date: new Date('2024-12-18'),
+                    customer: 'Small Business Co',
+                    email: 'owner@smallbusiness.com',
+                    description: 'Setup Fee',
+                    amount: 1200,
+                    status: 'failed'
+                }
+            ];
+            
+            // Add more mock transactions
+            for (let i = 5; i < 50; i++) {
+                transactions.push({
+                    id: `pi_mock_${i}`,
+                    date: new Date(Date.now() - i * 24 * 60 * 60 * 1000),
+                    customer: `Client ${i}`,
+                    email: `client${i}@example.com`,
+                    description: `Invoice #INV-2024-${String(i).padStart(3, '0')}`,
+                    amount: Math.floor(Math.random() * 10000) + 1000,
+                    status: ['succeeded', 'pending', 'failed'][Math.floor(Math.random() * 3)]
+                });
+            }
+            
+            displayTransactions();
+        }
+        
+        function displayTransactions() {
+            const tbody = document.getElementById('transactionsList');
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageTransactions = transactions.slice(start, end);
+            
+            tbody.innerHTML = pageTransactions.map(t => `
+                <tr>
+                    <td>${t.date.toLocaleDateString()}</td>
+                    <td>
+                        <div>${t.customer}</div>
+                        <div style="font-size: var(--text-xs); color: var(--axis-neutral-500);">${t.email}</div>
+                    </td>
+                    <td>${t.description}</td>
+                    <td style="font-weight: 600;">$${t.amount.toLocaleString()}</td>
+                    <td>
+                        <span class="status-badge ${t.status}">${t.status}</span>
+                    </td>
+                    <td>
+                        <button onclick="viewTransaction('${t.id}')" style="color: var(--axis-accent-primary); background: none; border: none; cursor: pointer; text-decoration: underline;">
+                            View
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+            
+            // Update pagination
+            document.getElementById('showingCount').textContent = `${start + 1}-${Math.min(end, transactions.length)}`;
+            document.getElementById('totalCount').textContent = transactions.length;
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = end >= transactions.length;
+        }
+        
+        function filterTransactions() {
+            // Implementation for filtering
+            displayTransactions();
+        }
+        
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                displayTransactions();
+            }
+        }
+        
+        function nextPage() {
+            if (currentPage * itemsPerPage < transactions.length) {
+                currentPage++;
+                displayTransactions();
+            }
+        }
+        
+        function viewTransaction(id) {
+            // In production, this would open a modal or navigate to transaction details
+            console.log('View transaction:', id);
+        }
+        
+        function exportTransactions() {
+            // Convert transactions to CSV
+            const csv = [
+                ['Date', 'Customer', 'Email', 'Description', 'Amount', 'Status'],
+                ...transactions.map(t => [
+                    t.date.toLocaleDateString(),
+                    t.customer,
+                    t.email,
+                    t.description,
+                    t.amount,
+                    t.status
+                ])
+            ].map(row => row.join(',')).join('\n');
+            
+            // Download CSV
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `transactions_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+        
+        function initializeChart() {
+            const ctx = document.getElementById('revenueCanvas').getContext('2d');
+            
+            // Mock data for last 30 days
+            const labels = [];
+            const data = [];
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+                data.push(Math.floor(Math.random() * 5000) + 2000);
+            }
+            
+            revenueChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Daily Revenue',
+                        data: data,
+                        borderColor: '#8B1538',
+                        backgroundColor: 'rgba(139, 21, 56, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                },
+                                color: '#9ca3af'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#9ca3af'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
