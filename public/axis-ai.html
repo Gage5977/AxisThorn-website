@@ -3,327 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axis AI (Preview) - Advanced Financial Intelligence | Axis Thorn LLC</title>
-    <meta name="description" content="Deploy autonomous AI agents that think, analyze, and execute at superhuman speed.">
+    <title>Axis AI — Intelligent Financial Automation | Axis Thorn</title>
+    <meta name="description" content="Deploy autonomous AI agents that analyze financial data, automate workflows, and execute complex strategies with computational precision.">
+    <meta name="robots" content="index, follow">
     
-    <!-- Fonts -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="single-page.css">
-    <style>
-        /* Page-specific minimal styles */
-        .ai-hero {
-            padding: 6rem 2rem 4rem;
-            text-align: center;
-        }
-        
-        .ai-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-        
-        .ai-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            line-height: 1.6;
-        }
-        
-        .capabilities {
-            padding: 4rem 2rem;
-            background: var(--secondary-dark);
-        }
-        
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 2rem auto;
-        }
-        
-        .capability {
-            text-align: center;
-        }
-        
-        .capability h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        
-        .capability p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        .capability-metric {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            margin-top: 1rem;
-        }
-        
-        .ai-demo {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        
-        .demo-box {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: var(--accent-dark);
-            border: 1px solid var(--accent-cyan-02);
-            border-radius: 12px;
-        }
-        
-        .demo-label {
-            font-size: 0.875rem;
-            color: var(--accent-cyan);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-        
-        .demo-query {
-            font-size: 1.25rem;
-            color: var(--text-primary);
-            margin-bottom: 2rem;
-        }
-        
-        .demo-results {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
-            text-align: center;
-        }
-        
-        .result-item {
-            padding: 1rem;
-            background: rgba(10, 15, 28, 0.5);
-            border-radius: 8px;
-        }
-        
-        .result-value {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .result-label {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-        
-        .ai-cta {
-            padding: 4rem 2rem;
-            text-align: center;
-            background: var(--secondary-dark);
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        
-        .cta-button {
-            padding: 1rem 2rem;
-            border: 1px solid var(--accent-cyan);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--accent-cyan);
-            font-weight: 500;
-            transition: var(--transition-smooth);
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            background: var(--accent-cyan-01);
-            transform: translateY(-2px);
-        }
-        
-        .cta-button.primary {
-            background: var(--accent-primary);
-            color: var(--text-primary);
-            border-color: var(--accent-cyan);
-        }
-        
-        .cta-button.primary:hover {
-            background: var(--accent-secondary);
-        }
-    </style>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/axis-2025.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo-2025.svg">
 </head>
 <body>
-    <nav class="navigation" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <a href="/" class="logo" aria-label="Axis Thorn home">
-                <img src="logo.svg" alt="Axis Thorn LLC logo" class="logo-img" width="40" height="40">
-                <span class="logo-text">Axis Thorn</span>
-            </a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 12h18M3 6h18M3 18h18" />
+    <!-- Noise Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav-2025" role="navigation">
+        <div class="nav-2025-inner">
+            <a href="/" class="logo-2025" aria-label="Axis Thorn">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <path d="M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <rect x="16" y="20" width="16" height="8" fill="currentColor" opacity="0.2"/>
                 </svg>
+                <span>Axis Thorn</span>
+            </a>
+            
+            <button class="mobile-toggle-2025" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
             </button>
-            <ul class="nav-menu" role="menubar">
-                <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
-                <li role="none"><a href="axis-ai.html" class="nav-link active" role="menuitem">Axis AI (Preview)</a></li>
-                <li role="none"><a href="terminal.html" class="nav-link" role="menuitem">Terminal</a></li>
-                <li role="none"><a href="#contact" class="nav-link" role="menuitem">Contact</a></li>
+            
+            <ul class="nav-links-2025">
+                <li><a href="/" class="nav-link-2025">Home</a></li>
+                <li>
+                    <a href="/#services" class="nav-link-2025">Services</a>
+                    <ul class="dropdown-2025">
+                        <li><a href="/consultation">Strategic Consultation</a></li>
+                        <li><a href="/implementation">System Implementation</a></li>
+                        <li><a href="/support">Ongoing Support</a></li>
+                    </ul>
+                </li>
+                <li><a href="/portfolio" class="nav-link-2025">Portfolio</a></li>
+                <li><a href="/about" class="nav-link-2025">About</a></li>
+                <li><a href="/#contact" class="nav-link-2025">Contact</a></li>
             </ul>
         </div>
     </nav>
-
-    <main id="main-content">
-        <!-- Hero -->
-        <section class="ai-hero">
-            <div class="container">
-                <h1 class="ai-title">AXIS AI <span style="font-size: 0.6em; color: var(--accent-cyan); font-weight: 400;">(Preview)</span></h1>
-                <p class="ai-subtitle">
-                    Autonomous intelligence that processes financial data at the speed of light. 
-                    Deploy AI agents that think, analyze, and execute beyond human capabilities.
+    
+    <!-- Hero Section -->
+    <section class="hero-2025" style="padding-top: 120px;">
+        <div class="hero-content-2025">
+            <div class="hero-badge-2025" style="background: linear-gradient(135deg, #10b981, #059669);">
+                AI PLATFORM
+            </div>
+            <h1 class="hero-title-2025">
+                <span style="color: var(--axis-accent-primary);">Axis AI</span><br>
+                Intelligent Automation
+            </h1>
+            <p class="hero-subtitle-2025">
+                Deploy autonomous AI agents that analyze financial data, automate workflows,<br>
+                and execute complex strategies with computational precision.
+            </p>
+            <div class="hero-cta-2025">
+                <a href="#demo" class="btn-2025 btn-primary-2025">Request Demo</a>
+                <a href="#capabilities" class="btn-2025 btn-secondary-2025">View Capabilities</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Capabilities Section -->
+    <section class="section-2025" id="capabilities">
+        <div class="section-inner-2025">
+            <h2 class="section-title-2025 reveal-2025">Core Capabilities</h2>
+            <p class="section-subtitle-2025 reveal-2025">
+                Advanced AI systems designed for financial operations at scale
+            </p>
+            
+            <div class="grid-2025 grid-3-2025" style="margin-top: var(--space-12);">
+                <!-- Data Analysis -->
+                <div class="card-2025 reveal-2025">
+                    <div style="width: 64px; height: 64px; background: var(--axis-gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-6);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 21l-6-6m6 6v-4.5m0 4.5h-4.5"/>
+                            <path d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9-4.03 9-9 9c-1.66 0-3.22-.45-4.55-1.23"/>
+                            <path d="M3 3l6 6m-6-6v4.5m0-4.5h4.5"/>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">Intelligent Analysis</h3>
+                    <p style="color: var(--axis-neutral-400); margin-bottom: var(--space-4);">
+                        Process unstructured financial data from multiple sources with contextual understanding and pattern recognition.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6);">
+                        <span class="tag-2025">Natural Language Processing</span>
+                        <span class="tag-2025">Pattern Recognition</span>
+                        <span class="tag-2025">Real-time Analysis</span>
+                    </div>
+                </div>
+                
+                <!-- Workflow Automation -->
+                <div class="card-2025 reveal-2025">
+                    <div style="width: 64px; height: 64px; background: var(--axis-gradient-secondary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-6);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">Workflow Automation</h3>
+                    <p style="color: var(--axis-neutral-400); margin-bottom: var(--space-4);">
+                        Automate complex financial processes with intelligent decision-making and adaptive execution strategies.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6);">
+                        <span class="tag-2025">Process Optimization</span>
+                        <span class="tag-2025">Smart Routing</span>
+                        <span class="tag-2025">Auto-scaling</span>
+                    </div>
+                </div>
+                
+                <!-- Predictive Modeling -->
+                <div class="card-2025 reveal-2025">
+                    <div style="width: 64px; height: 64px; background: var(--axis-gradient-tertiary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-6);">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">Predictive Intelligence</h3>
+                    <p style="color: var(--axis-neutral-400); margin-bottom: var(--space-4);">
+                        Advanced machine learning models that forecast trends and identify opportunities before they materialize.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6);">
+                        <span class="tag-2025">Forecasting</span>
+                        <span class="tag-2025">Risk Modeling</span>
+                        <span class="tag-2025">Anomaly Detection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Live Demo Section -->
+    <section class="section-2025" style="background: var(--axis-neutral-950);" id="demo">
+        <div class="section-inner-2025">
+            <h2 class="section-title-2025 reveal-2025">Live Intelligence Demo</h2>
+            <p class="section-subtitle-2025 reveal-2025">
+                Experience real-time AI analysis capabilities
+            </p>
+            
+            <div class="card-2025 reveal-2025" style="max-width: 800px; margin: var(--space-12) auto; background: var(--axis-gradient-subtle); border: 1px solid var(--axis-neutral-800);">
+                <div style="padding: var(--space-8);">
+                    <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-4);">
+                        <div style="width: 12px; height: 12px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite;"></div>
+                        <span style="font-size: var(--text-sm); color: var(--axis-neutral-400); text-transform: uppercase; letter-spacing: 1px;">Live Analysis</span>
+                    </div>
+                    
+                    <div style="font-family: 'Monaco', 'Courier New', monospace; color: var(--axis-accent-primary); margin-bottom: var(--space-6);">
+                        Query: "Analyze market volatility patterns and recommend risk mitigation strategies"
+                    </div>
+                    
+                    <div class="grid-2025 grid-4-2025" style="gap: var(--space-4);">
+                        <div style="text-align: center; padding: var(--space-4); background: rgba(10, 15, 28, 0.5); border-radius: 8px;">
+                            <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--axis-accent-primary); margin-bottom: var(--space-2);">27.3%</div>
+                            <div style="font-size: var(--text-sm); color: var(--axis-neutral-500);">Volatility Index</div>
+                        </div>
+                        <div style="text-align: center; padding: var(--space-4); background: rgba(10, 15, 28, 0.5); border-radius: 8px;">
+                            <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--axis-accent-secondary); margin-bottom: var(--space-2);">3</div>
+                            <div style="font-size: var(--text-sm); color: var(--axis-neutral-500);">Risk Factors</div>
+                        </div>
+                        <div style="text-align: center; padding: var(--space-4); background: rgba(10, 15, 28, 0.5); border-radius: 8px;">
+                            <div style="font-size: var(--text-2xl); font-weight: 700; color: var(--axis-accent-tertiary); margin-bottom: var(--space-2);">85%</div>
+                            <div style="font-size: var(--text-sm); color: var(--axis-neutral-500);">Confidence</div>
+                        </div>
+                        <div style="text-align: center; padding: var(--space-4); background: rgba(10, 15, 28, 0.5); border-radius: 8px;">
+                            <div style="font-size: var(--text-2xl); font-weight: 700; color: #10b981; margin-bottom: var(--space-2);">12ms</div>
+                            <div style="font-size: var(--text-sm); color: var(--axis-neutral-500);">Response Time</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: var(--space-6); padding: var(--space-4); background: rgba(10, 15, 28, 0.5); border-radius: 8px;">
+                        <p style="font-size: var(--text-sm); color: var(--axis-neutral-400); line-height: 1.6;">
+                            <strong style="color: var(--axis-neutral-200);">Recommended Strategies:</strong> Implement dynamic hedging with 15% put options allocation, diversify across uncorrelated assets, and increase cash reserves to 20% for opportunistic deployment during market corrections.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Use Cases Section -->
+    <section class="section-2025">
+        <div class="section-inner-2025">
+            <h2 class="section-title-2025 reveal-2025">Industry Applications</h2>
+            <p class="section-subtitle-2025 reveal-2025">
+                Tailored AI solutions for diverse financial operations
+            </p>
+            
+            <div class="grid-2025 grid-3-2025" style="margin-top: var(--space-12);">
+                <!-- Investment Management -->
+                <div class="card-2025 reveal-2025">
+                    <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Investment Management</h3>
+                    <p style="color: var(--axis-neutral-400); margin-bottom: var(--space-6);">
+                        Portfolio optimization, risk analysis, and automated rebalancing with real-time market adaptation.
+                    </p>
+                    <ul style="list-style: none; padding: 0; space-y: var(--space-3);">
+                        <li style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="color: var(--axis-neutral-300);">Alpha generation strategies</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="color: var(--axis-neutral-300);">Dynamic risk management</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: var(--space-2);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="color: var(--axis-neutral-300);">Compliance automation</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Corporate Finance -->
+                <div class="card-2025 reveal-2025">
+                    <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Corporate Finance</h3>
+                    <p style="color: var(--axis-neutral-400); margin-bottom: var(--space-6);">
+                        Streamline financial operations with intelligent automation and predictive analytics.
+                    </p>
+                    <ul style="list-style: none; padding: 0; space-y: var(--space-3);">
+                        <li style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="color: var(--axis-neutral-300);">Cash flow optimization</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="color: var(--axis-neutral-300);">Budget forecasting</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: var(--space-2);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="color: var(--axis-neutral-300);">Fraud detection</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Financial Services -->
+                <div class="card-2025 reveal-2025">
+                    <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Financial Services</h3>
+                    <p style="color: var(--axis-neutral-400); margin-bottom: var(--space-6);">
+                        Transform client services with AI-powered insights and automated processing.
+                    </p>
+                    <ul style="list-style: none; padding: 0; space-y: var(--space-3);">
+                        <li style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="color: var(--axis-neutral-300);">Client risk profiling</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="color: var(--axis-neutral-300);">Automated reporting</span>
+                        </li>
+                        <li style="display: flex; align-items: center; gap: var(--space-2);">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                            <span style="color: var(--axis-neutral-300);">Regulatory compliance</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="section-2025" style="background: var(--axis-neutral-950);">
+        <div class="section-inner-2025">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title-2025 reveal-2025">Deploy Intelligent Automation</h2>
+                <p class="section-subtitle-2025 reveal-2025" style="margin-bottom: var(--space-8);">
+                    Transform your financial operations with AI-powered intelligence.<br>
+                    Start with a personalized demo tailored to your specific needs.
                 </p>
-            </div>
-        </section>
-
-        <!-- Capabilities -->
-        <section class="capabilities">
-            <div class="container">
-                <h2 class="section-title">Core Capabilities</h2>
-                <div class="capabilities-grid">
-                    <div class="capability">
-                        <h3>Cognitive Analysis</h3>
-                        <p>Process unstructured data from earnings calls to market sentiment with contextual understanding.</p>
-                        <div class="capability-metric">347TB/day</div>
-                    </div>
-                    <div class="capability">
-                        <h3>Predictive Intelligence</h3>
-                        <p>Machine learning models trained on decades of market data to forecast trends.</p>
-                        <div class="capability-metric">94.7%</div>
-                    </div>
-                    <div class="capability">
-                        <h3>Autonomous Execution</h3>
-                        <p>Self-optimizing algorithms that adapt to market conditions in real-time.</p>
-                        <div class="capability-metric">&lt;10ms</div>
-                    </div>
+                <div class="hero-cta-2025 reveal-2025">
+                    <a href="/consultation" class="btn-2025 btn-primary-2025">Schedule Consultation</a>
+                    <a href="mailto:AI.info@axisthorn.com" class="btn-2025 btn-secondary-2025">Contact Our Team</a>
                 </div>
             </div>
-        </section>
-
-        <!-- Demo -->
-        <section class="ai-demo">
-            <div class="container">
-                <h2 class="section-title">Live Analysis</h2>
-                <div class="demo-box">
-                    <div class="demo-label">Query</div>
-                    <div class="demo-query">
-                        "Analyze tech sector volatility and recommend hedging strategies for $50M portfolio"
-                    </div>
-                    <div class="demo-results">
-                        <div class="result-item">
-                            <span class="result-value">27.3%</span>
-                            <span class="result-label">Volatility Index</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-value">15%</span>
-                            <span class="result-label">Put Options</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-value">-12%</span>
-                            <span class="result-label">Max Drawdown</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-value">0.8%</span>
-                            <span class="result-label">Annual Cost</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Use Cases -->
-        <section class="services">
-            <div class="container">
-                <h2 class="section-title">Applications</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>Hedge Funds</h3>
-                        <p>Alpha generation through AI-driven strategies and real-time risk management.</p>
-                        <a href="#contact" class="service-link">Deploy AI →</a>
-                    </div>
-                    <div class="service-card">
-                        <h3>Family Offices</h3>
-                        <p>Multi-generational wealth preservation with intelligent tax optimization.</p>
-                        <a href="#contact" class="service-link">Learn More →</a>
-                    </div>
-                    <div class="service-card">
-                        <h3>Institutions</h3>
-                        <p>Large-scale portfolio optimization with automated compliance monitoring.</p>
-                        <a href="#contact" class="service-link">Get Started →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="ai-cta">
-            <div class="container">
-                <h2 class="section-title">Deploy Superhuman Intelligence</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-                    Join the vanguard of financial institutions leveraging AI.
-                </p>
-                <div class="cta-buttons">
-                    <a href="/app" class="cta-button primary">Launch Axis AI</a>
-                    <a href="mailto:ai@axisthorn.com" class="cta-button">Schedule Demo</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="section-title">Connect</h2>
-                <div class="contact-content">
-                    <form action="mailto:ai@axisthorn.com" method="post" enctype="text/plain" class="contact-form">
-                        <input type="text" name="name" placeholder="Name" required class="form-input">
-                        <input type="email" name="email" placeholder="Email" required class="form-input">
-                        <textarea name="message" placeholder="How can AI transform your operations?" rows="5" class="form-textarea"></textarea>
-                        <button type="submit" class="submit-button">Send</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-text">Axis Thorn LLC</span>
-                </div>
-                <div class="footer-links">
-                    <a href="index.html" class="footer-link">Home</a>
-                    <a href="terminal.html" class="footer-link">Terminal</a>
-                    <a href="mailto:ai@axisthorn.com" class="footer-link">Contact</a>
-                </div>
-                <p class="footer-copyright">© 2025 Axis Thorn LLC. All rights reserved.</p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer-2025">
+        <div class="footer-inner">
+            <p>&copy; 2025 Axis Thorn LLC. All rights reserved.</p>
+            <div style="margin-top: var(--space-4);">
+                <a href="/privacy-policy" style="color: var(--axis-neutral-400); text-decoration: none; margin-right: var(--space-4);">Privacy Policy</a>
+                <a href="/terms-of-service" style="color: var(--axis-neutral-400); text-decoration: none;">Terms of Service</a>
             </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
+    
+    <!-- Scripts -->
+    <script src="js/navigation-2025.js"></script>
+    <script src="js/axis-2025.js"></script>
+    
+    <!-- Animation Styles -->
+    <style>
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .tag-2025 {
+            display: inline-block;
+            padding: var(--space-1) var(--space-3);
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 100px;
+            font-size: var(--text-sm);
+            color: var(--axis-neutral-400);
+        }
+    </style>
 </body>
 </html>

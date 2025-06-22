@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Payment Portal — Axis Thorn</title>
+    <meta name="description" content="Secure vendor payment portal for Axis Thorn LLC. Pay invoices online with credit card or ACH.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/axis-2025.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo-2025.svg">
+    
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav-2025" role="navigation">
+        <div class="nav-2025-inner">
+            <a href="/" class="logo-2025" aria-label="Axis Thorn">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <path d="M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <rect x="16" y="20" width="16" height="8" fill="currentColor" opacity="0.2"/>
+                </svg>
+                <span>Axis Thorn</span>
+            </a>
+            
+            <ul class="nav-links-2025">
+                <li><a href="/" class="nav-link-2025">Home</a></li>
+                <li><a href="/banking-portal" class="nav-link-2025">Banking Portal</a></li>
+                <li><a href="/#contact" class="nav-link-2025">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Portal Hero -->
+    <section class="hero-2025" style="padding-top: 120px; padding-bottom: 60px;">
+        <div class="hero-content-2025">
+            <h1 class="hero-title-2025" style="font-size: var(--text-4xl);">
+                <span style="color: var(--axis-accent-primary);">Vendor</span><br>
+                Payment Portal
+            </h1>
+            <p class="hero-subtitle-2025" style="font-size: var(--text-lg); color: var(--axis-neutral-400); margin-top: var(--space-6);">
+                Secure online payment processing
+            </p>
+        </div>
+    </section>
+    
+    <!-- Payment Form Section -->
+    <section class="section-2025">
+        <div class="section-inner-2025" style="max-width: 800px;">
+            <!-- Payment Method Selection -->
+            <div class="card-2025 reveal-2025" id="paymentMethodCard">
+                <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-6);">Select Payment Method</h2>
+                
+                <div class="grid-2025 grid-2-2025" style="gap: var(--space-4);">
+                    <button class="payment-method-btn active" data-method="card" onclick="selectPaymentMethod('card')">
+                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                <line x1="1" y1="10" x2="23" y2="10"/>
+                            </svg>
+                            <span>Credit/Debit Card</span>
+                        </div>
+                    </button>
+                    
+                    <button class="payment-method-btn" data-method="ach" onclick="selectPaymentMethod('ach')">
+                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 12V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7"/>
+                                <path d="M18 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                <path d="M22 21l-1.5-1.5"/>
+                            </svg>
+                            <span>ACH Bank Transfer</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Invoice Details -->
+            <div class="card-2025 reveal-2025" style="margin-top: var(--space-6);">
+                <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Invoice Details</h3>
+                
+                <form id="paymentForm">
+                    <div class="form-group" style="margin-bottom: var(--space-4);">
+                        <label for="invoiceNumber" style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                            Invoice Number *
+                        </label>
+                        <input type="text" id="invoiceNumber" name="invoiceNumber" required
+                               placeholder="e.g., INV-2025-001"
+                               style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: var(--space-4);">
+                        <label for="amount" style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                            Payment Amount (USD) *
+                        </label>
+                        <input type="number" id="amount" name="amount" required min="0.01" step="0.01"
+                               placeholder="0.00"
+                               style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: var(--space-4);">
+                        <label for="email" style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                            Email Address *
+                        </label>
+                        <input type="email" id="email" name="email" required
+                               placeholder="vendor@company.com"
+                               style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: var(--space-4);">
+                        <label for="companyName" style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                            Company Name
+                        </label>
+                        <input type="text" id="companyName" name="companyName"
+                               placeholder="Your Company LLC"
+                               style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: var(--space-4);">
+                        <label for="description" style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                            Payment Description
+                        </label>
+                        <textarea id="description" name="description" rows="3"
+                                  placeholder="Optional: Add notes about this payment"
+                                  style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white; resize: vertical;"></textarea>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Payment Information -->
+            <div class="card-2025 reveal-2025" style="margin-top: var(--space-6);" id="cardPaymentSection">
+                <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Payment Information</h3>
+                
+                <!-- Stripe Card Element -->
+                <div id="card-element" style="padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; margin-bottom: var(--space-4);">
+                    <!-- Stripe will inject the card element here -->
+                </div>
+                
+                <!-- Error messages -->
+                <div id="card-errors" role="alert" style="color: #ff4444; margin-bottom: var(--space-4);"></div>
+                
+                <!-- Submit Button -->
+                <button type="submit" id="submitButton" class="btn-2025 btn-primary-2025" style="width: 100%;" onclick="processPayment()">
+                    <span id="buttonText">Pay Now</span>
+                    <span id="spinner" style="display: none;">Processing...</span>
+                </button>
+            </div>
+            
+            <!-- ACH Payment Section (Hidden by default) -->
+            <div class="card-2025 reveal-2025" style="margin-top: var(--space-6); display: none;" id="achPaymentSection">
+                <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Bank Account Information</h3>
+                
+                <div class="form-group" style="margin-bottom: var(--space-4);">
+                    <label for="accountHolder" style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                        Account Holder Name *
+                    </label>
+                    <input type="text" id="accountHolder" name="accountHolder"
+                           placeholder="John Doe"
+                           style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                </div>
+                
+                <div class="form-group" style="margin-bottom: var(--space-4);">
+                    <label for="routingNumber" style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                        Routing Number *
+                    </label>
+                    <input type="text" id="routingNumber" name="routingNumber" maxlength="9"
+                           placeholder="123456789"
+                           style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                </div>
+                
+                <div class="form-group" style="margin-bottom: var(--space-4);">
+                    <label for="accountNumber" style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                        Account Number *
+                    </label>
+                    <input type="text" id="accountNumber" name="accountNumber"
+                           placeholder="1234567890"
+                           style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                </div>
+                
+                <button type="submit" class="btn-2025 btn-primary-2025" style="width: 100%;" onclick="processACHPayment()">
+                    <span>Process ACH Payment</span>
+                </button>
+            </div>
+            
+            <!-- Payment Status -->
+            <div class="card-2025" style="margin-top: var(--space-6); display: none;" id="paymentStatus">
+                <div style="text-align: center; padding: var(--space-8);">
+                    <div id="statusIcon" style="font-size: 48px; margin-bottom: var(--space-4);"></div>
+                    <h3 id="statusTitle" style="font-size: var(--text-2xl); margin-bottom: var(--space-2);"></h3>
+                    <p id="statusMessage" style="color: var(--axis-neutral-400);"></p>
+                    <div id="receiptLink" style="margin-top: var(--space-4);"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Security Notice -->
+    <section class="section-2025">
+        <div class="section-inner-2025">
+            <div style="background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 12px; padding: var(--space-8); text-align: center;">
+                <h3 style="color: var(--axis-accent-primary); margin-bottom: var(--space-4);">Secure Payment Processing</h3>
+                <p style="color: var(--axis-neutral-400); max-width: 600px; margin: 0 auto;">
+                    All payments are processed securely through Stripe. Your payment information is encrypted and never stored on our servers.
+                    For assistance, contact AI.info@axisthorn.com
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer-2025">
+        <div class="footer-inner">
+            <p>&copy; 2025 Axis Thorn LLC. All rights reserved.</p>
+            <div style="margin-top: var(--space-4);">
+                <a href="/privacy-policy" style="color: var(--axis-neutral-400); text-decoration: none; margin-right: var(--space-4);">Privacy Policy</a>
+                <a href="/terms-of-service" style="color: var(--axis-neutral-400); text-decoration: none;">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/navigation-2025.js"></script>
+    <script src="js/axis-2025.js"></script>
+    <script>
+        // Initialize Stripe
+        const stripe = Stripe('pk_live_51RbCgpG1uUSyJ0ucqzJ6P7OQ6wkDkdx2o4cklRD2XxFUssui1RjnzuR2zIAim0Oa3WgLMKTUFA2sW7IWl8hy6qEN00YEf8zSvh');
+        const elements = stripe.elements();
+        
+        // Custom styling for Stripe elements
+        const style = {
+            base: {
+                color: '#ffffff',
+                fontFamily: 'Inter, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                    color: '#6b7280'
+                }
+            },
+            invalid: {
+                color: '#ff4444',
+                iconColor: '#ff4444'
+            }
+        };
+        
+        // Create card element
+        const cardElement = elements.create('card', { style: style });
+        cardElement.mount('#card-element');
+        
+        // Handle real-time validation errors
+        cardElement.on('change', function(event) {
+            const displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+        
+        // Payment method selection
+        function selectPaymentMethod(method) {
+            const buttons = document.querySelectorAll('.payment-method-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const selectedBtn = document.querySelector(`[data-method="${method}"]`);
+            selectedBtn.classList.add('active');
+            
+            const cardSection = document.getElementById('cardPaymentSection');
+            const achSection = document.getElementById('achPaymentSection');
+            
+            if (method === 'card') {
+                cardSection.style.display = 'block';
+                achSection.style.display = 'none';
+            } else {
+                cardSection.style.display = 'none';
+                achSection.style.display = 'block';
+            }
+        }
+        
+        // Process card payment
+        async function processPayment() {
+            const submitButton = document.getElementById('submitButton');
+            const buttonText = document.getElementById('buttonText');
+            const spinner = document.getElementById('spinner');
+            
+            // Disable button and show spinner
+            submitButton.disabled = true;
+            buttonText.style.display = 'none';
+            spinner.style.display = 'inline';
+            
+            // Get form values
+            const invoiceNumber = document.getElementById('invoiceNumber').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const email = document.getElementById('email').value;
+            const companyName = document.getElementById('companyName').value;
+            const description = document.getElementById('description').value;
+            
+            // Validate form
+            if (!invoiceNumber || !amount || !email) {
+                alert('Please fill in all required fields');
+                submitButton.disabled = false;
+                buttonText.style.display = 'inline';
+                spinner.style.display = 'none';
+                return;
+            }
+            
+            try {
+                // Create payment intent on your server
+                const response = await fetch('/api/stripe-payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // Add authentication headers if required
+                    },
+                    body: JSON.stringify({
+                        action: 'create-payment-intent',
+                        amount: amount,
+                        currency: 'usd',
+                        description: description || `Payment for invoice ${invoiceNumber}`,
+                        customer_email: email,
+                        invoice_id: invoiceNumber,
+                        metadata: {
+                            company_name: companyName,
+                            invoice_number: invoiceNumber
+                        }
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                // Confirm the payment with Stripe
+                const { error, paymentIntent } = await stripe.confirmCardPayment(data.clientSecret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: {
+                            email: email,
+                            name: companyName
+                        }
+                    }
+                });
+                
+                if (error) {
+                    throw error;
+                } else {
+                    // Payment succeeded
+                    showPaymentStatus('success', paymentIntent);
+                }
+                
+            } catch (error) {
+                console.error('Payment error:', error);
+                document.getElementById('card-errors').textContent = error.message;
+                submitButton.disabled = false;
+                buttonText.style.display = 'inline';
+                spinner.style.display = 'none';
+            }
+        }
+        
+        // Process ACH payment
+        async function processACHPayment() {
+            // This would integrate with Stripe ACH payment processing
+            alert('ACH payment processing will be implemented with Stripe ACH API');
+        }
+        
+        // Show payment status
+        function showPaymentStatus(status, paymentIntent) {
+            const paymentForm = document.querySelector('.section-inner-2025');
+            const statusDiv = document.getElementById('paymentStatus');
+            const statusIcon = document.getElementById('statusIcon');
+            const statusTitle = document.getElementById('statusTitle');
+            const statusMessage = document.getElementById('statusMessage');
+            const receiptLink = document.getElementById('receiptLink');
+            
+            // Hide form sections
+            document.getElementById('paymentMethodCard').style.display = 'none';
+            document.getElementById('cardPaymentSection').style.display = 'none';
+            document.getElementById('achPaymentSection').style.display = 'none';
+            document.querySelector('.card-2025.reveal-2025').style.display = 'none';
+            
+            // Show status
+            statusDiv.style.display = 'block';
+            
+            if (status === 'success') {
+                statusIcon.innerHTML = '✅';
+                statusTitle.textContent = 'Payment Successful!';
+                statusMessage.textContent = `Your payment of $${(paymentIntent.amount / 100).toFixed(2)} has been processed successfully.`;
+                receiptLink.innerHTML = `<a href="#" class="btn-2025" style="margin-top: var(--space-4);">Download Receipt</a>`;
+            } else {
+                statusIcon.innerHTML = '❌';
+                statusTitle.textContent = 'Payment Failed';
+                statusMessage.textContent = 'There was an error processing your payment. Please try again or contact support.';
+            }
+        }
+        
+        // Add custom styles for payment method buttons
+        const styleSheet = document.createElement('style');
+        styleSheet.textContent = `
+            .payment-method-btn {
+                width: 100%;
+                padding: var(--space-4);
+                background: var(--axis-neutral-900);
+                border: 1px solid var(--axis-neutral-800);
+                border-radius: 8px;
+                color: var(--axis-neutral-300);
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .payment-method-btn:hover {
+                border-color: var(--axis-accent-primary);
+            }
+            
+            .payment-method-btn.active {
+                background: var(--axis-gradient-primary);
+                border-color: transparent;
+                color: white;
+            }
+            
+            .form-group label {
+                font-weight: 500;
+            }
+            
+            .form-group input:focus,
+            .form-group textarea:focus {
+                outline: none;
+                border-color: var(--axis-accent-primary);
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>
