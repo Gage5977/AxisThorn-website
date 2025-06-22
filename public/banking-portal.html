@@ -362,7 +362,7 @@
                 </div>
                 
                 <!-- Invoice Generation -->
-                <div class="card-2025 reveal-2025" style="cursor: pointer;" onclick="window.location.href='/invoices'">
+                <div class="card-2025 reveal-2025" style="cursor: pointer;" onclick="window.location.href='/invoice-generator'">
                     <div style="margin-bottom: var(--space-6);">
                         <div style="width: 48px; height: 48px; background: var(--axis-gradient-secondary); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -379,12 +379,12 @@
                         Create professional invoices with automated calculations and PDF export.
                     </p>
                     <div class="btn-2025" style="width: 100%; text-align: center; border: 1px solid var(--axis-accent-secondary); color: var(--axis-accent-secondary);">
-                        Manage Invoices →
+                        Create Invoice →
                     </div>
                 </div>
                 
                 <!-- 1099 Tax Forms -->
-                <div class="card-2025 reveal-2025" style="cursor: pointer;" onclick="show1099Access()">
+                <div class="card-2025 reveal-2025" style="cursor: pointer;" onclick="window.location.href='/tax-forms'">
                     <div style="margin-bottom: var(--space-6);">
                         <div style="width: 48px; height: 48px; background: var(--axis-gradient-tertiary); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -398,7 +398,7 @@
                         Generate and manage 1099-NEC forms for contractors and vendors.
                     </p>
                     <div class="btn-2025" style="width: 100%; text-align: center; border: 1px solid var(--axis-accent-tertiary); color: var(--axis-accent-tertiary);">
-                        Tax Documents →
+                        Generate 1099s →
                     </div>
                 </div>
             </div>
@@ -496,21 +496,6 @@
         </div>
     </footer>
     
-    <!-- 1099 Modal -->
-    <div id="taxFormModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 10000; align-items: center; justify-content: center;">
-        <div style="background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-700); border-radius: 16px; padding: var(--space-8); max-width: 500px; width: 90%; position: relative;">
-            <button onclick="closeTaxFormModal()" style="position: absolute; top: var(--space-4); right: var(--space-4); background: none; border: none; color: var(--axis-neutral-400); font-size: 24px; cursor: pointer;">×</button>
-            
-            <h3 style="font-size: var(--text-2xl); margin-bottom: var(--space-4); color: var(--axis-accent-primary);">1099 Tax Form Access</h3>
-            <p style="color: var(--axis-neutral-400); margin-bottom: var(--space-6);">
-                Tax form generation is available during tax season (January - April). For year-round contractor management, please contact our support team.
-            </p>
-            
-            <button onclick="window.location.href='/#contact'" class="btn-2025 btn-primary-2025" style="width: 100%;">
-                Contact Support →
-            </button>
-        </div>
-    </div>
     
     <!-- Scripts -->
     <script src="js/navigation-2025.js"></script>
@@ -533,22 +518,6 @@ Thank you.`);
             window.location.href = `mailto:AI.info@axisthorn.com?subject=${subject}&body=${body}`;
         }
         
-        function show1099Access() {
-            document.getElementById('taxFormModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeTaxFormModal() {
-            document.getElementById('taxFormModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        
-        // Close modal on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeTaxFormModal();
-            }
-        });
         
         // Add hover effect to sensitive data
         document.addEventListener('DOMContentLoaded', function() {

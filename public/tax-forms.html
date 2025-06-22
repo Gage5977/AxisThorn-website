@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1099 Tax Forms — Axis Thorn</title>
+    <meta name="description" content="Generate and manage 1099-NEC forms for contractors and vendors with Axis Thorn's secure tax document system.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/axis-2025.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo-2025.svg">
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav-2025" role="navigation">
+        <div class="nav-2025-inner">
+            <a href="/" class="logo-2025" aria-label="Axis Thorn">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <path d="M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <rect x="16" y="20" width="16" height="8" fill="currentColor" opacity="0.2"/>
+                </svg>
+                <span>Axis Thorn</span>
+            </a>
+            
+            <button class="mobile-toggle-2025" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            
+            <ul class="nav-links-2025">
+                <li><a href="/banking-portal" class="nav-link-2025">Banking Portal</a></li>
+                <li><a href="/invoice-generator" class="nav-link-2025">Invoice Generator</a></li>
+                <li><a href="/tax-forms" class="nav-link-2025 active">Tax Forms</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-2025" style="padding-top: 120px; padding-bottom: 60px;">
+        <div class="hero-content-2025">
+            <h1 class="hero-title-2025" style="font-size: var(--text-4xl);">
+                1099 Tax Forms
+            </h1>
+            <p class="hero-subtitle-2025" style="font-size: var(--text-lg); color: var(--axis-neutral-400); margin-top: var(--space-4);">
+                Generate and manage 1099-NEC forms for contractors and vendors
+            </p>
+        </div>
+    </section>
+    
+    <!-- Tax Year Selection -->
+    <section class="section-2025">
+        <div class="section-inner-2025">
+            <div class="card-2025 reveal-2025" style="text-align: center; padding: var(--space-12);">
+                <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-6);">Select Tax Year</h2>
+                <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-8);">
+                    <button class="btn-2025 btn-primary-2025" onclick="selectTaxYear(2024)">
+                        2024 Tax Year
+                    </button>
+                    <button class="btn-2025 btn-secondary-2025" onclick="selectTaxYear(2023)">
+                        2023 Tax Year
+                    </button>
+                    <button class="btn-2025 btn-secondary-2025" onclick="selectTaxYear(2022)">
+                        2022 Tax Year
+                    </button>
+                </div>
+                <p style="color: var(--axis-neutral-400); font-size: var(--text-sm);">
+                    1099-NEC forms must be filed by January 31st for the previous tax year
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 1099 Form Generator -->
+    <section class="section-2025" id="formGenerator" style="display: none;">
+        <div class="section-inner-2025" style="max-width: 900px;">
+            <div class="card-2025 reveal-2025">
+                <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-6);">
+                    Generate 1099-NEC for <span id="selectedYear">2024</span>
+                </h2>
+                
+                <form id="form1099">
+                    <!-- Payer Information -->
+                    <div style="margin-bottom: var(--space-8);">
+                        <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4); color: var(--axis-accent-primary);">Payer Information (Your Company)</h3>
+                        <div class="grid-2025 grid-2-2025" style="gap: var(--space-4);">
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                                    Company Name *
+                                </label>
+                                <input type="text" value="Axis Thorn LLC" readonly
+                                       style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: var(--axis-neutral-400);">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                                    Federal EIN *
+                                </label>
+                                <input type="text" placeholder="XX-XXXXXXX" required
+                                       style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recipient Information -->
+                    <div style="margin-bottom: var(--space-8);">
+                        <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4); color: var(--axis-accent-secondary);">Recipient Information (Contractor/Vendor)</h3>
+                        <div class="grid-2025 grid-2-2025" style="gap: var(--space-4); margin-bottom: var(--space-4);">
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                                    Recipient Name *
+                                </label>
+                                <input type="text" required
+                                       style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                                    TIN/SSN *
+                                </label>
+                                <input type="text" placeholder="XXX-XX-XXXX or XX-XXXXXXX" required
+                                       style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                            </div>
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                                Street Address *
+                            </label>
+                            <input type="text" required
+                                   style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white; margin-bottom: var(--space-4);">
+                        </div>
+                        <div class="grid-2025 grid-3-2025" style="gap: var(--space-4);">
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                                    City *
+                                </label>
+                                <input type="text" required
+                                       style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                                    State *
+                                </label>
+                                <input type="text" maxlength="2" required
+                                       style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                                    ZIP Code *
+                                </label>
+                                <input type="text" required
+                                       style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Information -->
+                    <div style="margin-bottom: var(--space-8);">
+                        <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-4); color: var(--axis-accent-tertiary);">Payment Information</h3>
+                        <div class="grid-2025 grid-2-2025" style="gap: var(--space-4);">
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                                    Nonemployee Compensation (Box 1) *
+                                </label>
+                                <input type="number" step="0.01" min="600" required
+                                       placeholder="Minimum $600"
+                                       style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: var(--space-2); color: var(--axis-neutral-300);">
+                                    Federal Income Tax Withheld (Box 4)
+                                </label>
+                                <input type="number" step="0.01" min="0"
+                                       placeholder="0.00"
+                                       style="width: 100%; padding: var(--space-3); background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 8px; color: white;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Actions -->
+                    <div style="display: flex; gap: var(--space-4); justify-content: flex-end;">
+                        <button type="button" class="btn-2025 btn-secondary-2025" onclick="saveDraft()">
+                            Save as Draft
+                        </button>
+                        <button type="submit" class="btn-2025 btn-primary-2025">
+                            Generate 1099-NEC
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Generated Forms Section -->
+    <section class="section-2025" style="background: var(--axis-neutral-950);">
+        <div class="section-inner-2025">
+            <h2 class="section-title-2025 reveal-2025">Generated 1099 Forms</h2>
+            
+            <div class="card-2025">
+                <table style="width: 100%;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--axis-neutral-800);">
+                            <th style="text-align: left; padding: var(--space-3); color: var(--axis-neutral-400); font-weight: 500;">Tax Year</th>
+                            <th style="text-align: left; padding: var(--space-3); color: var(--axis-neutral-400); font-weight: 500;">Recipient</th>
+                            <th style="text-align: left; padding: var(--space-3); color: var(--axis-neutral-400); font-weight: 500;">Amount</th>
+                            <th style="text-align: left; padding: var(--space-3); color: var(--axis-neutral-400); font-weight: 500;">Status</th>
+                            <th style="text-align: left; padding: var(--space-3); color: var(--axis-neutral-400); font-weight: 500;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="generated1099s">
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: var(--space-8); color: var(--axis-neutral-400);">
+                                No 1099 forms generated yet
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer-2025">
+        <div class="footer-inner">
+            <p>&copy; 2025 Axis Thorn LLC. All rights reserved.</p>
+            <div style="margin-top: var(--space-4);">
+                <p style="color: var(--axis-neutral-400); font-size: var(--text-sm);">
+                    This is not tax advice. Please consult with a tax professional.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/navigation-2025.js"></script>
+    <script src="js/axis-2025.js"></script>
+    <script>
+        function selectTaxYear(year) {
+            document.getElementById('selectedYear').textContent = year;
+            document.getElementById('formGenerator').style.display = 'block';
+            document.getElementById('formGenerator').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function saveDraft() {
+            alert('Draft saving functionality coming soon!');
+        }
+        
+        document.getElementById('form1099').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('1099 generation functionality coming soon!');
+        });
+    </script>
+</body>
+</html>
