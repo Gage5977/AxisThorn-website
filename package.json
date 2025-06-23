@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Axis Thorn LLC - Financial Consulting and Administrative Services",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "npx serve public",
     "build": "echo 'Static site - no build required'",
