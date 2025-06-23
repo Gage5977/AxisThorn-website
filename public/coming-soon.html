@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - Axis Thorn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/axis-2025.css">
+    <style>
+        .coming-soon-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-8);
+            text-align: center;
+        }
+
+        .coming-soon-content {
+            max-width: 600px;
+        }
+
+        .coming-soon-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--space-8);
+            background: var(--axis-neutral-900);
+            border: 2px solid var(--axis-neutral-800);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin: var(--space-8) 0;
+        }
+
+        .feature-item {
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            padding: var(--space-4);
+            text-align: left;
+        }
+
+        .feature-status {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-sm);
+            color: var(--axis-neutral-500);
+            margin-top: var(--space-2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #f59e0b;
+        }
+
+        .contact-box {
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            padding: var(--space-6);
+            margin-top: var(--space-8);
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <div class="coming-soon-container">
+        <div class="coming-soon-content">
+            <div class="coming-soon-icon">🚀</div>
+            
+            <h1 style="font-size: var(--text-4xl); margin-bottom: var(--space-4);">
+                Features Under Construction
+            </h1>
+            
+            <p style="font-size: var(--text-xl); color: var(--axis-neutral-400); margin-bottom: var(--space-8);">
+                We're building powerful financial intelligence tools for you. 
+                Our systems are currently in development.
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3 style="color: var(--axis-accent-primary); margin-bottom: var(--space-2);">Client Portal</h3>
+                    <p style="font-size: var(--text-sm); color: var(--axis-neutral-400);">Access your documents, invoices, and reports</p>
+                    <div class="feature-status">
+                        <span class="status-dot"></span>
+                        <span>Q1 2025</span>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <h3 style="color: var(--axis-accent-secondary); margin-bottom: var(--space-2);">Payment System</h3>
+                    <p style="font-size: var(--text-sm); color: var(--axis-neutral-400);">Secure online payment processing</p>
+                    <div class="feature-status">
+                        <span class="status-dot"></span>
+                        <span>Coming Soon</span>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <h3 style="color: var(--axis-accent-tertiary); margin-bottom: var(--space-2);">AXIS AI</h3>
+                    <p style="font-size: var(--text-sm); color: var(--axis-neutral-400);">Advanced financial AI assistant</p>
+                    <div class="feature-status">
+                        <span class="status-dot"></span>
+                        <span>In Development</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-box">
+                <h2 style="margin-bottom: var(--space-4);">Need Immediate Assistance?</h2>
+                <p style="color: var(--axis-neutral-400); margin-bottom: var(--space-4);">
+                    While we build these features, our team is ready to help you directly.
+                </p>
+                <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+                    <a href="mailto:AI.info@axisthorn.com" class="btn-2025 btn-primary-2025">
+                        Email Us
+                    </a>
+                    <a href="/" class="btn-2025">
+                        Return Home
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-top: var(--space-12); padding-top: var(--space-8); border-top: 1px solid var(--axis-neutral-800);">
+                <h3 style="margin-bottom: var(--space-4);">What You Can Do Now:</h3>
+                <ul style="text-align: left; max-width: 400px; margin: 0 auto; color: var(--axis-neutral-400);">
+                    <li style="margin-bottom: var(--space-2);">✉️ Email documents to AI.info@axisthorn.com</li>
+                    <li style="margin-bottom: var(--space-2);">📞 Schedule a consultation call</li>
+                    <li style="margin-bottom: var(--space-2);">💳 Request payment instructions via email</li>
+                    <li style="margin-bottom: var(--space-2);">📊 Get updates on feature development</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Redirect common feature URLs here
+        const featureUrls = ['/portal', '/app', '/axis-ai', '/dashboard', '/login'];
+        if (featureUrls.some(url => window.location.pathname.startsWith(url))) {
+            // Already on coming soon page
+        }
+    </script>
+</body>
+</html>

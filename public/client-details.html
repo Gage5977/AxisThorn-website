@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Details - Axis Thorn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/axis-2025.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        .client-header {
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            padding: var(--space-8);
+            margin-bottom: var(--space-8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .client-info h1 {
+            margin: 0 0 var(--space-2) 0;
+        }
+
+        .client-meta {
+            display: flex;
+            gap: var(--space-4);
+            color: var(--axis-neutral-400);
+            font-size: var(--text-sm);
+        }
+
+        .tabs {
+            display: flex;
+            gap: var(--space-4);
+            border-bottom: 1px solid var(--axis-neutral-800);
+            margin-bottom: var(--space-6);
+        }
+
+        .tab {
+            padding: var(--space-3) var(--space-4);
+            color: var(--axis-neutral-400);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .tab:hover {
+            color: var(--axis-neutral-200);
+        }
+
+        .tab.active {
+            color: var(--axis-accent-primary);
+            border-bottom-color: var(--axis-accent-primary);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+
+        .info-card {
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            padding: var(--space-6);
+        }
+
+        .info-card h3 {
+            margin: 0 0 var(--space-4) 0;
+            color: var(--axis-neutral-300);
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-item {
+            margin-bottom: var(--space-3);
+        }
+
+        .info-label {
+            color: var(--axis-neutral-500);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-1);
+        }
+
+        .info-value {
+            color: var(--axis-pure-white);
+        }
+
+        .activity-timeline {
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            padding: var(--space-6);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: var(--space-8);
+            padding-bottom: var(--space-6);
+            border-left: 2px solid var(--axis-neutral-800);
+            margin-left: var(--space-3);
+        }
+
+        .timeline-item:last-child {
+            border-left: none;
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--axis-neutral-700);
+            border: 2px solid var(--axis-neutral-900);
+            border-radius: 50%;
+        }
+
+        .timeline-dot.active {
+            background: var(--axis-accent-primary);
+        }
+
+        .timeline-content h4 {
+            margin: 0 0 var(--space-2) 0;
+            font-size: var(--text-base);
+            font-weight: var(--font-medium);
+        }
+
+        .timeline-time {
+            color: var(--axis-neutral-500);
+            font-size: var(--text-sm);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .service-card {
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 8px;
+            padding: var(--space-4);
+            text-align: center;
+        }
+
+        .service-card.active {
+            border-color: var(--axis-accent-primary);
+            background: rgba(0, 102, 255, 0.05);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-2);
+        }
+
+        .document-list {
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .document-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--axis-neutral-800);
+        }
+
+        .document-item:last-child {
+            border-bottom: none;
+        }
+
+        .document-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        .document-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--axis-neutral-800);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .document-meta {
+            font-size: var(--text-sm);
+            color: var(--axis-neutral-500);
+        }
+
+        .notes-section {
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            padding: var(--space-6);
+        }
+
+        .note-item {
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--axis-neutral-800);
+        }
+
+        .note-item:last-child {
+            border-bottom: none;
+        }
+
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-2);
+        }
+
+        .note-author {
+            font-weight: var(--font-medium);
+        }
+
+        .note-time {
+            color: var(--axis-neutral-500);
+            font-size: var(--text-sm);
+        }
+
+        .note-content {
+            color: var(--axis-neutral-300);
+        }
+
+        .add-note-form {
+            margin-top: var(--space-4);
+            padding-top: var(--space-4);
+            border-top: 1px solid var(--axis-neutral-800);
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-header">
+                <a href="/" class="logo-link">
+                    <svg width=\"48\" height=\"48\" viewBox=\"0 0 48 48\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">
+                        <path d=\"M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z\" 
+                              fill=\"currentColor\" opacity=\"1\"/>
+                        <path d=\"M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z\" 
+                              fill=\"currentColor\" opacity=\"1\"/>
+                        <rect x=\"16\" y=\"20\" width=\"16\" height=\"8\" fill=\"currentColor\" opacity=\"0.2\"/>
+                    </svg>
+                    <span>Axis Thorn</span>
+                </a>
+                <span class="admin-indicator">Admin</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="/admin-dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/admin-dashboard.html#clients" class="nav-item active">
+                    <span class="nav-icon">👥</span>
+                    <span>Clients</span>
+                </a>
+                <a href="/admin-dashboard.html#revenue" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span>Revenue</span>
+                </a>
+                <a href="/admin-dashboard.html#services" class="nav-item">
+                    <span class="nav-icon">⚡</span>
+                    <span>Services</span>
+                </a>
+                <a href="/admin-dashboard.html#system" class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span>System</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="logout-link">Sign Out</a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <div class="client-header">
+                <div class="client-info">
+                    <h1 id="client-name">Loading...</h1>
+                    <div class="client-meta">
+                        <span id="client-company"></span>
+                        <span>•</span>
+                        <span id="client-email"></span>
+                        <span>•</span>
+                        <span class="status-badge" id="client-status"></span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-2025" onclick="editClient()">Edit Client</button>
+                    <button class="btn-2025 btn-primary-2025" onclick="sendMessage()">Send Message</button>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <nav class="tabs">
+                <a href="#" class="tab active" data-tab="overview">Overview</a>
+                <a href="#" class="tab" data-tab="services">Services</a>
+                <a href="#" class="tab" data-tab="documents">Documents</a>
+                <a href="#" class="tab" data-tab="billing">Billing</a>
+                <a href="#" class="tab" data-tab="activity">Activity</a>
+                <a href="#" class="tab" data-tab="notes">Notes</a>
+            </nav>
+
+            <!-- Overview Tab -->
+            <div id="overview-tab" class="tab-content">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Contact Information</h3>
+                        <div class="info-item">
+                            <div class="info-label">Email</div>
+                            <div class="info-value" id="info-email"></div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Phone</div>
+                            <div class="info-value" id="info-phone">+1 (555) 123-4567</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Address</div>
+                            <div class="info-value" id="info-address">123 Business St, Suite 100<br>New York, NY 10001</div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Account Details</h3>
+                        <div class="info-item">
+                            <div class="info-label">Client Since</div>
+                            <div class="info-value" id="info-since"></div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Account Value</div>
+                            <div class="info-value" id="info-value">$250,000</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Payment Terms</div>
+                            <div class="info-value" id="info-terms">Net 30</div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Engagement Summary</h3>
+                        <div class="info-item">
+                            <div class="info-label">Active Projects</div>
+                            <div class="info-value" id="info-projects">3</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Last Activity</div>
+                            <div class="info-value" id="info-last-activity"></div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Health Score</div>
+                            <div class="info-value" style="color: #10b981;">Excellent</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-timeline">
+                    <h3>Recent Activity</h3>
+                    <div id="activity-timeline">
+                        <!-- Timeline items will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Tab -->
+            <div id="services-tab" class="tab-content" style="display: none;">
+                <h3>Active Services</h3>
+                <div class="service-grid" id="services-grid">
+                    <!-- Service cards will be populated here -->
+                </div>
+
+                <h3>Service History</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <div class="document-info">
+                            <div class="document-icon">📊</div>
+                            <div>
+                                <div>Financial Analysis Q2 2024</div>
+                                <div class="document-meta">Completed June 30, 2024</div>
+                            </div>
+                        </div>
+                        <button class="btn-2025" style="font-size: var(--text-sm);">View Report</button>
+                    </div>
+                    <div class="document-item">
+                        <div class="document-info">
+                            <div class="document-icon">💼</div>
+                            <div>
+                                <div>Portfolio Optimization</div>
+                                <div class="document-meta">Completed May 15, 2024</div>
+                            </div>
+                        </div>
+                        <button class="btn-2025" style="font-size: var(--text-sm);">View Report</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents Tab -->
+            <div id="documents-tab" class="tab-content" style="display: none;">
+                <div class="section-header">
+                    <h3>Client Documents</h3>
+                    <button class="btn-2025 btn-primary-2025" onclick="uploadDocument()">Upload Document</button>
+                </div>
+                
+                <div class="document-list" id="documents-list">
+                    <!-- Documents will be populated here -->
+                </div>
+            </div>
+
+            <!-- Billing Tab -->
+            <div id="billing-tab" class="tab-content" style="display: none;">
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Billing Summary</h3>
+                        <div class="info-item">
+                            <div class="info-label">Total Billed</div>
+                            <div class="info-value">$250,000</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Outstanding</div>
+                            <div class="info-value">$25,000</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Last Payment</div>
+                            <div class="info-value">Dec 15, 2024 - $50,000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Recent Invoices</h3>
+                <div class="document-list">
+                    <div class="document-item">
+                        <div class="document-info">
+                            <div class="document-icon">📄</div>
+                            <div>
+                                <div>Invoice #2024-012</div>
+                                <div class="document-meta">Dec 1, 2024 - $25,000</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="status-badge pending" style="margin-right: var(--space-3);">Pending</span>
+                            <button class="btn-2025" style="font-size: var(--text-sm);">View</button>
+                        </div>
+                    </div>
+                    <div class="document-item">
+                        <div class="document-info">
+                            <div class="document-icon">📄</div>
+                            <div>
+                                <div>Invoice #2024-011</div>
+                                <div class="document-meta">Nov 1, 2024 - $50,000</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="status-badge active" style="margin-right: var(--space-3);">Paid</span>
+                            <button class="btn-2025" style="font-size: var(--text-sm);">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Tab -->
+            <div id="activity-tab" class="tab-content" style="display: none;">
+                <div class="activity-timeline">
+                    <h3>Complete Activity History</h3>
+                    <div id="full-activity-timeline">
+                        <!-- Full timeline will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Tab -->
+            <div id="notes-tab" class="tab-content" style="display: none;">
+                <div class="notes-section">
+                    <h3>Internal Notes</h3>
+                    <div id="notes-list">
+                        <!-- Notes will be populated here -->
+                    </div>
+                    
+                    <form class="add-note-form" id="add-note-form">
+                        <textarea 
+                            id="note-content"
+                            placeholder="Add a note..."
+                            style="width: 100%; min-height: 100px; padding: var(--space-3); background: var(--axis-neutral-800); border: 1px solid var(--axis-neutral-700); border-radius: 6px; color: var(--axis-pure-white); resize: vertical;"
+                        ></textarea>
+                        <button type="submit" class="btn-2025 btn-primary-2025" style="margin-top: var(--space-3);">Add Note</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth-client.js"></script>
+    <script src="js/client-details.js"></script>
+</body>
+</html>

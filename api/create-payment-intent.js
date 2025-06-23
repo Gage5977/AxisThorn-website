@@ -1,16 +1,41 @@
 // api/create-payment-intent.js
 import Stripe from 'stripe';
+import { createRateLimiter } from './middleware/rate-limit.js';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+// Strict rate limit for payment endpoints
+const paymentRateLimit = createRateLimiter({
+    windowMs: 60000, // 1 minute
+    max: 5, // 5 requests per minute
+    message: 'Too many payment requests. Please wait before trying again.'
+});
+
 export default async function handler(req, res) {
-  // Set CORS headers
+  // Apply rate limiting
+  await new Promise((resolve) => {
+    paymentRateLimit(req, res, resolve);
+  });
+  
+  if (res.headersSent) return;
+  // Set CORS headers - restrict to production domains
+  const allowedOrigins = [
+    'https://axisthorn.com',
+    'https://www.axisthorn.com',
+    process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : null,
+    process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : null,
+  ].filter(Boolean);
+  
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  
   res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
   res.setHeader(
     'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    'Content-Type, Authorization'
   );
 
   if (req.method === 'OPTIONS') {
@@ -20,6 +45,20 @@ export default async function handler(req, res) {
 
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });
+    return;
+  }
+
+  // Basic authentication check
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    res.status(401).json({ error: 'Authentication required' });
+    return;
+  }
+
+  // Verify the API key (in production, validate against database or auth service)
+  const apiKey = authHeader.substring(7);
+  if (apiKey !== process.env.PAYMENT_API_KEY) {
+    res.status(403).json({ error: 'Invalid API key' });
     return;
   }
 

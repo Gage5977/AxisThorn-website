@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deployment Status - Axis Thorn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/axis-2025.css">
+    <style>
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-8);
+        }
+
+        .status-card {
+            background: var(--axis-neutral-900);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 12px;
+            padding: var(--space-6);
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-weight: var(--font-medium);
+            margin-bottom: var(--space-2);
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.operational {
+            background: #10b981;
+        }
+
+        .status-dot.partial {
+            background: #f59e0b;
+        }
+
+        .status-dot.offline {
+            background: #ef4444;
+        }
+
+        .status-dot.development {
+            background: #6366f1;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-top: var(--space-4);
+        }
+
+        .feature-item {
+            padding: var(--space-2) 0;
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--axis-neutral-400);
+            font-size: var(--text-sm);
+        }
+
+        .check { color: #10b981; }
+        .x { color: #ef4444; }
+        .construction { color: #f59e0b; }
+
+        .deployment-info {
+            background: var(--axis-neutral-950);
+            border: 1px solid var(--axis-neutral-800);
+            border-radius: 8px;
+            padding: var(--space-4);
+            margin-top: var(--space-6);
+            font-size: var(--text-sm);
+            color: var(--axis-neutral-400);
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay" aria-hidden="true"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav-2025" role="navigation">
+        <div class="nav-2025-inner">
+            <a href="/" class="logo-2025" aria-label="Axis Thorn">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 44 L20 4 L24 4 L28 14 L20 14 L16 24 L32 24 L28 34 L20 34 L16 44 L4 44 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <path d="M20 4 L44 4 L44 12 L32 12 L32 44 L24 44 L24 12 L20 12 L20 4 Z" 
+                          fill="currentColor" opacity="1"/>
+                    <rect x="16" y="20" width="16" height="8" fill="currentColor" opacity="0.2"/>
+                </svg>
+                <span>Axis Thorn</span>
+            </a>
+        </div>
+    </nav>
+
+    <section class="section-2025">
+        <div class="section-inner-2025">
+            <h1 class="section-title-2025">Deployment Status</h1>
+            
+            <div class="deployment-info">
+                <strong>Current Deployment Mode:</strong> Static Frontend Only<br>
+                <strong>Backend Status:</strong> Development Mode (Not Production Ready)<br>
+                <strong>Last Updated:</strong> <span id="last-updated"></span>
+            </div>
+
+            <div class="status-grid">
+                <!-- Frontend Status -->
+                <div class="status-card">
+                    <div class="status-indicator">
+                        <span class="status-dot operational"></span>
+                        <h3>Frontend</h3>
+                    </div>
+                    <p>All static pages and assets are operational</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            Homepage & Marketing Pages
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            Contact Forms (Static)
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            Service Worker & Offline Support
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            Performance Optimization
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Authentication Status -->
+                <div class="status-card">
+                    <div class="status-indicator">
+                        <span class="status-dot offline"></span>
+                        <h3>Authentication</h3>
+                    </div>
+                    <p>Login system requires database connection</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            User Registration
+                        </li>
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Login/Logout
+                        </li>
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Password Reset
+                        </li>
+                        <li class="feature-item">
+                            <span class="construction">🔧</span>
+                            JWT Implementation (Ready)
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Database Status -->
+                <div class="status-card">
+                    <div class="status-indicator">
+                        <span class="status-dot offline"></span>
+                        <h3>Database</h3>
+                    </div>
+                    <p>PostgreSQL required but not configured</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="construction">🔧</span>
+                            Prisma Schema (Ready)
+                        </li>
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Database Connection
+                        </li>
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Migrations
+                        </li>
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Data Persistence
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Payment Status -->
+                <div class="status-card">
+                    <div class="status-indicator">
+                        <span class="status-dot offline"></span>
+                        <h3>Payment Processing</h3>
+                    </div>
+                    <p>Stripe integration pending configuration</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Payment Gateway
+                        </li>
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Invoice Generation
+                        </li>
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Subscription Management
+                        </li>
+                        <li class="feature-item">
+                            <span class="construction">🔧</span>
+                            API Integration (Code Ready)
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Admin Dashboard Status -->
+                <div class="status-card">
+                    <div class="status-indicator">
+                        <span class="status-dot development"></span>
+                        <h3>Admin Dashboard</h3>
+                    </div>
+                    <p>Interface complete, awaiting backend</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            UI Components
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            Charts & Analytics
+                        </li>
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Data Connection
+                        </li>
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Real-time Updates
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- API Status -->
+                <div class="status-card">
+                    <div class="status-indicator">
+                        <span class="status-dot partial"></span>
+                        <h3>API Endpoints</h3>
+                    </div>
+                    <p>Returning 503 maintenance messages</p>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            CORS Configuration
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            Rate Limiting
+                        </li>
+                        <li class="feature-item">
+                            <span class="check">✓</span>
+                            Error Handling
+                        </li>
+                        <li class="feature-item">
+                            <span class="x">✗</span>
+                            Business Logic
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-top: var(--space-12); text-align: center;">
+                <h2 style="margin-bottom: var(--space-4);">Required for Full Deployment</h2>
+                <div style="max-width: 600px; margin: 0 auto; text-align: left; background: var(--axis-neutral-900); border: 1px solid var(--axis-neutral-800); border-radius: 12px; padding: var(--space-6);">
+                    <ol style="color: var(--axis-neutral-300); line-height: 1.8;">
+                        <li>PostgreSQL database instance</li>
+                        <li>Environment variables configured in Vercel</li>
+                        <li>Stripe account with API keys</li>
+                        <li>Email service (SendGrid/AWS SES)</li>
+                        <li>Run database migrations</li>
+                        <li>Update .vercelignore to include API routes</li>
+                        <li>Test all integrations</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--space-8);">
+                <a href="/" class="btn-2025 btn-primary-2025">Return to Homepage</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Update last updated time
+        document.getElementById('last-updated').textContent = new Date().toLocaleString();
+
+        // Check API health
+        fetch('/api/health')
+            .then(res => res.json())
+            .then(data => {
+                console.log('API Health:', data);
+            })
+            .catch(err => {
+                console.log('API Health Check Failed:', err);
+            });
+    </script>
+</body>
+</html>

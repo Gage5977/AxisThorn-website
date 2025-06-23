@@ -1,4 +1,8 @@
 # Exclude backend functionality until properly configured
+# Allow safe API endpoints
+!api/[...all].js
+!api/health.js
+!api/status.js
 api/
 prisma/
 lib/
