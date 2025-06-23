@@ -1,0 +1,15 @@
+# Exclude backend functionality until properly configured
+api/
+prisma/
+lib/
+scripts/create-admin.js
+.env
+.env.local
+.env.example
+setup-vercel-deployment.md
+
+# Exclude admin pages temporarily
+public/admin-dashboard.html
+public/client-details.html
+public/js/admin-dashboard.js
+public/js/client-details.js
