@@ -9,6 +9,25 @@ docs/
 *.test.js
 *.spec.js
 
+# OLD API FILES - Using consolidated API now
+api/admin/
+api/auth/
+api/documents/
+api/invoices/
+api/webhooks/
+api/[...all].js
+api/contact.js
+api/create-payment-intent.js
+api/health.js
+api/payment-history.js
+api/payment-links.js
+api/status.js
+api/stripe-webhook.js
+api/middleware/
+
+# Keep only the main API handler
+!api/index.js
+
 # Scripts that shouldn't be deployed
 scripts/create-admin.js
 scripts/convert-to-webp.js
