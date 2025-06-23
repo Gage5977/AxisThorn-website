@@ -1,19 +1,32 @@
-# Exclude backend functionality until properly configured
-# Allow safe API endpoints
-!api/[...all].js
-!api/health.js
-!api/status.js
-api/
-prisma/
-lib/
-scripts/create-admin.js
+# Development and sensitive files
 .env
 .env.local
-.env.example
-setup-vercel-deployment.md
+node_modules/
+.git/
+.github/
+tests/
+docs/
+*.test.js
+*.spec.js
 
-# Exclude admin pages temporarily
-public/admin-dashboard.html
-public/client-details.html
-public/js/admin-dashboard.js
-public/js/client-details.js
+# Scripts that shouldn't be deployed
+scripts/create-admin.js
+scripts/convert-to-webp.js
+scripts/optimize-*.js
+
+# Documentation files
+*.md
+LICENSE
+
+# Development configs
+.eslintrc*
+.prettierrc*
+jest.config.js
+tsconfig.json
+
+# Keep admin pages disabled until auth is fully configured
+# Uncomment these lines when ready to enable admin features:
+# public/admin-dashboard.html
+# public/client-details.html
+# public/js/admin-dashboard.js
+# public/js/client-details.js
