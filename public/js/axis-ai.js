@@ -126,19 +126,13 @@ const AxisAIChat = {
     const typingId = this.showTypingIndicator();
         
     try {
-      // Send to API
-      const response = await fetch('/api/ai-chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: message,
-          context: this.messages.slice(-10) // Send last 10 messages for context
-        })
-      });
-            
-      const data = await response.json();
+      // Simulate API response for demo - backend integration required
+      await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000));
+      
+      const data = {
+        response: "The AI chat functionality requires backend integration. Please check back soon for our intelligent financial analysis features.",
+        timestamp: new Date().toISOString()
+      };
             
       // Remove typing indicator
       this.removeTypingIndicator(typingId);

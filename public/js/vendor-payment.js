@@ -358,6 +358,21 @@ class VendorPaymentPortal {
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize the payment portal with Stripe live publishable key
-    window.vendorPaymentPortal = new VendorPaymentPortal('pk_live_51RbCgpG1uUSyJ0ucqzJ6P7OQ6wkDkdx2o4cklRD2XxFUssui1RjnzuR2zIAim0Oa3WgLMKTUFA2sW7IWl8hy6qEN00YEf8zSvh');
+    // Payment functionality temporarily disabled - backend integration required
+    console.log('Payment portal requires backend configuration');
+    
+    // Display message to users
+    const container = document.querySelector('.container');
+    if (container) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 4rem 2rem;">
+                <h2 style="color: var(--axis-accent-primary); margin-bottom: 1rem;">Payment Portal Temporarily Unavailable</h2>
+                <p style="color: var(--axis-neutral-400); max-width: 600px; margin: 0 auto;">
+                    Our payment system is currently being upgraded for enhanced security. 
+                    Please contact us directly for payment arrangements.
+                </p>
+                <a href="/" class="button" style="margin-top: 2rem; display: inline-block;">Return to Homepage</a>
+            </div>
+        `;
+    }
 });
