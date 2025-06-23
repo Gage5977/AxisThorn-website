@@ -1,28 +1,59 @@
 // Authentication Middleware
 import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
+import db from '../../lib/db.js';
 
 // In production, use environment variable
 const JWT_SECRET = process.env.JWT_SECRET || 'your-development-secret-key-change-this';
 
-// Temporary in-memory storage - replace with database in production
-const users = new Map();
+// Temporary refresh token storage - will be replaced with database sessions
 const refreshTokens = new Set();
 
-// Initialize with a demo admin user (remove in production)
-users.set('admin@axisthorn.com', {
-    id: 'admin_001',
-    email: 'admin@axisthorn.com',
-    name: 'Admin User',
-    role: 'admin',
-    // Password: Admin123! (hashed)
-    passwordHash: 'a8d6f0e8c7b5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9',
-    passwordSalt: '1234567890abcdef1234567890abcdef',
-    createdAt: new Date().toISOString(),
-    emailVerified: true
-});
+// Helper function to hash passwords
+export function hashPassword(password, salt = null) {
+    if (!salt) {
+        salt = crypto.randomBytes(16).toString('hex');
+    }
+    const hash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
+    return { hash, salt };
+}
+
+// Helper function to verify passwords
+export function verifyPassword(password, hash, salt) {
+    const verifyHash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
+    return hash === verifyHash;
+}
+
+// Initialize development admin user if needed
+async function initDevAdmin() {
+    if (process.env.NODE_ENV === 'development' && process.env.CREATE_DEV_ADMIN === 'true') {
+        try {
+            const existingAdmin = await db.user.findUnique({ where: { email: 'admin@axisthorn.com' } });
+            if (!existingAdmin) {
+                const { hash, salt } = hashPassword('TempAdmin123!');
+                await db.user.create({
+                    data: {
+                        email: 'admin@axisthorn.com',
+                        name: 'Development Admin',
+                        role: 'admin',
+                        passwordHash: hash,
+                        passwordSalt: salt,
+                        emailVerified: true
+                    }
+                });
+                console.log('Development admin user created. Remove CREATE_DEV_ADMIN env var in production.');
+            }
+        } catch (error) {
+            console.error('Failed to create dev admin:', error);
+        }
+    }
+}
+
+// Initialize on module load
+initDevAdmin().catch(console.error);
 
 // Verify JWT token
-export function verifyAuth(req) {
+export async function verifyAuth(req) {
     try {
         const authHeader = req.headers.authorization;
         
@@ -36,7 +67,7 @@ export function verifyAuth(req) {
             const decoded = jwt.verify(token, JWT_SECRET);
             
             // Check if user still exists
-            const user = users.get(decoded.email);
+            const user = await db.user.findUnique({ where: { email: decoded.email } });
             if (!user) {
                 return { authenticated: false, error: 'User not found' };
             }
@@ -107,8 +138,8 @@ export function verifyRefreshToken(token) {
 }
 
 // Middleware function for Express-style routes
-export function requireAuth(req, res, next) {
-    const authResult = verifyAuth(req);
+export async function requireAuth(req, res, next) {
+    const authResult = await verifyAuth(req);
     
     if (!authResult.authenticated) {
         return res.status(401).json({ error: authResult.error || 'Authentication required' });
@@ -119,8 +150,8 @@ export function requireAuth(req, res, next) {
 }
 
 // Middleware for admin-only routes
-export function requireAdmin(req, res, next) {
-    const authResult = verifyAuth(req);
+export async function requireAdmin(req, res, next) {
+    const authResult = await verifyAuth(req);
     
     if (!authResult.authenticated) {
         return res.status(401).json({ error: authResult.error || 'Authentication required' });
@@ -134,5 +165,5 @@ export function requireAdmin(req, res, next) {
     next();
 }
 
-// Export users for auth endpoints (temporary - replace with database)
-export { users, refreshTokens };
+// Export utilities
+export { refreshTokens, db };

@@ -2,15 +2,12 @@
 
 /**
  * Script to create an admin user
- * Usage: node scripts/create-admin.js
+ * Usage: DATABASE_URL="your-connection-string" node scripts/create-admin.js
  */
 
 import crypto from 'crypto';
 import readline from 'readline';
-
-// Simple in-memory storage for demo
-// In production, this would connect to your database
-const adminUsers = new Map();
+import db from '../lib/db.js';
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -56,57 +53,65 @@ async function createAdmin() {
         }
 
         // Check if admin already exists
-        if (adminUsers.has(email.toLowerCase())) {
-            throw new Error('Admin with this email already exists');
+        const existingUser = await db.user.findUnique({ where: { email: email.toLowerCase() } });
+        if (existingUser) {
+            const overwrite = await question('\nUser already exists. Update password? (yes/no): ');
+            if (overwrite.toLowerCase() !== 'yes') {
+                console.log('\nOperation cancelled.');
+                process.exit(0);
+            }
         }
 
         // Hash password
         const salt = crypto.randomBytes(16).toString('hex');
         const hash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
 
-        // Create admin user
-        const adminId = `admin_${crypto.randomBytes(8).toString('hex')}`;
-        const admin = {
-            id: adminId,
-            email: email.toLowerCase(),
-            name: name,
-            passwordHash: hash,
-            passwordSalt: salt,
-            role: 'admin',
-            createdAt: new Date().toISOString(),
-            emailVerified: true
-        };
+        // Create or update admin user
+        let admin;
+        if (existingUser) {
+            admin = await db.user.update({
+                where: { email: email.toLowerCase() },
+                data: {
+                    passwordHash: hash,
+                    passwordSalt: salt,
+                    updatedAt: new Date()
+                }
+            });
+        } else {
+            admin = await db.user.create({
+                data: {
+                    email: email.toLowerCase(),
+                    name: name,
+                    passwordHash: hash,
+                    passwordSalt: salt,
+                    role: 'admin',
+                    emailVerified: true
+                }
+            });
+        }
 
-        // Save admin (in production, save to database)
-        adminUsers.set(email.toLowerCase(), admin);
-
-        console.log('\n✅ Admin user created successfully!\n');
+        console.log(existingUser ? '\n✅ Admin password updated successfully!\n' : '\n✅ Admin user created successfully!\n');
         console.log('Admin Details:');
         console.log(`- ID: ${admin.id}`);
         console.log(`- Email: ${admin.email}`);
         console.log(`- Name: ${admin.name}`);
         console.log(`- Role: ${admin.role}`);
-        console.log('\nYou can now log in with these credentials at /login.html');
-
-        // In production, you would:
-        // 1. Save to database
-        // 2. Send welcome email
-        // 3. Log the creation event
-
-        // For demo purposes, output the admin data that would be saved
-        console.log('\n--- Admin Data (for demo) ---');
-        console.log(JSON.stringify({
-            id: admin.id,
-            email: admin.email,
-            name: admin.name,
-            role: admin.role,
-            createdAt: admin.createdAt
-        }, null, 2));
+        console.log('\nYou can now log in with these credentials.');
+        
+        if (!db.isUsingDatabase()) {
+            console.log('\n⚠️  Note: Using in-memory storage. Data will be lost on restart.');
+            console.log('Set DATABASE_URL environment variable to use persistent storage.');
+        }
 
     } catch (error) {
         console.error('\n❌ Error:', error.message);
+        if (!process.env.DATABASE_URL && db.isUsingDatabase() === false) {
+            console.error('\nNo DATABASE_URL environment variable found!');
+            console.error('Usage: DATABASE_URL="your-connection-string" node scripts/create-admin.js');
+        }
     } finally {
         rl.close();
+        await db.$disconnect();
     }
 }
 

@@ -1,6 +1,7 @@
 // Registration API Endpoint
 import crypto from 'crypto';
-import { users } from '../middleware/auth.js';
+import db from '../../lib/db.js';
+import { hashPassword, generateToken, generateRefreshToken } from '../middleware/auth.js';
 import { createRateLimiter } from '../middleware/rate-limit.js';
 import { validateRequest } from '../middleware/validate-request.js';
 
@@ -74,35 +75,44 @@ export default async function handler(req, res) {
         const normalizedEmail = email.toLowerCase();
 
         // Check if user already exists
-        if (users.has(normalizedEmail)) {
+        const existingUser = await db.user.findUnique({ where: { email: normalizedEmail } });
+        if (existingUser) {
             return res.status(409).json({ error: 'User already exists' });
         }
 
         // Hash password
-        const salt = crypto.randomBytes(16).toString('hex');
-        const hash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
+        const { hash, salt } = hashPassword(password);
 
-        // Create user
-        const userId = `user_${crypto.randomBytes(8).toString('hex')}`;
-        const user = {
-            id: userId,
-            email: normalizedEmail,
-            name: name,
-            company: company || null,
-            passwordHash: hash,
-            passwordSalt: salt,
-            role: 'client',
-            createdAt: new Date().toISOString(),
-            emailVerified: false
-        };
+        // Create user in database
+        const user = await db.user.create({
+            data: {
+                email: normalizedEmail,
+                name: name,
+                company: company || null,
+                passwordHash: hash,
+                passwordSalt: salt,
+                role: 'client',
+                emailVerified: false
+            }
+        });
 
-        // Save user
-        users.set(normalizedEmail, user);
+        // Generate tokens
+        const accessToken = generateToken(user);
+        const refreshToken = generateRefreshToken(user);
+
+        // Create session
+        await db.session.create({
+            data: {
+                userId: user.id,
+                token: refreshToken,
+                expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // 30 days
+            }
+        });
 
         // In production, send verification email here
         console.log('User registered:', normalizedEmail);
 
-        // Return success
+        // Return success with tokens
         res.status(201).json({
             success: true,
             message: 'Registration successful. Please check your email to verify your account.',
@@ -110,7 +120,12 @@ export default async function handler(req, res) {
                 id: user.id,
                 email: user.email,
                 name: user.name,
-                role: user.role
+                role: user.role,
+                emailVerified: user.emailVerified
+            },
+            tokens: {
+                accessToken,
+                refreshToken
             }
         });
 
