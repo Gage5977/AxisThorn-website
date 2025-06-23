@@ -1,11 +1,48 @@
-# *
+# Robots.txt for axisthorn.com
+# Allow all crawlers by default
+
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /finance-management/
+Disallow: /.git/
+Disallow: /node_modules/
 Disallow: /preview
 
 # Host
 Host: https://axisthorn.com
 
-# Sitemaps
+# Sitemap location
 Sitemap: https://axisthorn.com/sitemap.xml
+
+# Crawl-delay for polite crawling (in seconds)
+Crawl-delay: 1
+
+# Special directives for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots known for aggressive crawling
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
